@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<S2SDDRsf:MPEDDRsfBlkDirDeb xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:S2SDDRsf="urn:S2SDDRsf:xsd:$MPEDDRsfBlkDirDeb" xsi:schemaLocation="urn:S2SDDRsf:xsd:$MPEDDRsfBlkDirDeb MPEDDRsfBlkDirDeb.xsd">
+   <S2SDDRsf:SndgInst>BACRIT21</S2SDDRsf:SndgInst>
+   <S2SDDRsf:RcvgInst>SOGENL2A</S2SDDRsf:RcvgInst>
+   <S2SDDRsf:SrvcId>COR</S2SDDRsf:SrvcId>
+   <S2SDDRsf:TstCode>T</S2SDDRsf:TstCode>
+   <S2SDDRsf:FType>RSF</S2SDDRsf:FType>
+   <S2SDDRsf:FileRef>VSCT100713000095</S2SDDRsf:FileRef>
+   <S2SDDRsf:RoutingInd>ALL</S2SDDRsf:RoutingInd>
+   <S2SDDRsf:FileBusDt>2016-08-03</S2SDDRsf:FileBusDt>
+   <S2SDDRsf:FileCycleNo>01</S2SDDRsf:FileCycleNo>
+   <S2SDDRsf:FIToFIPmtStsRptS2 xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.03S2">
+       <GrpHdr>
+           <MsgId>rsf-settlement-1470213510--1</MsgId>
+           <CreDtTm>2016-08-03T09:51:33</CreDtTm>
+           <InstgAgt>
+               <FinInstnId>
+                   <BIC>SOGENL2A</BIC>
+               </FinInstnId>
+           </InstgAgt>
+       </GrpHdr>
+       <OrgnlGrpInfAndSts>
+           <OrgnlMsgId>MPM_GeneratedID</OrgnlMsgId> 
+           <OrgnlMsgNmId>pacs.003</OrgnlMsgNmId> 
+           <OrgnlNbOfTxs>1000</OrgnlNbOfTxs> 
+           <OrgnlCtrlSum>5000.0</OrgnlCtrlSum> 
+           <GrpSts>ACSC</GrpSts> 
+           <StsRsnInf>
+               <Orgtr>
+                   <Id>
+                       <OrgId>
+                           <BICOrBEI>BACRIT21</BICOrBEI> 
+                       </OrgId>
+                   </Id>
+               </Orgtr>
+               <Rsn>
+                   <Prtry>B01</Prtry> 
+               </Rsn>
+           </StsRsnInf>
+       </OrgnlGrpInfAndSts>
+   </S2SDDRsf:FIToFIPmtStsRptS2>
+</S2SDDRsf:MPEDDRsfBlkDirDeb>
