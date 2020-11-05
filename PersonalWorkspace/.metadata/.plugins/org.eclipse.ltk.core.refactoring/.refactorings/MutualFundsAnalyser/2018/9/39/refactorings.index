@@ -1,0 +1,5 @@
+1537894925778	Rename method 'printSelectedHashMap'
+1537983866840	Extract constant 'NAV_COLUMN'
+1537983882360	Extract constant 'PROFIT_AMOUNT_COLUMN'
+1537983913511	Extract constant 'PROFIT_PERCENTAGE_COLUMN'
+1537985767254	Extract constant 'ISIN_COLUMN'

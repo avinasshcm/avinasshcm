@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static FileHandler getLogHandler()&apos; from &apos;main.ReadMFNAV.main()&apos; to &apos;main.ReadMFNAV&apos;&#x0D;&#x0A;- Original project: &apos;MutualFundsAnalyser&apos;&#x0D;&#x0A;- Method name: &apos;getLogHandler&apos;&#x0D;&#x0A;- Destination type: &apos;main.ReadMFNAV&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;getLogHandler&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;main{ReadMFNAV.java" name="getLogHandler" replace="false" selection="1585 333" stamp="1536492194373" version="1.0" visibility="2"/>
+</session>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<AMFIINDIAURL>https://www.amfiindia.com/spages/NAVAll.txt
+	</AMFIINDIAURL>
+	<FILEPATH>D:/My Cloud/OneDrive/MutualFunds/</FILEPATH>
+	<historicDataLocation>Historic_Data</historicDataLocation>
+	<item name="Avinash">
+		<excelName>Mutual Funds.xlsx</excelName>
+		<historyPropFileName>History.properties</historyPropFileName>
+	</item>
+	<item name="Shruthi">
+		<excelName>Mutual Funds Shru.xlsx</excelName>
+		<historyPropFileName>History/History_Shru.properties
+		</historyPropFileName>
+	</item>
+	<item name="Kruthika">
+		<excelName>Mutual Funds Kru.xlsx</excelName>
+		<historyPropFileName>History_Kru.properties</historyPropFileName>
+	</item>
+</config>

@@ -1,0 +1,199 @@
+
+¯"squid:ClassVariableVisibilityCheck"[Make BFAO_Curr_Build a static final constant or non-public and provide accessors if needed.(Ê÷¼§øÿÿÿÿ8ÁáŠ¹Ê.HîRMINORZVULNERABILITY
+squid:S00117Ì"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢É—£øÿÿÿÿ8ÁáŠ¹Ê.HîRMINORZ
+CODE_SMELL
+squid:S3008/"XRename this field "UB_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùø¨Ï8ÁáŠ¹Ê.HŸîRMINORZ
+CODE_SMELL
+squid:S30083"YRename this field "BFT_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ÎšŠ8ÁáŠ¹Ê.H îRMINORZ
+CODE_SMELL
+qsquid:S1444"4Make this "public static PTY_Curr_Build" field final(®îŞÑûÿÿÿÿ8ÁáŠ¹Ê.H¡îRMINORZVULNERABILITY
+osquid:S14446"7Make this "public static BFP_Symbolic_Path" field final(Ş—¡¤8ÁáŠ¹Ê.H¢îRMINORZVULNERABILITY
+nsquid:S1444K"6Make this "public static CBS_Install_Path" field final(¢£¥Á8ÁáŠ¹Ê.H£îRMINORZVULNERABILITY
+’squid:S3008:"]Rename this field "BFAM_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯È¤Ê8ÁáŠ¹Ê.H¤îRMINORZ
+CODE_SMELL
+­"squid:ClassVariableVisibilityCheck"YMake UB_Curr_Build a static final constant or non-public and provide accessors if needed.(•¿Ø…üÿÿÿÿ8ÁáŠ¹Ê.H¥îRMINORZVULNERABILITY
+²"squid:ClassVariableVisibilityCheck<"^Make BFPM_Symbolic_Path a static final constant or non-public and provide accessors if needed.(òÓÉ’şÿÿÿÿ8ÁáŠ¹Ê.H¦îRMINORZVULNERABILITY
+ª"squid:ClassVariableVisibilityCheckU"[Make UB_Install_Path a static final constant or non-public and provide accessors if needed.(‡öå³8ÁáŠ¹Ê.H§îRMINORZVULNERABILITY
+¯"squid:ClassVariableVisibilityCheck)"[Make BFPM_Full_Build a static final constant or non-public and provide accessors if needed.(Óÿ²ÿıÿÿÿÿ8ÁáŠ¹Ê.H¨îRMINORZVULNERABILITY
+¡"squid:ClassVariableVisibilityCheck]"RMake schema a static final constant or non-public and provide accessors if needed.(ÉâÌ°8ÁáŠ¹Ê.H©îRMINORZVULNERABILITY
+squid:S3008U"ZRename this field "UB_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡öå³8ÁáŠ¹Ê.HªîRMINORZ
+CODE_SMELL
+‰squid:S1192‹"KDefine a constant instead of duplicating this literal "BankFusion" 3 times.(Š³ÄÈüÿÿÿÿ8ÁáŠ¹Ê.H«îRCRITICALZ
+CODE_SMELL
+®"squid:ClassVariableVisibilityCheck#"ZMake BFP_Full_Build a static final constant or non-public and provide accessors if needed.(œĞù°üÿÿÿÿ8ÁáŠ¹Ê.H¬îRMINORZVULNERABILITY
+rsquid:S1444"5Make this "public static BFAO_Curr_Build" field final(Ê÷¼§øÿÿÿÿ8ÁáŠ¹Ê.H­îRMINORZVULNERABILITY
+“squid:S3008"YRename this field "CBS_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†­¼¡ıÿÿÿÿ8ÁáŠ¹Ê.H®îRMINORZ
+CODE_SMELL
+nsquid:S1444W"6Make this "public static PTY_Install_Path" field final(ÃÍ‚»8ÁáŠ¹Ê.H¯îRMINORZVULNERABILITY
+squid:S3008-"YRename this field "WIF_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éÛ÷Ğ8ÁáŠ¹Ê.H°îRMINORZ
+CODE_SMELL
+osquid:S1444Q"7Make this "public static BFAO_Install_Path" field final(ÆÆôó8ÁáŠ¹Ê.H±îRMINORZVULNERABILITY
+¬"squid:ClassVariableVisibilityCheck8"]Make CBS_Symbolic_Path a static final constant or non-public and provide accessors if needed.(³¦Ù›8ÁáŠ¹Ê.H²îRMINORZVULNERABILITY
+‘squid:S3008F"\Rename this field "BFT_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍüÂÙ8ÁáŠ¹Ê.H³îRMINORZ
+CODE_SMELL
+lsquid:S1444"4Make this "public static WIF_Curr_Build" field final(ûÖ©Ğ8ÁáŠ¹Ê.H´îRMINORZVULNERABILITY
+‘squid:S3008Q"\Rename this field "BFAO_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÆôó8ÁáŠ¹Ê.HµîRMINORZ
+CODE_SMELL
+^squid:S2095İ"-Close this "ResultSet" in a "finally" clause.(®ÀÚ¯8ÁáŠ¹Ê.H¶îRBLOCKERZBUG
+tsquid:S1444O"7Make this "public static BFPM_Install_Path" field final(Ù°ıÃıÿÿÿÿ8ÁáŠ¹Ê.H·îRMINORZVULNERABILITY
+©"squid:ClassVariableVisibilityCheck-"ZMake WIF_Full_Build a static final constant or non-public and provide accessors if needed.(éÛ÷Ğ8ÁáŠ¹Ê.H¸îRMINORZVULNERABILITY
+“squid:S3008#"YRename this field "BFP_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œĞù°üÿÿÿÿ8ÁáŠ¹Ê.H¹îRMINORZ
+CODE_SMELL
+lsquid:S1854õ"6Remove this useless assignment to local variable "rs".(®ÀÚ¯8ÁáŠ¹Ê.HºîRMAJORZ
+CODE_SMELL
+asquid:S1148Ñ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.H»îRMINORZVULNERABILITY
+osquid:S1444M"7Make this "public static BFAM_Install_Path" field final(¸§¡ó8ÁáŠ¹Ê.H¼îRMINORZVULNERABILITY
+‘squid:S3008D"\Rename this field "PTY_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾Ñ©Ú8ÁáŠ¹Ê.H½îRMINORZ
+CODE_SMELL
+”squid:S3008"ZRename this field "BFAO_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê÷¼§øÿÿÿÿ8ÁáŠ¹Ê.H¾îRMINORZ
+CODE_SMELL
+nsquid:S1444["6Make this "public static Install_Location" field final(ò‡øú8ÁáŠ¹Ê.H¿îRMINORZVULNERABILITY
+rsquid:S1444"5Make this "public static BFAM_Curr_Build" field final(³²Óïøÿÿÿÿ8ÁáŠ¹Ê.HÀîRMINORZVULNERABILITY
+‘squid:S30086"\Rename this field "BFP_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş—¡¤8ÁáŠ¹Ê.HÁîRMINORZ
+CODE_SMELL
+±"squid:ClassVariableVisibilityCheck@"]Make WIF_Symbolic_Path a static final constant or non-public and provide accessors if needed.(¡¾¬Ÿşÿÿÿÿ8ÁáŠ¹Ê.HÂîRMINORZVULNERABILITY
+rsquid:S2589í"7Remove this expression which always evaluates to "true"(ÕÆ Ùüÿÿÿÿ8ÁáŠ¹Ê.HÃîRMAJORZ
+CODE_SMELL
+psquid:S1444"3Make this "public static UB_Curr_Build" field final(•¿Ø…üÿÿÿÿ8ÁáŠ¹Ê.HÄîRMINORZVULNERABILITY
+¬"squid:ClassVariableVisibilityCheckM"]Make BFAM_Install_Path a static final constant or non-public and provide accessors if needed.(¸§¡ó8ÁáŠ¹Ê.HÅîRMINORZVULNERABILITY
+©"squid:ClassVariableVisibilityCheck3"ZMake BFT_Full_Build a static final constant or non-public and provide accessors if needed.(‘ÎšŠ8ÁáŠ¹Ê.HÆîRMINORZVULNERABILITY
+”squid:S3008"ZRename this field "BFAM_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³²Óïøÿÿÿÿ8ÁáŠ¹Ê.HÇîRMINORZ
+CODE_SMELL
+squid:S3008%"YRename this field "CBS_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¨ëñ8ÁáŠ¹Ê.HÈîRMINORZ
+CODE_SMELL
+rsquid:S1444)"5Make this "public static BFPM_Full_Build" field final(Óÿ²ÿıÿÿÿÿ8ÁáŠ¹Ê.HÉîRMINORZVULNERABILITY
+ssquid:S1444I"6Make this "public static BFP_Install_Path" field final(Áº¥Äşÿÿÿÿ8ÁáŠ¹Ê.HÊîRMINORZVULNERABILITY
+nsquid:S1444B"6Make this "public static UB_Symbolic_Path" field final(óÛö8ÁáŠ¹Ê.HËîRMINORZVULNERABILITY
+ssquid:S1854ğ"8Remove this useless assignment to local variable "conn".(ÈıÃıÿÿÿÿ8ÁáŠ¹Ê.HÌîRMAJORZ
+CODE_SMELL
+`squid:S1148k"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.HÍîRMINORZVULNERABILITY
+{squid:S2147“"ECombine this catch with the one at line 273, which has the same body.(ï­£Ä8ÁáŠ¹Ê.HÎîRMINORZ
+CODE_SMELL
+asquid:S1148’"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.HÏîRMINORZVULNERABILITY
+«"squid:ClassVariableVisibilityCheck["\Make Install_Location a static final constant or non-public and provide accessors if needed.(ò‡øú8ÁáŠ¹Ê.HĞîRMINORZVULNERABILITY
+®"squid:ClassVariableVisibilityCheck"ZMake CBS_Curr_Build a static final constant or non-public and provide accessors if needed.(†­¼¡ıÿÿÿÿ8ÁáŠ¹Ê.HÑîRMINORZVULNERABILITY
+”squid:S3008+"ZRename this field "BFAO_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»È›øÿÿÿÿ8ÁáŠ¹Ê.HÒîRMINORZ
+CODE_SMELL
+squid:S3008["[Rename this field "Install_Location" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò‡øú8ÁáŠ¹Ê.HÓîRMINORZ
+CODE_SMELL
+¯"squid:ClassVariableVisibilityCheck"[Make BFPM_Curr_Build a static final constant or non-public and provide accessors if needed.(¦óÎÁøÿÿÿÿ8ÁáŠ¹Ê.HÔîRMINORZVULNERABILITY
+–squid:S3008O"\Rename this field "BFPM_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù°ıÃıÿÿÿÿ8ÁáŠ¹Ê.HÕîRMINORZ
+CODE_SMELL
+dsquid:S1481ğ")Remove this unused "conn" local variable.(ÈıÃıÿÿÿÿ8ÁáŠ¹Ê.HÖîRMINORZ
+CODE_SMELL
+squid:S2077õ"RUse a variable binding mechanism to construct this query instead of concatenation.(®ÀÚ¯8ÁáŠ¹Ê.H×îRBLOCKERZVULNERABILITY
+qsquid:S1444"4Make this "public static BFP_Curr_Build" field final(›–õ ıÿÿÿÿ8ÁáŠ¹Ê.HØîRMINORZVULNERABILITY
+lsquid:S1444-"4Make this "public static WIF_Full_Build" field final(éÛ÷Ğ8ÁáŠ¹Ê.HÙîRMINORZVULNERABILITY
+Hsquid:S1220""Move this file to a named package.HÚîRMINORZ
+CODE_SMELL
+©"squid:ClassVariableVisibilityCheck%"ZMake CBS_Full_Build a static final constant or non-public and provide accessors if needed.(Ç¨ëñ8ÁáŠ¹Ê.HÛîRMINORZVULNERABILITY
+²"squid:ClassVariableVisibilityCheck>"^Make BFAO_Symbolic_Path a static final constant or non-public and provide accessors if needed.(İ¶º²úÿÿÿÿ8ÁáŠ¹Ê.HÜîRMINORZVULNERABILITY
+squid:S3008 "YRename this field "BFT_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£©ı8ÁáŠ¹Ê.HİîRMINORZ
+CODE_SMELL
+•squid:S3008I"[Rename this field "BFP_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áº¥Äşÿÿÿÿ8ÁáŠ¹Ê.HŞîRMINORZ
+CODE_SMELL
+‘squid:S3008M"\Rename this field "BFAM_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸§¡ó8ÁáŠ¹Ê.HßîRMINORZ
+CODE_SMELL
+dsquid:S1444]",Make this "public static schema" field final(ÉâÌ°8ÁáŠ¹Ê.HàîRMINORZVULNERABILITY
+¨"squid:ClassVariableVisibilityCheck "ZMake BFT_Curr_Build a static final constant or non-public and provide accessors if needed.(£©ı8ÁáŠ¹Ê.HáîRMINORZVULNERABILITY
+squid:S1192»"FDefine a constant instead of duplicating this literal "Party" 3 times.(ÍÚÿ‚8ÁáŠ¹Ê.HâîRCRITICALZ
+CODE_SMELL
+tsquid:S1444@"7Make this "public static WIF_Symbolic_Path" field final(¡¾¬Ÿşÿÿÿÿ8ÁáŠ¹Ê.HãîRMINORZVULNERABILITY
+¯"squid:ClassVariableVisibilityCheck"[Make BFAM_Curr_Build a static final constant or non-public and provide accessors if needed.(³²Óïøÿÿÿÿ8ÁáŠ¹Ê.HäîRMINORZVULNERABILITY
+“squid:S3008"YRename this field "BFP_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›–õ ıÿÿÿÿ8ÁáŠ¹Ê.HåîRMINORZ
+CODE_SMELL
+¯"squid:ClassVariableVisibilityCheck'"[Make BFAM_Full_Build a static final constant or non-public and provide accessors if needed.(¶ïøìÿÿÿÿÿ8ÁáŠ¹Ê.HæîRMINORZVULNERABILITY
+ksquid:S1444/"3Make this "public static UB_Full_Build" field final(Ùø¨Ï8ÁáŠ¹Ê.HçîRMINORZVULNERABILITY
+squid:S1192µ"QDefine a constant instead of duplicating this literal "UniversalBanking" 3 times.(œÿ‰—şÿÿÿÿ8ÁáŠ¹Ê.HèîRCRITICALZ
+CODE_SMELL
+¨"squid:ClassVariableVisibilityCheck/"YMake UB_Full_Build a static final constant or non-public and provide accessors if needed.(Ùø¨Ï8ÁáŠ¹Ê.HéîRMINORZVULNERABILITY
+±"squid:ClassVariableVisibilityCheckO"]Make BFPM_Install_Path a static final constant or non-public and provide accessors if needed.(Ù°ıÃıÿÿÿÿ8ÁáŠ¹Ê.HêîRMINORZVULNERABILITY
+”squid:S3008'"ZRename this field "BFAM_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ïøìÿÿÿÿÿ8ÁáŠ¹Ê.HëîRMINORZ
+CODE_SMELL
+—squid:S3008<"]Rename this field "BFPM_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÓÉ’şÿÿÿÿ8ÁáŠ¹Ê.HìîRMINORZ
+CODE_SMELL
+usquid:S1444<"8Make this "public static BFPM_Symbolic_Path" field final(òÓÉ’şÿÿÿÿ8ÁáŠ¹Ê.HíîRMINORZVULNERABILITY
+…squid:S3027§"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(¢É‹öøÿÿÿÿ8®¹Ê.HîîRMAJORZ
+CODE_SMELL
+osquid:S1444F"7Make this "public static BFT_Symbolic_Path" field final(ÍüÂÙ8ÁáŠ¹Ê.HïîRMINORZVULNERABILITY
+squid:S00117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†€«áøÿÿÿÿ8ÁáŠ¹Ê.HğîRMINORZ
+CODE_SMELL
+squid:S3008Y"[Rename this field "BFT_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÔ¯§8ÁáŠ¹Ê.HñîRMINORZ
+CODE_SMELL
+lsquid:S14443"4Make this "public static BFT_Full_Build" field final(‘ÎšŠ8ÁáŠ¹Ê.HòîRMINORZVULNERABILITY
+`squid:S1148f"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.HóîRMINORZVULNERABILITY
+ssquid:S1197ë"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿ8ÁáŠ¹Ê.HôîRMINORZ
+CODE_SMELL
+’squid:S3008"XRename this field "UB_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•¿Ø…üÿÿÿÿ8ÁáŠ¹Ê.HõîRMINORZ
+CODE_SMELL
+“squid:S30081"YRename this field "PTY_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éØæ²ÿÿÿÿÿ8ÁáŠ¹Ê.HöîRMINORZ
+CODE_SMELL
+msquid:S1444U"5Make this "public static UB_Install_Path" field final(‡öå³8ÁáŠ¹Ê.H÷îRMINORZVULNERABILITY
+­"squid:ClassVariableVisibilityCheck:"^Make BFAM_Symbolic_Path a static final constant or non-public and provide accessors if needed.(¯È¤Ê8ÁáŠ¹Ê.HøîRMINORZVULNERABILITY
+squid:S3008W"[Rename this field "PTY_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÍ‚»8ÁáŠ¹Ê.HùîRMINORZ
+CODE_SMELL
+squid:S3008S"[Rename this field "WIF_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùÏ°8ÁáŠ¹Ê.HúîRMINORZ
+CODE_SMELL
+bsquid:S1481ò"'Remove this unused "rs" local variable.(ÀÇÄûÿÿÿÿ8ÁáŠ¹Ê.HûîRMINORZ
+CODE_SMELL
+nsquid:S1444S"6Make this "public static WIF_Install_Path" field final(ùÏ°8ÁáŠ¹Ê.HüîRMINORZVULNERABILITY
+squid:S3008B"[Rename this field "UB_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÛö8ÁáŠ¹Ê.HıîRMINORZ
+CODE_SMELL
+Œsquid:S00117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†€«áøÿÿÿÿ8ÁáŠ¹Ê.HşîRMINORZ
+CODE_SMELL
+ˆsquid:S1192r"KDefine a constant instead of duplicating this literal "BANKFUSION" 3 times.(ÕÆ Ùüÿÿÿÿ8ÁáŠ¹Ê.HÿîRCRITICALZ
+CODE_SMELL
+«"squid:ClassVariableVisibilityCheckK"\Make CBS_Install_Path a static final constant or non-public and provide accessors if needed.(¢£¥Á8ÁáŠ¹Ê.H€ïRMINORZVULNERABILITY
+asquid:S1148Ã"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.HïRMINORZVULNERABILITY
+—squid:S3008>"]Rename this field "BFAO_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¶º²úÿÿÿÿ8ÁáŠ¹Ê.H‚ïRMINORZ
+CODE_SMELL
+«"squid:ClassVariableVisibilityCheckB"\Make UB_Symbolic_Path a static final constant or non-public and provide accessors if needed.(óÛö8ÁáŠ¹Ê.HƒïRMINORZVULNERABILITY
+rsquid:S1444'"5Make this "public static BFAM_Full_Build" field final(¶ïøìÿÿÿÿÿ8ÁáŠ¹Ê.H„ïRMINORZVULNERABILITY
+asquid:S1148”"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.H…ïRMINORZVULNERABILITY
+ksquid:S1444 "4Make this "public static BFT_Curr_Build" field final(£©ı8ÁáŠ¹Ê.H†ïRMINORZVULNERABILITY
+¬"squid:ClassVariableVisibilityCheck6"]Make BFP_Symbolic_Path a static final constant or non-public and provide accessors if needed.(Ş—¡¤8ÁáŠ¹Ê.H‡ïRMINORZVULNERABILITY
+«"squid:ClassVariableVisibilityCheckW"\Make PTY_Install_Path a static final constant or non-public and provide accessors if needed.(ÃÍ‚»8ÁáŠ¹Ê.HˆïRMINORZVULNERABILITY
+•squid:S1488¢"_Immediately return this expression instead of assigning it to the temporary variable "version".(—î¯Ş8®¹Ê.H‰ïRMINORZ
+CODE_SMELL
+squid:S3008"YRename this field "WIF_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÖ©Ğ8ÁáŠ¹Ê.HŠïRMINORZ
+CODE_SMELL
+osquid:S1444D"7Make this "public static PTY_Symbolic_Path" field final(¾Ñ©Ú8ÁáŠ¹Ê.H‹ïRMINORZVULNERABILITY
+rsquid:S1444"5Make this "public static BFPM_Curr_Build" field final(¦óÎÁøÿÿÿÿ8ÁáŠ¹Ê.HŒïRMINORZVULNERABILITY
+rsquid:S1444+"5Make this "public static BFAO_Full_Build" field final(»È›øÿÿÿÿ8ÁáŠ¹Ê.HïRMINORZVULNERABILITY
+ˆsquid:S00117ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑÖÆö8ÁáŠ¹Ê.HïRMINORZ
+CODE_SMELL
+¯"squid:ClassVariableVisibilityCheck+"[Make BFAO_Full_Build a static final constant or non-public and provide accessors if needed.(»È›øÿÿÿÿ8ÁáŠ¹Ê.HïRMINORZVULNERABILITY
+©"squid:ClassVariableVisibilityCheck"ZMake WIF_Curr_Build a static final constant or non-public and provide accessors if needed.(ûÖ©Ğ8ÁáŠ¹Ê.HïRMINORZVULNERABILITY
+asquid:S1148â"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÁáŠ¹Ê.H‘ïRMINORZVULNERABILITY
+qsquid:S1444"4Make this "public static CBS_Curr_Build" field final(†­¼¡ıÿÿÿÿ8ÁáŠ¹Ê.H’ïRMINORZVULNERABILITY
+squid:S3008K"[Rename this field "CBS_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢£¥Á8ÁáŠ¹Ê.H“ïRMINORZ
+CODE_SMELL
+”squid:S3008"ZRename this field "BFPM_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦óÎÁøÿÿÿÿ8ÁáŠ¹Ê.H”ïRMINORZ
+CODE_SMELL
+–squid:S3008@"\Rename this field "WIF_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡¾¬Ÿşÿÿÿÿ8ÁáŠ¹Ê.H•ïRMINORZ
+CODE_SMELL
+“squid:S3008"YRename this field "PTY_Curr_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®îŞÑûÿÿÿÿ8ÁáŠ¹Ê.H–ïRMINORZ
+CODE_SMELL
+osquid:S14448"7Make this "public static CBS_Symbolic_Path" field final(³¦Ù›8ÁáŠ¹Ê.H—ïRMINORZVULNERABILITY
+psquid:S1444:"8Make this "public static BFAM_Symbolic_Path" field final(¯È¤Ê8ÁáŠ¹Ê.H˜ïRMINORZVULNERABILITY
+usquid:S1444>"8Make this "public static BFAO_Symbolic_Path" field final(İ¶º²úÿÿÿÿ8ÁáŠ¹Ê.H™ïRMINORZVULNERABILITY
+nsquid:S1444Y"6Make this "public static BFT_Install_Path" field final(ˆÔ¯§8ÁáŠ¹Ê.HšïRMINORZVULNERABILITY
+^squid:S2095õ"-Close this "ResultSet" in a "finally" clause.(®ÀÚ¯8ÁáŠ¹Ê.H›ïRBLOCKERZBUG
+®"squid:ClassVariableVisibilityCheck"ZMake PTY_Curr_Build a static final constant or non-public and provide accessors if needed.(®îŞÑûÿÿÿÿ8ÁáŠ¹Ê.HœïRMINORZVULNERABILITY
+®"squid:ClassVariableVisibilityCheck1"ZMake PTY_Full_Build a static final constant or non-public and provide accessors if needed.(éØæ²ÿÿÿÿÿ8ÁáŠ¹Ê.HïRMINORZVULNERABILITY
+qsquid:S14441"4Make this "public static PTY_Full_Build" field final(éØæ²ÿÿÿÿÿ8ÁáŠ¹Ê.HïRMINORZVULNERABILITY
+¬"squid:ClassVariableVisibilityCheckF"]Make BFT_Symbolic_Path a static final constant or non-public and provide accessors if needed.(ÍüÂÙ8ÁáŠ¹Ê.HŸïRMINORZVULNERABILITY
+¬"squid:ClassVariableVisibilityCheckQ"]Make BFAO_Install_Path a static final constant or non-public and provide accessors if needed.(ÆÆôó8ÁáŠ¹Ê.H ïRMINORZVULNERABILITY
+«"squid:ClassVariableVisibilityCheckY"\Make BFT_Install_Path a static final constant or non-public and provide accessors if needed.(ˆÔ¯§8ÁáŠ¹Ê.H¡ïRMINORZVULNERABILITY
+Šsquid:S3776o"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(·ÌË¾8ÁáŠ¹Ê.H¢ïRCRITICALZ
+CODE_SMELL
+®"squid:ClassVariableVisibilityCheck"ZMake BFP_Curr_Build a static final constant or non-public and provide accessors if needed.(›–õ ıÿÿÿÿ8ÁáŠ¹Ê.H£ïRMINORZVULNERABILITY
+”squid:S3008)"ZRename this field "BFPM_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óÿ²ÿıÿÿÿÿ8ÁáŠ¹Ê.H¤ïRMINORZ
+CODE_SMELL
+¬"squid:ClassVariableVisibilityCheckD"]Make PTY_Symbolic_Path a static final constant or non-public and provide accessors if needed.(¾Ñ©Ú8ÁáŠ¹Ê.H¥ïRMINORZVULNERABILITY
+«"squid:ClassVariableVisibilityCheckS"\Make WIF_Install_Path a static final constant or non-public and provide accessors if needed.(ùÏ°8ÁáŠ¹Ê.H¦ïRMINORZVULNERABILITY
+‘squid:S30088"\Rename this field "CBS_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³¦Ù›8ÁáŠ¹Ê.H§ïRMINORZ
+CODE_SMELL
+qsquid:S1444#"4Make this "public static BFP_Full_Build" field final(œĞù°üÿÿÿÿ8ÁáŠ¹Ê.H¨ïRMINORZVULNERABILITY
+lsquid:S1444%"4Make this "public static CBS_Full_Build" field final(Ç¨ëñ8ÁáŠ¹Ê.H©ïRMINORZVULNERABILITY
+°"squid:ClassVariableVisibilityCheckI"\Make BFP_Install_Path a static final constant or non-public and provide accessors if needed.(Áº¥Äşÿÿÿÿ8ÁáŠ¹Ê.HªïRMINORZVULNERABILITY

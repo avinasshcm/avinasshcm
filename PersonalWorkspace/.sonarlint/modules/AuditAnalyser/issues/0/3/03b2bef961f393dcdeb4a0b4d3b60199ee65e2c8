@@ -1,0 +1,7 @@
+
+ª"squid:ClassVariableVisibilityCheck"VMake setEndTime a static final constant or non-public and provide accessors if needed.(Ò‡ÎÆùÿÿÿÿ8¶ŸÏá,HŠãRMINORZVULNERABILITY
+§squid:S1845'"kRename method "setEndTime" to prevent any misunderstanding/clash with field "setEndTime" defined on line 5.(åˆÏ’øÿÿÿÿ8¶ŸÏá,H‹ãRBLOCKERZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.HŒãRMINORZ
+CODE_SMELL
+msquid:S1444"0Make this "public static setEndTime" field final(Ò‡ÎÆùÿÿÿÿ8¶ŸÏá,HãRMINORZVULNERABILITY

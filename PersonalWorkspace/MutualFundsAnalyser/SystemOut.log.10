@@ -1,0 +1,56 @@
+2019-04-24 23:19:34 : Fetching data from        : https://www.amfiindia.com/spages/NAVAll.txt
+	
+2019-04-24 23:19:37 : Storing Data in File      : D:\My Cloud\OneDrive\MutualFunds\Historic_Data\20190424.txt
+2019-04-24 23:19:37 : 
+
+Working on : Avinash : Mutual Funds.xlsx : History.properties
+2019-04-24 23:19:45 : Updating Summary Page
+2019-04-24 23:20:03 : 	ISIN			Date				NAV		SchemeName
+2019-04-24 23:20:07 : INF200K01UM9	24-Apr-2019	      150.32910		SBI MAGNUM TAXGAIN SCHEME 1993 - DIRECT PLAN -GROWTH
+2019-04-24 23:20:13 : INF200K01UG1	24-Apr-2019	       51.46080		SBI Magnum Multicap Fund - DIRECT PLAN - Growth Option
+2019-04-24 23:20:13 : INF200KA1DF3	24-Apr-2019	       13.86400		SBI Equity Savings Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF200K01QX4	24-Apr-2019	       41.52400		SBI BLUE CHIP FUND-DIRECT PLAN -GROWTH
+2019-04-24 23:20:13 : INF200KA1507	24-Apr-2019	       18.64640		SBI BANKING & FINANCIAL SERVICES FUND - DIRECT PLAN - GROWTH
+2019-04-24 23:20:13 : INF209K01UN8	24-Apr-2019	       33.68000		Aditya Birla Sun Life Tax Relief '96 - Growth - Direct Plan
+2019-04-24 23:20:13 : INF209K01XU7	24-Apr-2019	      474.81360		Aditya Birla Sun Life Low duration Fund - Growth - Direct Plan
+2019-04-24 23:20:13 : INF917K01GP0	24-Apr-2019	       55.78000		L&T  Tax Advantage Fund-Direct Plan-Growth
+2019-04-24 23:20:13 : INF917K01QA1	24-Apr-2019	       25.43400		L&T Emerging Businesses Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF917K01FE6	24-Apr-2019	       18.97880		L&T Money Market Fund -Direct Plan- Growth
+2019-04-24 23:20:13 : INF277K01I86	24-Apr-2019	       19.13110		Tata India Tax Savings Fund-Growth-Direct Plan
+2019-04-24 23:20:13 : INF277K01ND1	24-Apr-2019	      141.32370		Tata Equity P/E Fund -Direct Plan Growth
+2019-04-24 23:20:13 : INF277K01Z77	24-Apr-2019	       16.26100		Tata Digital India Fund-Direct Plan-Growth
+2019-04-24 23:20:13 : INF194K01Y29	24-Apr-2019	       60.37000		IDFC Tax Advantage  (ELSS) Fund-Direct Plan-Growth
+2019-04-24 23:20:13 : INF740K01OK1	24-Apr-2019	       50.41000		DSP  Tax Saver Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF740K01QD1	24-Apr-2019	       57.45300		DSP  Small Cap Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF740K01QA7	23-Apr-2019	       33.43200		DSP  Natural Resources and New Energy Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF174K01LI3	24-Apr-2019	       47.77300		Kotak Tax Saver-Scheme-Growth - Direct
+2019-04-24 23:20:13 : INF174K01KW6	24-Apr-2019	      250.98801		Kotak Bluechip Fund - Growth - Direct
+2019-04-24 23:20:13 : INF336L01EE0	24-Apr-2019	       38.28110		HSBC Tax Saver Equity Fund - Growth Direct
+2019-04-24 23:20:13 : INF179K01WX8	24-Apr-2019	      375.19000		HDFC Long Term Advantage Fund -Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF179K01YS4	24-Apr-2019	      546.44202		HDFC TaxSaver -Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF179KA1RW5	24-Apr-2019	       46.75600		HDFC Small Cap Fund - Direct Growth Plan
+2019-04-24 23:20:13 : INF179K01WA6	24-Apr-2019	      206.63300		HDFC Balance Advantage Fund -Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF109K01Y31	24-Apr-2019	      405.60001		ICICI Prudential Long Term Equity Fund (Tax Saving) - Direct Plan -  Growth
+2019-04-24 23:20:13 : INF109K016L0	24-Apr-2019	       44.91000		ICICI Prudential Bluechip Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF109K013J1	24-Apr-2019	       70.02000		ICICI Prudential Banking and Financial Services Fund - Direct Plan -  Growth
+2019-04-24 23:20:13 : INF174V01093	24-Apr-2019	       12.27390		Mahindra Mutual Fund Kar Bachat Yojana Direct Plan - Growth
+2019-04-24 23:20:13 : INF582M01765	24-Apr-2019	       25.39000		Union Tax Saver Scheme - Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF204K01L55	24-Apr-2019	       59.38320		Reliance Tax Saver Fund - Direct Plan Growth Plan - Growth Option
+2019-04-24 23:20:13 : INF204K01C15	24-Apr-2019	       40.30430		Reliance Prime Debt Fund - Direct Plan Growth Plan - Growth Option
+2019-04-24 23:20:13 : INF204K01ZH0	24-Apr-2019	     4583.73047		Reliance Liquid Fund - Direct Plan Growth Plan - Growth Option
+2019-04-24 23:20:13 : INF204K01I50	24-Apr-2019	      162.17690		Reliance Pharma Fund - Direct Plan Growth Plan - Growth Option
+2019-04-24 23:20:13 : INF761K01884	24-Apr-2019	       54.52000		OI AXA Tax Advantage Fund-Direct Plan- Growth
+2019-04-24 23:20:13 : INF767K01EM1	24-Apr-2019	       70.37320		LIC MF Tax Plan-Direct Plan-Growth
+2019-04-24 23:20:13 : INF754K01BW4	24-Apr-2019	       37.26000		Edelweiss Large Cap Fund - Direct Plan-Growth option
+2019-04-24 23:20:13 : INF846K01EW2	24-Apr-2019	       47.70320		Axis Long Term Equity Fund - Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF846K01CX4	24-Apr-2019	     2083.27319		Axis Liquid Fund - Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF760K01EL8	24-Apr-2019	       67.95000		Canara Robeco Equity Taxsaver Fund - Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF205K01NT8	24-Apr-2019	       55.71000		Invesco India Tax Plan - Direct Plan - Growth
+2019-04-24 23:20:13 : INF205K01LE4	24-Apr-2019	       52.11000		Invesco India Contra Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF173K01HZ7	24-Apr-2019	      216.37000		Principal Tax Savings Fund - Direct Plan
+2019-04-24 23:20:13 : INF769K01BI1	24-Apr-2019	       56.39000		Mirae Asset Emerging Bluechip Fund - Direct Plan - Growth
+2019-04-24 23:20:13 : INF769K01DM9	24-Apr-2019	       18.50900		Mirae Asset Tax Saver Fund-Direct Plan -Growth
+2019-04-24 23:20:13 : INF247L01502	24-Apr-2019	       27.08620		Motilal Oswal Multicap 35 Fund (MOF35)-Direct Plan-Growth Option
+2019-04-24 23:20:13 : INF789FB1RG6	24-Apr-2019	       25.68890		UTI Arbitrage Fund - Direct Plan - Growth Option
+2019-04-24 23:20:13 : INF090I01JS8	24-Apr-2019	      602.16571		Franklin India TAXSHIELD - Direct - Growth
+2019-04-24 23:20:45 : Updated Summary Page

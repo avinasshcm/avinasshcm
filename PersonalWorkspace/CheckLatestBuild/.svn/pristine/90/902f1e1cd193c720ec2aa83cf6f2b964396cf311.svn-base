@@ -1,0 +1,88 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ReadCurrentBuildFromFile implements CurrentBuildProvider {
+	public static int BFP_Curr_Build;
+	public static int CBS_Curr_Build;
+	public static int BFAM_Curr_Build;
+	public static int BFPM_Curr_Build;
+	public static int BFAO_Curr_Build;
+	public static int WIF_Curr_Build;
+	public static int UB_Curr_Build;
+	public static int PTY_Curr_Build;
+	public static int BFT_Curr_Build;
+	/**
+	 * @param args
+	 */
+	static {
+		//create an instance of properties class
+		Properties props = new Properties();
+		//try retrieve data from file
+		try {
+			props.load(new FileInputStream("CurrentBuild.properties"));
+			BFP_Curr_Build = Integer.parseInt(props.getProperty("BFP"));
+			CBS_Curr_Build = Integer.parseInt(props.getProperty("CBS"));
+			BFAM_Curr_Build = Integer.parseInt(props.getProperty("BFAM"));
+			BFPM_Curr_Build = Integer.parseInt(props.getProperty("BFPM"));
+			BFAO_Curr_Build = Integer.parseInt(props.getProperty("BFAO"));
+			WIF_Curr_Build = Integer.parseInt(props.getProperty("WIF"));
+			UB_Curr_Build = Integer.parseInt(props.getProperty("UB"));
+			PTY_Curr_Build = Integer.parseInt(props.getProperty("Party"));
+			BFT_Curr_Build = Integer.parseInt(props.getProperty("BFT"));
+		}
+		//catch exception in case properties file does not exist
+		catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("Problem in loading CurrentBuild.properties file");
+		}
+	}
+
+	public static void main(String[] args) {
+	}
+
+	@Override
+	public int getBFP_Curr_Build() {
+		return BFP_Curr_Build;
+	}
+
+	@Override
+	public int getUB_Curr_Build() {
+		return UB_Curr_Build;
+	}
+
+	@Override
+	public int getCBS_Curr_Build() {
+		return CBS_Curr_Build;
+	}
+
+	@Override
+	public int getPTY_Curr_Build() {
+		return PTY_Curr_Build;
+	}
+
+	@Override
+	public int getBFT_Curr_Build() {
+		return BFT_Curr_Build;
+	}
+
+	@Override
+	public int getBFAM_Curr_Build() {
+		return BFAM_Curr_Build;
+	}
+
+	@Override
+	public int getBFPM_Curr_Build() {
+		return BFPM_Curr_Build;
+	}
+
+	@Override
+	public int getBFAO_Curr_Build() {
+		return BFAO_Curr_Build;
+	}
+
+	@Override
+	public int getWIF_Curr_Build() {
+		return WIF_Curr_Build;
+	}
+}

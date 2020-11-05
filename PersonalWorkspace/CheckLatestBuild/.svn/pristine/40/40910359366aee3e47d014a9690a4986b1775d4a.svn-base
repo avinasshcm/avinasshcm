@@ -1,0 +1,56 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ReadPropertyFile {
+	public static String BFP_Path;
+	public static String CBS_Path;
+	public static String UB_Path;
+	public static String PTY_Path;
+	public static String BFT_Path;
+	public static String Good_Build_File;
+	public static String Destination_Folder;
+	public static String BT_Specific;
+	public static String AM_PM_Required;
+	public static String UBOF_Required;
+	public static String ServicePack;
+	public static String Patch;
+	
+	public static String BT_Specific_Required;
+	public static String Version;
+	public static String CodeLine;
+	/**
+	 * @param args
+	 */
+	static {
+		//create an instance of properties class
+		Properties props = new Properties();
+		//try retrieve data from file
+		try {
+			props.load(new FileInputStream("build.properties"));
+			BFP_Path = props.getProperty("BFP_Path");
+			CBS_Path = props.getProperty("CBS_Path");
+			UB_Path = props.getProperty("UB_Path");
+			PTY_Path = props.getProperty("PTY_Path");
+			BFT_Path = props.getProperty("BFT_Path");
+			Good_Build_File = "LastGoodBuildNumber.txt";
+			Destination_Folder = props.getProperty("Destination_Folder");
+			BT_Specific = props.getProperty("BT_Specific");
+			BT_Specific_Required = props.getProperty("BT_Specific_Required");
+			AM_PM_Required = props.getProperty("AM_PM_Required");
+			UBOF_Required = props.getProperty("UBOF_Required");
+			ServicePack = props.getProperty("ServicePack");
+			Patch= props.getProperty("Patch");
+			Version = props.getProperty("Version");
+			CodeLine = props.getProperty("CodeLine");
+		}
+		//catch exception in case properties file does not exist
+		catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("Problem in loading build.properties file");
+		}
+	}
+
+	public static void main(String[] args) {
+	}
+}

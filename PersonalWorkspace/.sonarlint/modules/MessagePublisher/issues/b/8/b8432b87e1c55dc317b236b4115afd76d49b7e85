@@ -1,0 +1,18 @@
+
+\squid:S2095a"3Close this "FileInputStream" in a "finally" clause.(Ïú›»H”ÔRBLOCKERZBUG
+fsquid:S13130"0Make this IP "10.251.5.18" address configurable.( ÔáûÿÿÿÿH•ÔRMINORZVULNERABILITY
+k
+squid:S106@"9Replace this use of System.out or System.err by a logger.(£æ°€ûÿÿÿÿH–ÔRMAJORZ
+CODE_SMELL
+f
+squid:S106K"9Replace this use of System.out or System.err by a logger.(ß¡ËİH—ÔRMAJORZ
+CODE_SMELL
+qsquid:S2259U"EA "NullPointerException" could be thrown; "session" is nullable here.(ËÇÇÓûÿÿÿÿH˜ÔRMAJORZBUG
+psquid:S2259O"DA "NullPointerException" could be thrown; "sender" is nullable here.(´›­¤ÿÿÿÿÿH™ÔRMAJORZBUG
+lsquid:S2259M"EA "NullPointerException" could be thrown; "session" is nullable here.(–ªœÁHšÔRMAJORZBUG
+Xsquid:S00108V")Either remove or fill this block of code.(™ğÊ‰H›ÔRMAJORZ
+CODE_SMELL
+]squid:S00108Z")Either remove or fill this block of code.(Ô›¿¾ùÿÿÿÿHœÔRMAJORZ
+CODE_SMELL
+Tsquid:S1148Q"#Use a logger to log this exception.(òçøìHÔRMINORZVULNERABILITY
+Ysquid:S1148k"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÔRMINORZVULNERABILITY

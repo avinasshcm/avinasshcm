@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3/com.ibm.mq.jar"/>
+	<classpathentry kind="lib" path="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3/com.ibm.mq.headers.jar"/>
+	<classpathentry kind="lib" path="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3/com.ibm.mq.jmqi.jar"/>
+	<classpathentry kind="lib" path="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3/com.ibm.mq.pcf.jar"/>
+	<classpathentry kind="lib" path="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3/com.ibm.mqjms.jar"/>
+	<classpathentry kind="lib" path="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3/jms.jar"/>
+	<classpathentry kind="lib" path="/CCCorrection/poi-ooxml-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="/CCCorrection/poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/db2jcc_javax.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/db2jcc_license_cu.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/db2jcc.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/db2jcc4.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/dom4j-1.6.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/jt400.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/ojdbc6_Old.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/ojdbc6.bak.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/poi-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/poi-3.9-20121203.jar" sourcepath="C:/Users/amanjuna/AppData/Local/Temp/decompiler/source/poi-3.9-sources.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/poi-ooxml-3.9-20121203.jar" sourcepath="C:/Users/amanjuna/AppData/Local/Temp/decompiler/source/poi-ooxml-3.9-sources.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="/DDFileGeneration/sqljdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

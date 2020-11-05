@@ -1,0 +1,277 @@
+
+Ÿsquid:S1192J"jDefine a constant instead of duplicating this literal "                    <p:Ctry>NL</p:Ctry>\n" 4 times.(‡†ÄçúÿÿÿÿH©7RCRITICALZ
+CODE_SMELL
+›squid:S1192/"fDefine a constant instead of duplicating this literal "                  <p:Nm>p:Nm</p:Nm>\n" 9 times.(úä°¤ùÿÿÿÿHª7RCRITICALZ
+CODE_SMELL
+šsquid:S1192Î"jDefine a constant instead of duplicating this literal "                <p:Dept>p:Dept</p:Dept>\n" 3 times.(ñ´šAH«7RCRITICALZ
+CODE_SMELL
+ squid:S1192¼"jDefine a constant instead of duplicating this literal "                <p:Issr>p:Issr</p:Issr>\n" 5 times.(¨Í×ôøÿÿÿÿH¬7RCRITICALZ
+CODE_SMELL
+–squid:S1192V"fDefine a constant instead of duplicating this literal "                  <p:Id>p:Id</p:Id>\n" 3 times.(–ÈÊÚH­7RCRITICALZ
+CODE_SMELL
+¤squid:S1192"tDefine a constant instead of duplicating this literal "                  <p:StrtNm>Kingdom St</p:StrtNm>\n" 4 times.(ñÕÜH®7RCRITICALZ
+CODE_SMELL
+¢squid:S1192"qDefine a constant instead of duplicating this literal "              <p:AdrLine>p:AdrLine</p:AdrLine>\n" 3 times.(£ˆµ›H¯7RCRITICALZ
+CODE_SMELL
+¯squid:S11920"zDefine a constant instead of duplicating this literal "                  <p:PhneNb>+91-111111111111</p:PhneNb>\n" 4 times.(¬¶Á¢øÿÿÿÿH°7RCRITICALZ
+CODE_SMELL
+šsquid:S1192€"dDefine a constant instead of duplicating this literal "              <p:Ctry>NL</p:Ctry>\n" 3 times.(‡†ÄçúÿÿÿÿH±7RCRITICALZ
+CODE_SMELL
+‘squid:S1192à"`Define a constant instead of duplicating this literal "                <p:CdOrPrtry>\n" 3 times.(Êò´ãH²7RCRITICALZ
+CODE_SMELL
+¨squid:S11921"xDefine a constant instead of duplicating this literal "                  <p:MobNb>+91-111111111111</p:MobNb>\n" 4 times.(‚©²³H³7RCRITICALZ
+CODE_SMELL
+squid:S1192‰"XDefine a constant instead of duplicating this literal "            </p:Othr>\n" 3 times.(‘ó«ğøÿÿÿÿH´7RCRITICALZ
+CODE_SMELL
+ªsquid:S1192"uDefine a constant instead of duplicating this literal "                  <p:SubDept>p:SubDept</p:SubDept>\n" 4 times.(éïéĞüÿÿÿÿHµ7RCRITICALZ
+CODE_SMELL
+¡squid:S1192°"pDefine a constant instead of duplicating this literal "            <p:CtrySubDvsn>KA</p:CtrySubDvsn>\n" 8 times.(…äÓ‰H¶7RCRITICALZ
+CODE_SMELL
+ƒsquid:S1192˜"RDefine a constant instead of duplicating this literal "        </p:Id>\n" 5 times.(’×ÅÁH·7RCRITICALZ
+CODE_SMELL
+Œsquid:S1192¨"[Define a constant instead of duplicating this literal "            <p:ClrSysId>\n" 3 times.(Šˆ±½H¸7RCRITICALZ
+CODE_SMELL
+©squid:S1192Ï"sDefine a constant instead of duplicating this literal "                <p:SubDept>p:SubDept</p:SubDept>\n" 3 times.(éïéĞüÿÿÿÿH¹7RCRITICALZ
+CODE_SMELL
+¡squid:S1192"qDefine a constant instead of duplicating this literal "                  <p:TwnNm>Bengaluru</p:TwnNm>\n" 4 times.(ê©´—Hº7RCRITICALZ
+CODE_SMELL
+squid:S1192§"\Define a constant instead of duplicating this literal "          <p:ClrSysMmbId>\n" 3 times.(‰ÛßH»7RCRITICALZ
+CODE_SMELL
+˜squid:S1192N"hDefine a constant instead of duplicating this literal "                    <p:Id>p:Id</p:Id>\n" 4 times.(–ÈÊÚH¼7RCRITICALZ
+CODE_SMELL
+Ÿsquid:S1192Ñ"iDefine a constant instead of duplicating this literal "                <p:BldgNb>1</p:BldgNb>\n" 3 times.(Âš÷¢ùÿÿÿÿH½7RCRITICALZ
+CODE_SMELL
+¡squid:S1192"lDefine a constant instead of duplicating this literal "                  <p:AdrTp>ADDR</p:AdrTp>\n" 4 times.(­„âÕûÿÿÿÿH¾7RCRITICALZ
+CODE_SMELL
+›squid:S1192­"eDefine a constant instead of duplicating this literal "            <p:BldgNb>1</p:BldgNb>\n" 8 times.(Âš÷¢ùÿÿÿÿH¿7RCRITICALZ
+CODE_SMELL
+“squid:S1192!"^Define a constant instead of duplicating this literal "                  <p:OrgId>\n" 4 times.(Ê‚í®ıÿÿÿÿHÀ7RCRITICALZ
+CODE_SMELL
+¦squid:S1192Õ"pDefine a constant instead of duplicating this literal "                <p:RegnId>p:RegnId</p:RegnId>\n" 3 times.(¤˜œÈşÿÿÿÿHÁ7RCRITICALZ
+CODE_SMELL
+ squid:S1192Í"jDefine a constant instead of duplicating this literal "                <p:AdrTp>ADDR</p:AdrTp>\n" 3 times.(­„âÕûÿÿÿÿHÂ7RCRITICALZ
+CODE_SMELL
+squid:S1192 "YDefine a constant instead of duplicating this literal "                <p:Id>\n" 7 times.(Ä’÷”üÿÿÿÿHÃ7RCRITICALZ
+CODE_SMELL
+squid:S1192Ô"mDefine a constant instead of duplicating this literal "                <p:TaxId>p:TaxId</p:TaxId>\n" 3 times.(¯ˆ­ÙHÄ7RCRITICALZ
+CODE_SMELL
+¤squid:S1192""tDefine a constant instead of duplicating this literal "                    <p:AnyBIC>AAAAAAZ9</p:AnyBIC>\n" 4 times.(¶º÷HÅ7RCRITICALZ
+CODE_SMELL
+squid:S1192l"ZDefine a constant instead of duplicating this literal "                </p:Tp>\n" 5 times.(‘× £şÿÿÿÿHÆ7RCRITICALZ
+CODE_SMELL
+‰squid:S1192j"YDefine a constant instead of duplicating this literal "                <p:Tp>\n" 5 times.(ı‚Ñ¸HÇ7RCRITICALZ
+CODE_SMELL
+•squid:S1192A"`Define a constant instead of duplicating this literal "                  <p:PstlAdr>\n" 4 times.(êÊóïøÿÿÿÿHÈ7RCRITICALZ
+CODE_SMELL
+’squid:S1192M"]Define a constant instead of duplicating this literal "                  <p:Othr>\n" 4 times.(„úı®şÿÿÿÿHÉ7RCRITICALZ
+CODE_SMELL
+›squid:S1192ı"jDefine a constant instead of duplicating this literal "              <p:PstCd>560061</p:PstCd>\n" 3 times.(Ÿ˜“ñHÊ7RCRITICALZ
+CODE_SMELL
+˜squid:S1192ç"bDefine a constant instead of duplicating this literal "              <p:Cd>p:Cd</p:Cd>\n" 7 times.(üİ­ÈüÿÿÿÿHË7RCRITICALZ
+CODE_SMELL
+squid:S1192ˆ"hDefine a constant instead of duplicating this literal "              <p:Issr>p:Issr</p:Issr>\n" 3 times.(¨Í×ôøÿÿÿÿHÌ7RCRITICALZ
+CODE_SMELL
+¢squid:S1192F"mDefine a constant instead of duplicating this literal "                    <p:BldgNb>1</p:BldgNb>\n" 4 times.(Âš÷¢ùÿÿÿÿHÍ7RCRITICALZ
+CODE_SMELL
+£squid:S1192B"nDefine a constant instead of duplicating this literal "                    <p:AdrTp>ADDR</p:AdrTp>\n" 4 times.(­„âÕûÿÿÿÿHÎ7RCRITICALZ
+CODE_SMELL
+–squid:S1192L"aDefine a constant instead of duplicating this literal "                  </p:PstlAdr>\n" 4 times.(§‹ÅÄüÿÿÿÿHÏ7RCRITICALZ
+CODE_SMELL
+Œsquid:S1192À"VDefine a constant instead of duplicating this literal "          </p:Othr>\n" 3 times.(‘ó«ğøÿÿÿÿHĞ7RCRITICALZ
+CODE_SMELL
+”squid:S1192-"_Define a constant instead of duplicating this literal "                <p:CtctDtls>\n" 4 times.(²ú‘ƒüÿÿÿÿHÑ7RCRITICALZ
+CODE_SMELL
+”squid:S1192*"_Define a constant instead of duplicating this literal "                  </p:OrgId>\n" 4 times.(…ÏÑıÿÿÿÿHÒ7RCRITICALZ
+CODE_SMELL
+squid:S1192ø"hDefine a constant instead of duplicating this literal "              <p:AdrTp>ADDR</p:AdrTp>\n" 3 times.(­„âÕûÿÿÿÿHÓ7RCRITICALZ
+CODE_SMELL
+Šsquid:S1192+"ZDefine a constant instead of duplicating this literal "                </p:Id>\n" 7 times.(’×ÅÁHÔ7RCRITICALZ
+CODE_SMELL
+ squid:S1192,"pDefine a constant instead of duplicating this literal "                <p:CtryOfRes>NL</p:CtryOfRes>\n" 4 times.(¬á“¢HÕ7RCRITICALZ
+CODE_SMELL
+“squid:S1192¬"]Define a constant instead of duplicating this literal "          </p:ClrSysMmbId>\n" 3 times.(…£˜¢üÿÿÿÿHÖ7RCRITICALZ
+CODE_SMELL
+‘squid:S1192‚"[Define a constant instead of duplicating this literal "            </p:PstlAdr>\n" 4 times.(§‹ÅÄüÿÿÿÿH×7RCRITICALZ
+CODE_SMELL
+œsquid:S1192¯"kDefine a constant instead of duplicating this literal "            <p:TwnNm>Bengaluru</p:TwnNm>\n" 8 times.(ê©´—HØ7RCRITICALZ
+CODE_SMELL
+squid:S1192"hDefine a constant instead of duplicating this literal "                  <p:Ctry>NL</p:Ctry>\n" 4 times.(‡†ÄçúÿÿÿÿHÙ7RCRITICALZ
+CODE_SMELL
+Šsquid:S1192¥"YDefine a constant instead of duplicating this literal "        <p:FinInstnId>\n" 3 times.(òÒÓ—HÚ7RCRITICALZ
+CODE_SMELL
+¦squid:S1192"vDefine a constant instead of duplicating this literal "                  <p:CtrySubDvsn>KA</p:CtrySubDvsn>\n" 4 times.(…äÓ‰HÛ7RCRITICALZ
+CODE_SMELL
+˜squid:S1192ù"hDefine a constant instead of duplicating this literal "              <p:Dept>p:Dept</p:Dept>\n" 3 times.(ñ´šAHÜ7RCRITICALZ
+CODE_SMELL
+™squid:S1192"dDefine a constant instead of duplicating this literal "                <p:Nm>p:Nm</p:Nm>\n" 8 times.(úä°¤ùÿÿÿÿHİ7RCRITICALZ
+CODE_SMELL
+¥squid:S1192("pDefine a constant instead of duplicating this literal "                      <p:Issr>p:Issr</p:Issr>\n" 4 times.(¨Í×ôøÿÿÿÿHŞ7RCRITICALZ
+CODE_SMELL
+’squid:S1192â"aDefine a constant instead of duplicating this literal "                </p:CdOrPrtry>\n" 3 times.(é™‚Hß7RCRITICALZ
+CODE_SMELL
+˜squid:S1192Q"cDefine a constant instead of duplicating this literal "                    </p:SchmeNm>\n" 4 times.(—¬„‰ÿÿÿÿÿHà7RCRITICALZ
+CODE_SMELL
+squid:S1192ƒ"WDefine a constant instead of duplicating this literal "            <p:Othr>\n" 3 times.(„úı®şÿÿÿÿHá7RCRITICALZ
+CODE_SMELL
+squid:S1192÷"ZDefine a constant instead of duplicating this literal "            <p:PstlAdr>\n" 4 times.(êÊóïøÿÿÿÿHâ7RCRITICALZ
+CODE_SMELL
+squid:S1192"nDefine a constant instead of duplicating this literal "                  <p:PstCd>560061</p:PstCd>\n" 4 times.(Ÿ˜“ñHã7RCRITICALZ
+CODE_SMELL
+ squid:S1192"kDefine a constant instead of duplicating this literal "                  <p:BldgNb>1</p:BldgNb>\n" 4 times.(Âš÷¢ùÿÿÿÿHä7RCRITICALZ
+CODE_SMELL
+§squid:S1192ú"qDefine a constant instead of duplicating this literal "              <p:SubDept>p:SubDept</p:SubDept>\n" 3 times.(éïéĞüÿÿÿÿHå7RCRITICALZ
+CODE_SMELL
+šsquid:S1192m"eDefine a constant instead of duplicating this literal "                <p:Ccy>EUR</p:Ccy>\n" 3 times.(õ÷é•üÿÿÿÿHæ7RCRITICALZ
+CODE_SMELL
+”squid:S1192%"dDefine a constant instead of duplicating this literal "                      <p:SchmeNm>\n" 4 times.(°”°ÊHç7RCRITICALZ
+CODE_SMELL
+squid:S1192Ò"lDefine a constant instead of duplicating this literal "                <p:PstCd>560061</p:PstCd>\n" 3 times.(Ÿ˜“ñHè7RCRITICALZ
+CODE_SMELL
+”squid:S1192ü"^Define a constant instead of duplicating this literal "          <p:Cd>p:Cd</p:Cd>\n" 4 times.(üİ­ÈüÿÿÿÿHé7RCRITICALZ
+CODE_SMELL
+œsquid:S1192Õ"fDefine a constant instead of duplicating this literal "                <p:Ctry>NL</p:Ctry>\n" 3 times.(‡†ÄçúÿÿÿÿHê7RCRITICALZ
+CODE_SMELL
+ˆsquid:S1192Ñ"WDefine a constant instead of duplicating this literal "        </p:BrnchId>\n" 3 times.(Ù¬šĞHë7RCRITICALZ
+CODE_SMELL
+šsquid:S1192İ"dDefine a constant instead of duplicating this literal "                <p:Cd>p:Cd</p:Cd>\n" 5 times.(üİ­ÈüÿÿÿÿHì7RCRITICALZ
+CODE_SMELL
+šsquid:S1192$"jDefine a constant instead of duplicating this literal "                      <p:Id>p:Id</p:Id>\n" 4 times.(–ÈÊÚHí7RCRITICALZ
+CODE_SMELL
+–squid:S1192ª"fDefine a constant instead of duplicating this literal "            <p:Dept>p:Dept</p:Dept>\n" 8 times.(ñ´šAHî7RCRITICALZ
+CODE_SMELL
+‰squid:S1192"SDefine a constant instead of duplicating this literal "          <p:Id>\n" 4 times.(Ä’÷”üÿÿÿÿHï7RCRITICALZ
+CODE_SMELL
+¨squid:S11922"xDefine a constant instead of duplicating this literal "                  <p:FaxNb>+91-111111111111</p:FaxNb>\n" 4 times.(ÿª¾ÍHğ7RCRITICALZ
+CODE_SMELL
+“squid:S1192”"]Define a constant instead of duplicating this literal "        <p:Ccy>EUR</p:Ccy>\n" 3 times.(õ÷é•üÿÿÿÿHñ7RCRITICALZ
+CODE_SMELL
+ˆsquid:S1192“"RDefine a constant instead of duplicating this literal "        </p:Tp>\n" 3 times.(‘× £şÿÿÿÿHò7RCRITICALZ
+CODE_SMELL
+¨squid:S1192I"xDefine a constant instead of duplicating this literal "                    <p:CtrySubDvsn>KA</p:CtrySubDvsn>\n" 4 times.(…äÓ‰Hó7RCRITICALZ
+CODE_SMELL
+•squid:S1192)"`Define a constant instead of duplicating this literal "                    </p:Othr>\n" 4 times.(‘ó«ğøÿÿÿÿHô7RCRITICALZ
+CODE_SMELL
+–squid:S1192¡"`Define a constant instead of duplicating this literal "            <p:Cd>p:Cd</p:Cd>\n" 3 times.(üİ­ÈüÿÿÿÿHõ7RCRITICALZ
+CODE_SMELL
+™squid:S1192®"hDefine a constant instead of duplicating this literal "            <p:PstCd>560061</p:PstCd>\n" 8 times.(Ÿ˜“ñHö7RCRITICALZ
+CODE_SMELL
+¬squid:S1192D"wDefine a constant instead of duplicating this literal "                    <p:SubDept>p:SubDept</p:SubDept>\n" 4 times.(éïéĞüÿÿÿÿH÷7RCRITICALZ
+CODE_SMELL
+¦squid:S1192E"vDefine a constant instead of duplicating this literal "                    <p:StrtNm>Kingdom St</p:StrtNm>\n" 4 times.(ñÕÜHø7RCRITICALZ
+CODE_SMELL
+“squid:S1192S"^Define a constant instead of duplicating this literal "                  </p:Othr>\n" 4 times.(‘ó«ğøÿÿÿÿHù7RCRITICALZ
+CODE_SMELL
+¥squid:S1192«"oDefine a constant instead of duplicating this literal "            <p:SubDept>p:SubDept</p:SubDept>\n" 8 times.(éïéĞüÿÿÿÿHú7RCRITICALZ
+CODE_SMELL
+”squid:S1192¤"^Define a constant instead of duplicating this literal "          <p:Nm>p:Nm</p:Nm>\n" 9 times.(úä°¤ùÿÿÿÿHû7RCRITICALZ
+CODE_SMELL
+£squid:S1192ÿ"rDefine a constant instead of duplicating this literal "              <p:CtrySubDvsn>KA</p:CtrySubDvsn>\n" 3 times.(…äÓ‰Hü7RCRITICALZ
+CODE_SMELL
+£squid:S1192Ö"mDefine a constant instead of duplicating this literal "                <p:TaxTp>p:TaxTp</p:TaxTp>\n" 3 times.(ŒĞ×¨ûÿÿÿÿHı7RCRITICALZ
+CODE_SMELL
+–squid:S1192ö"`Define a constant instead of duplicating this literal "            <p:Nm>p:Nm</p:Nm>\n" 5 times.(úä°¤ùÿÿÿÿHş7RCRITICALZ
+CODE_SMELL
+œsquid:S1192©"fDefine a constant instead of duplicating this literal "            <p:AdrTp>ADDR</p:AdrTp>\n" 8 times.(­„âÕûÿÿÿÿHÿ7RCRITICALZ
+CODE_SMELL
+squid:S1192."nDefine a constant instead of duplicating this literal "                  <p:NmPrfx>DOCT</p:NmPrfx>\n" 3 times.(‹²ÙäH€8RCRITICALZ
+CODE_SMELL
+squid:S1192¨"XDefine a constant instead of duplicating this literal "          <p:PstlAdr>\n" 8 times.(êÊóïøÿÿÿÿH8RCRITICALZ
+CODE_SMELL
+’squid:S1192ª"\Define a constant instead of duplicating this literal "            </p:ClrSysId>\n" 3 times.(©îÇîÿÿÿÿÿH‚8RCRITICALZ
+CODE_SMELL
+“squid:S1192"^Define a constant instead of duplicating this literal "                <p:PstlAdr>\n" 4 times.(êÊóïøÿÿÿÿHƒ8RCRITICALZ
+CODE_SMELL
+squid:S1192C"nDefine a constant instead of duplicating this literal "                    <p:Dept>p:Dept</p:Dept>\n" 4 times.(ñ´šAH„8RCRITICALZ
+CODE_SMELL
+‹squid:S1192Á"ZDefine a constant instead of duplicating this literal "        </p:FinInstnId>\n" 3 times.(¥±Ö©H…8RCRITICALZ
+CODE_SMELL
+squid:S1192ü"gDefine a constant instead of duplicating this literal "              <p:BldgNb>1</p:BldgNb>\n" 3 times.(Âš÷¢ùÿÿÿÿH†8RCRITICALZ
+CODE_SMELL
+‘squid:S1192Œ"`Define a constant instead of duplicating this literal "            <p:Id>p:Id</p:Id>\n" 4 times.(–ÈÊÚH‡8RCRITICALZ
+CODE_SMELL
+’squid:S1192O"bDefine a constant instead of duplicating this literal "                    <p:SchmeNm>\n" 4 times.(°”°ÊHˆ8RCRITICALZ
+CODE_SMELL
+squid:S1192ä"XDefine a constant instead of duplicating this literal "              </p:Tp>\n" 3 times.(‘× £şÿÿÿÿH‰8RCRITICALZ
+CODE_SMELL
+”squid:S1192"_Define a constant instead of duplicating this literal "                </p:PstlAdr>\n" 4 times.(§‹ÅÄüÿÿÿÿHŠ8RCRITICALZ
+CODE_SMELL
+‡squid:S1192"QDefine a constant instead of duplicating this literal "        <p:Id>\n" 5 times.(Ä’÷”üÿÿÿÿH‹8RCRITICALZ
+CODE_SMELL
+œsquid:S11924"lDefine a constant instead of duplicating this literal "                  <p:Othr>p:Othr</p:Othr>\n" 4 times.(×œæ•HŒ8RCRITICALZ
+CODE_SMELL
+—squid:S1192"aDefine a constant instead of duplicating this literal "          <p:IBAN>{3}</p:IBAN>\n" 3 times.(€Ù¿‰şÿÿÿÿH8RCRITICALZ
+CODE_SMELL
+squid:S1192³"YDefine a constant instead of duplicating this literal "          </p:PstlAdr>\n" 8 times.(§‹ÅÄüÿÿÿÿH8RCRITICALZ
+CODE_SMELL
+‹squid:S1192¼"ZDefine a constant instead of duplicating this literal "            <p:SchmeNm>\n" 3 times.(°”°ÊH8RCRITICALZ
+CODE_SMELL
+¥squid:S1192Ô"tDefine a constant instead of duplicating this literal "                <p:CtrySubDvsn>KA</p:CtrySubDvsn>\n" 3 times.(…äÓ‰H8RCRITICALZ
+CODE_SMELL
+›squid:S1192"lDefine a constant instead of duplicating this literal "                  <p:Dept>p:Dept</p:Dept>\n" 4 times.(ñ´šAH‘8RCRITICALZ
+CODE_SMELL
+™squid:S1192±"cDefine a constant instead of duplicating this literal "            <p:Ctry>NL</p:Ctry>\n" 10 times.(‡†ÄçúÿÿÿÿH’8RCRITICALZ
+CODE_SMELL
+‘squid:S1192¾"[Define a constant instead of duplicating this literal "            </p:SchmeNm>\n" 3 times.(—¬„‰ÿÿÿÿÿH“8RCRITICALZ
+CODE_SMELL
+£squid:S1192R"nDefine a constant instead of duplicating this literal "                    <p:Issr>p:Issr</p:Issr>\n" 4 times.(¨Í×ôøÿÿÿÿH”8RCRITICALZ
+CODE_SMELL
+”squid:S1192#"_Define a constant instead of duplicating this literal "                    <p:Othr>\n" 4 times.(„úı®şÿÿÿÿH•8RCRITICALZ
+CODE_SMELL
+¤squid:S11923"uDefine a constant instead of duplicating this literal "                  <p:EmailAdr>a@b.com</p:EmailAdr>\n" 4 times.(ï¦°eH–8RCRITICALZ
+CODE_SMELL
+‹squid:S1192º"UDefine a constant instead of duplicating this literal "          <p:Othr>\n" 3 times.(„úı®şÿÿÿÿH—8RCRITICALZ
+CODE_SMELL
+£squid:S1192Ğ"rDefine a constant instead of duplicating this literal "                <p:StrtNm>Kingdom St</p:StrtNm>\n" 3 times.(ñÕÜH˜8RCRITICALZ
+CODE_SMELL
+Œsquid:S1192Â"VDefine a constant instead of duplicating this literal "        <p:BrnchId>\n" 3 times.(ÉÉù„øÿÿÿÿH™8RCRITICALZ
+CODE_SMELL
+ squid:S1192G"pDefine a constant instead of duplicating this literal "                    <p:PstCd>560061</p:PstCd>\n" 4 times.(Ÿ˜“ñHš8RCRITICALZ
+CODE_SMELL
+“squid:S1192‡"]Define a constant instead of duplicating this literal "              </p:SchmeNm>\n" 3 times.(—¬„‰ÿÿÿÿÿH›8RCRITICALZ
+CODE_SMELL
+§squid:S1192K"wDefine a constant instead of duplicating this literal "                    <p:AdrLine>p:AdrLine</p:AdrLine>\n" 4 times.(£ˆµ›Hœ8RCRITICALZ
+CODE_SMELL
+¥squid:S1192"uDefine a constant instead of duplicating this literal "                  <p:AdrLine>p:AdrLine</p:AdrLine>\n" 4 times.(£ˆµ›H8RCRITICALZ
+CODE_SMELL
+˜squid:S1192™"bDefine a constant instead of duplicating this literal "              <p:Nm>p:Nm</p:Nm>\n" 5 times.(úä°¤ùÿÿÿÿH8RCRITICALZ
+CODE_SMELL
+‚squid:S1192‘"QDefine a constant instead of duplicating this literal "        <p:Tp>\n" 3 times.(ı‚Ñ¸HŸ8RCRITICALZ
+CODE_SMELL
+šsquid:S1192'"eDefine a constant instead of duplicating this literal "                      </p:SchmeNm>\n" 4 times.(—¬„‰ÿÿÿÿÿH 8RCRITICALZ
+CODE_SMELL
+ squid:S1192Ó"oDefine a constant instead of duplicating this literal "                <p:TwnNm>Bengaluru</p:TwnNm>\n" 3 times.(ê©´—H¡8RCRITICALZ
+CODE_SMELL
+œsquid:S1192¿"fDefine a constant instead of duplicating this literal "            <p:Issr>p:Issr</p:Issr>\n" 3 times.(¨Í×ôøÿÿÿÿH¢8RCRITICALZ
+CODE_SMELL
+•squid:S11925"`Define a constant instead of duplicating this literal "                </p:CtctDtls>\n" 4 times.(äº¯üÿÿÿÿH£8RCRITICALZ
+CODE_SMELL
+Ÿsquid:S1192¬"nDefine a constant instead of duplicating this literal "            <p:StrtNm>Kingdom St</p:StrtNm>\n" 8 times.(ñÕÜH¤8RCRITICALZ
+CODE_SMELL
+squid:S1192…"\Define a constant instead of duplicating this literal "              <p:SchmeNm>\n" 3 times.(°”°ÊH¥8RCRITICALZ
+CODE_SMELL
+¡squid:S1192&"lDefine a constant instead of duplicating this literal "                        <p:Cd>p:Cd</p:Cd>\n" 4 times.(üİ­ÈüÿÿÿÿH¦8RCRITICALZ
+CODE_SMELL
+›squid:S1192k"fDefine a constant instead of duplicating this literal "                  <p:Cd>p:Cd</p:Cd>\n" 8 times.(üİ­ÈüÿÿÿÿH§8RCRITICALZ
+CODE_SMELL
+ˆsquid:S1192ß"WDefine a constant instead of duplicating this literal "              <p:Tp>\n" 3 times.(ı‚Ñ¸H¨8RCRITICALZ
+CODE_SMELL
+ squid:S1192²"oDefine a constant instead of duplicating this literal "            <p:AdrLine>p:AdrLine</p:AdrLine>\n" 8 times.(£ˆµ›H©8RCRITICALZ
+CODE_SMELL
+…squid:S1192Ÿ"TDefine a constant instead of duplicating this literal "          </p:Id>\n" 4 times.(’×ÅÁHª8RCRITICALZ
+CODE_SMELL
+¤squid:S1192Ö"sDefine a constant instead of duplicating this literal "                <p:AdrLine>p:AdrLine</p:AdrLine>\n" 3 times.(£ˆµ›H«8RCRITICALZ
+CODE_SMELL
+£squid:S1192H"sDefine a constant instead of duplicating this literal "                    <p:TwnNm>Bengaluru</p:TwnNm>\n" 4 times.(ê©´—H¬8RCRITICALZ
+CODE_SMELL
+Ÿsquid:S1192<"jDefine a constant instead of duplicating this literal "                      <p:Cd>p:Cd</p:Cd>\n" 6 times.(üİ­ÈüÿÿÿÿH­8RCRITICALZ
+CODE_SMELL
+Rsquid:S1214""Move constants to a class or enum.(¥„ÕÂH®8RCRITICALZ
+CODE_SMELL
+Gsquid:S1220""Move this file to a named package.H¯8RMINORZ
+CODE_SMELL
+squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(½¢ıÈüÿÿÿÿH°8RCRITICALZ
+CODE_SMELL
+Œsquid:S00115ö"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‡ãŞ·H±8RCRITICALZ
+CODE_SMELL
+Œsquid:S00115»"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Œ’æúH²8RCRITICALZ
+CODE_SMELL

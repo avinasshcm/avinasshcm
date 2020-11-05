@@ -1,0 +1,30 @@
+
+r
+squid:S106."9Replace this use of System.out or System.err by a logger.(¹¸’Ëüÿÿÿÿ8€â½ê‰-H„²RMAJORZ
+CODE_SMELL
+rsquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8á£‚‰-H…²RMINORZ
+CODE_SMELL
+usquid:UselessImportCheck	".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8°¼ƒ‰-H†²RMINORZ
+CODE_SMELL
+vsquid:S1075"ARefactor your code to get this URI from a customizable parameter.(Ãê²Ì8Éôü‰-H‡²RMINORZ
+CODE_SMELL
+csquid:S2095".Close this "FileReader" in a "finally" clause.(ıÊáµøÿÿÿÿ8Éôü‰-Hˆ²RBLOCKERZBUG
+“squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ãê²Ì8Éôü‰-H‰²RCRITICALZ
+CODE_SMELL
+€squid:CommentedOutCodeLine!"<This block of commented-out lines of code should be removed.(Ì€®8Éôü‰-HŠ²RMAJORZ
+CODE_SMELL
+„squid:S3027#"JPut single-quotes around '/' to use the faster "lastIndexOf(char)" method.(‹åşâùÿÿÿÿ8Éôü‰-H‹²RMAJORZ
+CODE_SMELL
+csquid:S2095".Close this "FileWriter" in a "finally" clause.(à’åğÿÿÿÿÿ8Éôü‰-HŒ²RBLOCKERZBUG
+“squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ù©áó8Éôü‰-H²RCRITICALZ
+CODE_SMELL
+“squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ò”—¿8Éôü‰-H²RCRITICALZ
+CODE_SMELL
+nsquid:UselessImportCheck",Remove this unused import 'pojo.JiraSVNMap'.(šÄû8°¼ƒ‰-H²RMINORZ
+CODE_SMELL
+rsquid:UselessImportCheck
+"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8á£‚‰-H²RMINORZ
+CODE_SMELL
+`squid:S1148,"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Éôü‰-H‘²RMINORZVULNERABILITY
+qsquid:UselessImportCheck"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8°¼ƒ‰-H’²RMINORZ
+CODE_SMELL

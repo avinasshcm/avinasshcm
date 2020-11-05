@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="D:/Branch_Teller/DatabaseJars/db2jcc.jar"/>
+	<classpathentry kind="lib" path="D:/Branch_Teller/DatabaseJars/db2jcc_javax.jar"/>
+	<classpathentry kind="lib" path="D:/Branch_Teller/DatabaseJars/db2jcc_license_cu.jar"/>
+	<classpathentry kind="lib" path="D:/Branch_Teller/DatabaseJars/db2jcc4.jar"/>
+	<classpathentry kind="lib" path="D:/Branch_Teller/DatabaseJars/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/UB_4.1/INSTALL-LOCATION/DataCenter/BankFusion/SYMBOLIC/Support-jars/org.springframework.beans-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/UB_4.1/INSTALL-LOCATION/DataCenter/BankFusion/SYMBOLIC/Support-jars/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="D:/UB_4.1/INSTALL-LOCATION/DataCenter/BankFusion/SYMBOLIC/Support-jars/org.springframework.core-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/UB_4.1/INSTALL-LOCATION/DataCenter/BankFusion/SYMBOLIC/Support-jars/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

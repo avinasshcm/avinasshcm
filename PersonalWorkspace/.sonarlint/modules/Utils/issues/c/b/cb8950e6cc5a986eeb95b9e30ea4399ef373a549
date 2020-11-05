@@ -1,0 +1,31 @@
+
+‡squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…¸ºô8ş·şÒÑ,HÎÕRMINORZ
+CODE_SMELL
+r
+squid:S106"9Replace this use of System.out or System.err by a logger.(øâ²ñşÿÿÿÿ8ş·şÒÑ,HÏÕRMAJORZ
+CODE_SMELL
+m
+squid:S106"9Replace this use of System.out or System.err by a logger.(¢õî8ãİ†ÓÑ,HĞÕRMAJORZ
+CODE_SMELL
+“squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŸËÁ›ûÿÿÿÿ8³ªõÒÑ,HÑÕRMINORZ
+CODE_SMELL
+Ç%squid:RedundantThrowsDeclarationCheck"xRemove the declaration of thrown exception 'java.io.FileNotFoundException' which is a subclass of 'java.io.IOException'.(Ìş×Ï8ŞÂÓÑ,HÒÕRMINORZ
+CODE_SMELL
+psquid:S1854"6Remove this useless assignment to local variable "hm".(ŸËÁ›ûÿÿÿÿ8ŞÂÓÑ,HÓÕRMAJORZ
+CODE_SMELL
+Œsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¤Š»úÿÿÿÿ8ş·şÒÑ,HÔÕRMINORZ
+CODE_SMELL
+m
+squid:S106"9Replace this use of System.out or System.err by a logger.(ô´8ãİ†ÓÑ,HÕÕRMAJORZ
+CODE_SMELL
+Ì%squid:RedundantThrowsDeclarationCheck	"xRemove the declaration of thrown exception 'java.io.FileNotFoundException' which is a subclass of 'java.io.IOException'.(À…ıóşÿÿÿÿ8³ªõÒÑ,HÖÕRMINORZ
+CODE_SMELL
+¸squid:S1192"{Define a constant instead of duplicating this literal "C:\\Users\\amanjuna\\Desktop\\Required_Permissions_SCV.txt" 4 times.(øâ²ñşÿÿÿÿ8ãİ†ÓÑ,H×ÕRCRITICALZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.HØÕRMINORZ
+CODE_SMELL
+dsquid:S1135
+"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿHÙÕRINFOZ
+CODE_SMELL
+asquid:S1481"'Remove this unused "hm" local variable.(ŸËÁ›ûÿÿÿÿ8³ªõÒÑ,HÚÕRMINORZ
+CODE_SMELL

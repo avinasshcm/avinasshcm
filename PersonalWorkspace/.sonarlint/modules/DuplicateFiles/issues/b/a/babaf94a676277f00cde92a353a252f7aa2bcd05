@@ -1,0 +1,46 @@
+
+zsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(Ï‚õäÿÿÿÿÿH¥ôRMAJORZ
+CODE_SMELL
+ksquid:S1197*"8Move the array designator from the variable to the type.(¢¯ùÿÿÿÿH¦ôRMINORZ
+CODE_SMELL
+k
+squid:S106Z"9Replace this use of System.out or System.err by a logger.(àöè¹üÿÿÿÿH§ôRMAJORZ
+CODE_SMELL
+hsquid:S2209m"5Change this instance-reference to a static reference.(¢ƒŸûÿÿÿÿH¨ôRMAJORZ
+CODE_SMELL
+csquid:S2209n"5Change this instance-reference to a static reference.(à¹æÊH©ôRMAJORZ
+CODE_SMELL
+`squid:S2093@"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿHªôRCRITICALZ
+CODE_SMELL
+qsquid:S2674+"JCheck the return value of the "read" call to see how many bytes were read.(ÎÀùõH«ôRMINORZBUG
+usquid:S001128"FDefine and throw a dedicated exception instead of using a generic one.(·–»½H¬ôRMAJORZ
+CODE_SMELL
+Œsquid:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(ˆóª¢úÿÿÿÿH­ôRMINORZ
+CODE_SMELL
+osquid:S1075"ARefactor your code to get this URI from a customizable parameter.(§†ü‚H®ôRMINORZ
+CODE_SMELL
+\squid:S2095)"3Close this "FileInputStream" in a "finally" clause.(’¸øøH¯ôRBLOCKERZBUG
+Ysquid:S1148e"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH°ôRMINORZVULNERABILITY
+k
+squid:S106$"9Replace this use of System.out or System.err by a logger.(Ö³Á•ÿÿÿÿÿH±ôRMAJORZ
+CODE_SMELL
+f
+squid:S106\"9Replace this use of System.out or System.err by a logger.(Ùî»«H²ôRMAJORZ
+CODE_SMELL
+k
+squid:S106h"9Replace this use of System.out or System.err by a logger.(¾…´øÿÿÿÿH³ôRMAJORZ
+CODE_SMELL
+k
+squid:S106d"9Replace this use of System.out or System.err by a logger.(­›ÉÓşÿÿÿÿH´ôRMAJORZ
+CODE_SMELL
+k
+squid:S106E"9Replace this use of System.out or System.err by a logger.(¾…´øÿÿÿÿHµôRMAJORZ
+CODE_SMELL
+Ysquid:S1148_"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH¶ôRMINORZVULNERABILITY
+‡squid:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÿ’óH·ôRMINORZ
+CODE_SMELL
+f
+squid:S106H"9Replace this use of System.out or System.err by a logger.(ë•ÀÀH¸ôRMAJORZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.H¹ôRMINORZ
+CODE_SMELL

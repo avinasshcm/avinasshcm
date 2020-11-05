@@ -1,0 +1,31 @@
+# Specify the Destination location
+Destination_Folder=D:/Payments/Setup/Patch_Location
+
+# BT_Specific like BTDC or BTBS
+BT_Specific_Required=false
+BT_Specific=BTDC
+
+# AM_PM_Required = should be false if BFAM and BFPM is not required
+AM_PM_Required=true
+
+# UBOF_Required = should be false if UBOF is not required
+UBOF_Required=false
+
+# Default Values Need not to be changed
+CMRE_Path=//misys.global.ad/bangalore/Dev/CMRE/
+BFP_Path=//misys.global.ad/bangalore/Dev/CMRE/BF/Deliveries/4.2.9
+CBS_Path=//misys.global.ad/bangalore/Dev/CMRE/CBS/DailyBuilds/4.2.9
+UB_Path=//misys.global.ad/bangalore/Dev/CMRE/UB/DailyBuilds/4.2.9
+PTY_Path=//misys.global.ad/bangalore/Dev/CMRE/Party/DailyBuilds/4.2.9
+BFT_Path=//misys.global.ad/bangalore/Dev/CMRE/BFBT/DailyBuilds/4.2.9
+Good_Build_File=LastGoodBuildNumber.txt
+
+
+# Following Can be Ignored 
+Version=4.2
+ServicePack=9
+Patch=0
+CodeLine=REL
+Type=DailyBuilds
+
+

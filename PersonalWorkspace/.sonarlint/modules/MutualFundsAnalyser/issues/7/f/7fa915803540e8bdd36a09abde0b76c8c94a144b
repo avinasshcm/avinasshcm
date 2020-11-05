@@ -1,0 +1,71 @@
+
+†squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(±ÑÕùÿÿÿÿ8ŒÔ¦Ùˆ-HˆÌRMAJORZ
+CODE_SMELL
+{squid:S2147Œ"ECombine this catch with the one at line 137, which has the same body.(ï­£Ä8Øô¦ƒã,H÷ËRMINORZ
+CODE_SMELL
+Ysquid:S10756"&Remove this hard-coded path-delimiter.(ÍÂØÆûÿÿÿÿHòËRMINORZ
+CODE_SMELL
+‡squid:S00117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÀâç8úêš÷,H…ÌRMINORZ
+CODE_SMELL
+—squid:S2629Á"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(£‰—½üÿÿÿÿ8ºĞ¶á,HîËRMAJORZ
+CODE_SMELL
+†squid:CommentedOutCodeLineû"<This block of commented-out lines of code should be removed.(•‚Éòúÿÿÿÿ8ŒÔ¦Ùˆ-HÌRMAJORZ
+CODE_SMELL
+{squid:S2147÷"ECombine this catch with the one at line 244, which has the same body.(ï­£Ä8ŒÔ¦Ùˆ-H‰ÌRMINORZ
+CODE_SMELL
+lsquid:S2629L"7Use the built-in formatting to construct this argument.(Á¹úÍ8ŒÔ¦Ùˆ-HûËRMAJORZ
+CODE_SMELL
+‡squid:S00117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á¨‘Å8ŒÔ¦Ùˆ-HÌRMINORZ
+CODE_SMELL
+zsquid:S2147r"ECombine this catch with the one at line 111, which has the same body.(ï­£Ä8ºĞ¶á,H‚ÌRMINORZ
+CODE_SMELL
+squid:S2293|"YReplace the type specification in this constructor call with the diamond operator ("<>").(£ãĞê8ŒÔ¦Ùˆ-H†ÌRMINORZ
+CODE_SMELL
+€squid:CommentedOutCodeLinek"<This block of commented-out lines of code should be removed.(¼¸çí8ŒÔ¦Ùˆ-H‡ÌRMAJORZ
+CODE_SMELL
+”squid:S2293à"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹ ùòøÿÿÿÿ8ŒÔ¦Ùˆ-HüËRMINORZ
+CODE_SMELL
+‡squid:S00117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÀâç8›Ü‰Šş,H„ÌRMINORZ
+CODE_SMELL
+vsquid:S2130À";Use "Float.parseFloat" for this string-to-float conversion.(…øò÷üÿÿÿÿ8ºĞ¶á,HŒÌRMINORZ
+CODE_SMELL
+ksquid:S2629["7Use the built-in formatting to construct this argument.(µÌïa8òŞ¸ø,HşËRMAJORZ
+CODE_SMELL
+qsquid:S2629]"7Use the built-in formatting to construct this argument.(ü”Ïéúÿÿÿÿ8òŞ¸ø,H€ÌRMAJORZ
+CODE_SMELL
+squid:CommentedOutCodeLine…"<This block of commented-out lines of code should be removed.(¼¸çí8ŒÔ¦Ùˆ-HïËRMAJORZ
+CODE_SMELL
+~squid:S1226h"DIntroduce a new variable instead of reusing the parameter "updated".(å´ÖÓùÿÿÿÿ8ºĞ¶á,HÌRMINORZ
+CODE_SMELL
+usquid:UselessImportCheck"4Remove this unused import 'constants.ReadConstants'.(ÎøÅ8ŒÔ¦Ùˆ-HöËRMINORZ
+CODE_SMELL
+squid:S00117Ö"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û·İÔúÿÿÿÿ8ŒÔ¦Ùˆ-HƒÌRMINORZ
+CODE_SMELL
+”squid:S2293±"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹ ùòøÿÿÿÿ8ºĞ¶á,HÿËRMINORZ
+CODE_SMELL
+squid:S00117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«¢’şÿÿÿÿ8ºĞ¶á,HíËRMINORZ
+CODE_SMELL
+‡squid:S00117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Éş8ŒÔ¦Ùˆ-H‹ÌRMINORZ
+CODE_SMELL
+squid:S00117Ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«¢’şÿÿÿÿ8ŒÔ¦Ùˆ-HŠÌRMINORZ
+CODE_SMELL
+Vsquid:S2129ê" Remove this "Double" constructor(³Ü£8ŒÔ¦Ùˆ-HõËRMAJORZ
+CODE_SMELL
+{squid:S2147Î"ECombine this catch with the one at line 203, which has the same body.(ï­£Ä8ŒÔ¦Ùˆ-HñËRMINORZ
+CODE_SMELL
+Œsquid:S00117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÙ Ñùÿÿÿÿ8ŒÔ¦Ùˆ-HğËRMINORZ
+CODE_SMELL
+Œsquid:S001179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à›ğóúÿÿÿÿ8ŒÔ¦Ùˆ-HıËRMINORZ
+CODE_SMELL
+‡squid:S00117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–‘ğ8ŒÔ¦Ùˆ-HøËRMINORZ
+CODE_SMELL
+‡squid:S00117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş»ï®8ŒÔ¦Ùˆ-HôËRMINORZ
+CODE_SMELL
+squid:S00117¦"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙŠ©üÿÿÿÿ8›Ü‰Šş,HúËRMINORZ
+CODE_SMELL
+Œsquid:S00117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÌØ ÿÿÿÿÿ8ŒÔ¦Ùˆ-HùËRMINORZ
+CODE_SMELL
+esquid:S2629:"7Use the built-in formatting to construct this argument.(ö¥Ì´HÌRMAJORZ
+CODE_SMELL
+†squid:CommentedOutCodeLine×"<This block of commented-out lines of code should be removed.(Å©†èûÿÿÿÿ8ŒÔ¦Ùˆ-HóËRMAJORZ
+CODE_SMELL

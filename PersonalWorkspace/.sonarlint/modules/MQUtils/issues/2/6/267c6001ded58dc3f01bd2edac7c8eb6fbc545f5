@@ -1,0 +1,35 @@
+
+^squid:S00108c")Either remove or fill this block of code.(™ðÊ‰8¤ÎŸÛÏ,H¹wRMAJORZ
+CODE_SMELL
+xsquid:CommentedOutCodeLineX"<This block of commented-out lines of code should be removed.(ßŒðúHºwRMAJORZ
+CODE_SMELL
+wsquid:S2259b"EA "NullPointerException" could be thrown; "session" is nullable here.(ËÇÇÓûÿÿÿÿ8¤ÎŸÛÏ,H»wRMAJORZBUG
+asquid:S1172'"/Remove this unused method parameter "threadID".(»ž±ÔúÿÿÿÿH¼wRMAJORZ
+CODE_SMELL
+Xsquid:S1148v"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿH½wRMINORZVULNERABILITY
+nsquid:S1141Y"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¤ÎŸÛÏ,H¾wRMAJORZ
+CODE_SMELL
+e
+squid:S106O"9Replace this use of System.out or System.err by a logger.(çªþºH¿wRMAJORZ
+CODE_SMELL
+}squid:CommentedOutCodeLineU"<This block of commented-out lines of code should be removed.(¸©ç¥üÿÿÿÿHÀwRMAJORZ
+CODE_SMELL
+rsquid:S2259Z"EA "NullPointerException" could be thrown; "session" is nullable here.(–ªœÁ8¤ÎŸÛÏ,HÁwRMAJORZBUG
+csquid:S00108g")Either remove or fill this block of code.(Ô›¿¾ùÿÿÿÿ8¤ÎŸÛÏ,HÂwRMAJORZ
+CODE_SMELL
+nsquid:S1141a"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¤ÎŸÛÏ,HÃwRMAJORZ
+CODE_SMELL
+Ssquid:S1148^"#Use a logger to log this exception.(òçøìHÄwRMINORZVULNERABILITY
+^squid:S1153O"1Directly append the argument of String.valueOf().(çªþºHÅwRMINORZ
+CODE_SMELL
+nsquid:S1141e"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¤ÎŸÛÏ,HÆwRMAJORZ
+CODE_SMELL
+Xsquid:S1148j"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHÇwRMINORZVULNERABILITY
+vsquid:S2259\"DA "NullPointerException" could be thrown; "sender" is nullable here.(´›­¤ÿÿÿÿÿ8¤ÎŸÛÏ,HÈwRMAJORZBUG
+nsquid:S1141."5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¤ÎŸÛÏ,HÉwRMAJORZ
+CODE_SMELL
+q
+squid:S106<"9Replace this use of System.out or System.err by a logger.(£æ°€ûÿÿÿÿ8¤ÎŸÛÏ,HÊwRMAJORZ
+CODE_SMELL
+csquid:S1153P"1Directly append the argument of String.valueOf().(ùŠ­†ûÿÿÿÿHËwRMINORZ
+CODE_SMELL

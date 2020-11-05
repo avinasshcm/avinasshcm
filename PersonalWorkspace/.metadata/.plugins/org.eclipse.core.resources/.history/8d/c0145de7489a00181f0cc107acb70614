@@ -1,0 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+public class IBANHashCode {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        // TODO Auto-generated method stub
+
+        HashMap<String, Integer> hm = new HashMap<String, Integer>();
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\amanjuna\\Desktop\\IBAN.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+
+                int cdtrAcctHashCode = line.hashCode();
+
+                int modRes = cdtrAcctHashCode % 25;
+                int queueNum = Math.abs(modRes);
+                String accHashCode = String.valueOf(queueNum);
+                System.out.println(accHashCode);
+
+            }
+        }
+    }
+}

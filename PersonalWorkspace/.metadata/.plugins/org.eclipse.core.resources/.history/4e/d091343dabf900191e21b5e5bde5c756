@@ -1,0 +1,20 @@
+import com.snowtide.PDF;
+import com.snowtide.pdf.Document;
+import com.snowtide.pdf.OutputTarget;
+ 
+public class DecryptWithPassword {
+    public static void main (String[] args) throws java.io.IOException {
+        
+        String password = "16121991";
+        String pdfFilePath = "Cibil_20181024.pdf";
+        Document pdfts = PDF.open(pdfFilePath, password.getBytes());
+        StringBuilder text = new StringBuilder(1024);
+        pdfts.pipe(new OutputTarget(text));
+        pdfts.close();
+        //System.out.println(text);
+        
+        text.indexOf("Credit Account Information Details");
+        
+        
+    }
+}

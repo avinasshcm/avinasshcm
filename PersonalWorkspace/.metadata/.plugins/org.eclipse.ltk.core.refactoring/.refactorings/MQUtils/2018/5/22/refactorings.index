@@ -1,0 +1,24 @@
+1527484420321	Copy compilation unit
+1527486199296	Copy compilation unit
+1527486229530	Copy compilation unit
+1527486418859	Rename type 'MQUtils'
+1527486435992	Copy compilation unit
+1527487272075	Rename local variable 'txnDtTm'
+1527498334040	Delete element
+1527498443192	Rename type 'DDTxnInfo'
+1527507055477	Copy file
+1527507107444	Copy compilation unit
+1527508739532	Rename type 'BillNotification'
+1527508817418	Rename local variable 'bn'
+1527509122177	Rename method 'prepareInwardSettlementFile'
+1527509299517	Rename local variable 'bn'
+1527513628537	Rename method 'checkIfCellEmpty'
+1527526177594	Rename local variable 'cashWithTemplate'
+1527526967762	Copy compilation unit
+1527587215614	Rename field 'QUEUE_PASSWORD'
+1527587279744	Delete element
+1527587581251	Rename local variable 'InwardDirectDebits'
+1527589393231	Copy file
+1527589486596	Rename field 'ACCOUNTS_FILE_NAME'
+1527684595447	Copy compilation unit
+1527684647766	Delete element

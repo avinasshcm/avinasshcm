@@ -1,0 +1,13 @@
+
+Msquid:S2129 " Remove this "Double" constructor(çã¤]H©ËRMAJORZ
+CODE_SMELL
+Osquid:S2129!"!Remove this "Integer" constructor(§â†¹HªËRMAJORZ
+CODE_SMELL
+nsquid:S2184"BCast one of the operands of this division operation to a "double".(“ÝâËùÿÿÿÿH«ËRMINORZBUG
+nsquid:S2184"BCast one of the operands of this division operation to a "double".(øý¼‚þÿÿÿÿH¬ËRMINORZBUG
+Dsquid:S2153 "Remove the boxing to "Double".(çã¤]H­ËRMINORZBUG
+Hsquid:S1220""Move this file to a named package.H®ËRMINORZ
+CODE_SMELL
+k
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ä¸½½üÿÿÿÿH¯ËRMAJORZ
+CODE_SMELL

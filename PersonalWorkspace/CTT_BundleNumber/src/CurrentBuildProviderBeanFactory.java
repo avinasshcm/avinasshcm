@@ -1,0 +1,10 @@
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
+public class CurrentBuildProviderBeanFactory {
+	static XmlBeanFactory factory = new XmlBeanFactory(new FileSystemResource("current-build-provider.xml"));
+
+	public static XmlBeanFactory getFactory() {
+		return factory;
+	}
+}

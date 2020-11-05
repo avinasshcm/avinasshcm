@@ -1,0 +1,39 @@
+
+squid:ModifiersOrderCheck+"EReorder the modifiers to comply with the Java Language Specification.(ö¡Ò¾H€ÓRMINORZ
+CODE_SMELL
+†squid:ModifiersOrderCheck."EReorder the modifiers to comply with the Java Language Specification.(øÆÛüÿÿÿÿHÓRMINORZ
+CODE_SMELL
+’squid:S1192±"`Define a constant instead of duplicating this literal "{\"parentReference\":{\"id\":\"" 6 times.(£ö¿úH‚ÓRCRITICALZ
+CODE_SMELL
+xsquid:S1192È"FDefine a constant instead of duplicating this literal "UTF-8" 3 times.(ÓÓ˜¢HƒÓRCRITICALZ
+CODE_SMELL
+ˆsquid:S1192Ä"VDefine a constant instead of duplicating this literal "{\"parentReference\":" 6 times.(¨‡ÁÑH„ÓRCRITICALZ
+CODE_SMELL
+€squid:S1192ü"IDefine a constant instead of duplicating this literal "/content" 3 times.(İÿ÷úÿÿÿÿH…ÓRCRITICALZ
+CODE_SMELL
+isquid:S3725¢":Replace this with a call to the "toFile().exists()" method(µı£åH†ÓRMAJORZ
+CODE_SMELL
+nsquid:S3725¢"?Replace this with a call to the "toFile().isDirectory()" method(µı£åH‡ÓRMAJORZ
+CODE_SMELL
+esquid:S1135”"2Complete the task associated to this TODO comment.(ñıÌ±ıÿÿÿÿHˆÓRINFOZ
+CODE_SMELL
+esquid:S1135 "2Complete the task associated to this TODO comment.(ñıÌ±ıÿÿÿÿH‰ÓRINFOZ
+CODE_SMELL
+esquid:S1135°"2Complete the task associated to this TODO comment.(¸íÒÀúÿÿÿÿHŠÓRINFOZ
+CODE_SMELL
+esquid:S1135¶"2Complete the task associated to this TODO comment.(¸íÒÀúÿÿÿÿH‹ÓRINFOZ
+CODE_SMELL
+`squid:S1135é"2Complete the task associated to this TODO comment.(Ê©ª÷HŒÓRINFOZ
+CODE_SMELL
+`squid:S1135¼"2Complete the task associated to this TODO comment.(¡ÌşHÓRINFOZ
+CODE_SMELL
+`squid:S1135Ï"2Complete the task associated to this TODO comment.(¡ÌşHÓRINFOZ
+CODE_SMELL
+ssquid:S1134¡"DTake the required action to fix the issue indicated by this comment.(ûµ©úHÓRMAJORZ
+CODE_SMELL
+ssquid:S1134Š"DTake the required action to fix the issue indicated by this comment.(Ÿâ¬¸HÓRMAJORZ
+CODE_SMELL
+zsquid:S1226Ÿ"KIntroduce a new variable instead of reusing the parameter "downloadFolder".(“·›»H‘ÓRMINORZ
+CODE_SMELL
+~squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊåÇH’ÓRMINORZ
+CODE_SMELL

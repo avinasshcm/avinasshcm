@@ -1,0 +1,31 @@
+
+…squid:S00117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ÿà±úÿÿÿÿHò‚RMINORZ
+CODE_SMELL
+|squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É¬à~Hè‚RMINORZ
+CODE_SMELL
+‡squid:S00116<"XRename this field "NetAssetValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÚ Hî‚RMINORZ
+CODE_SMELL
+~squid:S00116>"ORename this field "Date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤¢‹¿Hï‚RMINORZ
+CODE_SMELL
+…squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¼ÓáşÿÿÿÿHğ‚RMINORZ
+CODE_SMELL
+‰squid:S00116"ZRename this field "ISIN_Div_Payout" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óº¬ÎHë‚RMINORZ
+CODE_SMELL
+}squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜˜ÆHå‚RMINORZ
+CODE_SMELL
+”squid:S00116"`Rename this field "ISIN_Div_Reinvestment" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßº³çùÿÿÿÿHì‚RMINORZ
+CODE_SMELL
+}squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã–ğÒHç‚RMINORZ
+CODE_SMELL
+£"squid:ClassVariableVisibilityCheck"VMake schemeCode a static final constant or non-public and provide accessors if needed.(½¢ëıÿÿÿÿHä‚RMINORZVULNERABILITY
+}squid:S00100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©“ºÆHé‚RMINORZ
+CODE_SMELL
+‚squid:S00100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ÿà±úÿÿÿÿHê‚RMINORZ
+CODE_SMELL
+ª"squid:ClassVariableVisibilityCheck"[Make ISIN_Div_Payout a static final constant or non-public and provide accessors if needed.(Óº¬Î8şÙéßØ,Hù‚RMINORZVULNERABILITY
+…squid:S00116:"VRename this field "Scheme_Name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ìğÕHí‚RMINORZ
+CODE_SMELL
+squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É¬à~Hñ‚RMINORZ
+CODE_SMELL
+‚squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¼ÓáşÿÿÿÿHæ‚RMINORZ
+CODE_SMELL

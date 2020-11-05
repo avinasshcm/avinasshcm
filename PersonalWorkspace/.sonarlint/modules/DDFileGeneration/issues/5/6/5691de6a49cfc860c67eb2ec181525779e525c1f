@@ -1,0 +1,264 @@
+
+asquid:S2093Ï"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿH»ÖRCRITICALZ
+CODE_SMELL
+zsquid:CommentedOutCodeLineÉ"<This block of commented-out lines of code should be removed.(Ã²ñóH¼ÖRMAJORZ
+CODE_SMELL
+]squid:S2095é".Close this "FileWriter" in a "finally" clause.(¿ÀŒýûÿÿÿÿH½ÖRBLOCKERZBUG
+k
+squid:S106%"9Replace this use of System.out or System.err by a logger.(®¹øÿÿÿÿH¾ÖRMAJORZ
+CODE_SMELL
+Osquid:S21311"Use "Long.toString" instead.(œ­Ï®úÿÿÿÿH¿ÖRMAJORZ
+CODE_SMELL
+l
+squid:S106È"9Replace this use of System.out or System.err by a logger.(ƒçî™üÿÿÿÿHÀÖRMAJORZ
+CODE_SMELL
+rsquid:S2259m"K"NullPointerException" will be thrown when invoking method "writeToFile()".(¿ðïìHÁÖRMAJORZBUG
+Zsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHÂÖRMINORZVULNERABILITY
+Xsquid:S2095Ó".Close this "FileWriter" in a "finally" clause.(´ðÉÇHÃÖRBLOCKERZBUG
+squid:S00117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ïÍFHÄÖRMINORZ
+CODE_SMELL
+rsquid:S1226Ó"CIntroduce a new variable instead of reusing the parameter "writer".(´ðÉÇHÅÖRMINORZ
+CODE_SMELL
+€squid:S00117g"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ý“›åHÆÖRMINORZ
+CODE_SMELL
+€squid:S00117y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹òãÃHÇÖRMINORZ
+CODE_SMELL
+_squid:S1153e"1Directly append the argument of String.valueOf().(Þ—ìÏHÈÖRMINORZ
+CODE_SMELL
+Zsquid:S1148†"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHÉÖRMINORZVULNERABILITY
+_squid:S1153O"1Directly append the argument of String.valueOf().(ò‰¯áHÊÖRMINORZ
+CODE_SMELL
+f
+squid:S106Œ"9Replace this use of System.out or System.err by a logger.(Ê›ÿGHËÖRMAJORZ
+CODE_SMELL
+Zsquid:S1148Ý"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHÌÖRMINORZVULNERABILITY
+Qsquid:S21291"Remove this "Long" constructor(œ­Ï®úÿÿÿÿHÍÖRMAJORZ
+CODE_SMELL
+…squid:S00117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì©÷üÿÿÿÿÿHÎÖRMINORZ
+CODE_SMELL
+€squid:S00117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò‰¯áHÏÖRMINORZ
+CODE_SMELL
+…squid:S00117P"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ßÞ‹üÿÿÿÿHÐÖRMINORZ
+CODE_SMELL
+…squid:S00117h"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úœžâýÿÿÿÿHÑÖRMINORZ
+CODE_SMELL
+…squid:S00117s"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«Ì‘ÞþÿÿÿÿHÒÖRMINORZ
+CODE_SMELL
+ssquid:S2259 "K"NullPointerException" will be thrown when invoking method "writeToFile()".(Á£ÕþHÓÖRMAJORZBUG
+rsquid:S2259b"K"NullPointerException" will be thrown when invoking method "writeToFile()".(¿ðïìHÔÖRMAJORZBUG
+€squid:S00117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Þ—ìÏHÕÖRMINORZ
+CODE_SMELL
+k
+squid:S106"9Replace this use of System.out or System.err by a logger.(ƒ´œµüÿÿÿÿHÖÖRMAJORZ
+CODE_SMELL
+k
+squid:S106"9Replace this use of System.out or System.err by a logger.(É÷ûÿÿÿÿH×ÖRMAJORZ
+CODE_SMELL
+l
+squid:S106Ü"9Replace this use of System.out or System.err by a logger.(íŠïŸøÿÿÿÿHØÖRMAJORZ
+CODE_SMELL
+®squid:S11581"{Call the static method Long.toString(...) instead of instantiating a temporary object to perform this to string conversion.(œ­Ï®úÿÿÿÿHÙÖRMINORZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.HÚÖRMINORZ
+CODE_SMELL
+l
+squid:S106è"9Replace this use of System.out or System.err by a logger.(ÄÛûÈúÿÿÿÿHÛÖRMAJORZ
+CODE_SMELL
+l
+squid:S106Ò"9Replace this use of System.out or System.err by a logger.(ÕäßõúÿÿÿÿHÜÖRMAJORZ
+CODE_SMELL
+asquid:S2093å"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿHÝÖRCRITICALZ
+CODE_SMELL
+wsquid:S1226é"CIntroduce a new variable instead of reusing the parameter "writer".(¿ÀŒýûÿÿÿÿHÞÖRMINORZ
+CODE_SMELL
+~squid:CommentedOutCodeLineE"<This block of commented-out lines of code should be removed.(Ë§…úøÿÿÿÿHßÖRMAJORZ
+CODE_SMELL
+Zsquid:S1148Ö"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHàÖRMINORZVULNERABILITY
+…squid:S00117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”µÙÏûÿÿÿÿHáÖRMINORZ
+CODE_SMELL
+~squid:CommentedOutCodeLinew"<This block of commented-out lines of code should be removed.(•Ö‰ÿÿÿÿÿHâÖRMAJORZ
+CODE_SMELL
+dsquid:S1153P"1Directly append the argument of String.valueOf().(¤ßÞ‹üÿÿÿÿHãÖRMINORZ
+CODE_SMELL
+¼%squid:RedundantThrowsDeclarationCheckà"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(«Ü£Ë8—˜¼½†.HäÖRMINORZ
+CODE_SMELL
+Á%squid:RedundantThrowsDeclarationCheckó"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ä­¿›ùÿÿÿÿ8—˜¼½†.HåÖRMINORZ
+CODE_SMELL
+squid:S1192O"GDefine a constant instead of duplicating this literal "_txns-" 4 times.(ò‰¯á8—˜¼½†.HæÖRCRITICALZ
+CODE_SMELL
+Žsquid:S1192Œ"VDefine a constant instead of duplicating this literal "finally block pain008" 4 times.(Ê›ÿG8—˜¼½†.HçÖRCRITICALZ
+CODE_SMELL
+ƒsquid:S1192:"KDefine a constant instead of duplicating this literal "yyyy-MM-dd" 3 times.(ó²Ú8—˜¼½†.HèÖRCRITICALZ
+CODE_SMELL
+hsquid:S2093–"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8—˜¼½†.HéÖRCRITICALZ
+CODE_SMELL
+hsquid:S2093…"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8—˜¼½†.HêÖRCRITICALZ
+CODE_SMELL
+hsquid:S2093¿"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8—˜¼½†.HëÖRCRITICALZ
+CODE_SMELL
+€squid:CommentedOutCodeLineN"<This block of commented-out lines of code should be removed.(Á«ÒÊ8—˜¼½†.HìÖRMAJORZ
+CODE_SMELL
+squid:CommentedOutCodeLineï"<This block of commented-out lines of code should be removed.(¤‘Ú‚8—˜¼½†.HíÖRMAJORZ
+CODE_SMELL
+squid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(¤‘Ú‚8—˜¼½†.HîÖRMAJORZ
+CODE_SMELL
+†squid:CommentedOutCodeLinež"<This block of commented-out lines of code should be removed.(å…¿¯ûÿÿÿÿ8—˜¼½†.HïÖRMAJORZ
+CODE_SMELL
+r
+squid:S106"9Replace this use of System.out or System.err by a logger.(²öÔšÿÿÿÿÿ8—˜¼½†.HðÖRMAJORZ
+CODE_SMELL
+m
+squid:S106"9Replace this use of System.out or System.err by a logger.(ßÎñ§8—˜¼½†.HñÖRMAJORZ
+CODE_SMELL
+m
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÞÂÔž8—˜¼½†.HòÖRMAJORZ
+CODE_SMELL
+r
+squid:S106"9Replace this use of System.out or System.err by a logger.(±ˆçÕúÿÿÿÿ8—˜¼½†.HóÖRMAJORZ
+CODE_SMELL
+m
+squid:S106"9Replace this use of System.out or System.err by a logger.(¿±Ãè8—˜¼½†.HôÖRMAJORZ
+CODE_SMELL
+r
+squid:S106"9Replace this use of System.out or System.err by a logger.(‘¼‰†üÿÿÿÿ8—˜¼½†.HõÖRMAJORZ
+CODE_SMELL
+m
+squid:S106"9Replace this use of System.out or System.err by a logger.(¼Ò‰Ö8—˜¼½†.HöÖRMAJORZ
+CODE_SMELL
+m
+squid:S106 "9Replace this use of System.out or System.err by a logger.(„úÖ“8—˜¼½†.H÷ÖRMAJORZ
+CODE_SMELL
+r
+squid:S106!"9Replace this use of System.out or System.err by a logger.(‚ºÐ‘úÿÿÿÿ8—˜¼½†.HøÖRMAJORZ
+CODE_SMELL
+m
+squid:S106""9Replace this use of System.out or System.err by a logger.(ŸÕûí8—˜¼½†.HùÖRMAJORZ
+CODE_SMELL
+m
+squid:S106#"9Replace this use of System.out or System.err by a logger.(‡“é÷8—˜¼½†.HúÖRMAJORZ
+CODE_SMELL
+r
+squid:S106$"9Replace this use of System.out or System.err by a logger.(Ñéõêùÿÿÿÿ8—˜¼½†.HûÖRMAJORZ
+CODE_SMELL
+r
+squid:S106*"9Replace this use of System.out or System.err by a logger.(ñ¾·ºüÿÿÿÿ8—˜¼½†.HüÖRMAJORZ
+CODE_SMELL
+r
+squid:S106."9Replace this use of System.out or System.err by a logger.(±œ”Áÿÿÿÿÿ8—˜¼½†.HýÖRMAJORZ
+CODE_SMELL
+n
+squid:S106½"9Replace this use of System.out or System.err by a logger.(×ÅšÃ8—˜¼½†.HþÖRMAJORZ
+CODE_SMELL
+n
+squid:S106ì"9Replace this use of System.out or System.err by a logger.(ò’â8—˜¼½†.HÿÖRMAJORZ
+CODE_SMELL
+s
+squid:S106™"9Replace this use of System.out or System.err by a logger.(ÄÛûÈúÿÿÿÿ8—˜¼½†.H€×RMAJORZ
+CODE_SMELL
+n
+squid:S106"9Replace this use of System.out or System.err by a logger.(ò’â8—˜¼½†.H×RMAJORZ
+CODE_SMELL
+m
+squid:S106Í"9Replace this use of System.out or System.err by a logger.(Ê›ÿG8—˜¼½†.H‚×RMAJORZ
+CODE_SMELL
+s
+squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ýïñüÿÿÿÿ8—˜¼½†.Hƒ×RMAJORZ
+CODE_SMELL
+s
+squid:S106‘"9Replace this use of System.out or System.err by a logger.(¨­Ã­üÿÿÿÿ8—˜¼½†.H„×RMAJORZ
+CODE_SMELL
+s
+squid:S106¨"9Replace this use of System.out or System.err by a logger.(ÄÛûÈúÿÿÿÿ8—˜¼½†.H…×RMAJORZ
+CODE_SMELL
+m
+squid:S106°"9Replace this use of System.out or System.err by a logger.(Ê›ÿG8—˜¼½†.H†×RMAJORZ
+CODE_SMELL
+s
+squid:S106Æ"9Replace this use of System.out or System.err by a logger.(ýïñüÿÿÿÿ8—˜¼½†.H‡×RMAJORZ
+CODE_SMELL
+s
+squid:S106Ë"9Replace this use of System.out or System.err by a logger.(¨­Ã­üÿÿÿÿ8—˜¼½†.Hˆ×RMAJORZ
+CODE_SMELL
+s
+squid:S106ä"9Replace this use of System.out or System.err by a logger.(ÄÛûÈúÿÿÿÿ8—˜¼½†.H‰×RMAJORZ
+CODE_SMELL
+m
+squid:S106ì"9Replace this use of System.out or System.err by a logger.(Ê›ÿG8—˜¼½†.HŠ×RMAJORZ
+CODE_SMELL
+—squid:S1488Ô"aImmediately return this expression instead of assigning it to the temporary variable "randomNum".(íîèƒ8—˜¼½†.H‹×RMINORZ
+CODE_SMELL
+˜squid:S1488Ü"]Immediately return this expression instead of assigning it to the temporary variable "sheet".(˜ûÚ­ùÿÿÿÿ8—˜¼½†.HŒ×RMINORZ
+CODE_SMELL
+~squid:S1226š"CIntroduce a new variable instead of reusing the parameter "writer".(¿ÀŒýûÿÿÿÿ8—˜¼½†.H×RMINORZ
+CODE_SMELL
+~squid:S1226‡"CIntroduce a new variable instead of reusing the parameter "writer".(¿ÀŒýûÿÿÿÿ8—˜¼½†.HŽ×RMINORZ
+CODE_SMELL
+~squid:S1226Á"CIntroduce a new variable instead of reusing the parameter "writer".(¿ÀŒýûÿÿÿÿ8—˜¼½†.H×RMINORZ
+CODE_SMELL
+ksquid:S2209í"5Change this instance-reference to a static reference.(Ÿ™Ï£8—˜¼½†.H×RMAJORZ
+CODE_SMELL
+_squid:S2140Ô")Use "java.util.Random.nextInt()" instead.(íîèƒ8—˜¼½†.H‘×RMINORZ
+CODE_SMELL
+zsquid:S2259‰"K"NullPointerException" will be thrown when invoking method "writeToFile()".(™üã·8—˜¼½†.H’×RMAJORZBUG
+„squid:S2259k"Q"NullPointerException" will be thrown when invoking method "writeDDTxnsToFile()".(ŽÉÈâøÿÿÿÿ8—˜¼½†.H“×RMAJORZBUG
+zsquid:S2259Ž"K"NullPointerException" will be thrown when invoking method "writeToFile()".(ˆ§Ï·8—˜¼½†.H”×RMAJORZBUG
+squid:S2259t"Q"NullPointerException" will be thrown when invoking method "writeDDTxnsToFile()".(ŠòÅ˜8—˜¼½†.H•×RMAJORZBUG
+zsquid:S2259º"K"NullPointerException" will be thrown when invoking method "writeToFile()".(œ´—›8—˜¼½†.H–×RMAJORZBUG
+squid:S2259¸"K"NullPointerException" will be thrown when invoking method "writeToFile()".(ð¹±Òúÿÿÿÿ8—˜¼½†.H—×RMAJORZBUG
+„squid:S2259}"Q"NullPointerException" will be thrown when invoking method "writeDDTxnsToFile()".(Óô¹»ùÿÿÿÿ8—˜¼½†.H˜×RMAJORZBUG
+zsquid:S2259¡"K"NullPointerException" will be thrown when invoking method "writeToFile()".(¿ðïì8—˜¼½†.H™×RMAJORZBUG
+zsquid:S2259¥"K"NullPointerException" will be thrown when invoking method "writeToFile()".(Á£Õþ8—˜¼½†.Hš×RMAJORZBUG
+zsquid:S2259„"K"NullPointerException" will be thrown when invoking method "writeToFile()".(Ž¸œ§8—˜¼½†.H›×RMAJORZBUG
+squid:S2259œ"K"NullPointerException" will be thrown when invoking method "writeToFile()".(úä°òûÿÿÿÿ8—˜¼½†.Hœ×RMAJORZBUG
+qsquid:S2259)"DA "NullPointerException" could be thrown; "option" is nullable here.(€äÚ8—˜¼½†.H×RMAJORZBUG
+ysquid:S2259^"K"NullPointerException" will be thrown when invoking method "writeToFile()".(Á£Õþ8—˜¼½†.Hž×RMAJORZBUG
+zsquid:S2259§"K"NullPointerException" will be thrown when invoking method "writeToFile()".(¿ðïì8—˜¼½†.HŸ×RMAJORZBUG
+€squid:S2259–"Q"NullPointerException" will be thrown when invoking method "writeDDTxnsToFile()".(¤û¦à8—˜¼½†.H ×RMAJORZBUG
+ysquid:S00107â"=Method has 11 parameters, which is greater than 7 authorized.(Ðòýüÿÿÿÿ8—˜¼½†.H¡×RMAJORZ
+CODE_SMELL
+tsquid:S00107’"=Method has 15 parameters, which is greater than 7 authorized.(Í‰è•8—˜¼½†.H¢×RMAJORZ
+CODE_SMELL
+‡squid:S00117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãØ½–8—˜¼½†.H£×RMINORZ
+CODE_SMELL
+Œsquid:S00117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÖÞøüÿÿÿÿ8—˜¼½†.H¤×RMINORZ
+CODE_SMELL
+‡squid:S00117["QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ£ø8—˜¼½†.H¥×RMINORZ
+CODE_SMELL
+‡squid:S00117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äëç,8—˜¼½†.H¦×RMINORZ
+CODE_SMELL
+ˆsquid:S00117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ»’¼8—˜¼½†.H§×RMINORZ
+CODE_SMELL
+ˆsquid:S00117Œ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ž«¡«8—˜¼½†.H¨×RMINORZ
+CODE_SMELL
+squid:S00117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Å³üÿÿÿÿ8—˜¼½†.H©×RMINORZ
+CODE_SMELL
+squid:S00117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ÜÎåýÿÿÿÿ8—˜¼½†.Hª×RMINORZ
+CODE_SMELL
+ˆsquid:S00117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’·†á8—˜¼½†.H«×RMINORZ
+CODE_SMELL
+ˆsquid:S00117•"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æï˜¾8—˜¼½†.H¬×RMINORZ
+CODE_SMELL
+ˆsquid:S00117š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ÍÌá8—˜¼½†.H­×RMINORZ
+CODE_SMELL
+squid:S00117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸·´–úÿÿÿÿ8—˜¼½†.H®×RMINORZ
+CODE_SMELL
+squid:S00117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…’°«ÿÿÿÿÿ8—˜¼½†.H¯×RMINORZ
+CODE_SMELL
+squid:S00117³"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷æ¨æüÿÿÿÿ8—˜¼½†.H°×RMINORZ
+CODE_SMELL
+squid:S00117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØŒÇãýÿÿÿÿ8—˜¼½†.H±×RMINORZ
+CODE_SMELL
+ksquid:S1153\"1Directly append the argument of String.valueOf().(òÛ•÷þÿÿÿÿ8—˜¼½†.H²×RMINORZ
+CODE_SMELL
+asquid:S1148Ç"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8—˜¼½†.H³×RMINORZVULNERABILITY
+asquid:S1148Î"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8—˜¼½†.H´×RMINORZVULNERABILITY
+asquid:S1148ª"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8—˜¼½†.Hµ×RMINORZVULNERABILITY
+asquid:S1148±"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8—˜¼½†.H¶×RMINORZVULNERABILITY
+asquid:S1148æ"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8—˜¼½†.H·×RMINORZVULNERABILITY
+asquid:S1148í"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8—˜¼½†.H¸×RMINORZVULNERABILITY
+Qsquid:S2131º"Use "Long.toString" instead.(Åú8—˜¼½†.H¹×RMAJORZ
+CODE_SMELL
+°squid:S1158º"{Call the static method Long.toString(...) instead of instantiating a temporary object to perform this to string conversion.(Åú8—˜¼½†.Hº×RMINORZ
+CODE_SMELL
+Ssquid:S2129º"Remove this "Long" constructor(Åú8—˜¼½†.H»×RMAJORZ
+CODE_SMELL

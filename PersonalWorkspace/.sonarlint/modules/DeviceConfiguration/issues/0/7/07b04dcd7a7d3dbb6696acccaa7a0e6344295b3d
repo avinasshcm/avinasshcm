@@ -1,0 +1,66 @@
+
+ysquid:CommentedOutCodeLine9"<This block of commented-out lines of code should be removed.(Àş‚ûHŠ¤RMAJORZ
+CODE_SMELL
+~squid:CommentedOutCodeLinex"<This block of commented-out lines of code should be removed.(ä‘ŠùÿÿÿÿH‹¤RMAJORZ
+CODE_SMELL
+nsquid:UnusedPrivateMethod”"1Remove this unused private "generateGUID" method.(º½ÿÒHŒ¤RMAJORZ
+CODE_SMELL
+Œsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(İ“íãH¤RCRITICALZ
+CODE_SMELL
+Zsquid:S1148ƒ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH¤RMINORZVULNERABILITY
+ysquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(±ú¤{H¤RMAJORZ
+CODE_SMELL
+Osquid:S1643V"Use a StringBuilder instead.(áÖ®ÊüÿÿÿÿH¤RMINORZ
+CODE_SMELL
+qsquid:S2629/"7Use the built-in formatting to construct this argument.(•ëôğşÿÿÿÿ8Ò¿äî+H‘¤RMAJORZ
+CODE_SMELL
+‡squid:S22938"YReplace the type specification in this constructor call with the diamond operator ("<>").(’­ï™H’¤RMINORZ
+CODE_SMELL
+Osquid:S1643h"Use a StringBuilder instead.(¿¼ŸÅıÿÿÿÿH“¤RMINORZ
+CODE_SMELL
+Osquid:S1643`"Use a StringBuilder instead.(ù¾ÇØşÿÿÿÿH”¤RMINORZ
+CODE_SMELL
+Osquid:S1643T"Use a StringBuilder instead.(Œ®¨åÿÿÿÿÿH•¤RMINORZ
+CODE_SMELL
+tsquid:S2147„"ECombine this catch with the one at line 130, which has the same body.(ï­£ÄH–¤RMINORZ
+CODE_SMELL
+Osquid:S1643N"Use a StringBuilder instead.(Œ®¨åÿÿÿÿÿH—¤RMINORZ
+CODE_SMELL
+xsquid:UnusedPrivateMethod˜"6Remove this unused private "generateTimeStamp" method.(ªØışıÿÿÿÿH˜¤RMAJORZ
+CODE_SMELL
+squid:S1192R"NDefine a constant instead of duplicating this literal ".list=String," 4 times.(È¯òH™¤RCRITICALZ
+CODE_SMELL
+Jsquid:S1643X"Use a StringBuilder instead.(ÿÂËÛHš¤RMINORZ
+CODE_SMELL
+\squid:S20957".Close this "FileWriter" in a "finally" clause.(æ²ˆÙøÿÿÿÿH›¤RBLOCKERZBUG
+€squid:S1192R"ODefine a constant instead of duplicating this literal "DeviceManager." 6 times.(È¯òHœ¤RCRITICALZ
+CODE_SMELL
+Œsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(·ŒÜH¤RCRITICALZ
+CODE_SMELL
+Zsquid:S1148…"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH¤RMINORZVULNERABILITY
+Šsquid:S3776,"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(Çµí‘8Éò–î+HŸ¤RCRITICALZ
+CODE_SMELL
+lsquid:S2629|"7Use the built-in formatting to construct this argument.(ÜÖ‘Ç8µÎëî+H ¤RMAJORZ
+CODE_SMELL
+Vsquid:S1643W"Use a StringBuilder instead.( Ğøàûÿÿÿÿ8ò³×‰ş,H¡¤RMINORZ
+CODE_SMELL
+Vsquid:S1643f"Use a StringBuilder instead.(ù¾ÇØşÿÿÿÿ8ò³×‰ş,H¢¤RMINORZ
+CODE_SMELL
+Psquid:S1643i"Use a StringBuilder instead.(ş¬‚T8ò³×‰ş,H£¤RMINORZ
+CODE_SMELL
+Psquid:S1643k"Use a StringBuilder instead.(ş¬‚T8ò³×‰ş,H¤¤RMINORZ
+CODE_SMELL
+lsquid:S2629="7Use the built-in formatting to construct this argument.(¾©µÎ8ò³×‰ş,H¥¤RMAJORZ
+CODE_SMELL
+qsquid:S2629>"7Use the built-in formatting to construct this argument.(ìÏòóøÿÿÿÿ8ò³×‰ş,H¦¤RMAJORZ
+CODE_SMELL
+qsquid:S2629K"7Use the built-in formatting to construct this argument.(Óë”çúÿÿÿÿ8ò³×‰ş,H§¤RMAJORZ
+CODE_SMELL
+lsquid:S2629]"7Use the built-in formatting to construct this argument.(¡ÔÃ8ò³×‰ş,H¨¤RMAJORZ
+CODE_SMELL
+msquid:S2629‹"7Use the built-in formatting to construct this argument.(ä—ÿ8ò³×‰ş,H©¤RMAJORZ
+CODE_SMELL
+˜squid:S00115("ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¯Éæ™ùÿÿÿÿ8ò³×‰ş,Hª¤RCRITICALZ
+CODE_SMELL
+“squid:S00115*"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(íÑÆú8ò³×‰ş,H«¤RCRITICALZ
+CODE_SMELL

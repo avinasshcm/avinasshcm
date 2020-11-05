@@ -1,0 +1,31 @@
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MergeLogFiles {
+
+    public static void main(String args[]) {
+
+        Path path = Paths.get("D:\\Clients\\YOMA_Slowness\\26-May-17\\UAT3_Audit\\Sysout");
+        List<String> consolidated = new ArrayList<String>();
+        try {
+            List<Path> files = Files.list(path).collect(Collectors.toList());
+            for (Path item : files) {
+                consolidated.addAll(Files.lines(item).filter(e -> e.contains("FBE_CBS_PRNSVC"))
+                    .filter(e -> !e.contains("event.getData() is null")).distinct().collect(Collectors.toList()));
+            }
+
+            Files.write(Paths.get("D:\\Clients\\YOMA_Slowness\\26-May-17\\UAT3_Audit\\Sysout\\Consolidated.log"), consolidated,
+                Charset.defaultCharset());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+}

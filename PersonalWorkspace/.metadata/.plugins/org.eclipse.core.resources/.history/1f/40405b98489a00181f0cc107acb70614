@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class IBANHashCode {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        // TODO Auto-generated method stub
+
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\amanjuna\\Desktop\\IBAN.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+
+                int cdtrAcctHashCode = line.hashCode();
+                System.out.println(cdtrAcctHashCode);
+
+                int modRes = cdtrAcctHashCode % 25;
+                int queueNum = Math.abs(modRes);
+                String accHashCode = String.valueOf(queueNum);
+
+            }
+        }
+    }
+}

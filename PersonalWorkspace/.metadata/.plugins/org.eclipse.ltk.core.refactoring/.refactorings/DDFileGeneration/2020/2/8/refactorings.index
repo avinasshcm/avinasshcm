@@ -1,0 +1,6 @@
+1582287651841	Rename local variable 'template'
+1582287704926	Extract method 'replaceParameters'
+1582289008756	Extract constant 'SIBSBIC'
+1582289023787	Extract constant 'CTTBIC'
+1582289035313	Extract constant 'TPTBIC'
+1582289047199	Extract constant 'CdtrIBAN'

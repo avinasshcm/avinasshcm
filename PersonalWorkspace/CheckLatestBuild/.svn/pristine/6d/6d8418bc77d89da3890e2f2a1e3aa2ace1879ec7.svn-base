@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Check Latest Build Configuration</comment>
+
+	<!-- Database Provider information -->
+	<!-- For DB2 -->
+
+
+	<!-- DB2 -->
+	
+	<entry key="databaseProvider">db2</entry>
+	<entry key="userName">USER_NAME</entry>
+	<entry key="password">PASSWORD</entry>
+	<entry key="connectionString">jdbc:db2://localhost:50000/DBNAME</entry>
+	<entry key="driverClass">com.ibm.db2.jcc.DB2Driver</entry>
+
+
+	<!-- For ORACLE 
+
+	<entry key="databaseProvider">oracle</entry>
+	<entry key="userName">USER_NAME</entry>
+	<entry key="password">PASSWORD</entry>
+	<entry key="connectionString">jdbc:oracle:thin:@loclahost:1521:DBNAME</entry>
+	<entry key="driverClass">oracle.jdbc.driver.OracleDriver</entry>
+	
+	-->
+
+</properties>

@@ -1,0 +1,101 @@
+<atmCashTransactionRq>
+	<ns1:rqHeader xmlns:ns1="http://www.misys.com/cbs/types/msgs/atm/v1r1">
+		<ns2:version xmlns:ns2="http://www.misys.com/cbs/types/header"/>
+		<ns3:orig xmlns:ns3="http://www.misys.com/cbs/types/header">
+			<ns3:channelId>ATM</ns3:channelId>
+			<ns3:appId>200</ns3:appId>
+			<ns3:appVer/>
+			<ns3:offlineMode>false</ns3:offlineMode>
+		</ns3:orig>
+		<ns4:messageType xmlns:ns4="http://www.misys.com/cbs/types/header">ATMCashWithdrawal</ns4:messageType>
+	</ns1:rqHeader>
+	<ns5:atmCashTransactionInput xmlns:ns5="http://www.misys.com/cbs/types/msgs/atm/v1r1">
+		<ns6:atmMessageHeader xmlns:ns6="http://www.misys.com/cbs/types">
+			<ns6:versionNum>1</ns6:versionNum>
+			<ns6:atmMsgType>
+				<ns6:messageClass>2</ns6:messageClass>
+				<ns6:messageFunction>{2}</ns6:messageFunction>
+				<ns6:txnOriginator>0</ns6:txnOriginator>
+			</ns6:atmMsgType>
+			<ns6:atmMsgReasonCode>97500020</ns6:atmMsgReasonCode>
+		</ns6:atmMessageHeader>
+		<ns7:txnInputData xmlns:ns7="http://www.misys.com/cbs/types">
+			<ns7:tellerTxnReference>{1}</ns7:tellerTxnReference>
+		</ns7:txnInputData>
+		<ns8:narrative xmlns:ns8="http://www.misys.com/cbs/types">
+			<ns8:reference>783658</ns8:reference>
+			<ns8:narrativeLine1>AO50O222</ns8:narrativeLine1>
+		</ns8:narrative>
+		<ns9:customerPosting xmlns:ns9="http://www.misys.com/cbs/types">
+			<ns9:postingAction/>
+			<ns9:account>
+				<ns9:inputAccount>
+					<ns9:inputAccountId>{3}</ns9:inputAccountId>
+				</ns9:inputAccount>
+			</ns9:account>
+			<ns9:currency>
+				<ns9:isoCurrencyCode>978</ns9:isoCurrencyCode>
+				<ns9:amount>10.00</ns9:amount>
+			</ns9:currency>
+		</ns9:customerPosting>
+		<ns10:atmDetails xmlns:ns10="http://www.misys.com/cbs/types">
+			<ns10:processingCode>
+				<ns10:txnType>01</ns10:txnType>
+				<ns10:acctType1>00</ns10:acctType1>
+				<ns10:acctType2>00</ns10:acctType2>
+			</ns10:processingCode>
+			<ns10:amountTrans>
+				<ns10:isoCurrencyCode>978</ns10:isoCurrencyCode>
+				<ns10:amount>11.10</ns10:amount>
+			</ns10:amountTrans>
+			<ns10:amountRecon>
+				<ns10:isoCurrencyCode>978</ns10:isoCurrencyCode>
+				<ns10:amount>0</ns10:amount>
+			</ns10:amountRecon>
+			<ns10:reconRate>0</ns10:reconRate>
+			<ns10:amountCardHldBill>
+				<ns10:cardCcyAmt>
+					<ns10:amount>100.00</ns10:amount>
+				</ns10:cardCcyAmt>
+				<ns10:valueAmt>
+					<ns10:isoCurrencyCode>978</ns10:isoCurrencyCode>
+					<ns10:amount>10.00</ns10:amount>
+				</ns10:valueAmt>
+			</ns10:amountCardHldBill>
+			<ns10:trmDateTime>{0}</ns10:trmDateTime>
+			<ns10:txnDateTime>{0}</ns10:txnDateTime>
+			<ns10:ptofSerDataCd>
+				<ns10:crdRdMethod>5111</ns10:crdRdMethod>
+				<ns10:crdVerifyMethod>0191</ns10:crdVerifyMethod>
+				<ns10:posEnv>3146</ns10:posEnv>
+			</ns10:ptofSerDataCd>
+			<ns10:msgReason>1503</ns10:msgReason>
+			<ns10:cardSeqNo>1234567896321456</ns10:cardSeqNo>
+			<ns10:functionCode>102</ns10:functionCode>
+			<ns10:dateRecon>2012-01-13+05:30</ns10:dateRecon>
+			<ns10:originalTxnAmt/>
+			<ns10:accIDC>11000589394</ns10:accIDC>
+			<ns10:track2Data>{4}</ns10:track2Data>
+			<ns10:retRefNum>101</ns10:retRefNum>
+			<ns10:apprCode>891553</ns10:apprCode>
+			<ns10:atmActionCd>000</ns10:atmActionCd>
+			<ns10:cardAccpTerId>00000001</ns10:cardAccpTerId>
+			<ns10:cardAccpIdCd>11000589394</ns10:cardAccpIdCd>
+			<ns10:cardAccpName>NANYUKIBR001&gt;NANYUKI                  KE</ns10:cardAccpName>
+			<ns10:adddResCd>6011</ns10:adddResCd>
+			<ns10:feeAmt>
+				<ns10:isoCurrencyCode>978</ns10:isoCurrencyCode>
+				<ns10:amount>0.00</ns10:amount>
+			</ns10:feeAmt>
+			<ns10:pINData>NANYUKIBR001&gt;NANYUKI                  KE0000000111111111110121200000400</ns10:pINData>
+			<ns10:originalDataEle>
+				<ns10:orgDateTime>{0}</ns10:orgDateTime>
+			</ns10:originalDataEle>
+			<ns10:aAgentIDC>RTPSID</ns10:aAgentIDC>
+			<ns10:terminalData>T01078AC1000ACT001CAM00041000AM10041000CY0003EURCY1003EUROTY003207RTY003227TYP003207</ns10:terminalData>
+			<ns10:cardIssAuthData>11000589394</ns10:cardIssAuthData>
+			<ns10:recvIIC>Bush_Inside</ns10:recvIIC>
+			<ns10:accIdentification1>{3}</ns10:accIdentification1>
+		</ns10:atmDetails>
+	</ns5:atmCashTransactionInput>
+</atmCashTransactionRq>

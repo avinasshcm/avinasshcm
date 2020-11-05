@@ -1,0 +1,46 @@
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class CreateSymbolicLinks {
+	/**
+	 * @param args
+	 * @throws SQLException 
+	 */
+	public static void main(String[] args) throws SQLException {
+		ReadCurrentBuild rcb = new ReadCurrentBuild();
+		Properties info = new Properties();
+		String URL = rcb.extractCredentials(info);
+		Connection conn = rcb.getConnection(URL, info);
+		try {
+			rcb.viewTable(conn);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			conn.close();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(rcb.BFAM_Full_Build);
+		System.out.println(rcb.BFP_Full_Build);
+		/*
+		File src = new File("");
+		File dest = new File("");
+		Path newLink = Paths.get(src.getAbsolutePath());
+		Path target = Paths.get(dest.getAbsolutePath());
+		try {
+			Files.createSymbolicLink(newLink, target);
+		}
+		catch (IOException x) {
+			System.err.println(x);
+		}
+		catch (UnsupportedOperationException x) {
+			// Some file systems do not support symbolic links.
+			System.err.println(x);
+		}*/
+		// TODO Auto-generated method stub
+	}
+}

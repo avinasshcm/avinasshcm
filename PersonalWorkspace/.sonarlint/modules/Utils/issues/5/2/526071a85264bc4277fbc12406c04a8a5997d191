@@ -1,0 +1,12 @@
+
+Hsquid:S1220""Move this file to a named package.Hº’RMINORZ
+CODE_SMELL
+lsquid:UselessImportCheck"1Remove this unused import 'java.math.BigDecimal'.(ÍêÍäHΩ’RMINORZ
+CODE_SMELL
+hsquid:S2130	";Use "Float.parseFloat" for this string-to-float conversion.(Â—ˇHæ’RMINORZ
+CODE_SMELL
+osquid:UselessImportCheck"4Remove this unused import 'java.text.DecimalFormat'.(§∞”òHø’RMINORZ
+CODE_SMELL
+f
+squid:S106"9Replace this use of System.out or System.err by a logger.(Œ‡üªH¿’RMAJORZ
+CODE_SMELL

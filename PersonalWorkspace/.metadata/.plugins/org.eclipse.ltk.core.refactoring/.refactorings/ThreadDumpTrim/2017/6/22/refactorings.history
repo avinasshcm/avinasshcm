@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;words&apos; in &apos;MergeAuditFiles.main(...)&apos; to &apos;consolidated&apos;&#x0D;&#x0A;- Original project: &apos;ThreadDumpTrim&apos;&#x0D;&#x0A;- Original element: &apos;MergeAuditFiles.main(String[]).words&apos;&#x0D;&#x0A;- Renamed element: &apos;words&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;words&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{MergeAuditFiles.java[MergeAuditFiles~main~\[QString;@words!633!677!646!650!QList\&lt;QString;&gt;;!0!false" name="consolidated" references="true" stamp="1496377422756" version="1.0"/>
+</session>

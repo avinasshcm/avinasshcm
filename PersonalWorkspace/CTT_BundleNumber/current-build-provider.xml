@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	
+	
+	<!-- Get the Current Build Status from BFTB_INSTALL_HISTORY  -->
+	<!--  
+	--> 
+		<bean id="CURRENT_BUILD_PROVIDER" class="ReadCurrentBuild" scope="prototype"/>
+ 
+	<!-- Get the Current Build Status from CurrentBuild.properties File  -->
+	<!-- 
+		<bean id="CURRENT_BUILD_PROVIDER" class="ReadCurrentBuildFromFile" scope="prototype"/>
+	-->
+	 
+ </beans>
+

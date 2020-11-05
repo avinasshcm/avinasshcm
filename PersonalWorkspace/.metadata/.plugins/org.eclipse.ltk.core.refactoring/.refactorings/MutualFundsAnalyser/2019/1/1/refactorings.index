@@ -1,0 +1,5 @@
+1546402715913	Extract constant 'CONFIG_XML'
+1546532780427	Extract local variable 'exponent'
+1546532819876	Extract local variable 'pow'
+1546532904560	Extract local variable 'firstArg'
+1546537748533	Extract method 'insertElement'

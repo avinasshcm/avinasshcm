@@ -1,0 +1,224 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Enumeration;
+import java.util.Properties;
+
+public class ReadCurrentBuild implements CurrentBuildProvider {
+	public static int BFP_Curr_Build;
+	public static int CBS_Curr_Build;
+	public static int BFAM_Curr_Build;
+	public static int BFPM_Curr_Build;
+	public static int BFAO_Curr_Build;
+	public static int WIF_Curr_Build;
+	public static int UB_Curr_Build;
+	public static int PTY_Curr_Build;
+	public static int BFT_Curr_Build;
+	/**
+	 * @param args
+	 */
+	static {
+		//create an instance of properties class
+		//Properties props = new Properties();
+		//try retrieve data from file
+		/*try {
+			props.load(new FileInputStream("CurrentBuild.properties"));
+
+			BFP_Curr_Build = Integer.parseInt(props.getProperty("BFP"));
+			CBS_Curr_Build = Integer.parseInt(props.getProperty("CBS"));
+			UB_Curr_Build = Integer.parseInt(props.getProperty("UB"));
+			PTY_Curr_Build = Integer.parseInt(props.getProperty("Party"));
+			BFT_Curr_Build = Integer.parseInt(props.getProperty("BFT"));
+			
+		}
+		//catch exception in case properties file does not exist
+		catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("Problem in loading CurrentBuild.properties file");
+		}*/
+		String URL = "";
+		Properties info = new Properties();
+		String userName = "";
+		String password = "";
+		try {
+			File file = new File("resource.xml");
+			FileInputStream fileInput = new FileInputStream(file);
+			Properties properties = new Properties();
+			properties.loadFromXML(fileInput);
+			fileInput.close();
+			Enumeration enuKeys = properties.keys();
+			while (enuKeys.hasMoreElements()) {
+				String key = (String) enuKeys.nextElement();
+				String value = properties.getProperty(key);
+				if (key.equals("userName")) {
+					userName = value;
+				}
+				if (key.equals("password")) {
+					password = value;
+				}
+				if (key.equals("connectionString")) {
+					URL = value;
+				}
+				//System.out.println(key + ": " + value);
+			}
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		info.put("user", userName);
+		info.put("password", password);
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, info);
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			viewTable(conn);
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			conn.close();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+	}
+
+	public static void viewTable(Connection con) throws SQLException {
+		Statement stmt = null;
+		String query = "select BFAPPLICATION_ID,BFBUNDLEIDPK from BANKFUSION.BFTB_INSTALL_HISTORY where BFSTATE = 'ACTIVE' ";
+		BFP_Curr_Build = 0;
+		CBS_Curr_Build = 0;
+		BFAM_Curr_Build = 0;
+		BFPM_Curr_Build = 0;
+		BFAO_Curr_Build = 0;
+		WIF_Curr_Build = 0;
+		BFT_Curr_Build = 0;
+		UB_Curr_Build = 0;
+		PTY_Curr_Build = 0;
+		try {
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				String applicationID = rs.getString("BFAPPLICATION_ID");
+				if (applicationID.equals("BankFusion")) {
+					BFP_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + BFP_Curr_Build);
+				}
+				if (applicationID.equals("CBS")) {
+					CBS_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + CBS_Curr_Build);
+				}
+				if (applicationID.equals("BFAM")) {
+					BFAM_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + CBS_Curr_Build);
+				}
+				if (applicationID.equals("BFPM")) {
+					BFPM_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + CBS_Curr_Build);
+				}
+				if (applicationID.equals("BFAO")) {
+					BFAO_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + CBS_Curr_Build);
+				}
+				if (applicationID.equals("WIF")) {
+					WIF_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + CBS_Curr_Build);
+				}
+				if (applicationID.equals("BFBT")) {
+					BFT_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + BFT_Curr_Build);
+				}
+				if (applicationID.equals("UniversalBanking")) {
+					UB_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + UB_Curr_Build);
+				}
+				if (applicationID.equals("Party")) {
+					PTY_Curr_Build = retreiveBuild(rs);
+					//System.out.println(applicationID + "\t" + PTY_Curr_Build);
+				}
+				//String build = rs.getString("BFBUNDLEIDPK");
+				//System.out.println(applicationID + "\t" + build);
+			}
+		}
+		catch (SQLException e) {
+			//JDBCTutorialUtilities.printSQLException(e);
+		}
+		finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+	}
+
+	public static int retreiveBuild(ResultSet rs) throws SQLException {
+		String version;
+		version = rs.getString("BFBUNDLEIDPK");
+		String build = version.substring(version.lastIndexOf(".") + 1, version.length());
+		return Integer.parseInt(build);
+	}
+
+	@Override
+	public int getBFP_Curr_Build() {
+		return BFP_Curr_Build;
+	}
+
+	@Override
+	public int getUB_Curr_Build() {
+		return UB_Curr_Build;
+	}
+
+	@Override
+	public int getCBS_Curr_Build() {
+		return CBS_Curr_Build;
+	}
+
+	@Override
+	public int getPTY_Curr_Build() {
+		return PTY_Curr_Build;
+	}
+
+	@Override
+	public int getBFT_Curr_Build() {
+		return BFT_Curr_Build;
+	}
+
+	@Override
+	public int getBFAM_Curr_Build() {
+		return BFAM_Curr_Build;
+	}
+
+	@Override
+	public int getBFPM_Curr_Build() {
+		return BFPM_Curr_Build;
+	}
+
+	@Override
+	public int getBFAO_Curr_Build() {
+		return BFAO_Curr_Build;
+	}
+
+	@Override
+	public int getWIF_Curr_Build() {
+		return WIF_Curr_Build;
+	}
+}

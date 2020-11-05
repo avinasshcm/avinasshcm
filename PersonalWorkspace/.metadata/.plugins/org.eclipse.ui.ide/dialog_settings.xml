@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="662" key="DIALOG_WIDTH"/>
+		<item value="true" key="TOGGLE_SELECTED"/>
+		<item value="423" key="DIALOG_HEIGHT"/>
+		<item value="710" key="DIALOG_X_ORIGIN"/>
+		<item value="268" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\Essence\Workspace\CommonTools"/>
+			<item value="D:\Payments\Workspace"/>
+			<item value="D:\Payments\Workspace\Essence_427\CheckLatestBuild"/>
+			<item value="D:\Payments\Workspace\Essence_427"/>
+			<item value="D:\My Cloud\OneDrive\Java\Workspace\CCCorrection"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1494582110075" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.wst.jsdt.ui.java"/>
+			<item value="org.eclipse.jpt.jaxb"/>
+			<item value="org.eclipse.pde.PDE"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/Hackathon/src/MultipleSpaces.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/MutualFundsAnalyser/src/excel/utils/ExcelHelper.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/MutualFundsAnalyser/src/pojo/XIRRValues.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/MutualFundsAnalyser/src/xirr/XirrDate.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/ThreadDumpTrim/src/GrepEquivalent.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/MutualFundsAnalyser/src/main/ReadMFNAV.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/ThreadDumpTrim/src/AuditAnalyser.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="false" key="ShowDerived"/>
+		<section name="DialogBoundsSettings">
+			<item value="632" key="DIALOG_WIDTH"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+			<item value="650" key="DIALOG_HEIGHT"/>
+			<item value="669" key="DIALOG_X_ORIGIN"/>
+			<item value="191" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

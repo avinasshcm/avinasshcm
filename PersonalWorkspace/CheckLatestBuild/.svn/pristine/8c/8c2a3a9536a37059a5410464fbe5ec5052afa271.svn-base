@@ -1,0 +1,555 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+
+public class CheckBuild {
+	private static final String KEY_EXTN = ".key";
+	private static final String BFJ_EXTN = ".bfj";
+	private static final String TRUE = "true";
+	private static final String WIF = "WIF";
+	private static final String BFAO = "BFAO";
+	private static final String BFPM = "BFPM";
+	private static final String CBS = "CBS";
+	private static final String BFAM = "BFAM";
+	private static final String TELLER = "Teller";
+	private static final String PARTY = "Party";
+	private static final String DOT = ".";
+	private static final String UNDERSCORE = "_";
+	private static final String FOLDER_SEPERATOR = "/";
+	private static final String FBE_TELLER_DATA_CENTER_BUNDLES_PATCH_BUNDLE = "FBETellerDataCenter/Bundles/PatchBundle";
+	private static final String FBE_PARTY_BUNDLES_PATCH_BUNDLE = "FBEParty/Bundles/PatchBundle";
+	private static final String LAST_RELEASED_BUILD_NUMBER_TXT = "LastReleasedBuildNumber.txt";
+	private static final String FBP_BUNDLES_PATCH_BUNDLE = "FBP/Bundles/PatchBundle";
+	private static final String FBCBS_BUNDLES_PATCH_BUNDLE = "FBCBS/Bundles/PatchBundle";
+	private static final String FBAO_BUNDLES_PATCH_BUNDLE = "FBAO/Bundles/PatchBundle";
+	private static final String FBAM_BUNDLES_PATCH_BUNDLE = "FBAM/Bundles/PatchBundle";
+	private static final String FBPM_BUNDLES_PATCH_BUNDLE = "FBPM/Bundles/PatchBundle";
+	private static final String WIF_BUNDLES_PATCH_BUNDLE = "WIF/Bundles/PatchBundle";
+	private static final String FB_ESSENCE_BUNDLES_PATCH_BUNDLE = "FBEssence/Bundles/PatchBundle";
+	private static final String FBEOF_BUNDLES_PATCH_BUNDLE = "FBEOF/Bundles/PatchBundle";
+	private static final String FBE_TELLER_BUNDLES_PATCH_BUNDLE = "FBETeller/Bundles/PatchBundle";
+	private static final Logger LOGGER = Logger.getLogger(CheckBuild.class.getName());
+	public static String Good_Build_File = ReadPropertyFile.Good_Build_File;
+	public static String BFP_Path = ReadPropertyFile.BFP_Path + FOLDER_SEPERATOR + LAST_RELEASED_BUILD_NUMBER_TXT;
+	public static String CBS_Path = ReadPropertyFile.CBS_Path + FOLDER_SEPERATOR + Good_Build_File;
+	public static String UB_Path = ReadPropertyFile.UB_Path + FOLDER_SEPERATOR + Good_Build_File;
+	public static String PTY_Path = ReadPropertyFile.PTY_Path + FOLDER_SEPERATOR + Good_Build_File;
+	public static String BFT_Path = ReadPropertyFile.BFT_Path + FOLDER_SEPERATOR + Good_Build_File;
+	public static String Destination_Folder = ReadPropertyFile.Destination_Folder;
+	public static String BT_Specific = ReadPropertyFile.BT_Specific;
+	public static String AM_PM_Required = ReadPropertyFile.AM_PM_Required;
+	public static String WIF_Required = ReadPropertyFile.WIF_Required;
+	public static String AO_Required = ReadPropertyFile.AO_Required;
+	public static String UBOF_Required = ReadPropertyFile.UBOF_Required;
+	public static String BT_Specific_Required = ReadPropertyFile.BT_Specific_Required;
+	// Latest Build Numbers
+	int BFP_Latest;
+	int CBS_Latest;
+	int BFAM_Latest;
+	int BFPM_Latest;
+	int BFAO_Latest;
+	int WIF_Latest;
+	int UB_Latest;
+	int PTY_Latest;
+	int BFT_Latest;
+	// Current Build Numbers
+	int BFP_Current;
+	int CBS_Current;
+	int BFAM_Current;
+	int BFPM_Current;
+	int BFAO_Current;
+	int WIF_Current;
+	int UB_Current;
+	int PTY_Current;
+	int BFT_Current;
+	XmlBeanFactory factory = CurrentBuildProviderBeanFactory.getFactory();
+	CurrentBuildProvider currentBuildProvider = (CurrentBuildProvider) factory.getBean("CURRENT_BUILD_PROVIDER");
+
+	public CheckBuild(String[] module) throws IOException {
+		int sametime_Counter = 0;
+		File file = new File("LatestBuild.properties");
+		file.delete();
+		// Read Current Build from Respective Locations and Write it to LatestBuild.properties
+		readFile(BFP_Path, "BFP");
+		readFile(CBS_Path, CBS);
+		readFile(CBS_Path, BFAM);
+		readFile(CBS_Path, BFPM);
+		readFile(CBS_Path, BFAO);
+		readFile(CBS_Path, WIF);
+		readFile(UB_Path, "UB");
+		readFile(PTY_Path, PARTY);
+		readFile(BFT_Path, "BFT");
+		// Read Latest Build Details from LatestBuild.properties
+		BFP_Latest = ReadLatestBuild.BFP_Latest_Build;
+		CBS_Latest = ReadLatestBuild.CBS_Latest_Build;
+		BFAM_Latest = ReadLatestBuild.BFAM_Latest_Build;
+		BFPM_Latest = ReadLatestBuild.BFPM_Latest_Build;
+		BFAO_Latest = ReadLatestBuild.BFAO_Latest_Build;
+		WIF_Latest = ReadLatestBuild.WIF_Latest_Build;
+		UB_Latest = ReadLatestBuild.UB_Latest_Build;
+		PTY_Latest = ReadLatestBuild.PTY_Latest_Build;
+		BFT_Latest = ReadLatestBuild.BFT_Latest_Build;
+		// Read Current Build Details from BFTB_INSTALL_HISTORY CurrentBuild.properties
+		BFP_Current = currentBuildProvider.getBFP_Curr_Build();
+		CBS_Current = currentBuildProvider.getCBS_Curr_Build();
+		BFAM_Current = currentBuildProvider.getBFAM_Curr_Build();
+		BFPM_Current = currentBuildProvider.getBFPM_Curr_Build();
+		BFAO_Current = currentBuildProvider.getBFAO_Curr_Build();
+		WIF_Current = currentBuildProvider.getWIF_Curr_Build();
+		UB_Current = currentBuildProvider.getUB_Curr_Build();
+		PTY_Current = currentBuildProvider.getPTY_Curr_Build();
+		BFT_Current = currentBuildProvider.getBFT_Curr_Build();
+		// For BundleSequence.properties
+		Map<String, String> map = new HashMap<String, String>();
+		int j = 0;
+		while (j < module.length) {
+			switch (Integer.parseInt(module[j])) {
+			case 1:
+				LOGGER.info("\n\nCopying BankFusion Patch Bundles...");
+				for (int i = BFP_Current + 1; i <= BFP_Latest; i++) {
+					copyPatch("BFP", i, map, sametime_Counter);
+				}
+				break;
+			case 2:
+				LOGGER.info("\nCopying CBS Patch Bundles...");
+				for (int i = CBS_Current + 1; i <= CBS_Latest; i++) {
+					copyPatch(CBS, i, map, sametime_Counter);
+				}
+				for (int i = BFAM_Current + 1; i <= BFAM_Latest; i++) {
+					if (AM_PM_Required.equals(TRUE)) {
+						copyPatch(BFAM, i, map, sametime_Counter);
+					}
+				}
+				for (int i = BFPM_Current + 1; i <= BFPM_Latest; i++) {
+					if (AM_PM_Required.equals(TRUE)) {
+						copyPatch(BFPM, i, map, sametime_Counter);
+					}
+				}
+				for (int i = BFAO_Current + 1; i <= BFAO_Latest; i++) {
+					if (AO_Required.equals(TRUE)) {
+						copyPatch(BFAO, i, map, sametime_Counter);
+					}
+				}
+				for (int i = WIF_Current + 1; i <= WIF_Latest; i++) {
+					if (WIF_Required.equals(TRUE)) {
+						copyPatch(WIF, i, map, sametime_Counter);
+					}
+				}
+				break;
+			case 3:
+				LOGGER.info("\nCopying Party Patch Bundles...");
+				for (int i = PTY_Current + 1; i <= PTY_Latest; i++) {
+					copyPatch(PARTY, i, map, sametime_Counter);
+				}
+				break;
+			case 4:
+				LOGGER.info("\nCopying UB Patch Bundles...");
+				for (int i = UB_Current + 1; i <= UB_Latest; i++) {
+					copyPatch("UB", i, map, sametime_Counter);
+					if (UBOF_Required.equals(TRUE))
+						copyPatch("UBOF", i, map, sametime_Counter);
+				}
+				break;
+			case 5:
+				LOGGER.info("\nCopying Teller Patch Bundles...");
+				for (int i = BFT_Current + 1; i <= BFT_Latest; i++) {
+					copyPatch("BFT", i, map, sametime_Counter);
+					if (BT_Specific_Required.equals(TRUE)) {
+						copyPatch(BT_Specific, i, map, sametime_Counter);
+					}
+				}
+				break;
+			case 0:
+				exit(0);
+			default:
+				LOGGER.severe("Invalid Option...!!!!");
+			}
+			j++;
+		}
+		File sequenceFile = new File(Destination_Folder + "/BundleSequence.properties");
+		if (sequenceFile.exists())
+			sequenceFile.delete();
+		PrintWriter out1 = new PrintWriter(new FileWriter(Destination_Folder + "/BundleSequence.properties", true));
+		List<String> listOfKeys = new ArrayList<String>(map.keySet());
+		Collections.sort(listOfKeys);
+		for (int i = 0; i < listOfKeys.size(); i++) {
+			map.get(listOfKeys.get(i));
+			out1.println(map.get(listOfKeys.get(i)));
+		}
+		out1.close();
+		LOGGER.info("\n\nCompleted...!!!");
+	}
+
+	private void exit(int i) {
+		LOGGER.info(String.valueOf(i));
+	}
+
+	public static void main(String[] args) throws IOException {
+		System.out.println("\n\nYou are about to Copy Patch Bundles.");
+		System.out.println("Select your option from the list below.");
+		System.out.println("For multiple options provide the input comma separated");
+		System.out.println("Example : ");
+		System.out.println("	(i)   For a Complete UB Copying input options as 1,2,3,4,5");
+		System.out.println("...............................................");
+		System.out.println("1 - BF      (Copy Patch Bundles of BF)");
+		System.out.println("2 - CBS	    (Copy Patch Bundles of CBS)");
+		System.out.println("3 - Party	(Copy Patch Bundles of Party)");
+		System.out.println("4 - UB		(Copy Patch Bundles of UB)");
+		System.out.println("5 - BFT		(Copy Patch Bundles of BFT + (BTDC or BTBS))");
+		System.out.println("0 - EXIT");
+		System.out.print("\nEnter Your Option : ");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String option = null;
+		try {
+			option = br.readLine();
+		}
+		catch (IOException ioe) {
+			LOGGER.severe("IO error trying to read Input!");
+			// System.exit(1);
+		}
+		String[] modules = option.split(",");
+		CheckBuild cB = new CheckBuild(modules);
+		cB.toString();
+	}
+
+	public void readFile(String fName, String module) {
+		String moduleName = module;
+		BufferedReader br = null;
+		try {
+			String sCurrentLine;
+			br = new BufferedReader(new FileReader(fName));
+			while ((sCurrentLine = br.readLine()) != null) {
+				int index = sCurrentLine.lastIndexOf(DOT);
+				if (index > 0) {
+					String truncate = sCurrentLine.substring(index + 1);
+					sCurrentLine = truncate;
+				}
+				PrintWriter out = new PrintWriter(new FileWriter("LatestBuild.properties", true));
+				out.println(moduleName + "=" + sCurrentLine.trim());
+				out.close();
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (br != null)
+					br.close();
+			}
+			catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
+	/*
+	 * private static void getSourceFileName(File[] fList, File sourcePatchFile, File sourceKeyFile, ArrayList<String> module) { for (File
+	 * fn : fList) { if (fn.getName().endsWith(".bfj")) { sourcePatchFile = fn; module.add(fn.getName()); } else if
+	 * (fn.getName().endsWith(".key")) { sourceKeyFile = fn; } } }
+	 */
+	private static void copyPatch(String moduleName, int buildNumber, Map<String, String> module, int sametime_Counter) throws IOException {
+		File sourcePatchFile = null;
+		File sourceKeyFile = null;
+		String patchName = "";
+		String keyName = "";
+		String modName = moduleName;
+		String sFileName = null;
+		// String Version = ReadPropertyFile.Version + "." + ReadPropertyFile.ServicePack;
+		// if (Version.equals("4.2.6") || Version.equals("4.2.7") || Version.equals("5.1.0")) {
+		if (moduleName.equals("BFP")) {
+			modName = FBP_BUNDLES_PATCH_BUNDLE;
+			if (ReadPropertyFile.Version.startsWith("4.0") || ReadPropertyFile.Version.startsWith("4.1"))
+				sFileName = "BFP";
+			else
+				sFileName = "FBP";
+			String ver = ReadPropertyFile.Version;
+			String folderName = "";
+			int len = ver.lastIndexOf(DOT);
+			if (len != 1) {
+				folderName = ReadPropertyFile.BFP_Path + FOLDER_SEPERATOR + sFileName + UNDERSCORE + ReadPropertyFile.Version + ".0." + buildNumber + "/ConsolidatedPatchBundle/BFComplete/Bundles/BankFusion/ConsolidatedPatchBundle";
+			}
+			else if (len == 1) {
+				folderName = ReadPropertyFile.BFP_Path + FOLDER_SEPERATOR + sFileName + UNDERSCORE + getPatchVersion() + buildNumber + "/ConsolidatedPatchBundle/BFComplete/Bundles/BankFusion/ConsolidatedPatchBundle";
+			}
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals(CBS)) {
+			modName = FBCBS_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.CBS_Path + "/CBS" + UNDERSCORE + getPatchVersion() + buildNumber + "/CBS/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals(BFAO)) {
+			modName = FBAO_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.CBS_Path + "/CBS" + UNDERSCORE + getPatchVersion() + buildNumber + "/AccountOwnership/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals(BFAM)) {
+			modName = FBAM_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.CBS_Path + "/CBS" + UNDERSCORE + getPatchVersion() + buildNumber + "/AccountManagement/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals(BFPM)) {
+			modName = FBPM_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.CBS_Path + "/CBS" + UNDERSCORE + getPatchVersion() + buildNumber + "/PaymentManagement/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals(WIF)) {
+			modName = WIF_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.CBS_Path + "/CBS" + UNDERSCORE + getPatchVersion() + buildNumber + "/WhatIf/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals("UB")) {
+			modName = FB_ESSENCE_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.UB_Path + FOLDER_SEPERATOR + "FBE" + UNDERSCORE + getPatchVersion() + buildNumber + "/UBCore/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals("UBOF")) {
+			modName = FBEOF_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.UB_Path + FOLDER_SEPERATOR + "FBE" + UNDERSCORE + getPatchVersion() + buildNumber + "/UBOffline/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		// TODO
+		if (moduleName.equals("BFT")) {
+			modName = FBE_TELLER_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.BFT_Path + FOLDER_SEPERATOR + TELLER + UNDERSCORE + getPatchVersion() + buildNumber + "/BranchTeller/PatchBundle";
+			// System.out.println(folderName);
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				for (File fn : fList) {
+					if ((fn.getName().startsWith(TELLER) || fn.getName().startsWith("BFT")) && fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if ((fn.getName().startsWith(TELLER) || fn.getName().startsWith("BFT")) && fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		// TODO
+		if (moduleName.equals(BT_Specific)) {
+			modName = FBE_TELLER_DATA_CENTER_BUNDLES_PATCH_BUNDLE;
+			// if (ReadPropertyFile.Version.startsWith("4.0"))
+			// sFileName = "BFBT";
+			// else
+			// sFileName = "Teller";
+			// BranchTellerBranchServer
+			// BranchTellerDataCentre
+			String folderName = "";
+			if (BT_Specific.equals("BTBS")) {
+				folderName = ReadPropertyFile.BFT_Path + FOLDER_SEPERATOR + TELLER + UNDERSCORE + getPatchVersion() + buildNumber + "/BranchTellerBranchServer/PatchBundle";
+			}
+			else {
+				folderName = ReadPropertyFile.BFT_Path + FOLDER_SEPERATOR + TELLER + UNDERSCORE + getPatchVersion() + buildNumber + "/BranchTellerDataCentre/PatchBundle";
+			}
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				for (File fn : fList) {
+					if (fn.getName().startsWith(BT_Specific) && fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().startsWith(BT_Specific) && fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		if (moduleName.equals(PARTY)) {
+			modName = FBE_PARTY_BUNDLES_PATCH_BUNDLE;
+			String folderName = ReadPropertyFile.PTY_Path + FOLDER_SEPERATOR + PARTY + UNDERSCORE + ReadPropertyFile.Version + DOT + ReadPropertyFile.ServicePack + DOT + ReadPropertyFile.Patch + DOT + +buildNumber + "/PatchBundle";
+			File folder = new File(folderName);
+			File[] fList = folder.listFiles();
+			if (folder.exists()) {
+				// getSourceFileName(fList, sourcePatchFile, sourceKeyFile, module);
+				for (File fn : fList) {
+					if (fn.getName().endsWith(BFJ_EXTN)) {
+						sourcePatchFile = fn;
+						sametime_Counter = addToBundleSeqProps(module, sametime_Counter, fn);
+					}
+					else if (fn.getName().endsWith(KEY_EXTN)) {
+						sourceKeyFile = fn;
+					}
+				}
+				patchName = sourcePatchFile.getName();
+				keyName = sourceKeyFile.getName();
+			}
+		}
+		String destPatchFileName = Destination_Folder + FOLDER_SEPERATOR + modName + FOLDER_SEPERATOR + patchName;
+		String destKeyFileName = Destination_Folder + FOLDER_SEPERATOR + modName + FOLDER_SEPERATOR + keyName;
+		File sourcePatch = sourcePatchFile;
+		File sourceKey = sourceKeyFile;
+		File destPatch = new File(destPatchFileName);
+		File destKey = new File(destKeyFileName);
+		copyFile(sourcePatch, destPatch);
+		copyFile(sourceKey, destKey);
+	}
+
+	private static int addToBundleSeqProps(Map<String, String> module, int sametime_Counter, File fn) throws IOException {
+		Path path = Paths.get(fn.getAbsolutePath());
+		BasicFileAttributes fba = Files.getFileAttributeView(path, BasicFileAttributeView.class).readAttributes();
+		if (module.containsKey(fba.creationTime())) {
+			module.put(fba.creationTime().toString() + "_" + sametime_Counter, fn.getName());
+			sametime_Counter++;
+		}
+		else
+			module.put(fba.creationTime().toString(), fn.getName());
+		return sametime_Counter;
+	}
+
+	private static void copyFile(File sourceFileName, File destFileName) throws IOException {
+		if (sourceFileName != null && sourceFileName.getAbsolutePath() != null && !sourceFileName.getAbsolutePath().contains(KEY_EXTN))
+			LOGGER.info("Copying Bundle : " + sourceFileName);
+		if (sourceFileName != null)
+			FileUtils.copyFile(sourceFileName, destFileName);
+	}
+
+	private static String getPatchVersion() {
+		return ReadPropertyFile.Version + DOT + ReadPropertyFile.ServicePack + DOT + ReadPropertyFile.Patch + DOT;
+	}
+}

@@ -1,0 +1,118 @@
+
+Ÿ"squid:ClassVariableVisibilityCheck"WMake MandateType a static final constant or non-public and provide accessors if needed.(ÀÃ‚HşïRMINORZVULNERABILITY
+Ysquid:S1148J"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÿïRMINORZVULNERABILITY
+ "squid:ClassVariableVisibilityCheck"SMake Counter a static final constant or non-public and provide accessors if needed.(ËóÖèøÿÿÿÿH€ğRMINORZVULNERABILITY
+squid:S3008 "_Rename this field "IBANAccountsFileName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å«âĞHğRMINORZ
+CODE_SMELL
+gsquid:S1444"6Make this "public static Pain002_Location" field final(ƒ‰å·H‚ğRMINORZVULNERABILITY
+ª"squid:ClassVariableVisibilityCheck!"]Make DDTxnInfoFileName a static final constant or non-public and provide accessors if needed.(¹ëôûÿÿÿÿHƒğRMINORZVULNERABILITY
+csquid:S1444"2Make this "public static DebitorBICFI" field final(İêÔH„ğRMINORZVULNERABILITY
+Šsquid:S3008"WRename this field "MandateGroup" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«Ğ«ŸüÿÿÿÿH…ğRMINORZ
+CODE_SMELL
+¢"squid:ClassVariableVisibilityCheck"UMake MandateID a static final constant or non-public and provide accessors if needed.(íÜš¡ûÿÿÿÿH†ğRMINORZVULNERABILITY
+jsquid:S1444"9Make this "public static OutDDSettlementPath" field final(Ş–£øH‡ğRMINORZVULNERABILITY
+Œsquid:S3008"^Rename this field "CreditTransferBICFI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âÉ¢ÔHˆğRMINORZ
+CODE_SMELL
+msquid:S1444!"7Make this "public static DDTxnInfoFileName" field final(¹ëôûÿÿÿÿH‰ğRMINORZVULNERABILITY
+„squid:S3008"VRename this field "DebitorIBAN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¢ËØHŠğRMINORZ
+CODE_SMELL
+…squid:S3008"WRename this field "DebitorBICFI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İêÔH‹ğRMINORZ
+CODE_SMELL
+ˆsquid:S3008"URename this field "SchemeType" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÙë¡úÿÿÿÿHŒğRMINORZ
+CODE_SMELL
+msquid:S1444"7Make this "public static TotalTransactions" field final(‡ê‘’ûÿÿÿÿHğRMINORZVULNERABILITY
+Œsquid:S3008"^Rename this field "CT_R_EVENTSLocation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€‰«HğRMINORZ
+CODE_SMELL
+Ÿ"squid:ClassVariableVisibilityCheck
+"XMake CreditorIBAN a static final constant or non-public and provide accessors if needed.(×øä5HğRMINORZVULNERABILITY
+‡squid:S3008"TRename this field "MandateID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÜš¡ûÿÿÿÿHğRMINORZ
+CODE_SMELL
+ª"squid:ClassVariableVisibilityCheck"]Make TotalTransactions a static final constant or non-public and provide accessors if needed.(‡ê‘’ûÿÿÿÿH‘ğRMINORZVULNERABILITY
+esquid:S1444"/Make this "public static MandateID" field final(íÜš¡ûÿÿÿÿH’ğRMINORZVULNERABILITY
+lsquid:S1444"6Make this "public static Pain008_Location" field final(™ßßÆùÿÿÿÿH“ğRMINORZVULNERABILITY
+‰squid:S3008"[Rename this field "Pain002_Location" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ‰å·H”ğRMINORZ
+CODE_SMELL
+„squid:UselessImportCheck"DRemove this unused import 'oracle.jdbc.proxy.annotation.GetCreator'.(·éÕ€şÿÿÿÿH•ğRMINORZ
+CODE_SMELL
+nsquid:S1444"8Make this "public static IN_CT_FileLocation" field final(œó´„ûÿÿÿÿH–ğRMINORZVULNERABILITY
+„squid:S3008"VRename this field "MandateType" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀÃ‚H—ğRMINORZ
+CODE_SMELL
+ "squid:ClassVariableVisibilityCheck"XMake DebitorBICFI a static final constant or non-public and provide accessors if needed.(İêÔH˜ğRMINORZVULNERABILITY
+‹squid:S3008"XRename this field "CreditorBICFI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂŞÍïùÿÿÿÿH™ğRMINORZ
+CODE_SMELL
+rsquid:S1444"<Make this "public static PartyCreditorProfileId" field final(ÒÄ¼ûÿÿÿÿHšğRMINORZVULNERABILITY
+¦"squid:ClassVariableVisibilityCheck"YMake CreditorBICFI a static final constant or non-public and provide accessors if needed.(ÂŞÍïùÿÿÿÿH›ğRMINORZVULNERABILITY
+¤"squid:ClassVariableVisibilityCheck"\Make Pain002_Location a static final constant or non-public and provide accessors if needed.(ƒ‰å·HœğRMINORZVULNERABILITY
+¨"squid:ClassVariableVisibilityCheck "`Make IBANAccountsFileName a static final constant or non-public and provide accessors if needed.(å«âĞHğRMINORZVULNERABILITY
+Šsquid:S3008"\Rename this field "InitiatingPartyId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—õó„HğRMINORZ
+CODE_SMELL
+bsquid:S1444	",Make this "public static Amount" field final(ÔòîóûÿÿÿÿHŸğRMINORZVULNERABILITY
+jsquid:S1444"9Make this "public static CT_R_EVENTSLocation" field final(€‰«H ğRMINORZVULNERABILITY
+csquid:S1444"-Make this "public static Counter" field final(ËóÖèøÿÿÿÿH¡ğRMINORZVULNERABILITY
+squid:S3008!"\Rename this field "DDTxnInfoFileName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹ëôûÿÿÿÿH¢ğRMINORZ
+CODE_SMELL
+bsquid:S1444
+"2Make this "public static CreditorIBAN" field final(×øä5H£ğRMINORZVULNERABILITY
+hsquid:S1444"2Make this "public static Man_CDTR_Acc" field final(Ã¤¾ÇøÿÿÿÿH¤ğRMINORZVULNERABILITY
+Œsquid:S3008"^Rename this field "OutDDSettlementPath" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş–£øH¥ğRMINORZ
+CODE_SMELL
+Ÿ"squid:ClassVariableVisibilityCheck"WMake DebitorIBAN a static final constant or non-public and provide accessors if needed.(ï¢ËØH¦ğRMINORZVULNERABILITY
+‰squid:S3008"[Rename this field "DVF_RSF_Location" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÏÊH§ğRMINORZ
+CODE_SMELL
+¤"squid:ClassVariableVisibilityCheck"\Make DVF_RSF_Location a static final constant or non-public and provide accessors if needed.(êÏÊH¨ğRMINORZVULNERABILITY
+§"squid:ClassVariableVisibilityCheck"_Make CreditTransferBICFI a static final constant or non-public and provide accessors if needed.(âÉ¢ÔH©ğRMINORZVULNERABILITY
+¥"squid:ClassVariableVisibilityCheck"XMake Man_CDTR_Acc a static final constant or non-public and provide accessors if needed.(Ã¤¾ÇøÿÿÿÿHªğRMINORZVULNERABILITY
+§"squid:ClassVariableVisibilityCheck"_Make CT_R_EVENTSLocation a static final constant or non-public and provide accessors if needed.(€‰«H«ğRMINORZVULNERABILITY
+gsquid:S1444"6Make this "public static DVF_RSF_Location" field final(êÏÊH¬ğRMINORZVULNERABILITY
+squid:S3008"\Rename this field "TotalTransactions" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ê‘’ûÿÿÿÿH­ğRMINORZ
+CODE_SMELL
+Ÿ"squid:ClassVariableVisibilityCheck	"RMake Amount a static final constant or non-public and provide accessors if needed.(ÔòîóûÿÿÿÿH®ğRMINORZVULNERABILITY
+fsquid:S1444"0Make this "public static SchemeType" field final(ßÙë¡úÿÿÿÿH¯ğRMINORZVULNERABILITY
+„squid:S3008
+"WRename this field "CreditorIBAN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×øä5H°ğRMINORZ
+CODE_SMELL
+’squid:S3008"_Rename this field "Mandate_FileLocation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ğÃ«úÿÿÿÿH±ğRMINORZ
+CODE_SMELL
+hsquid:S1444"2Make this "public static MandateGroup" field final(«Ğ«ŸüÿÿÿÿH²ğRMINORZVULNERABILITY
+§"squid:ClassVariableVisibilityCheck"_Make OutDDSettlementPath a static final constant or non-public and provide accessors if needed.(Ş–£øH³ğRMINORZVULNERABILITY
+…squid:S3008"RRename this field "Counter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËóÖèøÿÿÿÿH´ğRMINORZ
+CODE_SMELL
+bsquid:S1444"1Make this "public static MandateType" field final(ÀÃ‚HµğRMINORZVULNERABILITY
+Šsquid:S3008"WRename this field "Man_CDTR_Acc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¤¾ÇøÿÿÿÿH¶ğRMINORZ
+CODE_SMELL
+ksquid:S1444 ":Make this "public static IBANAccountsFileName" field final(å«âĞH·ğRMINORZVULNERABILITY
+"squid:ClassVariableVisibilityCheck"UMake IsPain008 a static final constant or non-public and provide accessors if needed.(ª¹„¤H¸ğRMINORZVULNERABILITY
+­"squid:ClassVariableVisibilityCheck"`Make Mandate_FileLocation a static final constant or non-public and provide accessors if needed.(×ğÃ«úÿÿÿÿH¹ğRMINORZVULNERABILITY
+squid:S3008"[Rename this field "Pain008_Location" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ßßÆùÿÿÿÿHºğRMINORZ
+CODE_SMELL
+”squid:S3008"aRename this field "PartyCreditorProfileId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÄ¼ûÿÿÿÿH»ğRMINORZ
+CODE_SMELL
+«"squid:ClassVariableVisibilityCheck"^Make IN_CT_FileLocation a static final constant or non-public and provide accessors if needed.(œó´„ûÿÿÿÿH¼ğRMINORZVULNERABILITY
+isquid:S1444"3Make this "public static CreditorBICFI" field final(ÂŞÍïùÿÿÿÿH½ğRMINORZVULNERABILITY
+£"squid:ClassVariableVisibilityCheck"VMake SchemeType a static final constant or non-public and provide accessors if needed.(ßÙë¡úÿÿÿÿH¾ğRMINORZVULNERABILITY
+jsquid:S1444"9Make this "public static CreditTransferBICFI" field final(âÉ¢ÔH¿ğRMINORZVULNERABILITY
+jsquid:S1444"4Make this "public static BulkPILocation" field final(‡†‰ÀşÿÿÿÿHÀğRMINORZVULNERABILITY
+k
+squid:S106K"9Replace this use of System.out or System.err by a logger.(ßôÍÊüÿÿÿÿHÁğRMAJORZ
+CODE_SMELL
+¥"squid:ClassVariableVisibilityCheck"XMake MandateGroup a static final constant or non-public and provide accessors if needed.(«Ğ«ŸüÿÿÿÿHÂğRMINORZVULNERABILITY
+§"squid:ClassVariableVisibilityCheck"ZMake BulkPILocation a static final constant or non-public and provide accessors if needed.(‡†‰ÀşÿÿÿÿHÃğRMINORZVULNERABILITY
+²squid:S1186O"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘HÄğRCRITICALZ
+CODE_SMELL
+squid:S3008"]Rename this field "IN_CT_FileLocation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œó´„ûÿÿÿÿHÅğRMINORZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.HÆğRMINORZ
+CODE_SMELL
+‚squid:S3008"TRename this field "IsPain008" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª¹„¤HÇğRMINORZ
+CODE_SMELL
+psquid:S1444":Make this "public static Mandate_FileLocation" field final(×ğÃ«úÿÿÿÿHÈğRMINORZVULNERABILITY
+¯"squid:ClassVariableVisibilityCheck"bMake PartyCreditorProfileId a static final constant or non-public and provide accessors if needed.(ÒÄ¼ûÿÿÿÿHÉğRMINORZVULNERABILITY
+„squid:S3008	"QRename this field "Amount" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔòîóûÿÿÿÿHÊğRMINORZ
+CODE_SMELL
+©"squid:ClassVariableVisibilityCheck"\Make Pain008_Location a static final constant or non-public and provide accessors if needed.(™ßßÆùÿÿÿÿHËğRMINORZVULNERABILITY
+`squid:S1444"/Make this "public static IsPain008" field final(ª¹„¤HÌğRMINORZVULNERABILITY
+Œsquid:S3008"YRename this field "BulkPILocation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡†‰ÀşÿÿÿÿHÍğRMINORZ
+CODE_SMELL
+bsquid:S1444"1Make this "public static DebitorIBAN" field final(ï¢ËØHÎğRMINORZVULNERABILITY
+hsquid:S1444"7Make this "public static InitiatingPartyId" field final(—õó„HÏğRMINORZVULNERABILITY
+¥"squid:ClassVariableVisibilityCheck"]Make InitiatingPartyId a static final constant or non-public and provide accessors if needed.(—õó„HĞğRMINORZVULNERABILITY

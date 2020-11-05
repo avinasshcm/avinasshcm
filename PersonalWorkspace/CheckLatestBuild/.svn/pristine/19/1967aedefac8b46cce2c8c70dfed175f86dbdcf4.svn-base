@@ -1,0 +1,11 @@
+public interface CurrentBuildProvider {
+	int getBFP_Curr_Build();
+
+	int getUB_Curr_Build();
+
+	int getCBS_Curr_Build();
+
+	int getPTY_Curr_Build();
+
+	int getBFT_Curr_Build();
+}

@@ -1,0 +1,33 @@
+
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ñ€«ªùÿÿÿÿ8¼²¼Èô+HCRCRITICALZ
+CODE_SMELL
+’squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(úê…²8¼²¼Èô+HŸCRCRITICALZ
+CODE_SMELL
+squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ñ¿ıºÿÿÿÿÿH CRCRITICALZ
+CODE_SMELL
+—squid:S00115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ø¥çµøÿÿÿÿ8Í¬ÆÈô+H¡CRCRITICALZ
+CODE_SMELL
+‘squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(çÙºb8Í¬ÆÈô+H¢CRCRITICALZ
+CODE_SMELL
+Rsquid:S1214""Move constants to a class or enum.(¥¡ºÆH£CRCRITICALZ
+CODE_SMELL
+’squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ş—×8¢æ¢Èô+H¤CRCRITICALZ
+CODE_SMELL
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÎÜ”ÿÿÿÿÿ8¼²¼Èô+H¥CRCRITICALZ
+CODE_SMELL
+‚squid:S1192"FDefine a constant instead of duplicating this literal " );\n" 7 times.(ÎÜ”ÿÿÿÿÿ8Í¬ÆÈô+H¦CRCRITICALZ
+CODE_SMELL
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÒğíÚşÿÿÿÿ8¼²¼Èô+H§CRCRITICALZ
+CODE_SMELL
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(–ßôŸûÿÿÿÿ8µ—šÈô+H¨CRCRITICALZ
+CODE_SMELL
+Gsquid:S1220""Move this file to a named package.H©CRMINORZ
+CODE_SMELL
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ëÉôâüÿÿÿÿ8¼²¼Èô+HªCRCRITICALZ
+CODE_SMELL
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(³‡Ø±şÿÿÿÿ8¼²¼Èô+H«CRCRITICALZ
+CODE_SMELL
+—squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(’ñóÿÿÿÿÿ8¼²¼Èô+H¬CRCRITICALZ
+CODE_SMELL
+’squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ˆ¶‡ˆ8¼²¼Èô+H­CRCRITICALZ
+CODE_SMELL

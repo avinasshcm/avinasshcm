@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ReadPropertyFile.java&apos; to &apos;DeviceConfiguration/src/com.misys&apos;&#x0D;&#x0A;- Original project: &apos;CheckLatestBuild&apos;&#x0D;&#x0A;- Destination element: &apos;DeviceConfiguration/src/com.misys&apos;&#x0D;&#x0A;- Original element: &apos;ReadPropertyFile.java&apos;" description="Copy compilation unit" destination="=DeviceConfiguration/src&lt;com.misys" element1="/src&lt;{ReadPropertyFile.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1507029250984" units="1" version="1.0"/>
+</session>
