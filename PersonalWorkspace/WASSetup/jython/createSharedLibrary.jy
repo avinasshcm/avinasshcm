@@ -1,0 +1,152 @@
+import java
+import time
+import java.util as util 
+import java.util.ArrayList as ArrayList
+import java.io as javaio
+import javax.xml.parsers.DocumentBuilderFactory as DocumentBuilderFactory
+import javax.xml.parsers.DocumentBuilder as DocumentBuilder
+from java.util import Properties
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+from os import path
+
+lineseparator = java.lang.System.getProperty('line.separator')
+osName = java.lang.System.getProperty('os.name')
+def loadcfg():
+	global cfgFile
+	file=File(cfgFile)
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+	
+def parseCfgFile ():
+
+	cfg=loadcfg()
+		
+	global inputNodeName, inputServerName
+	inputNodeName=cfg.getProperty("NodeName")
+	inputServerName=cfg.getProperty("ServerName")
+	
+def delSharedLib (cellName, nodeName, serverName, sharedLibrary):
+	server = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName)
+	lbs = AdminConfig.list('Library', server).splitlines()
+	for lb in lbs:
+		name=AdminConfig.showAttribute(lb, 'name')
+		if(name==sharedLibrary):
+			AdminConfig.remove(lb)
+	AdminConfig.save()
+	print "Successfully removed Shared Library.." + sharedLibrary
+
+
+def createSharedLib (cellName, nodeName, serverName,sharedLibraries):
+	server = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName)
+	for sharedLibrary in sharedLibraries:
+		delSharedLib(cellName, nodeName, serverName,sharedLibrary[0])
+		AdminConfig.create('Library', server, [['name', sharedLibrary[0]], ['description', sharedLibrary[1]], ['classPath', sharedLibrary[2]]]) 
+		print "Successfully created Shared Library.." + sharedLibrary[0]
+	AdminConfig.save()
+	
+def getServer ():
+	cname=""
+	nname=""
+	sname=""
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	
+	for cell in cells:
+		nodes = AdminConfig.list('Node', cell).split(lineSeparator)
+		for node in nodes:
+			cname = AdminConfig.showAttribute(cell, 'name')
+			nname = AdminConfig.showAttribute(node, 'name')
+	      	 	servs = AdminControl.queryNames('type=Server,cell=' + cname + ',node=' + nname + ',*').split(lineSeparator)
+			print "Number of running servers on node " + nname + ": %s \n" % (len(servs))
+			for server in servs:
+				sname = AdminControl.getAttribute(server, 'name')
+				ptype = AdminControl.getAttribute(server, 'processType')
+				pid   = AdminControl.getAttribute(server, 'pid')
+				state = AdminControl.getAttribute(server, 'state')
+				print " "
+				print "#############################################################################################################################################"
+				print " "
+				print "Execution of this Jython script will begin on server "+ sname + ", having PID " + pid + ", running on " + nname + " node in " + cname + " Cell."
+				apps = AdminControl.queryNames('type=Application,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*').split(lineSeparator)
+#				print "Number of applications running on " + sname + ": %s \n" % (len(apps))
+#				for app in apps:
+#					aname = AdminControl.getAttribute(app, 'name')
+#					aCtxRoot = AdminControl.getAttribute(app, 
+#					print aname + "\n"
+	serverName = sname
+	nodeName = nname
+	cellName = cname
+	return cellName, nodeName, serverName
+
+def parseXMLFile():
+	name=""
+	description=""
+	classpath=""
+	i=0
+	sharedLibraries=ArrayList()
+	dbf = DocumentBuilderFactory.newInstance()
+	db = dbf.newDocumentBuilder()
+	dom = db.parse(xmlFile)
+	docElements = dom.getDocumentElement().getElementsByTagName('SharedLibrary')
+	while i<docElements.length :
+		j=0
+		docElement=docElements.item(i)
+		childNodes=docElement.getChildNodes()
+		while j<childNodes.length:
+			if(childNodes.item(j).nodeName=='Name'):
+				name=childNodes.item(j).lastChild.nodeValue
+			if(childNodes.item(j).nodeName=='Description'):
+				description=childNodes.item(j).lastChild.nodeValue
+			if(childNodes.item(j).nodeName=='Path'):
+				classpath=childNodes.item(j).lastChild.nodeValue
+				classpath=replaceDollarStringIfPresent(classpath)
+			j=j+1
+		sharedLibrary=[name,description,classpath]
+		i=i+1
+		sharedLibraries.add(sharedLibrary)
+	return sharedLibraries
+
+def replaceDollarStringIfPresent(classpath):
+	cfg=loadcfg();
+	indexOfDollar=classpath.find('${')
+	while(indexOfDollar!=-1):
+		key=classpath.split('${')[1].split('}')[0]
+		keyValue=cfg.getProperty(key)
+		classpath=classpath.replace('${'+key+'}',keyValue)
+		indexOfDollar=classpath.find('${')
+	return classpath
+	
+cfgFile = sys.argv[0]
+
+loadcfg()
+
+parseCfgFile()
+
+#cellName,nodeName,serverName=getServer()
+
+cells = AdminConfig.list('Cell').split(lineSeparator)
+for cell in cells:
+	cellName = AdminConfig.showAttribute(cell, 'name')
+	print "Setting cellName to " +cellName+ " as automatically detected."
+
+nodeName=inputNodeName
+print "Setting node name to " +inputNodeName+ " as specified in the input."
+
+serverName=inputServerName
+print "Setting server name to " +inputServerName+ " as specified in the input."
+
+xmlFile = sys.argv[1]
+if(path.isfile(xmlFile)):
+	sharedLibraries= parseXMLFile()
+	createSharedLib (cellName, nodeName, serverName,sharedLibraries)

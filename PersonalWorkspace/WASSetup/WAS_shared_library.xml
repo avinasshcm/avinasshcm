@@ -1,0 +1,108 @@
+<SharedLibraries>
+	<SharedLibrary>
+		<Name>BFHelperJars</Name>
+		<Description>BFHelperJars Classpath</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/BFHelper-Jars/</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>BFApplicationJars</Name>
+		<Description>Business Jars Classpath</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Application/</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>BFSupportJars</Name>
+		<Description>Support Jars Classpath</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Support-jars/</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>BFDroolsJars</Name>
+		<Description>Drools Jars Classpath</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Drools-jars/</Path>
+	</SharedLibrary>
+	
+	
+	<SharedLibrary>
+		<Name>ACApplicationJars</Name>
+		<Description>AccMgmt-applicationjars shared library</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BFAM/SYMBOLIC/applicationjars/</Path>
+	</SharedLibrary>
+	
+	<SharedLibrary>
+		<Name>AOApplicationJars</Name>
+		<Description>Account Ownership applicationjars shared library</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BFAO/SYMBOLIC/applicationjars/</Path>
+	</SharedLibrary>
+	
+	<SharedLibrary>
+		<Name>BFBTApplicationJars</Name>
+		<Description>Teller applicationjars shared library</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BFBT/SYMBOLIC/Application</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>BFBTSupportJars</Name>
+		<Description>Teller HelperJars shared library</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BFBT/SYMBOLIC/helperjars</Path>
+	</SharedLibrary>
+	
+	<SharedLibrary>
+		<Name>BTDCApplicationJars</Name>
+		<Description>Teller applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/BTDC/SYMBOLIC/Application</Path>
+	</SharedLibrary>
+	
+	<SharedLibrary>
+		<Name>CBSApplicationJars</Name>
+		<Description>CBS applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/applicationjars</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>CBSSupportJars</Name>
+		<Description>helperjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/DeviceSupportJars;${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/helperjars</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>InventoryApplicationJars</Name>
+		<Description>Inventory-applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/Inventory-applicationjars/</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>PmtMsgApplicationJars</Name>
+		<Description>PaymentMessaging-applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/PaymentMessaging-applicationjars/</Path>
+	</SharedLibrary>
+	
+	
+	<SharedLibrary>
+		<Name>CBSApplicationJars</Name>
+		<Description>BFUB-applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFUB-applicationjars</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>UBApplicationJars</Name>
+		<Description>UB applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/UniversalBanking/SYMBOLIC/applicationjars</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>UBSupportJars</Name>
+		<Description>UB helperjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/UniversalBanking/SYMBOLIC/helperjars</Path>
+	</SharedLibrary>
+	
+	<SharedLibrary>
+		<Name>WIFApplicationJars</Name>
+		<Description>What if applicationjars shared library</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/WIF/SYMBOLIC/applicationjars/</Path>
+	</SharedLibrary>
+	
+	
+	<SharedLibrary>
+		<Name>PTYApplicationJars</Name>
+		<Description>Party applicationjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/Party/SYMBOLIC/applicationjars</Path>
+	</SharedLibrary>
+	<SharedLibrary>
+		<Name>PTYSupportJars</Name>
+		<Description>Party upportjars shared libraray</Description>
+		<Path>${INSTALLATION_ROOT_LOCATION}/Party/SYMBOLIC/helperjars</Path>
+	</SharedLibrary>
+</SharedLibraries>

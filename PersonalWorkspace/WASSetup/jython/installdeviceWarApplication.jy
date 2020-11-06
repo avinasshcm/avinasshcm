@@ -1,0 +1,166 @@
+import java
+import time
+import java.util as util 
+import java.io as javaio
+from java.util import Properties
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+from os import path
+
+lineseparator = java.lang.System.getProperty('line.separator')
+osName = java.lang.System.getProperty('os.name')
+def loadcfg():
+	global cfgFile
+	file=File(cfgFile)
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+
+
+def parseCfgFile ():
+
+	cfg=loadcfg()
+	global nodeName, cellName, serverName, mqHost, profilePath, dbVendor, dbServerHost, dbName, dbPort, dbLogin, dBAlias, createSharedLibrary, dbPassword, earFileName, installEAR, createJVMProperty, createDataSource, appToUninstall, mqHost, mqSvrChannelName, mqConnType, warContext, applName, warName, bfwarDirectory
+        global dsCreated, earPath, initialHeap, maxHeap, BankFusionPath, CBSPath, UBPath, PartyPath, BFTPath, configPath, region, timeZone, language, uxpJarPath, wsREGLogin, wsREGPwd
+	global binSWIFT, binTI, binOPICS, binFIRCO, binATM, binPARTY, installSigCap, sigCapEarPath, sigCapEarFileName
+
+        global mqSwiftQmgr, mqSwiftPort, mqTIQmgr, mqTIPort, mqOPICSQmgr, mqOPICSPort, mqFIRCOQmgr, mqFIRCOPort, mqATMQmgr, mqATMPort, mqPartyQmgr, mqPartyPort
+        global queueSwift_array, queueTI_array, queueOPICS_array, queueFIRCO_array, queueATM_array, queueParty_array
+        global queueSwiftJNDI_array, queueTIJNDI_array, queueOPICSJNDI_array, queueFIRCOJNDI_array, queueATMJNDI_array, queuePartyJNDI_array
+        global bQueueSwift_array, bQueueTI_array, bQueueOPICS_array, bQueueFIRCO_array, bQueueATM_array, bQueueParty_array
+        global qcfSwift_array, qcfTI_array, qcfOPICS_array, qcfFIRCO_array, qcfATM_array, qcfParty_array
+        global qcfSwiftJNDI_array, qcfTIJNDI_array, qcfOPICSJNDI_array, qcfFIRCOJNDI_array, qcfATMJNDI_array, qcfPartyJNDI_array, osName
+	global qmgrSwift, qmgrTi, qmgrParty, qmgrFirco, qmgrAtm, qmgrOpics
+        
+	#-----------------------------------------------------------------
+	# Get all the General Parameters and DB Details
+	#-----------------------------------------------------------------
+    
+	cellName=cfg.getProperty("CellName")
+	nodeName=cfg.getProperty("NodeName")
+	serverName=cfg.getProperty("ServerName") 
+	installEAR = cfg.getProperty("installEAR")
+	createDataSource = cfg.getProperty("createDataSource")
+	dbVendor = cfg.getProperty("DatabaseProvider")
+	dbServerHost = cfg.getProperty("DBHostName")
+	dbName = cfg.getProperty("DBName")
+	dbPort = cfg.getProperty("DBPort")
+	dbLogin = cfg.getProperty("DBUser")
+	dbPassword = cfg.getProperty("DBPassword")
+	wsREGLogin=cfg.getProperty("WSREGISTRYLogin")
+	wsREGPwd=cfg.getProperty("WSREGISTRYPassword")	
+	profilePath = cfg.getProperty("profilePath")
+	createJVMProperty = cfg.getProperty("createJVMProperty")
+	createSharedLibrary = cfg.getProperty("createSharedLibrary")
+	initialHeap=cfg.getProperty("JVMMinHeapSize")
+	maxHeap=cfg.getProperty("JVMMaxHeapSize")
+	BankFusionPath=cfg.getProperty("BFSetupDirectory")
+	region=cfg.getProperty("region")
+	timeZone=cfg.getProperty("timeZone")
+	language=cfg.getProperty("language")
+	dBAlias=cfg.getProperty("DBAlias")
+	warContext=cfg.getProperty("deviceWarContext")
+	applName=cfg.getProperty("deviceApplicationName")
+	warName=cfg.getProperty("deviceWarName")
+	bfwarDirectory=cfg.getProperty("BFWARDirectory")
+	installSigCap=cfg.getProperty("installSignatureCapture")
+	installApp (cellName, nodeName, serverName)
+	
+
+def uninstallApp (appToUninstall):
+   	print "Uninstalling app: "+appToUninstall
+	appToUninstall = str(appToUninstall).strip();
+    	AdminApp.uninstall(appToUninstall)
+    	AdminConfig.save();
+	print "Uninstallation complete for "+appToUninstall
+	print " "	
+	
+def installApp (cellName, nodeName, serverName):
+#	if (earPath == ""):
+#		fullPath = profilePath+"/installableApps/"+earFileName
+#	else:
+	fullPath = bfwarDirectory+"/"+warName
+	print fullPath	
+	appInstalled = "false"
+	sigCapInstalled = "false"
+	############### Uninstall the app if already deployed ##############
+	appToUninstall = ""
+	appsBefore = AdminApp.list();
+	if (appsBefore != ""):
+		appsBefore = appsBefore.split("\n")
+		for i in appsBefore:    
+	        	appToUninstall = str(i);
+			uninstallApp("BFdevice")
+	
+	node = "-node "+nodeName
+	cell = "-cell "+cellName
+	svr = "-server "+serverName
+	ctxRoot = "-contextroot /"+warContext
+	applicationName=applName
+	appName = "-appname BFdevice"
+		
+	
+	AdminApp.install(fullPath, [node, cell, svr, appName, '-MapWebModToVH [[BFDevice.war BFDevice.war,WEB-INF/web.xml default_host]]'])
+	AdminConfig.save()	
+
+	############## Mapping Shared Library for BFUB #############
+#	if (BFTPath != ""):
+#		libList = "BFHelperJars+BFApplicationJars+UBApplicationJars+CBSApplicationJars+PTYApplicationJars+UXP+ACApplicationJars+BFTApplicationJars"
+#	else:
+	libList = "BFHelperJars+BFApplicationJars"
+#	res_1 = ["BankFusion-UB", "META-INF/application.xml", libList ]
+	res_2 = ["BFDevice.war", "BFDevice.war,WEB-INF/web.xml", libList ]
+#	res_3 = ["uxp.war", "uxp.war,WEB-INF/web.xml", libList ]
+#	sharedLibOpts = []
+#	sharedLibOpts.append("-MapSharedLibForMod")
+#	sharedLibOpts.append([res_1])
+#	AdminApp.edit(applicationName, sharedLibOpts )
+#	AdminConfig.save()
+	sharedLibOpts = []
+	sharedLibOpts.append("-MapSharedLibForMod")
+	sharedLibOpts.append([res_2])
+	AdminApp.edit(applicationName, sharedLibOpts )
+	AdminConfig.save()
+#	sharedLibOpts = []
+#	sharedLibOpts.append("-MapSharedLibForMod")
+#	sharedLibOpts.append([res_3])
+#	AdminApp.edit(applicationName, sharedLibOpts )
+#	AdminConfig.save()
+	depApp = AdminConfig.getid("/Deployment:"+applicationName)
+	depObject = AdminConfig.showAttribute(depApp, 'deployedObject')
+	classldr = AdminConfig.showAttribute(depObject, 'classloader')
+	AdminConfig.modify(depObject, [['warClassLoaderPolicy', 'MULTIPLE']])
+	AdminConfig.modify(classldr, [['mode', 'PARENT_LAST']])
+	AdminConfig.save()
+	appInstalled = "true"
+	print "Shared Library mapped and CLASSLOADER has been set for " +applicationName
+	
+	if (installSigCap == "true"):
+		sgCtxRoot = "-contextroot /ConfirmImageVerification"
+		applicationName = "ConfirmImageVerification"
+		appName = "-appname "+applicationName
+		if (sigCapEarPath == ""):
+			fullPath = profilePath+"/installableApps/"+sigCapEarFileName
+		else:
+			fullPath = sigCapEarPath+"/"+sigCapEarFileName
+		AdminApp.install(fullPath, [node, cell, svr, sgCtxRoot, appName, '-MapWebModToVH [[ConfirmImageVerification ConfirmImageVerification.war,WEB-INF/web.xml default_host]]'])
+		AdminConfig.save()	
+		print "Installation complete for "+applicationName
+		print " "
+		sigCapInstalled = "false"	
+		
+	return appInstalled, sigCapInstalled
+	
+	
+cfgFile = sys.argv[0]
+parseCfgFile()

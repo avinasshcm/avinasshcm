@@ -1,0 +1,16 @@
+import sys
+import re
+import os
+import sre
+import java
+import time
+
+def appLogin ():
+	################# Creating JAAS Application Login ###############	
+	AdminTask.configureJAASLoginEntry('[-loginType application -loginEntryAlias BankFusion -loginModules "com.trapedza.bankfusion.security.BankFusionLoginModule" -authStrategies "REQUIRED"]')
+	AdminConfig.save()
+	print "JAAS Application Login Module has been created"
+	print ""
+	
+	
+appLogin()

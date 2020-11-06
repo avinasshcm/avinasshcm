@@ -1,0 +1,734 @@
+
+<project name="WASSetup" default="bankFusionWASSetup" basedir=".">
+	<description>BankFusion WebSphere Setup Script</description>
+
+	<target name="bankFusionWASSetup" depends="init, decodeWSPass, decodePass">
+
+		<!--
+		-->
+		<antcall target="DeleteParameterHibernateTxJTAPlatform" />
+		<antcall target="createAuditDir" />
+		<antcall target="replaceSchema" />
+		<antcall target="replaceSchemaForZonal" />
+		<antcall target="createJAASUser" />
+		<antcall target="createNonXADatabaseProvider" />
+		<antcall target="createXADatabaseProvider" />
+		<antcall target="createWSDatabaseProvider" />
+		<antcall target="createJVMParameters" />
+		<antcall target="createSharedLibrary" />
+		<antcall target="installApplicationbfweb" />
+		<antcall target="installCasWarApplication" />
+<!--
+-->
+
+
+		<!--
+
+
+		<antcall target="appLogin" />
+		<antcall target="createEntryForPRODINT"/>
+		<antcall target="ExecutePostDBScript"/>
+		<antcall target="ExecuteEnableAccountOwnershipScript"/>
+		
+		<antcall target="ModifyBankFusionEar"/>
+		<antcall target="RemoveAxisJaxwsJar"/>
+		<antcall target="copyRTinStaticWebContent"/>
+		<antcall target="CardReaderJSDeploy"/>
+		<antcall target="copyUBRTinStaticWebContent"/>
+		<antcall target="configureOnlineHelp"/>
+		<antcall target="createLuceneIndexDirs"/>
+		<antcall target="CreatePartyQCFnQueuesOnWAS"/>
+		-->
+		
+	</target>
+
+	<target name="createAuditDir" description="createAuditDir" >
+		<mkdir dir="${INSTALLATION_ROOT_LOCATION}/AuditDir"/>
+	</target>
+
+	<target name="createJVMParameters" description="Create JVM paramters." >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createJvmConfig.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+			<arg value="${CurrentDirectory}/WAS_JVM_properties.xml"/>
+		</exec>
+	</target>
+	
+	<target name="DeleteParameterHibernateTxJTAPlatform" description="DeleteParameterHibernateTxJTAPlatform">
+		<echo message="Deleting lines from applicationContext-persistence.xml."/>
+		<replaceregexp match="([^\r\n]*)hibernate.transaction.jta.platform.*" replace="" flags="gi">
+			<fileset dir="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/persistence" >
+				<include name="**/applicationContext-persistence.xml"/>
+				<include name="**/BF_hibernate_jta.properties"/>
+				<include name="**/hibernate_jta.properties"/>
+			</fileset>
+		</replaceregexp>
+		<replaceregexp match="([^\r\n]*)transactionManagerName.*" replace="" flags="gi">
+			<fileset dir="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/persistence" >
+				<include name="**/applicationContext-persistence.xml"/>
+			</fileset>
+		</replaceregexp>
+		<echo message="Done."/>
+	</target>
+
+	<target name="removeJVMHeapSize" description="sets the heap size for jvm">
+
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/removeJvmConfig.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+
+	<target name="createJAASUser" description="creates user,if already existing then will delete and create" depends="decodePass">
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createUser.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+			<arg line="${CurrentDirectory}/save.properties"/>
+		</exec>
+		<delete file="save.properties"/>
+	</target>
+
+
+	<target name="createNonXADatabaseProvider" description="Create Non XA Database Provider" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createNonXADBProvider.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="createXADatabaseProvider" description="Create XA Database Provider" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createXADBProvider.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+
+	<target name="createWSDatabaseProvider" description="Create WS Database Provider" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createWSDBProvider.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="createSharedLibrary" description="Create shared library" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createSharedLibrary.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+			<arg value="${CurrentDirectory}/WAS_shared_library.xml"/>
+		</exec>
+	</target>
+
+	<!-- <target name="installApplicationbfweb" description="install application for bfweb"  unless="isCBSInstalled"> -->
+	<target name="installApplicationbfweb" description="install application for bfweb"  >
+		<loadfile srcfile="${profilePath}/properties/soap.client.props" property="tmpFile">
+			<filterchain>
+				<tokenfilter>
+					<replaceregex pattern="com.ibm.SOAP.requestTimeout=.*" replace="com.ibm.SOAP.requestTimeout=3600" flags="gi"/>
+				</tokenfilter>
+			</filterchain>
+		</loadfile>
+		<echo file="${CurrentDirectory}/properties/mysoap.client.props" >${tmpFile}</echo>
+		<echo file="${CurrentDirectory}/soap_override.props" >com.ibm.SOAP.ConfigURL=file:${CurrentDirectory}/properties/mysoap.client.props</echo>
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-p"/>
+			<arg line="${CurrentDirectory}/soap_override.props"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/installApplicationbfweb.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+			<arg value="${install_location}/WAS_shared_library.xml"/>
+		</exec>
+	</target>
+
+
+
+	<target name="installdeviceWarApplication" description="install application for bfweb" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/installdeviceWarApplication.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="installJuddiv3Application" description="install installJuddiv3Application" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/installJuddiv3Application.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="installCasWarApplication" description="install installCasWarApplication" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/installCasWarApplication.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="appLogin" description="Login into server" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/appLogin.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="stopServer" description="Stop the server" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/stopServer.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+	<target name="startServer" description="Start the server" >
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/startServer.jy" />
+			<arg line="${CurrentDirectory}/${file3}"/>
+		</exec>
+	</target>
+
+
+
+	<target name="init">
+		<antcall target="getOsName" />
+		<property name="CurrentDirectory" value="${user.dir}" />
+		<property name="file1" value="WASConfigDynamic.properties" />
+		<property name="file2" value="WASConfigStatic.properties" />
+		<property name="file4" value="WASInstallerConfig.properties" />
+		<property name="CustomPropertiesFile" value="CustomPropertiesConfig.properties" />
+		<property name="file3" value="WASConfig.properties" />
+		<delete file="${file3}" />
+		<copy file="${file1}" tofile="${file3}">
+			<filterchain>
+				<concatfilter append="${file2}" />
+				<concatfilter append="${file4}" />
+				<concatfilter append="${CustomPropertiesFile}" />
+			</filterchain>
+		</copy>
+
+		<antcall target="checkFileExistsInWAS" />
+		<loadproperties srcFile="WASConfig.properties" />
+		<property name="servername" value="${ServerName}" />
+		<property name="WSProfilePath" value="${profilePath}" />
+		<property name="conntype" value="${ConnectionType}" />
+		<property name="port" value="${SOAPPort}" />
+		<property name="install_location" value="${INSTALLATION_ROOT_LOCATION}"/>
+		<property name="schema_mapping" value="${BANKFUSION}"/>
+		<!--
+		<property name="WSUsername" value="${WSUsername}" />
+		<property name="WSPassword" value="${WSPassword}" />
+		-->
+		<antcall target="pathValidation" />
+		<!--
+		<antcall target="copyDatabaseJars"/>
+		-->
+		
+	</target>
+
+
+	<target name="getOsName">
+		<echo message="osName ${os.name}" />
+	</target>
+	<condition property="isOS400">
+		<equals arg1="${os.name}" arg2="OS/400" />
+	</condition>
+	<target name="pathValidation" unless="isOS400">
+		<antcall target="ValidateProperties" />
+		<antcall target="ValidatBFWarDirectory" />
+	</target>
+	<target name="checkFileExistsInWAS">
+		<condition property="isWindows">
+			<os family="windows" />
+		</condition>
+		<antcall target="createWindowsExtn" />
+		<antcall target="createUnixExtn" />
+		<antcall target="createIseriesExtn" />
+	</target>
+
+	<target name="createWindowsExtn" if="isWindows">
+		<replace file="${file3}" value=".bat" token=".sh" />
+	</target>
+
+	<target name="createUnixExtn" unless="isWindows">
+		<replace file="${file3}" value=".sh" token=".bat" />
+	</target>
+	<target name="createIseriesExtn" if="isOS400">
+		<replace file="${file3}" value="" token=".bat" />
+		<replace file="${file3}" value="" token=".sh" />
+	</target>
+	<target name="wasHomeValidation">
+		<condition property="was.profile.exists">
+			<available file="${profilePath}" type="dir" />
+		</condition>
+		<condition property="bf.home.exists">
+			<available file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables" type="dir" />
+		</condition>
+	</target>
+
+	<condition property="isCBSInstalled">
+		<available file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf" type="dir" />
+	</condition>
+
+
+	<target name="ValidateProperties" depends="wasHomeValidation" unless="was.profile.exists">
+		<delete file="${file3}" />
+		<fail message="${profilePath} does not exists" />
+	</target>
+
+	<target name="ValidatBFWarDirectory" depends="wasHomeValidation" unless="bf.home.exists">
+		<echo message= "------------------------- This is ValidatBFWarDirectory target--------------------------"/>
+		<delete file="${file3}" />
+		<fail message="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables does not exists" />
+	</target>
+
+	<target name="decodeWSPass">
+		<property name="WSPass" value="${WSPassword}" />
+	</target>
+
+	<target name="decodePass">
+		<property name="DB_PASSWORD" value="${DB_PASSWORD}" />
+		<touch file="save.properties"/>
+			<echo file="save.properties" message="DBPass =${DB_PASSWORD}${line.separator}" append="true"/>
+	</target>
+	
+	<target name="schemaReplacementFile.exists">
+		<available file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/Bankfusion.xml" property="Bankfusion_XML.exists"/>
+		<available file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/Bankfusion_zonal.xml" property="Bankfusion_Zonal_XML.exists"/>
+    </target>
+
+	<target name="replaceSchema" depends="schemaReplacementFile.exists" if="Bankfusion_XML.exists">
+	<echo message= "------------------------- Target for schema Replacemnt in Bankfusion.xml--------------------------"/>
+		 <replaceregexp file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/Bankfusion.xml" match="(&lt;table.*.schema).*" replace="\1=&quot;${schema_mapping}&quot; /&gt;" flags="gi">
+	 	 </replaceregexp> 
+	</target>
+	
+	<target name="replaceSchemaForZonal" depends="schemaReplacementFile.exists" if="Bankfusion_Zonal_XML.exists">
+		<echo message= "------------------------- Target for schema Replacemnt in Bankfusion_Zonal.xml--------------------------"/>
+		 <replaceregexp file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/Bankfusion_zonal.xml" match="(&lt;table.*.schema).*" replace="\1=&quot;${schema_mapping}&quot; /&gt;" flags="gi">
+	 	 </replaceregexp> 
+	</target>
+	
+	
+	
+	<target name="createEntryForPRODINT" depends="testEntryForPRODINT" unless="entryExists">
+		<echo message=" Creating entry for PRODINT"/>
+
+		 <xmlproperty file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/conf/business/idstructures/applicationContext.xml"/>
+
+		<loadfile srcfile="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/conf/business/idstructures/applicationContext.xml" property="tmpFile">
+			  <filterchain>
+				<tokenfilter>
+					<replaceregex pattern="[&lt;][/]beans[&gt;]" replace=" " flags="gi"/>
+				</tokenfilter>
+			  </filterchain>
+		</loadfile>
+		<echo file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/conf/business/idstructures/applicationContext.xml" >${tmpFile}</echo>
+
+		<echo file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/conf/business/idstructures/applicationContext.xml" append="true">&lt;bean id=&quot;PRODINT&quot;  class=&quot;com.misys.fbe.prodint.AccountOwnershipIntegrator&quot; scope=&quot;singleton&quot; &gt;
+			 &lt;/bean &gt;
+				 &lt;/beans &gt;
+		</echo>
+
+	</target>
+
+
+	<target name="testEntryForPRODINT" >
+		<echo message=" Testing if entry for PRODINT already exist"/>
+
+		 <xmlproperty file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/conf/business/idstructures/applicationContext.xml"/>
+
+		<condition property="entryExists">
+			<equals arg1="${beans.bean(id)}" arg2="PRODINT" />
+		</condition>
+
+	</target>
+
+
+
+
+    <condition property="isBFFull">
+ 		<available file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/BPMArtefacts" type="dir"/>
+    </condition>
+
+	<condition property="isDB2">
+		<equals arg1="${DB_TYPE}" arg2="DB2" />
+	</condition>
+	<condition property="isORACLE">
+		<equals arg1="${DB_TYPE}" arg2="ORACLE" />
+	</condition>
+
+	<condition property="isOS400">
+		<equals arg1="${DB_TYPE}" arg2="AS400" />
+	</condition>
+
+<!--
+	<target name="ExecutePostDBScript" depends="createDB2Details, createORACLEDetails" unless="isOS400">
+		<echo message=" Executing Post Install Script"/>
+		<sql
+			classpath="${jdbcclasspath}"
+			driver="${dbdriver}"
+			url="${DB_URL}"
+			userid="${DB_USER_ID}"
+			password="${DB_PASS}"
+			print="yes"
+			delimiter="${dbdelimiter}"
+			delimitertype="row">
+			<fileset dir="${filesetdir}">
+				<include name="PRODINT_grants_synonyms.sql"/>
+				<include name="CBS_grants_synonyms.sql"/>
+	        </fileset>
+		</sql>
+		<echo message=" Done...."/>
+	</target>
+	
+	-->
+<!--
+	<target name="ExecuteEnableAccountOwnershipScript" depends="createDB2Details, createORACLEDetails" unless="isOS400">
+		<echo message=" Executing Enable Account Ownership Script"/>
+		<sql
+			classpath="${jdbcclasspath}"
+			driver="${dbdriver}"
+			url="${DB_URL}"
+			userid="${DB_USER_ID}"
+			password="${DB_PASS}"
+			print="yes">
+			<fileset dir="${CurrentDirectory}">
+				<include name="PI42_UPG_001.sql"/>
+	        </fileset>
+		</sql>
+		<echo message=" Done...."/>
+	</target>
+
+-->
+
+
+	<target name="RemoveAxisJaxwsJar" depends="init">
+		<echo message="Removing BF JMS jar"/>
+		<delete file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/BFHelper-Jars/axis2-jaxws-1.6.2.jar" quiet="true"/>
+		<echo message=" Done...."/>
+	</target>
+
+
+
+
+	<target name="copyRTinStaticWebContent" depends="init">
+		<echo message= "Copying Static Web Content from CBS to BF."/>
+		<unzip src="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/Archives/rt.zip" dest="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/StaticWebContent" />
+		<echo message= "Done .."/>
+	</target>
+
+	<target name="CardReaderJSDeploy">
+		<echo message= "Copy cbs.js"/>
+		<copy file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/conf/customjavascript/rt/js/d/app/cbs.js" todir="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/StaticWebContent/rt/js/d/app"/>
+		<echo message= "Done .."/>
+	</target>
+	
+	
+	<target name="createDB2Details" if="isDB2">
+		<property name="jdbcclasspath" value="${INSTALLATION_ROOT_LOCATION}/DatabaseJars/db2jcc.jar;${INSTALLATION_ROOT_LOCATION}/DatabaseJars/db2jcc_license_cu.jar" />
+		<property name="dbdriver" value="com.ibm.db2.jcc.DB2Driver" />
+		<property name="dbdelimiter" value="@" />
+		<property name="filesetdir" value="${CurrentDirectory}/DBSetupScripts/BFT/DB2" />
+	</target>
+
+
+	<target name="createORACLEDetails" if="isORACLE">
+		<property name="jdbcclasspath" value="${INSTALLATION_ROOT_LOCATION}/DatabaseJars/ojdbc7.jar" />
+		<property name="dbdriver" value="oracle.jdbc.OracleDriver" />
+		<property name="dbdelimiter" value="/" />
+		<property name="filesetdir" value="${CurrentDirectory}/DBSetupScripts/BFT/Oracle" />
+	</target>
+
+	<condition property="isDB2">
+		<equals arg1="${DB_TYPE}" arg2="DB2" />
+	</condition>
+	<condition property="isORACLE">
+		<equals arg1="${DB_TYPE}" arg2="ORACLE" />
+	</condition>
+	<condition property="isOS400">
+	<equals arg1="${DB_TYPE}" arg2="AS400" /> 
+	</condition>
+
+<!--
+	<target name="ExecutePostDBScript" depends="createDB2Details, createORACLEDetails" unless="isOS400">
+		<echo message=" Executing Post Install Script"/>
+		<sql
+			classpath="${jdbcclasspath}"
+			driver="${dbdriver}"
+			url="${DB_URL}"
+			userid="${DB_USER_ID}"
+			password="${DB_PASS}"
+			print="yes"
+			delimiter="${dbdelimiter}"
+			delimitertype="row">
+			<fileset dir="${filesetdir}">
+				<include name="BFT_grants_synonyms.sql"/>
+	        </fileset>
+		</sql>
+		<echo message=" Done...."/>
+	</target>
+	-->
+	
+	<target name="configureOnlineHelp" depends="init" if="isInstallOnlineHelpAvilable">
+		<echo message= "Configuring Online Help."/>
+		<unzip src="${CurrentDirectory}../../OnlineHelp/FusionBanking_Essence.zip" dest="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/StaticWebContent/rt/html" />
+		<loadfile srcfile="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/StaticWebContent/rt/js/custom.js" property="tmpFile">
+				  <filterchain>
+					<tokenfilter>
+						<replaceregex pattern="var HELP_MAIN.*.;" replace="var HELP_MAIN = &quot;http://${APPSERVER_HOSTNAME}:${APPSERVER_PORT}/uxp/rt/html/FusionBanking_Essence/index.html&quot;;" flags="gi"/>
+					</tokenfilter>
+				  </filterchain>
+				</loadfile>
+		<echo file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/StaticWebContent/rt/js/custom.js" >${tmpFile}</echo>
+		<echo message= "Done .."/>
+	</target>
+	<available file="${CurrentDirectory}../../OnlineHelp/FusionBanking_Essence.zip" property="isInstallOnlineHelpAvilable"/>
+
+	
+
+	
+	
+	<target name="copyUBRTinStaticWebContent" depends="init">
+		<echo message= "Copying Static Web Content from UB to BF."/>
+			<unzip src="${INSTALLATION_ROOT_LOCATION}/UniversalBanking/SYMBOLIC/Archives/rt.zip" dest="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/StaticWebContent" />
+		<echo message= "Done .."/>
+	</target>
+	
+
+
+
+
+
+
+	<target name="ModifyBankFusionEar" description="Modify BankFusion.ear to include CBSBatchAdmin.war." if="isBFFull">
+		<echo message="Current dir is ${CurrentDirectory}."/>
+		<delete dir="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified" quiet="true"/>
+		<mkdir dir="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified" />
+		<copy file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/BankFusion.ear" tofile="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified/BankFusion.ear" preservelastmodified="true" />
+		<copy file="${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/Archives/CBSBatchAdmin.war" tofile="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified/CBSBatchAdmin.war" preservelastmodified="true" />
+		<touch file="${CurrentDirectory}/application.xml"/>
+		<ear destfile="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified/BankFusion.ear"  appxml="${CurrentDirectory}/application.xml" update="true" >
+			<zipfileset file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified/CBSBatchAdmin.war" fullpath="CBSBatchAdmin.war" />
+		</ear>
+		<delete file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified/CBSBatchAdmin.war" />
+		<copy file="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/modified/BankFusion.ear" tofile="${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/Deployables/BankFusion.ear"/>
+	</target>
+	
+	
+	<target name="ExecutePartyTriggerScript" depends="createDB2Details"  if="isDB2">
+		<echo message=" Executing Party Trigger Script"/>
+		<sql
+			classpath="${jdbcclasspath}"
+			driver="${dbdriver}"
+			url="${DB_URL}"
+			userid="${DB_USER_ID}"
+			password="${DB_PASS}"
+			print="yes"
+			delimiter="${dbdelimiter}"
+			delimitertype="row">
+			<fileset dir="${filesetdir}">
+				<include name="PartyTriggers_db2.sql"/>
+	        </fileset>
+		</sql>
+		<echo message=" Done...."/>
+	</target>
+	
+	<target name="createLuceneIndexDirs" description="createLuceneIndexDirs" >
+		<mkdir dir="${INSTALLATION_ROOT_LOCATION}/LuceneIndexDirs"/>
+		<mkdir dir="${INSTALLATION_ROOT_LOCATION}/LuceneIndexDirs/PersonalLuceneIndexDir"/>
+		<mkdir dir="${INSTALLATION_ROOT_LOCATION}/LuceneIndexDirs/EnterpriseLuceneIndexDir"/>
+		<mkdir dir="${INSTALLATION_ROOT_LOCATION}/LuceneIndexDirs/ReportingGroupLuceneIndexDir"/>
+	</target>
+	
+	<target name="CreatePartyQCFnQueuesOnWAS" description="Create Party QCF and Queues on WAS." >
+		<echo message="Start Create Party QCF and Queues on WAS."/>
+
+		<propertyfile file="partyQCFnQueues.properties" >
+		  <entry  key="mqHost" value="${mqHost}"/>
+		  <entry  key="mqConnType" value="${mqConnType}"/>
+		  <entry  key="mqSvrChannelName" value="${mqSvrChannelName}"/>
+		  <entry  key="mqPartyQmgr" value="${mqPartyQmgr}"/>
+		  <entry  key="mqPartyPort" value="${mqPartyPort}"/>
+		</propertyfile>
+
+		<exec dir="${profilePath}/bin" executable="${profilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${ConnectionType}"/>
+			<arg line="-port"/>
+			<arg line="${SOAPPort}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/createPartyQCFnQueuesOnWAS.jy" />
+			<arg line="${CurrentDirectory}/partyQCFnQueues.properties"/>
+			<arg line="${CurrentDirectory}/WASConfig.properties"/>
+		</exec>
+		<echo message="Done Create Party QCF and Queues on WAS."/>
+	</target>
+	
+	
+</project>

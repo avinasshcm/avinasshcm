@@ -1,0 +1,166 @@
+import sys
+import re
+import os
+import sre
+import java
+import time
+import java.util as util 
+import java.io as javaio
+from java.util import Properties
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+from os import path
+
+lineSeparator = java.lang.System.getProperty('line.separator')
+osName = java.lang.System.getProperty('os.name')
+
+
+def loadcfg():
+	global cfgFile
+	file=File(cfgFile)
+	if not file.exists():
+		print "ERROR: Property file does not exist"
+		sys.exit()
+	
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+
+
+
+def parseCfgFile ():
+
+   	cfg=loadcfg()
+        
+	global profilePath, dbVendor, dbServerHost, dbName, dbPort, dbLogin,  dbPassword, mqConnType
+        global initialHeap, maxHeap,region, timeZone, language,wsREGLogin, wsREGPwd
+
+     
+	#-----------------------------------------------------------------
+	# Get all the General Parameters and DB Details
+	#-----------------------------------------------------------------
+	
+	profilePath = cfg.getProperty("profilePath")
+	if not path.exists(profilePath) and path.isfile(profilePath):
+		print "ERROR: " +profilePath+ " does not exist or permission denied or a wrong user is being used to run this script. Please check and retry.."
+		sys.exit()
+		
+	initialHeap=cfg.getProperty("JVMMinHeapSize")
+	if (initialHeap == ""):
+		print "ERROR: minHeap property in " +cfgFile+ " is blank. It should be a valid heapsize"
+		sys.exit()
+		
+	maxHeap=cfg.getProperty("JVMMaxHeapSize")
+	if (maxHeap == ""):
+		print "ERROR: maxHeap property in " +cfgFile+ " is blank. It should be a valid heapsize"
+		sys.exit()
+	
+	region=cfg.getProperty("region")
+	timeZone=cfg.getProperty("timeZone")
+	language=cfg.getProperty("language")
+
+	global inputNodeName, inputServerName
+	inputNodeName=cfg.getProperty("NodeName")
+	inputServerName=cfg.getProperty("ServerName")
+	
+	
+			
+def getServer ():
+	cname=""
+	nname=""
+	sname=""
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	
+	for cell in cells:
+		nodes = AdminConfig.list('Node', cell).split(lineSeparator)
+		for node in nodes:
+			cname = AdminConfig.showAttribute(cell, 'name')
+			nname = AdminConfig.showAttribute(node, 'name')
+	      	 	servs = AdminControl.queryNames('type=Server,cell=' + cname + ',node=' + nname + ',*').split(lineSeparator)
+			print "Number of running servers on node " + nname + ": %s \n" % (len(servs))
+			for server in servs:
+				sname = AdminControl.getAttribute(server, 'name')
+				ptype = AdminControl.getAttribute(server, 'processType')
+				pid   = AdminControl.getAttribute(server, 'pid')
+				state = AdminControl.getAttribute(server, 'state')
+				print " "
+				print "#############################################################################################################################################"
+				print " "
+				print "Execution of this Jython script will begin on server "+ sname + ", having PID " + pid + ", running on " + nname + " node in " + cname + " Cell."
+				apps = AdminControl.queryNames('type=Application,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*').split(lineSeparator)
+				print "Number of applications running on " + sname + ": %s \n" % (len(apps))
+#				for app in apps:
+#					aname = AdminControl.getAttribute(app, 'name')
+#					aCtxRoot = AdminControl.getAttribute(app, 
+#					print aname + "\n"
+	serverName = sname
+	nodeName = nname
+	cellName = cname
+	return cellName, nodeName, serverName
+
+				
+#-------------------------------------
+# Main Application starts from here
+#-------------------------------------
+
+if len(sys.argv) == 0:
+	usage()
+
+if len(sys.argv) > 1:
+	usage()
+
+
+cfgFile = sys.argv[0]
+
+validationResult = "true"
+
+parseCfgFile()
+
+#cellName,nodeName,serverName=getServer()
+
+cells = AdminConfig.list('Cell').split(lineSeparator)
+for cell in cells:
+	cellName = AdminConfig.showAttribute(cell, 'name')
+	print "Setting cellName to " +cellName+ " as automatically detected."
+
+nodeName=inputNodeName
+print "Setting node name to " +inputNodeName+ " as specified in the input."
+
+serverName=inputServerName
+print "Setting server name to " +inputServerName+ " as specified in the input."
+
+if(cellName == ""):
+		print " "
+		print "ERROR: Cell is not present."
+		sys.exit()
+
+if(nodeName == ""):
+	print " "
+	print "ERROR: Node is not present."
+	sys.exit()
+
+if(serverName == ""):
+	print " "
+	print "ERROR: Server is not present."
+	sys.exit()
+
+wasMajorVersion = AdminTask.getNodeMajorVersion("-nodeName " + nodeName)
+
+wasMajorVersion = AdminTask.getNodeMajorVersion("-nodeName " + nodeName)
+
+if (wasMajorVersion != "7"):
+        if( wasMajorVersion != "8"):
+                print " "
+                print "ERROR: This script is certified only on IBM WebSphere v7.0.x and v8.0.0.x only.....Exiting"
+                sys.exit()
+

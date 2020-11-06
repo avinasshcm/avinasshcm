@@ -1,0 +1,209 @@
+import sys
+import re
+import os
+import sre
+import java
+import time
+import java.util as util 
+import java.io as javaio
+from java.util import Properties
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+from os import path
+
+lineseparator = java.lang.System.getProperty('line.separator')
+osName = java.lang.System.getProperty('os.name')
+def loadcfg():
+	global cfgFile
+	file=File(cfgFile)
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+	
+def loadTemp():
+	global tempCFG
+	file=File(tempCFG)
+	tmpprop=Properties()
+	try:
+		try:
+			stream=FileInputStream(tempCFG)
+			tmpprop.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + tempCFG
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return tmpprop
+
+
+def parseCfgFile ():
+
+	cfg=loadcfg()
+	tmpprop = loadTemp()
+	global  dbLogin, dBAlias, dbPassword ,wsREGLogin, wsREGPwd
+
+        
+	#-----------------------------------------------------------------
+	# Get all the General Parameters and DB Details
+	#-----------------------------------------------------------------
+    
+	
+	dbLogin = cfg.getProperty("DB_USER_ID")		# Both the user need same privilages now so setting both to DB_USER_ID
+	wsREGLogin = cfg.getProperty("DB_USER_ID")	# DB_USER_ID is being used as admin privilage is requried
+	dbPassword =tmpprop.getProperty("DBPass")
+	wsREGPwd = tmpprop.getProperty("DBPass")
+	dBAlias=cfg.getProperty("DBAlias")
+	
+
+	global inputNodeName, inputServerName
+	inputNodeName=cfg.getProperty("NodeName")
+	inputServerName=cfg.getProperty("ServerName")
+
+def showAsDict( configId ) :
+ 	'showAsDict( configId ) - Return a dictionary of the AdminConfig.show( configID ) result.'
+	result = {};
+  	try :
+    		#-----------------------------------------------------------------
+    		# The result of the AdminConfig.show() should be a string
+    		# containing many lines.  Each line of which starts and ends
+    		# with brackets.  The "name" portion should be separated from the
+    		# associated value by a space.
+    		#-----------------------------------------------------------------
+    		for item in AdminConfig.show( configId ).splitlines() :
+      			if ( item[ 0 ] == '[' ) and ( item[ -1 ] == ']' ) :
+        			( key, value ) = item[ 1:-1 ].split( ' ', 1 );
+        			if ( value[ 0 ] == '"' ) and ( value[ -1 ] == '"' ) :
+          				value = value[ 1:-1 ];
+        			result[ key ] = value;
+  	except NameError, e :
+    		print 'Name not found: ' + str( e );
+  	except :
+    		kind, value = sys.exc_info()[ :2 ];
+    		print 'Exception  type: ' + str( kind );
+    		print 'Exception value: ' + str( value );
+  	return result;
+
+	
+	
+
+
+	
+def checkExistingJ2C ():
+	jABinary = 0
+	wsjABinary = 0
+	
+	######### Check for J2C Authentication ########
+	J2CAuths = AdminConfig.list ('JAASAuthData').splitlines();
+	for j2CA in J2CAuths :
+		j2CDict = showAsDict( j2CA )
+		j2cAlias = j2CDict[ 'alias' ];
+		if (j2cAlias == nodeName+"/"+dBAlias):
+			jABinary += 1
+		if(jABinary == 1):
+			print "removing existing J2C " +j2cAlias
+			AdminConfig.remove(j2CA)
+			jABinary=0
+		if (j2cAlias == nodeName+"/WSREG_Login"):
+			wsjABinary += 1
+		if(wsjABinary == 1):
+			print "removing existing J2C " +j2cAlias
+			AdminConfig.remove(j2CA)
+			wsjABinary=0			
+	AdminConfig.save()	
+	
+def createJ2CAuth (cellName):
+	
+	checkExistingJ2C();
+	security = AdminConfig.getid("/Cell:"+cellName+"/Security:/")
+	################# Creating J2C Authentication ###############	
+	alias = ['alias', nodeName+"/"+dBAlias]
+	userid = ['userId', dbLogin]
+	password = ['password', dbPassword]
+	jaasAttrs = [alias, userid, password]
+	AdminConfig.create('JAASAuthData', security, jaasAttrs)
+	AdminConfig.save()
+	print userid
+	print password	
+	print "J2C Authentication alias has been created to be used by default Datasource"
+	print ""
+
+def createWSJ2CAuth (cellName):
+	
+	security = AdminConfig.getid("/Cell:"+cellName+"/Security:/")
+	################# Creating J2C Authentication ###############	
+	alias = ['alias', nodeName+"/WSREG_Login"]
+	userid = ['userId', wsREGLogin]
+	password = ['password', wsREGPwd]
+	jaasAttrs = [alias, userid, password]
+	AdminConfig.create('JAASAuthData', security, jaasAttrs)
+	AdminConfig.save()
+	print userid
+	print password	
+	print "WS J2C Authentication alias has been created to be used by default Datasource"
+	print ""
+
+def getServer ():
+	cname=""
+	nname=""
+	sname=""
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	
+	for cell in cells:
+		nodes = AdminConfig.list('Node', cell).split(lineSeparator)
+		for node in nodes:
+			cname = AdminConfig.showAttribute(cell, 'name')
+			nname = AdminConfig.showAttribute(node, 'name')
+	      	 	servs = AdminControl.queryNames('type=Server,cell=' + cname + ',node=' + nname + ',*').split(lineSeparator)
+			print "Number of running servers on node " + nname + ": %s \n" % (len(servs))
+			for server in servs:
+				sname = AdminControl.getAttribute(server, 'name')
+				ptype = AdminControl.getAttribute(server, 'processType')
+				pid   = AdminControl.getAttribute(server, 'pid')
+				state = AdminControl.getAttribute(server, 'state')
+				print " "
+				print "#############################################################################################################################################"
+				print " "
+				print "Execution of this Jython script will begin on server "+ sname + ", having PID " + pid + ", running on " + nname + " node in " + cname + " Cell."
+				apps = AdminControl.queryNames('type=Application,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*').split(lineSeparator)
+#				print "Number of applications running on " + sname + ": %s \n" % (len(apps))
+#				for app in apps:
+#					aname = AdminControl.getAttribute(app, 'name')
+#					aCtxRoot = AdminControl.getAttribute(app, 
+#					print aname + "\n"
+	serverName = sname
+	nodeName = nname
+	cellName = cname
+	return cellName, nodeName, serverName
+
+cfgFile = sys.argv[0]
+tempCFG = sys.argv[1]
+parseCfgFile()
+
+#cellName,nodeName,serverName=getServer()
+
+cells = AdminConfig.list('Cell').split(lineSeparator)
+for cell in cells:
+	cellName = AdminConfig.showAttribute(cell, 'name')
+	print "Setting cellName to " +cellName+ " as automatically detected."
+
+nodeName=inputNodeName
+print "Setting node name to " +inputNodeName+ " as specified in the input."
+
+serverName=inputServerName
+print "Setting server name to " +inputServerName+ " as specified in the input."
+
+createJ2CAuth(cellName)
+
+createWSJ2CAuth(cellName)

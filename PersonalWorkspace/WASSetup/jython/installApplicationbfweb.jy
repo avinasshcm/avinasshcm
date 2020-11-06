@@ -1,0 +1,250 @@
+import java
+import time
+import java.util as util 
+import java.io as javaio
+import zipfile
+from java.util import Properties
+import javax.xml.parsers.DocumentBuilderFactory as DocumentBuilderFactory
+import javax.xml.parsers.DocumentBuilder as DocumentBuilder
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+from os import path
+
+lineseparator = java.lang.System.getProperty('line.separator')
+osName = java.lang.System.getProperty('os.name')
+def loadcfg():
+	global cfgFile
+	file=File(cfgFile)
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+
+
+def parseCfgFile ():
+
+	cfg=loadcfg()
+	global warContext, applName, warName, bfwarDirectory
+        
+	#-----------------------------------------------------------------
+	# Get all the General Parameters and DB Details
+	#-----------------------------------------------------------------
+    
+	warContext=cfg.getProperty("warContext")
+	applName=cfg.getProperty("applicationName")
+	warName=cfg.getProperty("WARName")
+	bfwarDirectory=cfg.getProperty("INSTALLATION_ROOT_LOCATION")+"/BankFusion/SYMBOLIC/Deployables"
+
+	global inputNodeName, inputServerName
+	inputNodeName=cfg.getProperty("NodeName")
+	inputServerName=cfg.getProperty("ServerName")
+	
+	
+
+def uninstallApp (appToUninstall):
+   	print "Uninstalling app: "+appToUninstall
+	appToUninstall = str(appToUninstall).strip();
+    	AdminApp.uninstall(appToUninstall)
+    	AdminConfig.save();
+	syncObj = AdminControl.completeObjectName('type=NodeSync,node='+nodeName+',*')
+	if(syncObj!=''):
+		AdminControl.invoke(syncObj, 'sync')
+	print "Uninstallation complete for "+appToUninstall
+	print " "	
+	
+def installApp (cellName, nodeName, serverName):
+	isBFFull=0
+#	if (earPath == ""):
+#		fullPath = profilePath+"/installableApps/"+earFileName
+#	else:
+	fullPath = bfwarDirectory+"/"+warName
+	print fullPath	
+	appInstalled = "false"
+	sigCapInstalled = "false"
+	
+	############### Getting shared library list ##############
+#	wasMajorVersion = AdminTask.getNodeMajorVersion("-nodeName " + nodeName)
+#	if (wasMajorVersion == "8"):
+#		libList = parseXMLFile()
+#	else:
+#		libList = "BFHelperJars+BFApplicationJars"
+	############### Check whether the app is already deployed or not ##############
+	appToUninstall = ""
+	appsBefore = AdminApp.list();
+	if (appsBefore != ""):
+		appsBefore = appsBefore.split("\n")
+		for i in appsBefore:    
+				appToUninstall = str(i)
+				if(appToUninstall.strip() == applName):
+					uninstallApp(applName)
+	
+	############### App deployment ##############
+	applicationName=applName
+	zf = zipfile.ZipFile(fullPath, 'r')
+	zipFileContents=zf.namelist()
+	for zipFileContent in zipFileContents:
+		if(zipFileContent=="drools-guvnor.war"):
+			isBFFull=1
+
+	node = "-node "+nodeName
+	cell = "-cell "+cellName
+	svr = "-server "+serverName
+	ctxRoot = "-contextroot /"+warContext
+	appName = "-appname "+applicationName
+	if(isBFFull == 1):
+		AdminApp.install(fullPath, [node, cell, svr, appName, '-MapWebModToVH [[bfweb.war bfweb.war,WEB-INF/web.xml default_host] [uxp.war uxp.war,WEB-INF/web.xml default_host] [drools-guvnor.war drools-guvnor.war,WEB-INF/web.xml default_host] [CBSBatchAdmin.war CBSBatchAdmin.war,WEB-INF/web.xml default_host]]'])
+	else:
+		AdminApp.install(fullPath, [node, cell, svr, appName, '-MapWebModToVH [[bfweb.war bfweb.war,WEB-INF/web.xml default_host] [uxp.war uxp.war,WEB-INF/web.xml default_host]]'])
+	AdminConfig.save()	
+
+	############## Mapping Shared Library for BFUB #############
+
+	#getting complete shared lib list
+	libList=""
+	server = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName)
+	lbs = AdminConfig.list('Library', server).splitlines()
+	for lb in lbs:
+		if(AdminConfig.showAttribute(lb, 'name') != "BFDroolsJars"):
+			if(libList == ""):
+				libList=AdminConfig.showAttribute(lb, 'name')
+			else:
+				libList=libList+"+"+AdminConfig.showAttribute(lb, 'name')
+	
+	res_1 = ["BankFusion", "META-INF/application.xml", libList ]
+	res_2 = ["bfweb.war", "bfweb.war,WEB-INF/web.xml", libList ]
+	res_3 = ["uxp.war", "uxp.war,WEB-INF/web.xml", libList ]
+	
+	sharedLibOpts = []
+	sharedLibOpts.append("-MapSharedLibForMod")
+	sharedLibOpts.append([res_1])
+	AdminApp.edit(applicationName, sharedLibOpts )
+	AdminConfig.save()
+	sharedLibOpts = []
+	sharedLibOpts.append("-MapSharedLibForMod")
+	sharedLibOpts.append([res_2])
+	AdminApp.edit(applicationName, sharedLibOpts )
+	AdminConfig.save()
+	sharedLibOpts = []
+	sharedLibOpts.append("-MapSharedLibForMod")
+	sharedLibOpts.append([res_3])
+	AdminApp.edit(applicationName, sharedLibOpts )
+	AdminConfig.save()
+	
+	if(isBFFull == 1):
+		res_4 = ["drools-guvnor.war", "drools-guvnor.war,WEB-INF/web.xml", "BFDroolsJars" ]
+		sharedLibOpts = []
+		sharedLibOpts.append("-MapSharedLibForMod")
+		sharedLibOpts.append([res_4])
+		AdminApp.edit(applicationName, sharedLibOpts )
+		AdminConfig.save()
+	depApp = AdminConfig.getid("/Deployment:"+applicationName)
+	depObject = AdminConfig.showAttribute(depApp, 'deployedObject')
+	classldr = AdminConfig.showAttribute(depObject, 'classloader')
+	AdminConfig.modify(depObject, [['warClassLoaderPolicy', 'MULTIPLE']])
+	AdminConfig.modify(classldr, [['mode', 'PARENT_LAST']])
+	AdminConfig.save()
+	modules=AdminConfig.showAttribute(depObject,'modules')
+	modules = modules[1:len(modules)-1].split(" ")
+	for module in modules:
+		if (module.find('WebModuleDeployment')!= -1):
+			if (AdminConfig.showAttribute(module, 'uri').find('drools-guvnor.war')!=-1):
+				AdminConfig.modify(module, [['classloaderMode', 'PARENT_LAST']])
+			if (AdminConfig.showAttribute(module, 'uri').find('CBSBatchAdmin.war')!=-1):
+				AdminConfig.modify(module, [['classloaderMode', 'PARENT_LAST']])
+	AdminConfig.save()
+	appInstalled = "true"
+	print "Shared Library mapped and CLASSLOADER has been set for " +applicationName
+	syncObj = AdminControl.completeObjectName('type=NodeSync,node='+nodeName+',*')
+	if(syncObj!=''):
+		AdminControl.invoke(syncObj, 'sync')
+	appManager = AdminControl.queryNames('cell='+cellName+',node='+nodeName+',type=ApplicationManager,process='+serverName+',*')
+	AdminControl.invoke(appManager, 'startApplication', 'BankFusion')
+	print applName+ " application started successfully"
+	return appInstalled
+	
+def getServer ():
+	cname=""
+	nname=""
+	sname=""
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	
+	for cell in cells:
+		nodes = AdminConfig.list('Node', cell).split(lineSeparator)
+		for node in nodes:
+			cname = AdminConfig.showAttribute(cell, 'name')
+			nname = AdminConfig.showAttribute(node, 'name')
+	      	 	servs = AdminControl.queryNames('type=Server,cell=' + cname + ',node=' + nname + ',*').split(lineSeparator)
+			print "Number of running servers on node " + nname + ": %s \n" % (len(servs))
+			for server in servs:
+				sname = AdminControl.getAttribute(server, 'name')
+				ptype = AdminControl.getAttribute(server, 'processType')
+				pid   = AdminControl.getAttribute(server, 'pid')
+				state = AdminControl.getAttribute(server, 'state')
+				print " "
+				print "#############################################################################################################################################"
+				print " "
+				print "Execution of this Jython script will begin on server "+ sname + ", having PID " + pid + ", running on " + nname + " node in " + cname + " Cell."
+				apps = AdminControl.queryNames('type=Application,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*').split(lineSeparator)
+#				print "Number of applications running on " + sname + ": %s \n" % (len(apps))
+#				for app in apps:
+#					aname = AdminControl.getAttribute(app, 'name')
+#					aCtxRoot = AdminControl.getAttribute(app, 
+#					print aname + "\n"
+	serverName = sname
+	nodeName = nname
+	cellName = cname
+	return cellName, nodeName, serverName
+	
+def parseXMLFile():
+	name=""
+	i=0
+	dbf = DocumentBuilderFactory.newInstance()
+	db = dbf.newDocumentBuilder()
+	dom = db.parse(xmlFile)
+	docElements = dom.getDocumentElement().getElementsByTagName('SharedLibrary')
+	while i<docElements.length :
+		j=0
+		docElement=docElements.item(i)
+		childNodes=docElement.getChildNodes()
+		while j<childNodes.length:
+			if(childNodes.item(j).nodeName=='Name'):
+				readvalue=childNodes.item(j).lastChild.nodeValue
+				if(name==''):
+					name=name+readvalue
+				else:
+					name=name+"+"+readvalue
+			j=j+1
+		i=i+1
+	return name
+
+cfgFile = sys.argv[0]
+
+parseCfgFile()
+
+xmlFile = sys.argv[1]
+
+#cellName,nodeName,serverName=getServer()
+
+cells = AdminConfig.list('Cell').split(lineSeparator)
+for cell in cells:
+	cellName = AdminConfig.showAttribute(cell, 'name')
+	print "Setting cellName to " +cellName+ " as automatically detected."
+
+nodeName=inputNodeName
+print "Setting node name to " +inputNodeName+ " as specified in the input."
+
+serverName=inputServerName
+print "Setting server name to " +inputServerName+ " as specified in the input."
+
+installApp (cellName, nodeName, serverName)
+
+#oldSpec = AdminControl.getAttribute( ts[1], ‘traceSpecification’ ) AdminControl.setAttribute( ts[1], ‘traceSpecification’, ‘ConnLeakLogic=finest’ )

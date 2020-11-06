@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd" id="Application_ID" version="5">
+  <display-name>BankFusion</display-name>
+  <module>
+    <web>
+      <web-uri>uxp.war</web-uri>
+      <context-root>/uxp</context-root>
+    </web>
+  </module>
+  <module>
+     <web>
+      <web-uri>bfweb.war</web-uri>
+      <context-root>/bfweb</context-root>
+    </web>
+  </module>
+  <module>
+     <web>
+      <web-uri>drools-guvnor.war</web-uri>
+      <context-root>/drools-guvnor</context-root>
+    </web>
+  </module>
+  <module>
+     <web>
+      <web-uri>CBSBatchAdmin.war</web-uri>
+      <context-root>/CBSBatchAdmin</context-root>
+    </web>
+  </module>
+
+</application>

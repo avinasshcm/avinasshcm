@@ -1,0 +1,239 @@
+####################################################################################
+#
+# Author       - Nishanth Bhandary
+# Contact      - x 34326
+# Description  - Script to create Queues and QCF's for Meridian on WebSphere 8.5.x 
+#
+####################################################################################
+
+import sys
+import re
+import sre
+import java
+import java.util as util 
+import java.io as javaio
+from java.util import Properties
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+
+lineseparator = java.lang.System.getProperty('line.separator')
+
+def usage():
+	print "Configuration file not found. Exiting."
+	sys.exit()
+
+def loadcfg(cfgFile):
+	file=File(cfgFile)
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+
+
+def parseCfgFile ():
+	cfg=loadcfg(cfgFile)
+		
+	global inputNodeName, inputServerName
+	inputNodeName=cfg.getProperty("NodeName")
+	inputServerName=cfg.getProperty("ServerName")
+
+
+
+def loadProps():
+	global propFile
+	file=File(propFile)
+	if not file.exists():
+		usage()
+	
+	props=Properties()
+	try:
+		try:
+			stream=FileInputStream(propFile)
+			props.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + propFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return props
+
+def getServer ():
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	
+	for cell in cells:
+		nodes = AdminConfig.list('Node', cell).split(lineSeparator)
+		for node in nodes:
+			cname = AdminConfig.showAttribute(cell, 'name')
+			nname = AdminConfig.showAttribute(node, 'name')
+	      	 	servs = AdminControl.queryNames('type=Server,cell=' + cname + ',node=' + nname + ',*').split(lineSeparator)
+			print "Number of running servers on node " + nname + ": %s \n" % (len(servs))
+			for server in servs:
+				sname = AdminControl.getAttribute(server, 'name')
+				ptype = AdminControl.getAttribute(server, 'processType')
+				pid   = AdminControl.getAttribute(server, 'pid')
+				state = AdminControl.getAttribute(server, 'state')
+				jvm = AdminControl.queryNames('type=JVM,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*')
+				osname = AdminControl.invoke(jvm, 'getProperty', 'os.name')
+				print " "
+				print "#############################################################################################################################################"
+				print " "
+				print "Execution of this Jython script will begin on server "+ sname + ", having PID " + pid + ", running on " + nname + " node in " + cname + " Cell."
+				apps = AdminControl.queryNames('type=Application,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*').split(lineSeparator)
+				print "Number of applications running on " + sname + ": %s \n" % (len(apps))
+				serverName = sname
+				nodeName = nname
+				cellName = cname
+				return cellName, nodeName, serverName
+
+
+def parsePropFile ():
+
+        props=loadProps()
+        
+        global nodeName, cellName, serverName, mqHost, mqSvrChannelName, mqConnType
+        global mqPartyQmgr, mqPartyPort
+        global queueParty_array
+        global queuePartyJNDI_array
+        global bQueueParty_array
+        global qcfParty_array
+        global qcfPartyJNDI_array
+
+        #########################
+        # Get all the WAS Details
+        #########################
+
+
+
+	#cellName,nodeName,serverName=getServer()
+
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	for cell in cells:
+		cellName = AdminConfig.showAttribute(cell, 'name')
+		print "Setting cellName to " +cellName+ " as automatically detected."
+
+	nodeName=inputNodeName
+	print "Setting node name to " +inputNodeName+ " as specified in the input."
+
+	serverName=inputServerName
+	print "Setting server name to " +inputServerName+ " as specified in the input."
+
+        
+        ##########################
+        # Get all the QMGR Details
+        ##########################
+        
+        mqHost = ['host', props.getProperty("mqHost")]
+	mqSvrChannelName = ['channel', props.getProperty("mqSvrChannelName")]
+
+        
+        mqConnType = props.getProperty("mqConnType")
+        
+        	  
+        ###################################
+        # Get all the QCF and Queue details
+        ###################################
+        
+
+
+	mqPartyQmgr = ['queueManager', props.getProperty("mqPartyQmgr")]
+	mqPartyPort = ['port', props.getProperty("mqPartyPort")]
+	queueParty_array = zeros(2, java.lang.String)
+	queuePartyJNDI_array = zeros(2, java.lang.String)
+	bQueueParty_array = zeros(2, java.lang.String)
+	qcfParty_array = zeros(1, java.lang.String)
+	qcfPartyJNDI_array = zeros(1, java.lang.String)
+	for i in range(2):
+		queueParty_array[i] = props.getProperty("queueParty"+i.toString())
+		queuePartyJNDI_array[i] = props.getProperty("queuePartyJNDI"+i.toString())
+		bQueueParty_array[i] = props.getProperty("bPartyQueue"+i.toString())
+	for i in range(1):
+		qcfParty_array[i] = props.getProperty("qcfParty"+i.toString())
+		qcfPartyJNDI_array[i] = props.getProperty("qcfPartyJNDI"+i.toString())
+	
+	return nodeName, serverName, cellName		
+
+
+def deleteAll(jmsp):
+	print "Deleting Party QCF and Queues...."
+	for i in range(2):
+		queueName = queueParty_array[i]
+		for queue in AdminTask.listWMQQueues(jmsp).splitlines():
+			name = AdminConfig.showAttribute(queue, "name")
+			if (name == queueName):
+				AdminTask.deleteWMQQueue(queue)
+				print "  deleted queue %s" % queueName
+				AdminConfig.save()
+
+	for i in range(1):
+		QCF = qcfParty_array[i]
+		for queueCF in AdminTask.listWMQConnectionFactories(jmsp).splitlines():
+			name = AdminConfig.showAttribute(queueCF, "name")
+			if (name == QCF):
+				AdminTask.deleteWMQConnectionFactory(queueCF)
+				print "  deleted QCF %s" % QCF
+				AdminConfig.save()
+	AdminConfig.save()
+
+
+
+			
+def createAll(qcftemplate, tcftemplate, qtemplate, ttemplate, jmsp):
+	print "Creating Party QCF and Queues...."
+	for i in range(1):
+		QCF = ['name', qcfParty_array[i]]
+		qcfJNDI = ['jndiName', qcfPartyJNDI_array[i]]
+		mqqcfAttrs = [QCF, qcfJNDI, mqHost, mqPartyQmgr, mqPartyPort, mqSvrChannelName]
+		AdminConfig.createUsingTemplate('MQQueueConnectionFactory', jmsp, mqqcfAttrs, qcftemplate)
+	AdminConfig.save()
+	for i in range(2):
+		queueName = ['name', queueParty_array[i]]
+		queueJNDI = ['jndiName', queuePartyJNDI_array[i]]
+		bQueueName = ['baseQueueName', bQueueParty_array[i]]
+		mqqAttrs = [queueName, queueJNDI, bQueueName]
+		AdminConfig.createUsingTemplate('MQQueue', jmsp, mqqAttrs, qtemplate)
+	AdminConfig.save()
+		
+	
+##################
+# Main Application
+##################
+
+cfgFile = sys.argv[1]
+parseCfgFile()
+
+propFile = sys.argv[0]
+parsePropFile()
+
+
+jmsP = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName+"/JMSProvider:WebSphere MQ JMS Provider")
+
+
+if (mqConnType == 'BINDINGS'):
+	qcfTemplate = AdminConfig.listTemplates('MQQueueConnectionFactory').split(lineseparator)[1]
+	tcfTemplate = AdminConfig.listTemplates('MQTopicConnectionFactory').split(lineseparator)[1]
+elif (mqConnType == 'CLIENT'):
+	qcfTemplate = AdminConfig.listTemplates('MQQueueConnectionFactory').split(lineseparator)[2]
+	tcfTemplate = AdminConfig.listTemplates('MQTopicConnectionFactory').split(lineseparator)[2]
+else:
+	print "mqConnType property is incorrect, please check and execute again"
+	print "....Exiting..!!"
+	sys.exit()
+
+qTemplate = AdminConfig.listTemplates('MQQueue').split(lineseparator)[0]
+tTemplate = AdminConfig.listTemplates('MQTopic').split(lineseparator)[0]
+
+
+deleteAll(jmsP)
+createAll(qcfTemplate, tcfTemplate, qTemplate, tTemplate, jmsP)
+print "....Done..!"

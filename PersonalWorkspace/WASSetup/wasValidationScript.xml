@@ -1,0 +1,168 @@
+<project name="WASSetup" default="validateSetup" basedir=".">
+	<description>BankFusion WebSphere Validation Script</description>
+
+	<!-- ************************************* -->
+	<!--        Bankfusion Application Validation on WAS  -->
+	<!-- ************************************* -->
+	<target name="validateSetup" description="Validate Setup" depends="init">
+	<!--<antcall target="stopServer">
+	</antcall>
+	<antcall target="startServer">
+	</antcall>-->
+	<antcall target="validate">
+	</antcall>
+	</target>
+	
+	<target name="init">
+		<antcall target="getOsName" />
+		<property name="CurrentDirectory" value="${user.dir}" />
+		<property name="file1" value="WASConfigDynamic.properties" />
+		<property name="file2" value="WASConfigStatic.properties" />
+		<property name="file3" value="WASInstallerConfig.properties" />
+		<property name="file4" value="WASConfig.properties" />
+
+		<delete file="${file4}" />
+		<copy file="${file1}" tofile="${file4}">
+			<filterchain>
+				<concatfilter append="${file2}" />
+				<concatfilter append="${file3}" />
+			</filterchain>
+		</copy>
+		<antcall target="checkFileExistsInWAS" />
+		<loadproperties srcFile="WASConfig.properties" />
+		<property name="WSProfilePath" value="${profilePath}" />
+		<property name="conntype" value="${ConnectionType}" />
+		<property name="port" value="${SOAPPort}" />
+		<property name="WSUsername" value="${WSUsername}" />
+		<property name="WSPassword" value="${WSPassword}" />
+		<antcall target="pathValidation" />
+	</target>
+	
+	<target name="stopServer" description="Stop the server">
+	<echo message="${WSProfilePath}/bin/${was.stop.server}"/>
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.stop.server}">
+			<arg line="${ServerName}" />
+
+		</exec>
+	</target>
+	
+	<target name="startServer" description="Start the server">
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.start.server}">
+			<arg line="${ServerName}" />
+		</exec>
+	</target>
+	
+	<target name="validate" description="Was Setup Validation" depends="decodePass">
+		
+		<exec dir="${WSProfilePath}/bin" executable="${WSProfilePath}/bin/${was.admin}">
+			<arg line="-lang"/>
+			<arg line="jython"/>
+			<arg line="-conntype"/>
+			<arg line="${conntype}"/>
+			<arg line="-port"/>
+			<arg line="${port}"/>
+			<arg line="-user" />
+			<arg line="${WSUsername}" />
+			<arg line="-password" />
+			<arg line="${WSPass}" />
+			<arg line="-f" />
+			<arg line="${CurrentDirectory}/jython/init.jy" />
+			<arg line="${CurrentDirectory}/${file4}"/>
+		</exec>
+	</target>
+	
+	<target name="getOsName">
+		<echo message="osName ${os.name}" />
+	</target>
+	<condition property="isOS400">
+		<equals arg1="${os.name}" arg2="OS/400" />
+	</condition>
+	<target name="pathValidation" unless="isOS400">
+		<antcall target="ValidateProperties" />
+	</target>
+	
+	<target name="checkFileExistsInWAS">
+		<condition property="isWindows">
+			<os family="windows" />
+		</condition>
+		<antcall target="createWindowsExtn" />
+		<antcall target="createUnixExtn" />
+		<antcall target="createIseriesExtn" />
+	</target>
+
+	<target name="createWindowsExtn" if="isWindows">
+		<replace file="${file4}" value=".bat" token=".sh" />
+	</target>
+
+	<target name="createUnixExtn" unless="isWindows">
+		<replace file="${file4}" value=".sh" token=".bat" />
+	</target>
+	
+	<target name="createIseriesExtn" if="isOS400">
+		<replace file="${file4}" value="" token=".bat" />
+		<replace file="${file4}" value="" token=".sh" />
+	</target>
+	
+	<target name="wasHomeValidation">
+		<condition property="was.profile.exists">
+			<available file="${profilePath}" type="dir" />
+		</condition>
+	</target>
+
+	<target name="ValidateProperties" depends="wasHomeValidation" unless="was.profile.exists">
+		<delete file="${file4}" />
+		<fail message="${profilePath} does not exists" />
+	</target>
+	
+	<!-- Some miscellaneous ant targets -->
+	<!--<antcall target="deleteProfile">
+	</antcall>
+	<antcall target="deleteFolder">
+	</antcall> 
+	<antcall target="createProfile">
+	</antcall>-->
+	<target name="deleteProfile" description="Delete the profile">
+		<echo>--------------------------------</echo>
+		<echo> BankFusion WebSphere Setup Script</echo>
+		<echo>--------------------------------</echo>
+		<echo message="WebSphere Home:${WSHome}" />
+		<echo message="profilePath:${WSProfilePath}/${ProfileName}" />
+		<echo message="Deleting the Profile ${ProfileName} if exists" />
+		<exec dir="${WSBinPath}" executable="${WSBinPath}/${was.manage.profile}">
+			<arg line="-delete" />
+			<arg line="-profileName" />
+			<arg line="${ProfileName}" />
+		</exec>
+	</target>
+
+	<target name="deleteFolder" description="deletes the profile folder">
+		<delete dir="${WSProfilePath}/${ProfileName}" />
+	</target>
+
+	<target name="createProfile" description="Create a Profile">
+		<exec dir="${WSBinPath}" executable="${WSBinPath}/${was.manage.profile}">
+			<arg line="-create" />
+			<arg line="-profileName" />
+			<arg line="${ProfileName}" />
+			<arg line="-profilePath" />
+			<arg path="${WSProfilePath}/${ProfileName}" />
+			<arg line="-templatePath" />
+			<arg path="${WSProfileTemplatesPath}" />
+			<arg line="-nodeName" />
+			<arg line="${NodeName}" />
+			<arg line="-cellName" />
+			<arg line="${CellName}" />
+			<arg line="-hostName" />
+			<arg line="${HostName}" />
+			<arg line="-serverName" />
+			<arg line="${ServerName}" />
+		</exec>
+	</target>
+	
+	<taskdef classname="com.misys.fusion.utils.DecoderUtilAntTask" name="DecoderUtilAntTask"/>
+	<target name="decodePass">
+		<DecoderUtilAntTask inputKey="${WSPassword}" outputVal="decodeVal" />
+		<property name="WSPass" value="${decodeVal}" />
+		
+	</target>	
+</project>

@@ -1,0 +1,260 @@
+<JVMCustomProperties>
+	<JVMCustomProperty>
+		<Name>ws.ext.dirs</Name>
+		<Description>Crystal Report Jars</Description>
+		<Required>false</Required>
+		<Value>D:\Payments\INSTALL-LOCATION\Crystal_Jars_2013</Value>
+	</JVMCustomProperty>
+	
+	<JVMCustomProperty>
+		<Name>BFconfigLocation</Name>
+		<Description>Path to BFConf</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>HBPersistenceProvider.TxnTimeoutInSec</Name>
+		<Description>Persistence TimeOut value</Description>
+		<Required>false</Required>
+		<Value>180</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>enableQueryParser</Name>
+		<Description>Enable or Disable Query parser</Description>
+		<Required>false</Required>
+		<Value>false</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>isflushoptimized</Name>
+		<Description></Description>
+		<Required>false</Required>
+		<Value>false</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>log4j.configuration</Name>
+		<Description>Log4J Configuration file</Description>
+		<Required>false</Required>
+		<Value>file:${INSTALLATION_ROOT_LOCATION}/BankFusion/SYMBOLIC/ServerConf/conf/bankfusion.log4j.conf</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>overridenulldbstrings</Name>
+		<Description></Description>
+		<Required>false</Required>
+		<Value>true</Value>
+	</JVMCustomProperty>
+		<JVMCustomProperty>
+		<Name>user.language</Name>
+		<Description>User Language</Description>
+		<Required>false</Required>
+		<Value>${language}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>user.region</Name>
+		<Description>User Region</Description>
+		<Required>false</Required>
+		<Value>${region}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>user.timezone</Name>
+		<Description>User Timezone</Description>
+		<Required>false</Required>
+		<Value>${timeZone}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>com.ibm.security.jgss.debug</Name>
+		<Description></Description>
+		<Required>false</Required>
+		<Value>off</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>com.ibm.security.krb5.Krb5Debug</Name>
+		<Description></Description>
+		<Required>false</Required>
+		<Value>off</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>BankFusion</Name>
+		<Description>Database Mapping</Description>
+		<Required>false</Required>
+		<Value>${DB_SCHEMA}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>derby.system.home</Name>
+		<Description>Derby location</Description>
+		<Required>false</Required>
+		<Value>${profilePath}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>drools.dialect.java.compiler.lnglevel</Name>
+		<Description>Drools comaptibility with JDK7</Description>
+		<Required>false</Required>
+		<Value>1.6</Value>
+	</JVMCustomProperty>
+	
+	
+	<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFAMconfigLocation</Name>
+		<Description>Path to AccountManagement configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/BFAM/SYMBOLIC/ACConf/</Value>
+	</JVMCustomProperty>
+	<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFPMconfigLocation</Name>
+		<Description>Path to PaymentManagement configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/BFPM/SYMBOLIC/PMConf/</Value>
+	</JVMCustomProperty>
+	<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFAOconfigLocation</Name>
+		<Description>Path to Account Ownership configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/BFAO/SYMBOLIC/AOConf/</Value>
+	</JVMCustomProperty>
+	
+	
+	<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFBTconfigLocation</Name>
+		<Description>Path to BFT configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/BFBT/SYMBOLIC/BFTellerConf/</Value>
+	</JVMCustomProperty>
+	
+	<JVMCustomProperty>
+		<Name>BRANCH</Name>
+		<Description>Branch Schema mapping</Description>
+		<Required>false</Required>
+		<Value>${BRANCH}</Value>
+	</JVMCustomProperty> 
+	
+		<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFBTconfigLocation</Name>
+		<Description>Path to BFT configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/BFBT/SYMBOLIC/BFTellerConf/</Value>
+	</JVMCustomProperty>
+	
+	<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFCBSconfigLocation</Name>
+		<Description>Path to CBS configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/CBS/SYMBOLIC/BFCBSConf/</Value>
+	</JVMCustomProperty>
+
+	<!-- Below properties are for schema mapping JVM custom properties in WAS -->
+	<!-- TODO: Verify how many schemas are present in CBS and then add those below -->
+	<JVMCustomProperty>
+		<Name>CBS</Name>
+		<Description>CBS Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${CBS}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>CBSAudit</Name>
+		<Description>CBSAudit Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${CBSAudit}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>Inventory</Name>
+		<Description>Inventory Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${CBS}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>PaymentMessaging</Name>
+		<Description>PaymentMessaging Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${CBS}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>WSRegistry</Name>
+		<Description>WSRegistry Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${WSRegistry}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>ENVIRONMENT</Name>
+		<Description>ENVIRONMENT for Spring Batch Admin Process</Description>
+		<Required>false</Required>
+		<Value>${DB_TYPE}</Value>
+	</JVMCustomProperty>
+	<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFUBconfigLocation</Name>
+		<Description>Path to UniversalBanking configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/UniversalBanking/SYMBOLIC/BFUBConf/</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>org.owasp.esapi.resources</Name>
+		<Description>Path to esapi and validation properties file </Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/UniversalBanking/SYMBOLIC/BFUBConf/conf/esapi/</Value>
+	</JVMCustomProperty>
+
+		<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFWIFconfigLocation</Name>
+		<Description>Path to What If configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/WIF/SYMBOLIC/WIFConf/</Value>
+	</JVMCustomProperty>
+	
+	
+		<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFPTconfigLocation</Name>
+		<Description>Path to Party configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/Party/SYMBOLIC/BFPTConf/</Value>
+	</JVMCustomProperty>
+
+	<!-- Below properties are for schema mapping JVM custom properties in WAS -->
+	<JVMCustomProperty>
+		<Name>Party</Name>
+		<Description>Party Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${Party}</Value>
+	</JVMCustomProperty>
+	<JVMCustomProperty>
+		<Name>BFParty</Name>
+		<Description>BFParty Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${BFParty}</Value>
+	</JVMCustomProperty>
+	
+		<!-- The Config Location JVM custom property -->
+	<JVMCustomProperty>
+		<Name>BFLOconfigLocation</Name>
+		<Description>Path to LO configuration location</Description>
+		<Required>false</Required>
+		<Value>${INSTALLATION_ROOT_LOCATION}/LO/SYMBOLIC/BFLOConf/</Value>
+	</JVMCustomProperty>
+	<!-- JVM Custom Property for AS400 -->
+	<JVMCustomProperty>
+		<Name>LO</Name>
+		<Description>LO Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>${LO}</Value>
+	</JVMCustomProperty>
+	
+	<JVMCustomProperty>
+		<Name>BFconfigLocationList</Name>
+		<Description>LO Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>BFBTconfigLocation;BFUBconfigLocation;BFPMconfigLocation;BFPTconfigLocation;BFWIFconfigLocation;BFAMconfigLocation;BFCBSconfigLocation;BFAOconfigLocation;BFconfigLocation</Value>
+	</JVMCustomProperty>
+	
+	<JVMCustomProperty>
+		<Name>file.encoding</Name>
+		<Description>LO Schema mapping custom property</Description>
+		<Required>false</Required>
+		<Value>UTF8</Value>
+	</JVMCustomProperty>
+</JVMCustomProperties>

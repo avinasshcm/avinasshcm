@@ -1,0 +1,284 @@
+import java
+import time
+import java.util as util 
+import java.io as javaio
+from java.util import Properties
+from java.io import FileOutputStream, FileInputStream, IOException, File
+from jarray import zeros, array
+from os import path
+
+lineseparator = java.lang.System.getProperty('line.separator')
+osName = java.lang.System.getProperty('os.name')
+def loadcfg(cfgFile):
+	file=File(cfgFile)
+	cfg=Properties()
+	try:
+		try:
+			stream=FileInputStream(cfgFile)
+			cfg.load(stream)
+		except IOException, e:
+			print "Problem loading the property file " + cfgFile
+			print e.message
+			e.printStackTrace()
+	finally:
+		stream.close()
+	
+	return cfg
+
+
+def parseCfgFile ():
+
+	cfg=loadcfg(cfgFile)
+	global dbVendor, dbServerHost, dbName, dbPort
+	global WSProviderName,WSDatasourceName,WSDatasourceJNDI,WSDatasourceDesc,DB_DRIVER_JARS_PATH,JTA_Enabled
+
+       
+        
+	#-----------------------------------------------------------------
+	# Get all the General Parameters and DB Details
+	#-----------------------------------------------------------------
+	dbVendor = cfg.getProperty("DB_TYPE")
+	dbServerHost = cfg.getProperty("DB_HOSTNAME")
+	dbName = cfg.getProperty("DB_NAME")
+	dbPort = cfg.getProperty("DB_PORT")
+	WSProviderName=cfg.getProperty("WSProviderName")
+	WSDatasourceName=cfg.getProperty("WSDatasourceName")
+	WSDatasourceJNDI=cfg.getProperty("WSDatasourceJNDI")
+	WSDatasourceDesc=cfg.getProperty("WSDatasourceDesc")
+	DB_DRIVER_JARS_PATH=cfg.getProperty("INSTALLATION_ROOT_LOCATION")+"/DatabaseJars"
+	serverStartUp_Path=cfg.getProperty("INSTALLATION_ROOT_LOCATION")+"/BankFusion/SYMBOLIC/ServerConf/conf/serverstartup.properties"
+	
+	propertyReader=loadcfg(serverStartUp_Path)
+	JTA_Enabled=propertyReader.getProperty("bankfusion.JTAEnabled")
+	if(JTA_Enabled == None):
+		JTA_Enabled="true"
+	
+	global inputNodeName, inputServerName
+	inputNodeName=cfg.getProperty("NodeName")
+	inputServerName=cfg.getProperty("ServerName")
+
+	
+	
+	
+	
+	
+def showAsDict( configId ) :
+ 	'showAsDict( configId ) - Return a dictionary of the AdminConfig.show( configID ) result.'
+	result = {};
+  	try :
+    		#-----------------------------------------------------------------
+    		# The result of the AdminConfig.show() should be a string
+    		# containing many lines.  Each line of which starts and ends
+    		# with brackets.  The "name" portion should be separated from the
+    		# associated value by a space.
+    		#-----------------------------------------------------------------
+    		for item in AdminConfig.show( configId ).splitlines() :
+      			if ( item[ 0 ] == '[' ) and ( item[ -1 ] == ']' ) :
+        			( key, value ) = item[ 1:-1 ].split( ' ', 1 );
+        			if ( value[ 0 ] == '"' ) and ( value[ -1 ] == '"' ) :
+          				value = value[ 1:-1 ];
+        			result[ key ] = value;
+  	except NameError, e :
+    		print 'Name not found: ' + str( e );
+  	except :
+    		kind, value = sys.exc_info()[ :2 ];
+    		print 'Exception  type: ' + str( kind );
+    		print 'Exception value: ' + str( value );
+  	return result;
+
+
+
+
+def checkExistingWSDS ():
+	dsBinary = 0
+	wsDsBinary = 0
+	######### Check for DataSource ########
+	dataSources = AdminConfig.list( 'DataSource' ).splitlines();
+	for ds in dataSources :
+		dsDict    = showAsDict( ds )
+		jndiName  = dsDict[ 'jndiName' ];
+		if (jndiName == WSDatasourceJNDI):
+			wsDsBinary +=1
+		if(wsDsBinary == 1):
+			print "removing existing datasource " +jndiName
+			AdminConfig.remove(ds)
+			wsDsBinary=0
+	AdminConfig.save()
+
+
+	
+def checkExistingWSJP ():
+	jpBinary = 0
+
+	######### Check for JDBC Provider ########	
+	jdbcProvs = AdminConfig.list ('JDBCProvider').splitlines();
+	for jp in jdbcProvs :
+		jpDict = showAsDict( jp )
+		jpName = jpDict[ 'name' ];
+		if (jpName == WSProviderName):
+				jpBinary += 1
+		if(jpBinary == 1):
+			print "removing existing JDBC Provider " +jpName
+			AdminConfig.remove(jp)
+			jpBinary=0
+	AdminConfig.save()
+	
+	
+	
+	
+	
+	
+	
+def createWSJDBCProvider (dbVendor, cellName, nodeName, serverName):
+	server = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName)
+	provName = ['name', WSProviderName]
+	################# Creating WSJDBC Provider ###############
+	if (dbVendor == "DB2"):
+		implCN = ['implementationClassName', "com.ibm.db2.jcc.DB2XADataSource"]
+		jdbcCP = ['classpath', "${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar ${UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar ${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar"]
+		jdbcXA = ['xa', "true"]
+		jdbcProvType = ['providerType', "DB2 Universal JDBC Driver Provider"]
+		varName = ['symbolicName', "DB2UNIVERSAL_JDBC_DRIVER_PATH"]
+			
+					
+	if (dbVendor == "ORACLE"):
+		implCN = ['implementationClassName', "oracle.jdbc.xa.client.OracleXADataSource"]
+		jdbcCP = ['classpath', "${ORACLE_JDBC_DRIVER_PATH}/ojdbc7.jar"]
+		jdbcXA = ['xa', "true"]
+		jdbcProvType = ['providerType', "ORACLE JDBC Driver"]
+		varName = ['symbolicName', "ORACLE_JDBC_DRIVER_PATH"]
+
+			
+	if (dbVendor == "SQLSERVER"):
+		implCN = ['implementationClassName', "com.microsoft.sqlserver.jdbc.SQLServerXADataSource"]
+		jdbcCP = ['classpath', "${MICROSOFT_JDBC_DRIVER_PATH}/sqljdbc4.jar"]
+		jdbcXA = ['xa', "true"]
+		jdbcProvType = ['providerType', "Microsoft SQL Server JDBC Driver"]
+		varName = ['symbolicName', "MICROSOFT_JDBC_DRIVER_PATH"]
+		
+			
+	if (dbVendor == "AS400"):
+		implCN = ['implementationClassName', "com.ibm.as400.access.AS400JDBCConnectionPoolDataSource"]
+		jdbcCP = ['classpath', "${AS400_JDBC_DRIVER_PATH}/jt400.jar "]
+		jdbcXA = ['xa', "true"]
+		jdbcProvType = ['providerType', "DB2 UDB for iSeries (Toolbox)"]
+		varName = ['symbolicName', "AS400_JDBC_DRIVER_PATH"]	
+	
+
+	jdbcAttrs = [jdbcCP, provName, implCN, jdbcProvType, jdbcXA]
+	AdminConfig.create('JDBCProvider', server, jdbcAttrs)
+	AdminConfig.save()
+	
+
+def createWSDS (dbVendor, cellName, nodeName, serverName):
+	################# Creating DataSource Config ###############
+	server = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName)
+	dsAuth = ['authDataAlias', nodeName+"/WSREG_Login"]
+	jdbcProvName = AdminConfig.getid("/Cell:"+cellName+"/Node:"+nodeName+"/Server:"+serverName+"/JDBCProvider:"+WSProviderName+"/")
+	dsName = ['name',WSDatasourceName]
+	jndiName = ['jndiName',WSDatasourceJNDI ]
+	dsDescription = ['description', "Datasource to be used by WSREGISTRY Schema"]
+	dsStmtCacheSize = ['statementCacheSize', "300"]
+
+	if (dbVendor == "DB2"):
+		dsHelperClass = ['datasourceHelperClassname', "com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper"]
+	if (dbVendor == "ORACLE"):
+		dsHelperClass = ['datasourceHelperClassname', "com.ibm.websphere.rsadapter.Oracle11gDataStoreHelper"]
+	if (dbVendor == "SQLSERVER"):
+		dsHelperClass = ['datasourceHelperClassname', "com.ibm.websphere.rsadapter.ConnectJDBCDataStoreHelper"]
+	if (dbVendor == "AS400"):
+		dsHelperClass = ['datasourceHelperClassname', "com.ibm.websphere.rsadapter.DB2AS400DataStoreHelper"]	
+
+	dsAttrs = [dsName, jndiName, dsHelperClass, dsDescription, dsAuth, dsStmtCacheSize]
+	ds = AdminConfig.create('DataSource', jdbcProvName, dsAttrs)
+	ds_props = AdminConfig.create('J2EEResourcePropertySet', ds, [])
+	AdminConfig.create('ConnectionPool', ds, [['connectionTimeout', "180"], ['maxConnections', "300"], ['unusedTimeout', "500"], ['minConnections', "10"], ['purgePolicy', "FailingConnectionOnly"], ['agedTimeout', "625"], ['reapTime', "375"], ['freePoolDistributionTableSize', "0"], ['stuckTime', "0"], ['stuckTimerTime', "0"], ['surgeCreationInterval', "0"], ['numberOfSharedPoolPartitions', "0"], ['stuckThreshold', "0"], ['numberOfFreePoolPartitions', "0"], ['surgeThreshold', "-1"]])
+
+	if (dbVendor == "DB2"):
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "driverType"], ['type', "java.lang.String"], ['value', "4"]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "databaseName"], ['type', "java.lang.String"], ['value', dbName]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "serverName"], ['type', "java.lang.String"], ['value', dbServerHost]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "portNumber"], ['type', "java.lang.String"], ['value', dbPort]])
+					
+	if (dbVendor == "ORACLE"):
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "driverType"], ['type', "java.lang.String"], ['value', "thin"]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "URL"], ['type', "java.lang.String"], ['value', "jdbc:oracle:thin:@"+dbServerHost+":"+dbPort+":"+dbName]])
+			
+	if (dbVendor == "SQLSERVER"):
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "driverType"], ['type', "java.lang.String"], ['value', "4"]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "databaseName"], ['type', "java.lang.String"], ['value', dbName]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "serverName"], ['type', "java.lang.String"], ['value', dbServerHost]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "portNumber"], ['type', "java.lang.String"], ['value', dbPort]])
+	if (dbVendor == "AS400"):
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "driverType"], ['type', "java.lang.String"], ['value', "4"]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "databaseName"], ['type', "java.lang.String"], ['value', dbName]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "serverName"], ['type', "java.lang.String"], ['value', dbServerHost]])
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "portNumber"], ['type', "java.lang.String"], ['value', dbPort]])		
+	
+	AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "webSphereDefaultIsolationLevel"], ['type', "java.lang.Integer"], ['value', "2"]])
+	if(JTA_Enabled == "true"):
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "nonTransactionalDataSource"], ['type', "java.lang.Boolean"], ['value', "true"]]) 
+	else:
+		AdminConfig.create('J2EEResourceProperty', ds_props, [['name', "nonTransactionalDataSource"], ['type', "java.lang.Boolean"], ['value', "false"]]) 
+	AdminConfig.save()
+	print "ws datasource created successfully" 
+	
+def createDBConfig (cellName, nodeName, serverName):
+	checkExistingWSDS();
+	checkExistingWSJP();
+	createWSJDBCProvider(dbVendor, cellName, nodeName, serverName)
+	print WSProviderName+" has been configured successfully"
+	createWSDS(dbVendor, cellName, nodeName, serverName)
+	print WSDatasourceName+" has been created succesfully "
+	
+def getServer ():
+	cname=""
+	nname=""
+	sname=""
+	cells = AdminConfig.list('Cell').split(lineSeparator)
+	
+	for cell in cells:
+		nodes = AdminConfig.list('Node', cell).split(lineSeparator)
+		for node in nodes:
+			cname = AdminConfig.showAttribute(cell, 'name')
+			nname = AdminConfig.showAttribute(node, 'name')
+	      	 	servs = AdminControl.queryNames('type=Server,cell=' + cname + ',node=' + nname + ',*').split(lineSeparator)
+			print "Number of running servers on node " + nname + ": %s \n" % (len(servs))
+			for server in servs:
+				sname = AdminControl.getAttribute(server, 'name')
+				ptype = AdminControl.getAttribute(server, 'processType')
+				pid   = AdminControl.getAttribute(server, 'pid')
+				state = AdminControl.getAttribute(server, 'state')
+				print " "
+				print "#############################################################################################################################################"
+				print " "
+				print "Execution of this Jython script will begin on server "+ sname + ", having PID " + pid + ", running on " + nname + " node in " + cname + " Cell."
+				apps = AdminControl.queryNames('type=Application,cell=' + cname + ',node=' + nname + ',process=' + sname + ',*').split(lineSeparator)
+#				print "Number of applications running on " + sname + ": %s \n" % (len(apps))
+#				for app in apps:
+#					aname = AdminControl.getAttribute(app, 'name')
+#					aCtxRoot = AdminControl.getAttribute(app, 
+#					print aname + "\n"
+	serverName = sname
+	nodeName = nname
+	cellName = cname
+	return cellName, nodeName, serverName
+
+cfgFile = sys.argv[0]
+
+parseCfgFile()
+
+#cellName,nodeName,serverName=getServer()
+
+cells = AdminConfig.list('Cell').split(lineSeparator)
+for cell in cells:
+	cellName = AdminConfig.showAttribute(cell, 'name')
+	print "Setting cellName to " +cellName+ " as automatically detected."
+
+nodeName=inputNodeName
+print "Setting node name to " +inputNodeName+ " as specified in the input."
+
+serverName=inputServerName
+print "Setting server name to " +inputServerName+ " as specified in the input."
+
+createDBConfig (cellName, nodeName, serverName)
