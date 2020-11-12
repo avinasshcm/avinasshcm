@@ -1,0 +1,29 @@
+
+{squid:S1854"ARemove this useless assignment to local variable "formattedDate".(êÂ‹¥şÿÿÿÿ8å·¾Û.HøõRMAJORZ
+CODE_SMELL
+lsquid:S1481"2Remove this unused "formattedDate" local variable.(êÂ‹¥şÿÿÿÿ8å·¾Û.H÷õRMINORZ
+CODE_SMELL
+Hsquid:S1220""Move this file to a named package.HÇõRMINORZ
+CODE_SMELL
+lsquid:S2589"7Remove this expression which always evaluates to "true"(Ãû¥ú8Œ °¿Û.H­öRMAJORZ
+CODE_SMELL
+m
+squid:S106%"9Replace this use of System.out or System.err by a logger.(Ÿ¸Æî8ä²Ú¾Û.HöRMAJORZ
+CODE_SMELL
+m
+squid:S106'"9Replace this use of System.out or System.err by a logger.(¼µ¥æ8Æğ¶¾Û.HõõRMAJORZ
+CODE_SMELL
+…squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8õÖã¾Û.H‘öRMAJORZ
+CODE_SMELL
+…squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÿãÔÌşÿÿÿÿ8¬üÃ¾Û.HˆöRMAJORZ
+CODE_SMELL
+hsquid:S1161":Add the "@Override" annotation above this method signature(“–ışHÈõRMAJORZ
+CODE_SMELL
+squid:HiddenFieldCheck"ARename "dateFormatter" which hides the field declared at line 11.(Ğ§›¾8Œ °¿Û.H¬öRMAJORZ
+CODE_SMELL
+fsquid:S1068"1Remove this unused "dateFormatter" private field.(Ñè«8Œ °¿Û.H«öRMAJORZ
+CODE_SMELL
+…squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ú»èšúÿÿÿÿ8õÖã¾Û.HöRMAJORZ
+CODE_SMELL
+…squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(šÜ†øûÿÿÿÿ8áà°¿Û.H°öRMAJORZ
+CODE_SMELL

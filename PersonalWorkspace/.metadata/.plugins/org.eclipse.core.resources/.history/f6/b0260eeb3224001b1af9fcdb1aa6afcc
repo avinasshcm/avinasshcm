@@ -1,0 +1,73 @@
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class TimeBased {
+
+    private final static AtomicInteger count = new AtomicInteger(0);
+
+    static long start = System.currentTimeMillis();
+
+    public static void main(String args[]) {
+        ExecutorService executor = Executors.newFixedThreadPool(100);
+
+        for (int i = 0; i < 1000000000; i++) {
+            if ((System.currentTimeMillis() - start) >= 0)
+                System.exit(0);
+            Runnable worker = new MultithreadingDemo(count); // have a AtomicInteger int to increment the value
+
+            executor.execute(worker);
+        }
+        executor.shutdown();
+        // Wait until all threads are finish
+        while (!executor.isTerminated()) {
+
+        }
+    }
+}
+
+class MultithreadingDemo implements Runnable {
+
+    MultithreadingDemo(AtomicInteger count) {
+        this.count = count;
+    }
+
+    AtomicInteger count;
+
+    private static DateFormat dateFormatter;
+
+    private static String dateFormat = "yyyy-MM-dd";
+
+    @Override
+    public void run() {
+        try {
+
+            int iteration = 10000000;
+            while (iteration > 0) {
+                // Displaying the thread that is running
+                // System.out.println("Thread " + Thread.currentThread().getId() + " is running");
+                DateFormat dateFormatter = null;
+                if (dateFormatter == null) {
+                    dateFormatter = new SimpleDateFormat(dateFormat);
+                }
+                // synchronized (dateFormatter) {
+                String formattedDate = dateFormatter.format(Calendar.getInstance().getTimeInMillis());
+                // }
+
+                count.incrementAndGet();
+                // System.out.println(formattedDate);
+                iteration--;
+            }
+
+        } catch (Exception e) {
+            // Throwing an exception
+            System.out.println("Exception is caught");
+        }
+        System.out.println("End : " + new Timestamp(Calendar.getInstance().getTimeInMillis()));
+
+    }
+}

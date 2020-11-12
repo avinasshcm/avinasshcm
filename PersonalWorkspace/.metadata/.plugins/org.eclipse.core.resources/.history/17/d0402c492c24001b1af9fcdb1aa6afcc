@@ -1,0 +1,24 @@
+import java.sql.Timestamp;
+import java.util.Calendar;
+
+// Main Class
+public class Multithread {
+
+    public static void main(String[] args) {
+
+        Timestamp start = new Timestamp(Calendar.getInstance().getTimeInMillis());
+        System.out.println("Start : " + start);
+        int n = 100; // Number of threads
+        int iteration = 1000;
+        while (iteration > 0) {
+            for (int i = 0; i < 8; i++) {
+                MultithreadingDemo object = new MultithreadingDemo();
+                object.start();
+            }
+            iteration--;
+        }
+
+        Timestamp end = new Timestamp(Calendar.getInstance().getTimeInMillis());
+        System.out.println("Start : " + end);
+    }
+}

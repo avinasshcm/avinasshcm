@@ -1,17 +1,17 @@
 
-wsquid:S2259M"DA "NullPointerException" could be thrown; "sender" is nullable here.(´›­¤ÿÿÿÿÿ8ò‰ÒÚÏ,HÚôRMAJORZBUG
-`squid:S1148i"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ò‰ÒÚÏ,HÛôRMINORZVULNERABILITY
-_squid:S00108T")Either remove or fill this block of code.(™ğÊ‰8ò‰ÒÚÏ,HÜôRMAJORZ
-CODE_SMELL
-[squid:S1148O"#Use a logger to log this exception.(òçøì8ò‰ÒÚÏ,HİôRMINORZVULNERABILITY
-dsquid:S00108X")Either remove or fill this block of code.(Ô›¿¾ùÿÿÿÿ8ò‰ÒÚÏ,HŞôRMAJORZ
+ssquid:S2259K"EA "NullPointerException" could be thrown; "session" is nullable here.(–ªœÁ8ò‰ÒÚÏ,H¸õRMAJORZBUG
+_squid:S00108T")Either remove or fill this block of code.(™ğÊ‰8ò‰ÒÚÏ,H¹õRMAJORZ
 CODE_SMELL
 m
-squid:S106I"9Replace this use of System.out or System.err by a logger.(ß¡Ëİ8ò‰ÒÚÏ,HßôRMAJORZ
+squid:S106I"9Replace this use of System.out or System.err by a logger.(ß¡Ëİ8ò‰ÒÚÏ,HºõRMAJORZ
 CODE_SMELL
-csquid:S2095_"3Close this "FileInputStream" in a "finally" clause.(Ïú›»8ò‰ÒÚÏ,HàôRBLOCKERZBUG
-ssquid:S2259K"EA "NullPointerException" could be thrown; "session" is nullable here.(–ªœÁ8ò‰ÒÚÏ,HáôRMAJORZBUG
-xsquid:S2259S"EA "NullPointerException" could be thrown; "session" is nullable here.(ËÇÇÓûÿÿÿÿ8ò‰ÒÚÏ,HâôRMAJORZBUG
+dsquid:S00108X")Either remove or fill this block of code.(Ô›¿¾ùÿÿÿÿ8ò‰ÒÚÏ,H»õRMAJORZ
+CODE_SMELL
 r
-squid:S106@"9Replace this use of System.out or System.err by a logger.(£æ°€ûÿÿÿÿ8ò‰ÒÚÏ,HãôRMAJORZ
+squid:S106@"9Replace this use of System.out or System.err by a logger.(£æ°€ûÿÿÿÿ8ò‰ÒÚÏ,H¼õRMAJORZ
 CODE_SMELL
+[squid:S1148O"#Use a logger to log this exception.(òçøì8ò‰ÒÚÏ,H½õRMINORZVULNERABILITY
+`squid:S1148i"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ò‰ÒÚÏ,H¾õRMINORZVULNERABILITY
+csquid:S2095_"3Close this "FileInputStream" in a "finally" clause.(Ïú›»8ò‰ÒÚÏ,H¿õRBLOCKERZBUG
+wsquid:S2259M"DA "NullPointerException" could be thrown; "sender" is nullable here.(´›­¤ÿÿÿÿÿ8ò‰ÒÚÏ,HÀõRMAJORZBUG
+xsquid:S2259S"EA "NullPointerException" could be thrown; "session" is nullable here.(ËÇÇÓûÿÿÿÿ8ò‰ÒÚÏ,HÁõRMAJORZBUG
