@@ -21,6 +21,7 @@ import javax.jms.TextMessage;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
+import formatter.XMLFormatter;
 import logger.utils.LogHelper;
 import pojo.DCTxnData;
 
@@ -28,16 +29,19 @@ public class IntraBankPayment implements Runnable {
 	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
 	String numberOfTxns = "1";
 	private static final Logger LOGGER = Logger.getLogger(IntraBankPayment.class.getName());
+	QueueConnectionFactory factory = new MQQueueConnectionFactory();
 
 	public IntraBankPayment() {
 	}
 
-	public IntraBankPayment(String numberOfTxns) {
+	public IntraBankPayment(QueueConnectionFactory factory, String numberOfTxns) {
 		this.numberOfTxns = numberOfTxns;
+		this.factory = factory;
 	}
 
 	public void run() {
-		String originalMessage = readFileAsString("IntraBankRequest.xml");
+		LOGGER.info("IntraBankPayment Started");
+		String originalMessage = readFileAsString("templates/Request_IntraBank.xml");
 		QueueConnection connection = null;
 		QueueSession session = null;
 		Queue queue = null;
@@ -45,16 +49,6 @@ public class IntraBankPayment implements Runnable {
 		populateValues();
 		int noOfTxns = Integer.parseInt(this.numberOfTxns);
 		try {
-			String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
-			String port = ReadQueueManagerDetails.QM_PORT;
-			String queuemgr = ReadQueueManagerDetails.QM_NAME;
-			String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
-			Class.forName(connectionFactory);
-			QueueConnectionFactory factory = new MQQueueConnectionFactory();
-			((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
-			((MQQueueConnectionFactory) factory).setHostName(mqserver);
-			((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
-			((MQQueueConnectionFactory) factory).setTransportType(1);
 			connection = factory.createQueueConnection("", "");
 			connection.start();
 			session = connection.createQueueSession(false, 1);
@@ -74,8 +68,10 @@ public class IntraBankPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-			LOGGER.addHandler(LogHelper.getLogHandler());
-			LOGGER.info(minifyXML(modifiedMessage));
+//			LOGGER.addHandler(new LogHelper("logs/LOG_IntraBankPayment.log").getLogHandler());
+//			LOGGER.setUseParentHandlers(false);
+//			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
+//			LOGGER.setUseParentHandlers(true);
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -101,14 +97,9 @@ public class IntraBankPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
+		LOGGER.info("IntraBankPayment Completed");
 	}
 
-	private String minifyXML(String modifiedMessage) {
-		modifiedMessage = modifiedMessage.replaceAll("\n", "");
-		modifiedMessage = modifiedMessage.replaceAll("\t", "");
-		
-		return modifiedMessage;
-	}
 	private void populateValues() {
 		try {
 			File currentDirectory = new File(".");

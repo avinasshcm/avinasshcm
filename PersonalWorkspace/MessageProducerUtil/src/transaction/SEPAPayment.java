@@ -23,6 +23,7 @@ import pojo.DCTxnData;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
+import formatter.XMLFormatter;
 import logger.utils.LogHelper;
 
 public class SEPAPayment implements Runnable {
@@ -38,13 +39,14 @@ public class SEPAPayment implements Runnable {
 	}
 
 	public void run() {
-		String originalMessage = readFileAsString("IntraBankRequest.xml");
+		String originalMessage = readFileAsString("templates/Request_SEPAPayment.xml");
 		QueueConnection connection = null;
 		QueueSession session = null;
 		Queue queue = null;
 		QueueSender sender = null;
 		populateValues();
 		int noOfTxns = Integer.parseInt(this.numberOfTxns);
+		System.out.println("Getting connection");
 		try {
 			String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
 			String port = ReadQueueManagerDetails.QM_PORT;
@@ -61,6 +63,7 @@ public class SEPAPayment implements Runnable {
 			session = connection.createQueueSession(false, 1);
 			queue = session.createQueue(ReadQueueManagerDetails.SEPA_TFR_QUEUE_NAME);
 			sender = session.createSender(queue);
+			System.out.println("Got connection");
 		}
 		catch (Exception exception) {
 			System.err.println(exception);
@@ -75,8 +78,9 @@ public class SEPAPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-			LOGGER.addHandler(LogHelper.getLogHandler());
-			LOGGER.info(minifyXML(modifiedMessage));
+//			LOGGER.addHandler(new LogHelper("logs/LOG_SEPAPayment.log").getLogHandler());
+//			LOGGER.setUseParentHandlers(false);
+//			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -102,12 +106,6 @@ public class SEPAPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
-	}
-
-	private String minifyXML(String modifiedMessage) {
-		modifiedMessage = modifiedMessage.replaceAll("\n", "");
-		modifiedMessage = modifiedMessage.replaceAll("\t", "");
-		return modifiedMessage;
 	}
 
 	private void populateValues() {

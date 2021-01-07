@@ -5,6 +5,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.jms.QueueConnectionFactory;
+
+import com.ibm.mq.jms.MQQueueConnectionFactory;
+
 import fileutils.ReadQueueManagerDetails;
 import transaction.InternalPayment;
 import transaction.IntraBankPayment;
@@ -42,9 +46,27 @@ public class MessageProducer {
 				System.out.println("Iterations : " + count.get());
 				System.exit(0);
 			}
-			Runnable intraBankWorker = new IntraBankPayment(numberOfTxns);
+			String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
+			String port = ReadQueueManagerDetails.QM_PORT;
+			String queuemgr = ReadQueueManagerDetails.QM_NAME;
+			String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
+			QueueConnectionFactory factory = new MQQueueConnectionFactory();
+			try {
+				Class.forName(connectionFactory);
+				factory = new MQQueueConnectionFactory();
+				((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
+				((MQQueueConnectionFactory) factory).setHostName(mqserver);
+				((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
+				((MQQueueConnectionFactory) factory).setTransportType(1);
+			}
+			catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Started Thread");
+			Runnable intraBankWorker = new IntraBankPayment(factory, numberOfTxns);
 			executor.execute(intraBankWorker);
-			Runnable internalWorker = new InternalPayment(numberOfTxns);
+			Runnable internalWorker = new InternalPayment(factory, numberOfTxns);
 			executor.execute(internalWorker);
 			/*Runnable mobileTopUpWorker = new MobileTopUp(numberOfTxns); 
 			executor.execute(mobileTopUpWorker);*/

@@ -23,6 +23,7 @@ import pojo.DCTxnData;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
+import formatter.XMLFormatter;
 import logger.utils.LogHelper;
 
 public class MobileTopUp implements Runnable {
@@ -38,7 +39,7 @@ public class MobileTopUp implements Runnable {
 	}
 
 	public void run() {
-		String originalMessage = readFileAsString("MobileTopUpRequest.xml");
+		String originalMessage = readFileAsString("templates/Request_MobileTopUp.xml");
 		QueueConnection connection = null;
 		QueueSession session = null;
 		Queue queue = null;
@@ -75,8 +76,10 @@ public class MobileTopUp implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-			LOGGER.addHandler(LogHelper.getLogHandler());
-			LOGGER.info(minifyXML(modifiedMessage));
+//			LOGGER.addHandler(new LogHelper("logs/LOG_MobileTopUp.log").getLogHandler());
+//			LOGGER.setUseParentHandlers(false);
+
+			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -102,12 +105,6 @@ public class MobileTopUp implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
-	}
-	
-	private String minifyXML(String modifiedMessage) {
-		modifiedMessage = modifiedMessage.replaceAll("\n", "");
-		modifiedMessage = modifiedMessage.replaceAll("\t", "");
-		return modifiedMessage;
 	}
 
 	private void populateValues() {
