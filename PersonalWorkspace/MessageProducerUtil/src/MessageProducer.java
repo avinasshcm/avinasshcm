@@ -42,20 +42,18 @@ public class MessageProducer {
 				System.out.println("Iterations : " + count.get());
 				System.exit(0);
 			}
-			Runnable intraBankWorker = new IntraBankPayment(numberOfTxns); // have a AtomicInteger int to increment the value
+			Runnable intraBankWorker = new IntraBankPayment(numberOfTxns);
 			executor.execute(intraBankWorker);
-			//Runnable internalWorker = new InternalPayment(numberOfTxns); // have a AtomicInteger int to increment the value
-			//executor.execute(internalWorker);
-			/*Runnable mobileTopUpWorker = new MobileTopUp(numberOfTxns); // have a AtomicInteger int to increment the value
+			Runnable internalWorker = new InternalPayment(numberOfTxns);
+			executor.execute(internalWorker);
+			/*Runnable mobileTopUpWorker = new MobileTopUp(numberOfTxns); 
 			executor.execute(mobileTopUpWorker);*/
 		}
 		executor.shutdown();
 		// Wait until all threads are finish
 		while (!executor.isTerminated()) {
 		}
-		
 		System.out.println("Completed publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
-
 	}
 
 	public static String readLine() {

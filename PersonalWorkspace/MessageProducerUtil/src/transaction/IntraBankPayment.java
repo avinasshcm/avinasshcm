@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import javax.jms.Queue;
 import javax.jms.QueueConnection;
@@ -17,15 +18,16 @@ import javax.jms.QueueSender;
 import javax.jms.QueueSession;
 import javax.jms.TextMessage;
 
-import com.ibm.mq.constants.MQConstants;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
+import logger.utils.LogHelper;
 import pojo.DCTxnData;
 
 public class IntraBankPayment implements Runnable {
 	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
 	String numberOfTxns = "1";
+	private static final Logger LOGGER = Logger.getLogger(IntraBankPayment.class.getName());
 
 	public IntraBankPayment() {
 	}
@@ -52,7 +54,7 @@ public class IntraBankPayment implements Runnable {
 			((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
 			((MQQueueConnectionFactory) factory).setHostName(mqserver);
 			((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
-			((MQQueueConnectionFactory) factory).setTransportType(Integer.parseInt(MQConstants.TRANSPORT_MQSERIES_BINDINGS));
+			((MQQueueConnectionFactory) factory).setTransportType(1);
 			connection = factory.createQueueConnection("", "");
 			connection.start();
 			session = connection.createQueueSession(false, 1);
@@ -72,7 +74,8 @@ public class IntraBankPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-			//System.out.println(modifiedMessage);
+			LOGGER.addHandler(LogHelper.getLogHandler());
+			LOGGER.info(minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -100,6 +103,12 @@ public class IntraBankPayment implements Runnable {
 		}
 	}
 
+	private String minifyXML(String modifiedMessage) {
+		modifiedMessage = modifiedMessage.replaceAll("\n", "");
+		modifiedMessage = modifiedMessage.replaceAll("\t", "");
+		
+		return modifiedMessage;
+	}
 	private void populateValues() {
 		try {
 			File currentDirectory = new File(".");

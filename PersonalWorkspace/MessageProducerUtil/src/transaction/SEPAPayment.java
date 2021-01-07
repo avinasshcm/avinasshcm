@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import javax.jms.Queue;
 import javax.jms.QueueConnection;
@@ -22,10 +23,12 @@ import pojo.DCTxnData;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
+import logger.utils.LogHelper;
 
 public class SEPAPayment implements Runnable {
 	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
 	String numberOfTxns = "1";
+	private static final Logger LOGGER = Logger.getLogger(SEPAPayment.class.getName());
 
 	public SEPAPayment() {
 	}
@@ -72,7 +75,8 @@ public class SEPAPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-			//System.out.println(modifiedMessage);
+			LOGGER.addHandler(LogHelper.getLogHandler());
+			LOGGER.info(minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -98,6 +102,12 @@ public class SEPAPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
+	}
+
+	private String minifyXML(String modifiedMessage) {
+		modifiedMessage = modifiedMessage.replaceAll("\n", "");
+		modifiedMessage = modifiedMessage.replaceAll("\t", "");
+		return modifiedMessage;
 	}
 
 	private void populateValues() {
