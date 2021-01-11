@@ -51,27 +51,11 @@ public class MessageProducer {
 		}
 		System.out.println("Started publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
 		ExecutorService executor = Executors.newFixedThreadPool(100);
+		QueueConnectionFactory factory = getFactory();
 		for (int i = 0; i < Integer.parseInt(numberOfThreads); i++) {
 			if ((System.currentTimeMillis() - start) >= 300000) {
 				System.out.println("Iterations : " + count.get());
 				System.exit(0);
-			}
-			String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
-			String port = ReadQueueManagerDetails.QM_PORT;
-			String queuemgr = ReadQueueManagerDetails.QM_NAME;
-			String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
-			QueueConnectionFactory factory = new MQQueueConnectionFactory();
-			try {
-				Class.forName(connectionFactory);
-				factory = new MQQueueConnectionFactory();
-				((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
-				((MQQueueConnectionFactory) factory).setHostName(mqserver);
-				((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
-				((MQQueueConnectionFactory) factory).setTransportType(1);
-			}
-			catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 			//System.out.println("Started Thread");
 			if (option.equals("0") || option.equals("1")) {
@@ -92,6 +76,27 @@ public class MessageProducer {
 		while (!executor.isTerminated()) {
 		}
 		System.out.println("Completed publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
+	}
+
+	private static QueueConnectionFactory getFactory() {
+		String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
+		String port = ReadQueueManagerDetails.QM_PORT;
+		String queuemgr = ReadQueueManagerDetails.QM_NAME;
+		String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
+		QueueConnectionFactory factory = new MQQueueConnectionFactory();
+		try {
+			Class.forName(connectionFactory);
+			factory = new MQQueueConnectionFactory();
+			((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
+			((MQQueueConnectionFactory) factory).setHostName(mqserver);
+			((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
+			((MQQueueConnectionFactory) factory).setTransportType(1);
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return factory;
 	}
 
 	public static String readLine() {

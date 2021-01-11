@@ -21,16 +21,15 @@ import javax.jms.TextMessage;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
-import formatter.XMLFormatter;
-import logger.utils.LogHelper;
-import logger.utils.MyLogger;
 import pojo.DCTxnData;
+import utils.CommonMethods;
 
 public class InternalPayment implements Runnable {
 	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
 	String numberOfTxns = "1";
 	private static final Logger LOGGER = Logger.getLogger(InternalPayment.class.getName());
 	QueueConnectionFactory factory = new MQQueueConnectionFactory();
+	CommonMethods commonMethods = new CommonMethods();
 
 	public InternalPayment() {
 	}
@@ -65,7 +64,7 @@ public class InternalPayment implements Runnable {
 			int counter = message % this.data.size();
 			// System.out.println("counter " + counter);
 			DCTxnData txnData = this.data.get(counter);
-			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", ReadQueueManagerDetails.RUN_NAME + txnData.getTxnRef());
+			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", commonMethods.getReference(txnData.getTxnRef()));
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());

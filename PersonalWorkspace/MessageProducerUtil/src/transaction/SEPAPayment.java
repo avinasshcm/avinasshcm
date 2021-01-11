@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.jms.Queue;
@@ -24,12 +22,14 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
 import pojo.SEPATxnData;
+import utils.CommonMethods;
 
 public class SEPAPayment implements Runnable {
 	HashMap<Integer, SEPATxnData> data = new HashMap<Integer, SEPATxnData>();
 	String numberOfTxns = "1";
 	private static final Logger LOGGER = Logger.getLogger(SEPAPayment.class.getName());
 	QueueConnectionFactory factory = new MQQueueConnectionFactory();
+	CommonMethods commonMethods = new CommonMethods();
 
 	public SEPAPayment() {
 	}
@@ -65,7 +65,7 @@ public class SEPAPayment implements Runnable {
 			int counter = message % this.data.size();
 			// System.out.println("counter " + counter);
 			SEPATxnData txnData = this.data.get(counter);
-			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", getReference(txnData.getTxnRef()));
+			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", commonMethods.getReference(txnData.getTxnRef()));
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
@@ -100,17 +100,6 @@ public class SEPAPayment implements Runnable {
 		catch (Exception localException2) {
 		}
 		LOGGER.info("SEPAPayment Completed " + Thread.currentThread().getId());
-	}
-
-	private String getReference(String reference) {
-		String ref = getDate(System.currentTimeMillis(), "yyyyMMddHHmmssSSS") + Thread.currentThread().getId();
-		ref = ref + getRandom(99);
-		return ref;
-	}
-
-	private int getRandom(int upperRange) {
-		Random random = new Random();
-		return random.nextInt(upperRange);
 	}
 
 	private void populateValues() {
@@ -149,10 +138,5 @@ public class SEPAPayment implements Runnable {
 			e.printStackTrace();
 		}
 		return text;
-	}
-
-	public static String getDate(Long time, String format) {
-		String date = new SimpleDateFormat(format).format(time);
-		return date;
 	}
 }

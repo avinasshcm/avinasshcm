@@ -18,18 +18,18 @@ import javax.jms.QueueSender;
 import javax.jms.QueueSession;
 import javax.jms.TextMessage;
 
-import pojo.DCTxnData;
-
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
 import formatter.XMLFormatter;
-import logger.utils.LogHelper;
+import pojo.DCTxnData;
+import utils.CommonMethods;
 
 public class MobileTopUp implements Runnable {
 	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
 	String numberOfTxns = "1";
 	private static final Logger LOGGER = Logger.getLogger(MobileTopUp.class.getName());
+	CommonMethods commonMethods = new CommonMethods();
 
 	public MobileTopUp() {
 	}
@@ -72,13 +72,12 @@ public class MobileTopUp implements Runnable {
 			int counter = message % this.data.size();
 			// System.out.println("counter " + counter);
 			DCTxnData txnData = this.data.get(counter);
-			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", ReadQueueManagerDetails.RUN_NAME + txnData.getTxnRef());
+			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", commonMethods.getReference(txnData.getTxnRef()));
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-//			LOGGER.addHandler(new LogHelper("logs/LOG_MobileTopUp.log").getLogHandler());
-//			LOGGER.setUseParentHandlers(false);
-
+			//			LOGGER.addHandler(new LogHelper("logs/LOG_MobileTopUp.log").getLogHandler());
+			//			LOGGER.setUseParentHandlers(false);
 			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
