@@ -23,6 +23,7 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 import fileutils.ReadQueueManagerDetails;
 import formatter.XMLFormatter;
 import logger.utils.LogHelper;
+import logger.utils.MyLogger;
 import pojo.DCTxnData;
 
 public class InternalPayment implements Runnable {
@@ -40,7 +41,7 @@ public class InternalPayment implements Runnable {
 	}
 
 	public void run() {
-		LOGGER.info("InternalPayment Started");
+		LOGGER.info("InternalPayment Started " + Thread.currentThread().getId());
 		String originalMessage = readFileAsString("templates/Request_InternalTransfer.xml");
 		QueueConnection connection = null;
 		QueueSession session = null;
@@ -68,11 +69,12 @@ public class InternalPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-/*			LOGGER.addHandler(new LogHelper("logs/LOG_InternalPayment.log").getLogHandler());
+			/*
+			LOGGER.addHandler(new LogHelper("logs/LOG_InternalPayment.log").getLogHandler());
 			LOGGER.setUseParentHandlers(false);
 			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
-			LOGGER.setUseParentHandlers(true);*/
-
+			LOGGER.setUseParentHandlers(true);
+			*/
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -98,7 +100,7 @@ public class InternalPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
-		LOGGER.info("InternalPayment Completed");
+		LOGGER.info("InternalPayment Completed " + Thread.currentThread().getId());
 	}
 
 	private void populateValues() {

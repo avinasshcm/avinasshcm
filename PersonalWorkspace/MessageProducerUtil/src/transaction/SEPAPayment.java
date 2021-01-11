@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.jms.Queue;
@@ -18,52 +20,41 @@ import javax.jms.QueueSender;
 import javax.jms.QueueSession;
 import javax.jms.TextMessage;
 
-import pojo.DCTxnData;
-
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
-import formatter.XMLFormatter;
-import logger.utils.LogHelper;
+import pojo.SEPATxnData;
 
 public class SEPAPayment implements Runnable {
-	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
+	HashMap<Integer, SEPATxnData> data = new HashMap<Integer, SEPATxnData>();
 	String numberOfTxns = "1";
 	private static final Logger LOGGER = Logger.getLogger(SEPAPayment.class.getName());
+	QueueConnectionFactory factory = new MQQueueConnectionFactory();
 
 	public SEPAPayment() {
 	}
 
-	public SEPAPayment(String numberOfTxns) {
+	public SEPAPayment(QueueConnectionFactory factory, String numberOfTxns) {
 		this.numberOfTxns = numberOfTxns;
+		this.factory = factory;
 	}
 
 	public void run() {
-		String originalMessage = readFileAsString("templates/Request_SEPAPayment.xml");
+		LOGGER.info("SEPAPayment Started " + Thread.currentThread().getId());
+		String originalMessage = readFileAsString("templates/Request_SEPAPayment.json");
 		QueueConnection connection = null;
 		QueueSession session = null;
 		Queue queue = null;
 		QueueSender sender = null;
 		populateValues();
 		int noOfTxns = Integer.parseInt(this.numberOfTxns);
-		System.out.println("Getting connection");
 		try {
-			String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
-			String port = ReadQueueManagerDetails.QM_PORT;
-			String queuemgr = ReadQueueManagerDetails.QM_NAME;
-			String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
-			Class.forName(connectionFactory);
-			QueueConnectionFactory factory = new MQQueueConnectionFactory();
-			((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
-			((MQQueueConnectionFactory) factory).setHostName(mqserver);
-			((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
-			((MQQueueConnectionFactory) factory).setTransportType(1);
 			connection = factory.createQueueConnection("", "");
 			connection.start();
 			session = connection.createQueueSession(false, 1);
 			queue = session.createQueue(ReadQueueManagerDetails.SEPA_TFR_QUEUE_NAME);
 			sender = session.createSender(queue);
-			System.out.println("Got connection");
+			//System.out.println("Got connection");
 		}
 		catch (Exception exception) {
 			System.err.println(exception);
@@ -73,14 +64,16 @@ public class SEPAPayment implements Runnable {
 			// System.out.println("Msg " + message);
 			int counter = message % this.data.size();
 			// System.out.println("counter " + counter);
-			DCTxnData txnData = this.data.get(counter);
-			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", ReadQueueManagerDetails.RUN_NAME + txnData.getTxnRef());
+			SEPATxnData txnData = this.data.get(counter);
+			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", getReference(txnData.getTxnRef()));
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-//			LOGGER.addHandler(new LogHelper("logs/LOG_SEPAPayment.log").getLogHandler());
-//			LOGGER.setUseParentHandlers(false);
-//			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
+			modifiedMessage = modifiedMessage.replaceAll("TO_BIC", txnData.getToBIC());
+			//System.out.println(getReference(txnData.getTxnRef()));
+			//			LOGGER.addHandler(new LogHelper("logs/LOG_SEPAPayment.log").getLogHandler());
+			//			LOGGER.setUseParentHandlers(false);
+			//			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -106,24 +99,37 @@ public class SEPAPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
+		LOGGER.info("SEPAPayment Completed " + Thread.currentThread().getId());
+	}
+
+	private String getReference(String reference) {
+		String ref = getDate(System.currentTimeMillis(), "yyyyMMddHHmmssSSS") + Thread.currentThread().getId();
+		ref = ref + getRandom(99);
+		return ref;
+	}
+
+	private int getRandom(int upperRange) {
+		Random random = new Random();
+		return random.nextInt(upperRange);
 	}
 
 	private void populateValues() {
 		try {
 			File currentDirectory = new File(".");
-			FileInputStream fstream = new FileInputStream(currentDirectory + "/" + "AccountList.txt");
+			FileInputStream fstream = new FileInputStream(currentDirectory + "/" + "SEPAAccountList.txt");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			int counter = 0;
 			String strLine = br.readLine();
 			while (strLine != null) {
 				String[] txnData = strLine.split(",");
-				DCTxnData dcTxnData = new DCTxnData();
-				dcTxnData.setTxnRef(txnData[0]);
-				dcTxnData.setDebitCustomer(txnData[1]);
-				dcTxnData.setFromAccount(txnData[2]);
-				dcTxnData.setToAccount(txnData[3]);
-				this.data.put(counter, dcTxnData);
+				SEPATxnData sepaTxnData = new SEPATxnData();
+				sepaTxnData.setTxnRef(txnData[0]);
+				sepaTxnData.setDebitCustomer(txnData[1]);
+				sepaTxnData.setFromAccount(txnData[2]);
+				sepaTxnData.setToAccount(txnData[3]);
+				sepaTxnData.setToBIC(txnData[4]);
+				this.data.put(counter, sepaTxnData);
 				// this.accountList.add(strLine);
 				counter++;
 				strLine = br.readLine();
@@ -143,5 +149,10 @@ public class SEPAPayment implements Runnable {
 			e.printStackTrace();
 		}
 		return text;
+	}
+
+	public static String getDate(Long time, String format) {
+		String date = new SimpleDateFormat(format).format(time);
+		return date;
 	}
 }

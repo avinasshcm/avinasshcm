@@ -40,7 +40,7 @@ public class IntraBankPayment implements Runnable {
 	}
 
 	public void run() {
-		LOGGER.info("IntraBankPayment Started");
+		LOGGER.info("IntraBankPayment Started " + Thread.currentThread().getId());
 		String originalMessage = readFileAsString("templates/Request_IntraBank.xml");
 		QueueConnection connection = null;
 		QueueSession session = null;
@@ -68,10 +68,12 @@ public class IntraBankPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
-//			LOGGER.addHandler(new LogHelper("logs/LOG_IntraBankPayment.log").getLogHandler());
-//			LOGGER.setUseParentHandlers(false);
-//			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
-//			LOGGER.setUseParentHandlers(true);
+			/*
+			LOGGER.addHandler(new LogHelper("logs/LOG_IntraBankPayment.log").getLogHandler());
+			LOGGER.setUseParentHandlers(false);
+			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
+			LOGGER.setUseParentHandlers(true);
+			*/
 			try {
 				TextMessage outMessage = session.createTextMessage();
 				outMessage.setText(modifiedMessage);
@@ -97,7 +99,7 @@ public class IntraBankPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
-		LOGGER.info("IntraBankPayment Completed");
+		LOGGER.info("IntraBankPayment Completed " + Thread.currentThread().getId());
 	}
 
 	private void populateValues() {

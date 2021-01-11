@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -12,18 +14,26 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 import fileutils.ReadQueueManagerDetails;
 import transaction.InternalPayment;
 import transaction.IntraBankPayment;
-import transaction.MobileTopUp;
+import transaction.SEPAPayment;
 
 public class MessageProducer {
 	private final static AtomicInteger count = new AtomicInteger(0);
 	static long start = System.currentTimeMillis();
 
 	public static void main(String args[]) {
-		System.out.print("\n1.DC Account Transfer ");
-		System.out.print("\nEnter Your Selection : ");
+		System.out.print("\n0.All ");
+		System.out.print("\n1.Internal Account Transfer ");
+		System.out.print("\n2.IntraBank Account Transfer ");
+		System.out.print("\n3.SEPA Account Transfer ");
+		System.out.print("\n\nEnter Your Selection : ");
 		String option = readLine();
+		List validOptions = new ArrayList<>();
+		validOptions.add("0");
+		validOptions.add("1");
+		validOptions.add("2");
+		validOptions.add("3");
 		// String option = c.readLine();
-		if ((!option.equals("1"))) {
+		if (!validOptions.contains(option)) {
 			System.out.println("Enter valid option");
 		}
 		// String numberOfTxns = c.readLine("Enter the number of messages: ", new Object[0]);
@@ -63,13 +73,19 @@ public class MessageProducer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Started Thread");
-			Runnable intraBankWorker = new IntraBankPayment(factory, numberOfTxns);
-			executor.execute(intraBankWorker);
-			Runnable internalWorker = new InternalPayment(factory, numberOfTxns);
-			executor.execute(internalWorker);
-			/*Runnable mobileTopUpWorker = new MobileTopUp(numberOfTxns); 
-			executor.execute(mobileTopUpWorker);*/
+			//System.out.println("Started Thread");
+			if (option.equals("0") || option.equals("1")) {
+				Runnable internalWorker = new InternalPayment(factory, numberOfTxns);
+				executor.execute(internalWorker);
+			}
+			if (option.equals("0") || option.equals("2")) {
+				Runnable intraBankWorker = new IntraBankPayment(factory, numberOfTxns);
+				executor.execute(intraBankWorker);
+			}
+			if (option.equals("0") || option.equals("3")) {
+				Runnable sepaWorker = new SEPAPayment(factory, numberOfTxns);
+				executor.execute(sepaWorker);
+			}
 		}
 		executor.shutdown();
 		// Wait until all threads are finish
