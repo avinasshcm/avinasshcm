@@ -12,9 +12,9 @@ import javax.jms.QueueConnectionFactory;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
-import transaction.InternalPayment;
-import transaction.IntraBankPayment;
-import transaction.SEPAPayment;
+import transaction.dc.InternalPayment;
+import transaction.dc.IntraBankPayment;
+import transaction.dc.SEPAPayment;
 
 public class MessageProducer {
 	private final static AtomicInteger count = new AtomicInteger(0);
@@ -25,6 +25,12 @@ public class MessageProducer {
 		System.out.print("\n1.Internal Account Transfer ");
 		System.out.print("\n2.IntraBank Account Transfer ");
 		System.out.print("\n3.SEPA Account Transfer ");
+		System.out.print("\n-------------------------------------");
+		System.out.print("\n4.Inward DD ");
+		System.out.print("\n5.Inward CT ");
+		System.out.print("\n-------------------------------------");
+		System.out.print("\n6.POS Message ");
+		System.out.print("\n7.ATM Cash Withdrawal \n");
 		System.out.print("\n\nEnter Your Selection : ");
 		String option = readLine();
 		List validOptions = new ArrayList<>();

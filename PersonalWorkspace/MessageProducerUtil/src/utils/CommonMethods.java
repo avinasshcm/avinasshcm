@@ -1,5 +1,8 @@
 package utils;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 
@@ -15,8 +18,19 @@ public class CommonMethods {
 		return String.format("%02d", random.nextInt(upperRange));
 	}
 
-	public static String getDate(Long time, String format) {
+	public String getDate(Long time, String format) {
 		String date = new SimpleDateFormat(format).format(time);
 		return date;
+	}
+
+	public String readFileAsString(String fileName) {
+		String text = "";
+		try {
+			text = new String(Files.readAllBytes(Paths.get(fileName)));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return text;
 	}
 }

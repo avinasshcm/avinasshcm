@@ -1,4 +1,4 @@
-package transaction;
+package transaction.dc;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -76,6 +76,7 @@ public class SEPAPayment implements Runnable {
 			//			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
 			try {
 				TextMessage outMessage = session.createTextMessage();
+				outMessage.setJMSCorrelationID(java.util.UUID.randomUUID().toString());
 				outMessage.setText(modifiedMessage);
 				sender.send(outMessage);
 			}

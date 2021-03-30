@@ -1,4 +1,4 @@
-package transaction;
+package transaction.dc;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -24,24 +24,24 @@ import fileutils.ReadQueueManagerDetails;
 import pojo.DCTxnData;
 import utils.CommonMethods;
 
-public class IntraBankPayment implements Runnable {
+public class InternalPayment implements Runnable {
 	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
 	String numberOfTxns = "1";
-	private static final Logger LOGGER = Logger.getLogger(IntraBankPayment.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(InternalPayment.class.getName());
 	QueueConnectionFactory factory = new MQQueueConnectionFactory();
 	CommonMethods commonMethods = new CommonMethods();
 
-	public IntraBankPayment() {
+	public InternalPayment() {
 	}
 
-	public IntraBankPayment(QueueConnectionFactory factory, String numberOfTxns) {
+	public InternalPayment(QueueConnectionFactory factory, String numberOfTxns) {
 		this.numberOfTxns = numberOfTxns;
 		this.factory = factory;
 	}
 
 	public void run() {
-		LOGGER.info("IntraBankPayment Started " + Thread.currentThread().getId());
-		String originalMessage = readFileAsString("templates/Request_IntraBank.xml");
+		LOGGER.info("InternalPayment Started " + Thread.currentThread().getId());
+		String originalMessage = readFileAsString("templates/Request_InternalTransfer.xml");
 		QueueConnection connection = null;
 		QueueSession session = null;
 		Queue queue = null;
@@ -69,13 +69,14 @@ public class IntraBankPayment implements Runnable {
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
 			/*
-			LOGGER.addHandler(new LogHelper("logs/LOG_IntraBankPayment.log").getLogHandler());
+			LOGGER.addHandler(new LogHelper("logs/LOG_InternalPayment.log").getLogHandler());
 			LOGGER.setUseParentHandlers(false);
 			LOGGER.info(XMLFormatter.minifyXML(modifiedMessage));
 			LOGGER.setUseParentHandlers(true);
 			*/
 			try {
 				TextMessage outMessage = session.createTextMessage();
+				outMessage.setJMSCorrelationID(java.util.UUID.randomUUID().toString());
 				outMessage.setText(modifiedMessage);
 				sender.send(outMessage);
 			}
@@ -99,7 +100,7 @@ public class IntraBankPayment implements Runnable {
 		}
 		catch (Exception localException2) {
 		}
-		LOGGER.info("IntraBankPayment Completed " + Thread.currentThread().getId());
+		LOGGER.info("InternalPayment Completed " + Thread.currentThread().getId());
 	}
 
 	private void populateValues() {
