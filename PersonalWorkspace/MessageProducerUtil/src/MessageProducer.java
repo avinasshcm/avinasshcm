@@ -31,7 +31,7 @@ public class MessageProducer {
 		System.out.print("\n5.Inward CT ");
 		System.out.print("\n-------------------------------------");
 		System.out.print("\n6.POS Message ");
-		System.out.print("\n7.ATM Cash Withdrawal \n");
+		System.out.print("\n7.ATM Cash Withdrawal ");
 		System.out.print("\n8.ATM Cash Deposit \n");
 		System.out.print("\n\nEnter Your Selection : ");
 		String option = readLine();
