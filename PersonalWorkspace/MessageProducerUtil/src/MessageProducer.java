@@ -12,6 +12,7 @@ import javax.jms.QueueConnectionFactory;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
+import transaction.atm.ATMCashDepositMessage;
 import transaction.dc.InternalPayment;
 import transaction.dc.IntraBankPayment;
 import transaction.dc.SEPAPayment;
@@ -31,6 +32,7 @@ public class MessageProducer {
 		System.out.print("\n-------------------------------------");
 		System.out.print("\n6.POS Message ");
 		System.out.print("\n7.ATM Cash Withdrawal \n");
+		System.out.print("\n8.ATM Cash Deposit \n");
 		System.out.print("\n\nEnter Your Selection : ");
 		String option = readLine();
 		List validOptions = new ArrayList<>();
@@ -38,6 +40,7 @@ public class MessageProducer {
 		validOptions.add("1");
 		validOptions.add("2");
 		validOptions.add("3");
+		validOptions.add("8");
 		// String option = c.readLine();
 		if (!validOptions.contains(option)) {
 			System.out.println("Enter valid option");
@@ -57,7 +60,8 @@ public class MessageProducer {
 		}
 		System.out.println("Started publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
 		ExecutorService executor = Executors.newFixedThreadPool(100);
-		QueueConnectionFactory factory = getFactory();
+		QueueConnectionFactory DCFactory = getDCFactory();
+		QueueConnectionFactory ATMFactory = getATMFactory();
 		for (int i = 0; i < Integer.parseInt(numberOfThreads); i++) {
 			if ((System.currentTimeMillis() - start) >= 300000) {
 				System.out.println("Iterations : " + count.get());
@@ -65,15 +69,19 @@ public class MessageProducer {
 			}
 			//System.out.println("Started Thread");
 			if (option.equals("0") || option.equals("1")) {
-				Runnable internalWorker = new InternalPayment(factory, numberOfTxns);
+				Runnable internalWorker = new InternalPayment(DCFactory, numberOfTxns);
 				executor.execute(internalWorker);
 			}
 			if (option.equals("0") || option.equals("2")) {
-				Runnable intraBankWorker = new IntraBankPayment(factory, numberOfTxns);
+				Runnable intraBankWorker = new IntraBankPayment(DCFactory, numberOfTxns);
 				executor.execute(intraBankWorker);
 			}
 			if (option.equals("0") || option.equals("3")) {
-				Runnable sepaWorker = new SEPAPayment(factory, numberOfTxns);
+				Runnable sepaWorker = new SEPAPayment(DCFactory, numberOfTxns);
+				executor.execute(sepaWorker);
+			}
+			if (option.equals("0") || option.equals("8")) {
+				Runnable sepaWorker = new ATMCashDepositMessage(ATMFactory, numberOfTxns);
 				executor.execute(sepaWorker);
 			}
 		}
@@ -84,7 +92,7 @@ public class MessageProducer {
 		System.out.println("Completed publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
 	}
 
-	private static QueueConnectionFactory getFactory() {
+	private static QueueConnectionFactory getDCFactory() {
 		String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
 		String port = ReadQueueManagerDetails.QM_PORT;
 		String queuemgr = ReadQueueManagerDetails.QM_NAME;
@@ -99,7 +107,26 @@ public class MessageProducer {
 			((MQQueueConnectionFactory) factory).setTransportType(1);
 		}
 		catch (Exception e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return factory;
+	}
+
+	private static QueueConnectionFactory getATMFactory() {
+		String mqserver = ReadQueueManagerDetails.ATM_QM_HOSTNAME;
+		String port = ReadQueueManagerDetails.ATM_QM_PORT;
+		String queuemgr = ReadQueueManagerDetails.ATM_QM_NAME;
+		String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
+		QueueConnectionFactory factory = new MQQueueConnectionFactory();
+		try {
+			Class.forName(connectionFactory);
+			factory = new MQQueueConnectionFactory();
+			((MQQueueConnectionFactory) factory).setQueueManager(queuemgr);
+			((MQQueueConnectionFactory) factory).setHostName(mqserver);
+			((MQQueueConnectionFactory) factory).setPort(Integer.parseInt(port));
+			((MQQueueConnectionFactory) factory).setTransportType(1);
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return factory;
