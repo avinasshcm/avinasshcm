@@ -93,9 +93,9 @@ public class MessageProducer {
 	}
 
 	private static QueueConnectionFactory getDCFactory() {
-		String mqserver = ReadQueueManagerDetails.QM_HOSTNAME;
-		String port = ReadQueueManagerDetails.QM_PORT;
-		String queuemgr = ReadQueueManagerDetails.QM_NAME;
+		String mqserver = ReadQueueManagerDetails.DC_QM_HOSTNAME;
+		String port = ReadQueueManagerDetails.DC_QM_PORT;
+		String queuemgr = ReadQueueManagerDetails.DC_QM_NAME;
 		String connectionFactory = "com.ibm.mq.jms.MQQueueConnectionFactory";
 		QueueConnectionFactory factory = new MQQueueConnectionFactory();
 		try {

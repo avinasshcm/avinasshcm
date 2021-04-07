@@ -11,9 +11,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
-import javax.jms.Destination;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
 import javax.jms.Queue;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
@@ -24,11 +21,11 @@ import javax.jms.TextMessage;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
-import pojo.DCTxnData;
+import pojo.ATMTxnData;
 import utils.CommonMethods;
 
 public class ATMCashDepositMessage implements Runnable {
-	HashMap<Integer, DCTxnData> data = new HashMap<Integer, DCTxnData>();
+	HashMap<Integer, ATMTxnData> data = new HashMap<Integer, ATMTxnData>();
 	String numberOfTxns = "1";
 	private static final Logger LOGGER = Logger.getLogger(ATMCashDepositMessage.class.getName());
 	QueueConnectionFactory factory = new MQQueueConnectionFactory();
@@ -65,12 +62,13 @@ public class ATMCashDepositMessage implements Runnable {
 			// System.out.println("data " + this.data.size());
 			// System.out.println("Msg " + message);
 			int counter = message % this.data.size();
-			// System.out.println("counter " + counter);
-			DCTxnData txnData = this.data.get(counter);
-			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", commonMethods.getReference(txnData.getTxnRef()));
-			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
-			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
-			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());
+			System.out.println("counter " + counter);
+			ATMTxnData txnData = this.data.get(counter);
+			String reference = commonMethods.getReference(txnData.getTxnRef());
+			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", reference);
+			
+			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getAccount());
+			modifiedMessage = modifiedMessage.replaceAll("CARD_NUMBER", txnData.getCardNumber());
 			/*
 			LOGGER.addHandler(new LogHelper("logs/LOG_InternalPayment.log").getLogHandler());
 			LOGGER.setUseParentHandlers(false);
@@ -79,7 +77,8 @@ public class ATMCashDepositMessage implements Runnable {
 			*/
 			try {
 				TextMessage outMessage = session.createTextMessage();
-				outMessage.setJMSCorrelationID(java.util.UUID.randomUUID().toString());
+				//outMessage.setJMSCorrelationID(java.util.UUID.randomUUID().toString());
+				outMessage.setJMSCorrelationID(reference);
 				outMessage.setText(modifiedMessage);
 				sender.send(outMessage);
 				/*				
@@ -125,19 +124,17 @@ public class ATMCashDepositMessage implements Runnable {
 	private void populateValues() {
 		try {
 			File currentDirectory = new File(".");
-			FileInputStream fstream = new FileInputStream(currentDirectory + "/" + "AccountList.txt");
+			FileInputStream fstream = new FileInputStream(currentDirectory + "/" + "AccountList_ATM.txt");
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			int counter = 0;
 			String strLine = br.readLine();
 			while (strLine != null) {
 				String[] txnData = strLine.split(",");
-				DCTxnData dcTxnData = new DCTxnData();
-				dcTxnData.setTxnRef(txnData[0]);
-				dcTxnData.setDebitCustomer(txnData[1]);
-				dcTxnData.setFromAccount(txnData[2]);
-				dcTxnData.setToAccount(txnData[3]);
-				this.data.put(counter, dcTxnData);
+				ATMTxnData atmTxnData = new ATMTxnData();
+				atmTxnData.setAccount(txnData[0]);
+				atmTxnData.setCardNumber(txnData[1]);
+				this.data.put(counter, atmTxnData);
 				// this.accountList.add(strLine);
 				counter++;
 				strLine = br.readLine();

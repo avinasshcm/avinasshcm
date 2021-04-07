@@ -30,7 +30,7 @@
             <typ:postingAction/>
             <typ:account>
                 <typ:inputAccount>
-                    <typ:inputAccountId>10100038164</typ:inputAccountId>
+                    <typ:inputAccountId>FROM_ACCOUNT</typ:inputAccountId>
                 </typ:inputAccount>
             </typ:account>
             <typ:currency>
@@ -72,7 +72,7 @@
             <typ:dateRecon>2012-01-13T00:00:00.000+05:30</typ:dateRecon>
             <typ:originalTxnAmt/>
             <typ:accIDC>505107546</typ:accIDC>
-            <typ:track2Data>6058910000000420</typ:track2Data>
+            <typ:track2Data>CARD_NUMBER</typ:track2Data>
             <typ:retRefNum>101</typ:retRefNum>
             <typ:apprCode>891553</typ:apprCode>
             <typ:atmActionCd>000</typ:atmActionCd>
@@ -94,7 +94,7 @@
             <typ:cardIssAuthData>505107546</typ:cardIssAuthData>
             <typ:recvIIC>Bush_Inside</typ:recvIIC>
             <typ:accIdentification1 xsi:nil="true"/>
-            <typ:accIdentification2>10100038164</typ:accIdentification2>
+            <typ:accIdentification2>FROM_ACCOUNT</typ:accIdentification2>
         </typ:atmDetails>
     </v1r1:atmCashTransactionInput>
 </v1r1:atmCashTransactionRq>
