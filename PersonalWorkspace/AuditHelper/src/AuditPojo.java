@@ -1,34 +1,31 @@
 import java.sql.Timestamp;
 
 public class AuditPojo {
+	String serviceName;
+	Timestamp startTime;
+	Timestamp endTime;
 
-    String serviceName;
+	public String getServiceName() {
+		return serviceName;
+	}
 
-    Timestamp startTime;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
 
-    Timestamp endTime;
+	public Timestamp getStartTime() {
+		return startTime;
+	}
 
-    public String getServiceName() {
-        return serviceName;
-    }
+	public void setStartTime(Timestamp startTime) {
+		this.startTime = startTime;
+	}
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
+	public Timestamp getEndTime() {
+		return endTime;
+	}
 
-    public Timestamp getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
-    }
-
-    public Timestamp getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
-    }
+	public void setEndTime(Timestamp endTime) {
+		this.endTime = endTime;
+	}
 }
