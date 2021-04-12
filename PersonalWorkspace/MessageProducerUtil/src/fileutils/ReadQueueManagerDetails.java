@@ -18,6 +18,7 @@ public class ReadQueueManagerDetails {
 	public static String ATM_QM_USER;
 	public static String ATM_QM_PASSWORD;
 	public static String ATM_CASH_QUEUE_NAME;
+	public static String ATM_POS_QUEUE_NAME;
 	public static String DC_ACCTFR_QUEUE_NAME;
 	public static String SEPA_TFR_QUEUE_NAME;
 	public static int MESSAGE_FEEDER_DELAY_IN_MILLIS;
@@ -48,6 +49,7 @@ public class ReadQueueManagerDetails {
 			ATM_QM_PASSWORD = props.getProperty("ATM_QM_PASSWORD");
 			//
 			ATM_CASH_QUEUE_NAME = props.getProperty("ATM_CASH_QUEUE_NAME");
+			ATM_POS_QUEUE_NAME = props.getProperty("ATM_POS_QUEUE_NAME");
 			SEPA_TFR_QUEUE_NAME = props.getProperty("SEPA_TFR_QUEUE_NAME");
 			MESSAGE_FEEDER_DELAY_IN_MILLIS = Integer.parseInt(props.getProperty("MESSAGE_FEEDER_DELAY_IN_MILLIS"));
 			RUN_NAME = props.getProperty("RUN_NAME");

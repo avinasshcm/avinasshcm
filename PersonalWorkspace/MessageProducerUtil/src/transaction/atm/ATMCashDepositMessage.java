@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -66,9 +68,10 @@ public class ATMCashDepositMessage implements Runnable {
 			ATMTxnData txnData = this.data.get(counter);
 			String reference = commonMethods.getReference(txnData.getTxnRef());
 			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", reference);
-			
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getAccount());
 			modifiedMessage = modifiedMessage.replaceAll("CARD_NUMBER", txnData.getCardNumber());
+			String date = getDate("YYYY-MM-dd'T'HH:mm:ss.sssXXX");
+			modifiedMessage = modifiedMessage.replaceAll("TRANSACTION_DATE", date);
 			/*
 			LOGGER.addHandler(new LogHelper("logs/LOG_InternalPayment.log").getLogHandler());
 			LOGGER.setUseParentHandlers(false);
@@ -154,5 +157,10 @@ public class ATMCashDepositMessage implements Runnable {
 			e.printStackTrace();
 		}
 		return text;
+	}
+
+	public static String getDate(String format) {
+		String date = new SimpleDateFormat(format).format(new Date());
+		return date;
 	}
 }

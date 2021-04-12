@@ -60,7 +60,7 @@
                 </typ:valueAmt>
             </typ:amountCardHldBill>
             <typ:trmDateTime>1970-01-13T17:13:20.000+05:30</typ:trmDateTime>
-            <typ:txnDateTime>2021-03-29T15:08:38.000+05:30</typ:txnDateTime>
+            <typ:txnDateTime>TRANSACTION_DATE</typ:txnDateTime>
             <typ:ptofSerDataCd>
                 <typ:crdRdMethod>5111</typ:crdRdMethod>
                 <typ:crdVerifyMethod>0191</typ:crdVerifyMethod>
@@ -69,7 +69,7 @@
             <typ:msgReason>1503</typ:msgReason>
             <typ:cardSeqNo>1234567896321456</typ:cardSeqNo>
             <typ:functionCode>200</typ:functionCode>
-            <typ:dateRecon>2012-01-13T00:00:00.000+05:30</typ:dateRecon>
+            <typ:dateRecon>TRANSACTION_DATE</typ:dateRecon>
             <typ:originalTxnAmt/>
             <typ:accIDC>505107546</typ:accIDC>
             <typ:track2Data>CARD_NUMBER</typ:track2Data>
@@ -87,7 +87,7 @@
             </typ:feeAmt>
             <typ:pINData>NANYUKIBR001>NANYUKI                  KE100000010000000420null</typ:pINData>
             <typ:originalDataEle>
-                <typ:orgDateTime>2021-03-29T15:08:38.000+05:30</typ:orgDateTime>
+                <typ:orgDateTime>TRANSACTION_DATE</typ:orgDateTime>
             </typ:originalDataEle>
             <typ:aAgentIDC>RTPSID</typ:aAgentIDC>
             <typ:terminalData>T01078AC1000ACT001CAM00041000AM10041000CY0003EURCY1003EUROTY003207RTY003227TYP003207</typ:terminalData>

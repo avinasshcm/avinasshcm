@@ -13,6 +13,8 @@ import com.ibm.mq.jms.MQQueueConnectionFactory;
 
 import fileutils.ReadQueueManagerDetails;
 import transaction.atm.ATMCashDepositMessage;
+import transaction.atm.ATMCashWithdrawalMessage;
+import transaction.atm.ATMPOSPurchaseMessage;
 import transaction.dc.InternalPayment;
 import transaction.dc.IntraBankPayment;
 import transaction.dc.SEPAPayment;
@@ -78,6 +80,14 @@ public class MessageProducer {
 			}
 			if (option.equals("0") || option.equals("3")) {
 				Runnable sepaWorker = new SEPAPayment(DCFactory, numberOfTxns);
+				executor.execute(sepaWorker);
+			}
+			if (option.equals("0") || option.equals("6")) {
+				Runnable sepaWorker = new ATMPOSPurchaseMessage(ATMFactory, numberOfTxns);
+				executor.execute(sepaWorker);
+			}
+			if (option.equals("0") || option.equals("7")) {
+				Runnable sepaWorker = new ATMCashWithdrawalMessage(ATMFactory, numberOfTxns);
 				executor.execute(sepaWorker);
 			}
 			if (option.equals("0") || option.equals("8")) {
