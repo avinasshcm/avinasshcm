@@ -7,10 +7,8 @@ public class DateFormat {
 		// TODO Auto-generated method stub
 		System.out.println(getDate(Calendar.getInstance(), "YYYY-MM-dd"));
 		System.out.println(Calendar.getInstance().getTimeInMillis());
-		
 		System.out.println(getDate("YYYY-MM-dd'T'hh:mm:ss.sssXXX"));
 		System.out.println(Calendar.getInstance().getTimeInMillis());
-		
 	}
 
 	protected static String getDate(Calendar cal, String format) {
