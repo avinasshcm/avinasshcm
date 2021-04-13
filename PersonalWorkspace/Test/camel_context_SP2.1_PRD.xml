@@ -1,0 +1,1931 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  **********************************************************************************
+  * Copyright (c) 2002,2013 Misys. All Rights Reserved..
+  *
+  * This software is proprietary to Misys. Use is subject to license terms.
+  *
+  * *********************************************************************************
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-2.5.xsd"
+    default-lazy-init="false" default-autowire="no">
+ 
+                <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring" autoStartup="false" messageHistory="false">
+                               <!--
+                                               CURRENCTLY ONLY ONE INVAID QUEUE IS CONFIGURABLE PER CAMEL CONTEXT
+                                               FILE IN REGARDING WHICH A BANKFUSION ISSUE HAS BEEN RAISED() ON
+                                               RESOLUTION OF WHICH THE CONGURATION OF INVALID QUEUE WILL CHANGE TO
+                                               PER ENDPOINT CONFIGURATION.
+                               -->
+ 
+            <!-- Party errorHandlerEnd points START -->
+                
+                <!-- <errorHandler id="partyretryhandler" type="DeadLetterChannel" deadLetterUri="PARTYWebSphereMQ:queue:UB_PARTY_RETRY_EVENT_OUT">
+                        <redeliveryPolicy maximumRedeliveries="3" redeliveryDelay="5000" retryAttemptedLogLevel="ERROR" logStackTrace="true" backOffMultiplier="2" useExponentialBackOff="true" />
+                     </errorHandler> -->
+                
+            <!-- Party errorHandler End points END -->
+				
+            <!-- Teller End Point START-->
+                
+                <jmxAgent id="JMXAgent" disabled="false" createConnector="false" mbeanServerDefaultDomain="BankFusion" usePlatformMBeanServer="false" />
+            <!-- Teller End Point END-->
+
+			     <endpoint id="WSEndPoint" uri="http://10.251.0.2:23002/bfweb"/><!-- Change the 10.251.0.2 to ub profile ip and corresponding http port -->
+                               
+             <!-- Party End points START -->
+                               
+                               <endpoint id="PARTY_EVENT_OUT" uri="PARTYWebSphereMQ:queue:UB_PARTY_EVENT_OUT" />
+                               <endpoint id="PARTY_RETRY_EVENT_OUT" uri="PARTYWebSphereMQ:queue:UB_PARTY_RETRY_EVENT_OUT" />
+                               
+             <!-- Party End points END -->
+             
+			 <!-- ChequeImageArchivalUpdate File Handler -->
+                               <endpoint id="ChequeImageArchivalUpdateFolder" uri="file:/misysshare/POLLHERE/" />
+ 
+             <!-- BFDC End points START -->
+                               
+                               <endpoint id="QM_BFDC_UB_END" uri="BFDCWebSphereMQ:queue:UB_IND_PaymentRequestQ" />
+							   <endpoint id="PaymentReqDLQ" uri="BFDCWebSphereMQ:queue:UB_IND_PaymentRequestDLQ" />
+                               <endpoint id="QM_BFDC_UB_Response" uri="BFDCWebSphereMQ:queue:UB_IND_PaymentResponseQ" />
+                               <endpoint id="QM_BFDC_UB_SORq" uri="BFDCWebSphereMQ:queue:UB_IND_SORequestQ" />
+                               <endpoint id="QM_Interface_Receive" uri="BFDCWebSphereMQ:queue:Interface_Receive" />
+                               <endpoint id="QM_BFDC_UB_CUSTENB" uri="BFDCWebSphereMQ:queue:UB_IND_CustEnablQ" />
+                               <endpoint id="QM_BFDC_EODStatusChannelNotifier" uri="BFDCWebSphereMQ:queue:UB_JMSNodeStatusQueue" />
+                               <endpoint id="UB_IND_IssueChequeBook_REQ" uri="BFDCWebSphereMQ:queue:UB_IND_ChequeBookRequestQ" />
+                               <endpoint id="UB_IND_IssueChequeBook_RES" uri="BFDCWebSphereMQ:queue:UB_IND_ChequeBookResponseQ" />
+                               <endpoint id="UB_IND_AccountStatement_REQ" uri="BFDCWebSphereMQ:queue:UB_IND_AccountStatementRequestQ" />
+                               <endpoint id="UB_IND_AccountStatement_RES" uri="BFDCWebSphereMQ:queue:UB_IND_AccountStatementResponseQ" />
+                               <endpoint id="UB_IND_StopCheque_REQ" uri="BFDCWebSphereMQ:queue:UB_IND_StopChequeRequestQ" />
+                               <endpoint id="UB_IND_StopCheque_RES" uri="BFDCWebSphereMQ:queue:UB_IND_StopChequeResponseQ" />
+							   <endpoint id="UB_IND_SEPATransferReqQ" uri="BFDCWebSphereMQ1:queue:UB_IND_SEPATransferReqQ" />
+							   <endpoint id="UB_IND_SEPATransferResQ" uri="BFDCWebSphereMQ1:queue:UB_IND_SEPATransferResQ" />
+							   
+								<endpoint id="DC_DLQ" uri="BFDCWebSphereMQ:queue:DLQ" />
+								<endpoint id="SWIFT_DLQ" uri="SWIFTWebSphereMQ:queue:DLQ" />
+								<endpoint id="OPICS_DLQ" uri="OPICSWebSphereMQ:queue:DLQ" />
+								<endpoint id="SCV_DLQ" uri="SCVWebSphereMQ:queue:DLQ" />
+								<endpoint id="CTY_DLQ" uri="FIRCOCWebSphereMQ:queue:DLQ" />
+								<endpoint id="TRUST_DLQ" uri="FIRCOTWebSphereMQ:queue:DLQ" />
+
+                
+             <!-- BFDC End points END -->
+                               
+                              <endpoint id="financialBatchGatewayFilesFolderInit" uri="file:/misysshare/FINANCIAL_GATEWAY/FinancialGatewayInit?noop=true&amp;readLock=none" />
+
+							  <endpoint id="financialBatchGatewayFilesFolder" uri="file:/misysshare/FINANCIAL_GATEWAY/" />
+                               
+             <!-- Clearing File End points -->
+                
+                               <endpoint id="inwardClearingFilesFolder" uri="file:/misysshare/clearing/"/>
+                                                               
+             <!-- Interest Rate File End points -->
+                               
+                               <endpoint id="interestRatesFilesFolder" uri="file:/misysshare/interest/" />
+ 
+             <!-- ATM End points START -->
+                
+                               <!-- maxConcurrentConsumers needs to set as per the requirement.-->
+                               <endpoint id="UB_ATM_CASHTRANSACTION_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_CASHTXN_REQ?maxConcurrentConsumers=10" />
+                               <endpoint id="UB_ATM_FUNDTRANSFER_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_FUNDTRAN_REQ?maxConcurrentConsumers=1" />
+                               <endpoint id="UB_ATM_BILLPAYMENT_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_BILLPAY_REQ?maxConcurrentConsumers=1" />
+                               <endpoint id="UB_ATM_BALANCEENQUIRY_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_BALENQ_REQ?maxConcurrentConsumers=5"  />
+                               <endpoint id="UB_ATM_CHEQUEDEPOSIT_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_CHQDEP_REQ?maxConcurrentConsumers=1" />
+                               <endpoint id="UB_ATM_CHEQUEBOOKREQUEST_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_CHQBK_REQ?maxConcurrentConsumers=1"  />
+                               <endpoint id="UB_ATM_MINISTATEMENT_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_MINSTMT_REQ?maxConcurrentConsumers=5"  />
+                               <endpoint id="UB_ATM_CHEQUESTATUSENQ_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_CHQSTAENQ_REQ?maxConcurrentConsumers=1"  />
+                               <endpoint id="UB_POS_REQ" uri="ATMWebSphereMQ:queue:UB_POS_POSMSG_REQ?maxConcurrentConsumers=10"  />
+                               <endpoint id="UB_ATM_RESPONSE_RES" uri="ATMWebSphereMQ:queue:UB_ATM_RES"  />
+                               <endpoint id="UB_ATM_ECHO_REQ" uri="ATMWebSphereMQ:queue:UB_ATM_ECHO_REQ?maxConcurrentConsumers=1"  />
+                               <endpoint id="UB_ATM_ECHO_RES" uri="ATMWebSphereMQ:queue:UB_ATM_ECHO_RES"  />
+                
+            <!-- ATM End points END -->
+                               
+            <!-- SWIFT End points START -->
+   
+                               <endpoint id="UBSWIFT_Incoming_103" uri="SWIFTWebSphereMQ:queue:UB_STUB.FROMSWIFT_TOUB_MT103.Q?maxConcurrentConsumers=1" />
+                               <endpoint id="UBSWIFT_Incoming_200" uri="SWIFTWebSphereMQ:queue:UB_STUB.FROMSWIFT_TOUB_MT200.Q?maxConcurrentConsumers=1" />
+                               <endpoint id="UBSWIFT_Incoming_201" uri="SWIFTWebSphereMQ:queue:UB_STUB.FROMSWIFT_TOUB_MT201.Q?maxConcurrentConsumers=1" />
+                               <endpoint id="UBSWIFT_Incoming_202" uri="SWIFTWebSphereMQ:queue:UB_STUB.FROMSWIFT_TOUB_MT202.Q?maxConcurrentConsumers=1" />
+                               <endpoint id="UBSWIFT_Incoming_203" uri="SWIFTWebSphereMQ:queue:UB_STUB.FROMSWIFT_TOUB_MT203.Q?maxConcurrentConsumers=1" />
+                               <endpoint id="UBSWIFT_Incoming_205" uri="SWIFTWebSphereMQ:queue:UB_STUB.FROMSWIFT_TOUB_MT205.Q?maxConcurrentConsumers=1" />
+ 
+             <!-- SWIFT End points END -->
+			 
+			 <!-- OPICS End points START -->
+                
+                                <endpoint id="UB_to_OPICS_Queue" uri="OPICSWebSphereMQ:queue:UB_OPICS_WORKFLOW.FROMUB.Q" />
+                                <endpoint id="OPX_INCOMING_JMS1" uri="OPICSWebSphereMQ:queue:UB_OPICS_WORKFLOW.OPXTOUBEXCHRATES.Q" />
+                                <endpoint id="OPX_INCOMING_JMS2" uri="OPICSWebSphereMQ:queue:UB_OPICS_WORKFLOW.OPXTOUBLIMITUPDATES.Q" />
+                                <endpoint id="OPX_INCOMING_JMS3" uri="OPICSWebSphereMQ:queue:UB_OPICS_WORKFLOW.OPXTOUBSTLMNTENTRIES.Q" />
+                                <endpoint id="OPX_INCOMING_JMS4" uri="OPICSWebSphereMQ:queue:UB_OPICS_WORKFLOW.OPXTOUBACCENTRIES.Q" />
+                
+             <!-- OPICS End points END -->
+			 
+             <!-- Fircosoft End points START -->
+                    <!-- Continuity Endpoints Starts-->
+                                                                                 
+                                <endpoint id="ESSENCE_C_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:UB_FIRCO_REQ?disableReplyTo=true" />
+                                <endpoint id="FIRCO_C_REQ_IN" uri="FIRCOCWebSphereMQ:queue:WMQIN" />
+                                <endpoint id="FIRCO_C_ACK_OUT" uri="FIRCOCWebSphereMQ:queue:WMQACK" />
+                                <endpoint id="FIRCO_C_OUT_OUT" uri="FIRCOCWebSphereMQ:queue:WMQOUT" />
+                                <endpoint id="FIRCO_C_STOP_OUT" uri="FIRCOCWebSphereMQ:queue:WMQSTOP" />
+                                <endpoint id="ESSENCE_C_ACK_IN" uri="FIRCOCWebSphereMQ:queue:UB_FIRCO_RES_ACK" />
+                                <endpoint id="INTERMEDIATE_ACK_C_T_IN" uri="FIRCOCWebSphereMQ:queue:INTERMEDIATE_ACK_C_T_IN" />
+       		        <!-- Continuity endpoints for swift incoming begin-->
+				     <!--	    <endpoint id="MMWMQACK" uri="SWIFTWebSphereMQ:queue:MMWMQACK" />
+								<endpoint id="MMWMQOUT" uri="SWIFTWebSphereMQ:queue:MMWMQOUT" />
+								<endpoint id="MMWMQSTOP" uri="SWIFTWebSphereMQ:queue:MMWMQSTOP" />
+								<endpoint id="MMWMQIN" uri="SWIFTWebSphereMQ:queue:WMQIN" />-->
+				    <!-- Continuity endpoints for swift incoming end-->
+                    <!-- Continuity Endpoints Ends-->
+                    <!-- Trust Endpoints Starts-->
+                         <!-- Trust request and ACK response-->
+                                                                
+                                <endpoint id="FIRCOC_EVENT_IN" uri="FIRCOCWebSphereMQ:queue:PARTY_FIRCO_REQ?replyTo=PARTY_FIRCO_RES_ACK" />                             
+                                <endpoint id="FIRCO_T_OUT_STOP_OUT" uri="file:/misysshare/fircotrust/?consumer.delay=60000" />
+                                <endpoint id="ESSENCE_T_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:PARTY_FIRCO_REQ?disableReplyTo=true" />
+                                <endpoint id="FIRCO_T_REQ_IN" uri="FIRCOTWebSphereMQ:queue:QIN" />
+                                <endpoint id="FIRCO_T_ACK_OUT" uri="FIRCOTWebSphereMQ:queue:QOUT" />
+                                <endpoint id="ESSENCE_T_ACK_IN" uri="FIRCOCWebSphereMQ:queue:PARTY_FIRCO_RES_ACK" />
+                                                               
+                    <!-- Trust Endpoints Ends-->
+ 
+                    <!-- Entity Endpioints STARTS-->
+ 
+                       <!-- Enable all the entities Connected to Firco, irrespective of the Entity where the camel is deployed -->
+                                                                
+							    <endpoint id="E1_ESSENCE_C_T_OUT_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY1_FIRCO_RES_OUT" />
+                                <endpoint id="E1_ESSENCE_C_T_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY1_FIRCO_RES_STOP"/> 
+								<endpoint id="E1_CHANNEL_C_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:ENTITY1_CHANNEL_C_REQ_OUT" />
+								<endpoint id="E1_CHANNEL_C_ACK_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY1_CHANNEL_C_ACK_IN" />
+								<endpoint id="E1_CHANNEL_C_OUT_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY1_CHANNEL_OUT_STOP_IN" />                                
+                                <!-- 
+								<endpoint id="E2_ESSENCE_C_T_OUT_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY2_FIRCO_RES_OUT" />
+								<endpoint id="E2_ESSENCE_C_T_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY2_FIRCO_RES_STOP"/>
+								<endpoint id="E2_CHANNEL_C_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:ENTITY2_CHANNEL_C_REQ_OUT" />
+								<endpoint id="E2_CHANNEL_C_ACK_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY2_CHANNEL_C_ACK_IN" />
+								<endpoint id="E2_CHANNEL_C_OUT_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY2_CHANNEL_OUT_STOP_IN" />
+								-->
+								<!-- 
+								<endpoint id="E3_ESSENCE_C_T_OUT_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY3_FIRCO_RES_OUT" />
+								<endpoint id="E3_ESSENCE_C_T_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY3_FIRCO_RES_STOP"/>
+								<endpoint id="E3_CHANNEL_C_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:ENTITY3_CHANNEL_C_REQ_OUT" />
+								<endpoint id="E3_CHANNEL_C_ACK_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY3_CHANNEL_C_ACK_IN" />
+								<endpoint id="E3_CHANNEL_C_OUT_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY3_CHANNEL_OUT_STOP_IN" />
+								-->
+								<!-- 
+								<endpoint id="E4_ESSENCE_C_T_OUT_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY4_FIRCO_RES_OUT" />
+								<endpoint id="E4_ESSENCE_C_T_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY4_FIRCO_RES_STOP"/>
+								<endpoint id="E4_CHANNEL_C_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:ENTITY4_CHANNEL_C_REQ_OUT" />
+								<endpoint id="E4_CHANNEL_C_ACK_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY4_CHANNEL_C_ACK_IN" />
+								<endpoint id="E4_CHANNEL_C_OUT_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY4_CHANNEL_OUT_STOP_IN" />
+								-->
+								<!-- 
+								<endpoint id="E5_ESSENCE_C_T_OUT_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY5_FIRCO_RES_OUT" />
+								<endpoint id="E5_ESSENCE_C_T_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY5_FIRCO_RES_STOP"/>
+								<endpoint id="E5_CHANNEL_C_REQ_OUT" uri="FIRCOCWebSphereMQ:queue:ENTITY5_CHANNEL_C_REQ_OUT" />
+								<endpoint id="E5_CHANNEL_C_ACK_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY5_CHANNEL_C_ACK_IN" />
+								<endpoint id="E5_CHANNEL_C_OUT_STOP_IN" uri="FIRCOCWebSphereMQ:queue:ENTITY5_CHANNEL_OUT_STOP_IN" />
+                                -->
+                      <!-- Enable this if MPM is also connected to the same FIRCO with proper queue details -->
+                           <!-- <endpoint id="MPM_OUT_STOP_IN" uri="FIRCOCWebSphereMQ:queue:UB_FIRCO_RES_OUT" /> -->
+ 
+                    <!-- Entity Endpioints END-->
+            <!-- Fircosoft End points END -->
+ 
+            <!-- quartz End Points-->
+							    <endpoint id="QaurtzFromEndPoint" uri="quartz2://partyGroup/partyTimerName?cron=0+0/1+5-22+?+*+MON-FRI"/>
+								<endpoint id="QaurtzToEndPoint" uri="bean:taskFilter?method=execute(*, 'quartzRoute1')"/>
+            <!-- CMS End points START -->
+ 
+                         <!--   <endpoint id="CMSProcess" uri="IBIWebSphereMQ:queue:UB_CMS_CARD_STATUS_UPDATE_MSGQ" />
+                                 -->
+            <!-- CMS End points END -->
+ 
+        <!-- MPM_TO_CBS_OUTWARD_EVENTS:all outward events and triggers from MPM to CBS Payments for payment initiations through CBS payments -->
+        <!-- MPM_TO_CBS_INWARD_EVENTS:all inward credits and evnts and triggers -->
+        <!-- CBS_TO_FORMAT_TRANSFORMER:internal queue to transform CBS format to MPM format -->
+        <!-- FORMAT_TRANSFORMER_TO_MPM_MESSAGES:all responses from CBS Payments to MPM -->
+        <!-- Misys Payment Manager Credit Transfer -->
+            <!-- MPM CT END POINTS START-->
+                               
+                                <endpoint id="MPM_TO_CBS_OUTWARD_EVENTS" uri="MPMWebSphereMQ:queue:OUTWARD_CREDIT_HOST_INPUT.Q?maxConcurrentConsumers=1" />
+								<endpoint id="MPM_TO_CBS_INWARD_EVENTS" uri="MPMWebSphereMQ:queue:INWARD_CREDIT_HOST_INPUT.Q?maxConcurrentConsumers=25" />
+								<endpoint id="MPM_TO_CBS_OUTWARD_EVENTS_SUSPENSE" uri="MPMWebSphereMQ:queue:OUTWARD_CREDIT_HOST_INPUT.BOQ.Q?maxConcurrentConsumers=1" />
+                                <endpoint id="FORMAT_TRANSFORMER_TO_MPM_MESSAGES" uri="MPMWebSphereMQ:queue:HOST_RESPONSE.Q" />
+                                <endpoint id="CT_DEAD_LETTER_Q" uri="MPMWebSphereMQ:queue:CT_DLQ" />
+            <!-- MPM CT END POINTS END-->
+			
+         <!-- Misys Payment Manager Direct Debits -->
+            <!-- MPM DD END POINTS START -->
+ 
+                                <endpoint id="PAYMENTCAPTUREXML_TO_MPM" uri="MPMWebSphereMQ:queue:PAYMENTCAPTUREXML.Q?maxConcurrentConsumers=1" />
+								<endpoint id="INCOMING_DD_MSG_FROM_MPM" uri="MPMWebSphereMQ:queue:INWARD_DEBIT_HOST_INPUT.Q?maxConcurrentConsumers=25" />
+                                <endpoint id="DD_MSG_TO_MPM" uri="MPMWebSphereMQ:queue:FROM.BACK.OFFICE.Q" />
+							    <endpoint id="MANDATE_MSG_TO_MPM" uri="MPMWebSphereMQ:queue:MANDATE.VALIDATION.FEEDBACK.Q" />
+								<endpoint id="DD_DEAD_LETTER_Q" uri="MPMWebSphereMQ:queue:DD_DLQ" />
+			<!--MPM DD END POINTS END -->
+			<!-- Deloitte FGM End Points-->
+				<endpoint id="QuartzFromEndPoint" uri="quartz2://fgmGroup/fgmTimerName?cron=0+0+*/2+*/1+*+?+*"/>
+				<endpoint id="QuartzToEndPoint" uri="bean:fgmHandler?method=execute(*, 'quartzRouteDLT1')"/>
+			<!-- Deloitte FGM End Points END -->
+            <!-- AccountPush Endpoint -->
+                                <!--<endpoint id="AccountPushEndPoint" uri="UBWebSphereMQ:topic:AccountDetailsPushTopic"/>-->
+ 
+            <!-- RPF End Points START-->
+                               <!--
+                               <endpoint id="UB_RPF_EXTRACT_MESSAGE_MIDAS" uri="RPFWebSphereMQ:queue:EXTRACTION_NOTIFICATION_Q" />
+                               -->
+            <!-- RPF End Points END-->
+ 
+            <!-- Teller End Point START-->
+                            <!--
+                               <endpoint id="OfflineSyncMsgEndPoint" uri="topicJms:topic:topic/OfflineSyncMsgEndPoint?durableSubscriptionName=OfflineSyncMsg&amp;subscriptionDurable=true&amp;cacheLevelName=CACHE_CONSUMER"/>
+                               <endpoint id="OfflineSyncEndPoint" uri="jms:queue:queue/BtReceiveQueue?disableReplyTo=true" pattern="InOnly" />
+       
+								 <route id="dataSyncConsumer" errorHandlerRef="offlineSyncErrHandler">
+									<from uri="OfflineSyncMsgEndPoint" />
+									<bean ref="btUserAuth" method="userProfile" />
+									<bean ref="dataSyncMfProfile" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer"
+										method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution"
+										method="executeMF" />
+								</route>
+								<route id="offlineSyncConsumer" errorHandlerRef="offlineSyncErrHandler">
+									<from ref="OfflineSyncEndPoint" />
+									<bean ref="offlineSyncListner" method="onMessage" />
+								</route>
+                            -->
+ 
+             <!-- Teller End Point END-->
+                               
+                                <route id="ChequeImageArchivalUpdateProcess">
+                                <from ref="ChequeImageArchivalUpdateFolder" />
+                                <bean ref="userAuth" method="userProfile" />
+                                <bean ref="com.misys.bankfusion.clearing.filehandler.CTT_ChequeImageArchivalUpdateHandler" method="executeFiles" />
+                                </route>
+                
+             <!-- BFDC RouteId Point Start-->
+ 
+								<route id="QM_BFDC_UB_REQ">
+									<from ref="QM_BFDC_UB_END" />
+									<bean ref="userAuthDC" method="userProfile" />
+									<bean ref="QM_BFDC_UB_PROFILE" method="microflowProfile" />
+									<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+									<bean ref="MF_EXECUTOR" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="FromEssence_To_DC" method="executeFiles" />
+										<to ref="QM_BFDC_UB_Response"></to>
+									</onException>
+								</route>
+                               
+								<route id="QM_BFDC_UB_SOReq">
+									<from ref="QM_BFDC_UB_SORq" />
+									<bean ref="userAuthDC" method="userProfile" />
+									<bean ref="QM_BFDC_UB_SOPROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true"/>
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="DC_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+							   
+								<route id="QM_Interfac_Rq">
+									<from ref="QM_Interface_Receive" />
+									<bean ref="userAuthDC" method="userProfile" />
+									<bean ref="Message_Router" method="routeMessage" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="DC_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route> 
+								
+								<route id="UB_IND_IssueChequeBook">
+									<from ref="UB_IND_IssueChequeBook_REQ" />
+									<bean ref="userAuthDC" method="userProfile" />
+									<bean ref="UB_IND_IssueChequeBook_Profile" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled> 
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="DC_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="UB_IND_AccountStatement">
+									<from ref="UB_IND_AccountStatement_REQ" />
+									<bean ref="userAuthDC" method="userProfile" />
+									<bean ref="UB_IND_AccountStatement_Profile" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="DC_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								<route id="UB_IND_StopCheque">
+									<from ref="UB_IND_StopCheque_REQ" />
+									<bean ref="userAuthDC" method="userProfile" />
+									<bean ref="UB_IND_StopCheque_Profile" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="DC_DLQ" />
+										<rollback markRollbackOnly="true" /> 
+									</onException>
+								</route>
+							   
+							   <route id="UB_IND_SEPATransferReq">
+												<from ref="UB_IND_SEPATransferReqQ" />
+												<transacted/>
+												<to uri="bean:messageRouterBean?method=transferSepaInitiate" />
+												<onException> 
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled> 
+													<rollback markRollbackOnly="true" /> 
+												</onException>
+							</route>
+                               
+            <!-- BFDC RouteId Point End-->
+ 
+            <!-- Clearing File End points routes -->
+                               
+                               <route id="inwardClearingFilesProcess">
+                                               <from ref="inwardClearingFilesFolder" />
+                                               <bean ref="userAuthClearing" method="userProfile" />
+                                               <bean ref="com.misys.bankfusion.clearing.filehandler.ClearingFileHandler" method="executeFiles" />
+                               </route>
+                              
+             <!-- Interest Rate File End points routes -->
+                               
+                               <route id="interestRateFileUploadProcess">
+                                               <from ref="interestRatesFilesFolder" />
+                                               <bean ref="userAuthInterestUpload" method="userProfile" />
+                                   <bean ref="com.misys.fbe.uploadfile.InterestRateFileUpload" method="executeFiles" />
+                               </route>
+                
+             <!-- Party Routing START -->
+								<route id="PARTY_EVENT_OUT_REQ" >
+												<from ref="PARTY_EVENT_OUT" />
+												<bean ref="PARTY_EVENT_OUT_PROFILE" method="microflowProfile" />
+												<bean ref="userAuthParty" method="userProfile" />
+												<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+												<bean ref="UTF_mfExecution" method="executeMF" />
+												<onException>
+													<exception>java.lang.Throwable</exception>
+													<exception>com.misys.bankfusion.common.exception.BankFusionException</exception>
+													<redeliveryPolicy disableRedelivery="true" />
+													<handled>
+														<constant>true</constant>
+													</handled>				
+													<to ref="PARTY_RETRY_EVENT_OUT" />
+													<rollback markRollbackOnly="true" />
+												</onException>
+							     </route>
+								 
+            <!-- Party Routing END -->
+
+            <!-- ATM Routing START -->
+                 
+                                <route id="UB_ATM_CASHTRANSACTION"  >
+                                               <from ref="UB_ATM_CASHTRANSACTION_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_CASHTRANSACTION_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+                                                    <exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+                                                    <handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_CASHTRANSACTION_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+                                                </onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_CASHTRANSACTION_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+                                </route>
+							    <route id="UB_ATM_FUNDTRANSFER" >
+                                                <from ref="UB_ATM_FUNDTRANSFER_REQ" />
+                                                <bean ref="userAuthATM" method="userProfile" />
+                                                <bean ref="UB_ATM_FUNDTRANSFER_PROFILE" method="microflowProfile" />
+                                                <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                <bean ref="MF_EXECUTOR" method="executeMF" />
+                                                <onException>
+												    <exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_FUNDTRANSFER_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+											    </onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+												    <handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_FUNDTRANSFER_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+											    </onException>
+                                </route>
+								<route id="UB_ATM_BILLPAYMENT" >
+                                               <from ref="UB_ATM_BILLPAYMENT_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_BILLPAYMENT_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+													<exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_BILLPAYMENT_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+											    </onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_BILLPAYMENT_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+								</route>
+                                <route id="UB_ATM_BALANCEENQUIRY" >
+                                               <from ref="UB_ATM_BALANCEENQUIRY_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_BALANCEENQUIRY_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+													<exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_BALANCEENQUIRY_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_BALANCEENQUIRY_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+                                 </route>
+								 <route id="UB_ATM_CHEQUEDEPOSIT" >
+                                               <from ref="UB_ATM_CHEQUEDEPOSIT_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_CHEQUEDEPOSIT_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+							                        <exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_CHEQUEDEPOSIT_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+										        </onException>
+										        <onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_CHEQUEDEPOSIT_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+								</route>
+								<route id="UB_ATM_CHEQUEBOOKREQUEST" >
+                                               <from ref="UB_ATM_CHEQUEBOOKREQUEST_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_CHEQUEBOOKREQUEST_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+													<exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_CHEQUEBOOKREQUEST_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_CHEQUEBOOKREQUEST_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+								</route>
+								<route id="UB_ATM_MINISTATEMENT" >
+                                               <from ref="UB_ATM_MINISTATEMENT_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_MINISTATEMENT_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+													<exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_MINISTATEMENT_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+											    </onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_MINISTATEMENT_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+								</route>
+								<route id="UB_ATM_CHEQUESTATUSENQ" >
+                                               <from ref="UB_ATM_CHEQUESTATUSENQ_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_CHEQUESTATUSENQ_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+													<exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_ATM_CHEQUESTATUSENQ_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_ATM_CHEQUESTATUSENQ_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+								</route>
+                                <route id="UB_ATM_ECHO_RQ" >
+                                               <from ref="UB_ATM_ECHO_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_ATM_ECHO_RQ_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+								</route>
+                                <route id="UB_POS"  >
+                                               <from ref="UB_POS_REQ" />
+                                               <bean ref="userAuthATM" method="userProfile" />
+                                               <bean ref="UB_POS_PROFILE" method="microflowProfile" />
+                                               <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                               <bean ref="MF_EXECUTOR" method="executeMF" />
+                                               <onException>
+													<exception>com.trapedza.bankfusion.servercommon.exceptions.RetriableException</exception>
+													<redeliveryPolicy redeliveryDelay="200" maximumRedeliveries="2"  logRetryAttempted="true" />
+													<handled><constant>true</constant></handled>
+													<bean ref="userAuthATM" method="userProfile" />
+													<bean ref="UB_POS_ERROR_HANDLER" method="microflowProfile" />
+													<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+													<bean ref="MF_EXECUTOR" method="executeMF" />
+											    </onException>
+												<onException>
+													<exception>java.lang.Exception</exception>
+													<handled><constant>true</constant></handled>
+                                                    <bean ref="userAuthATM" method="userProfile" />
+                                                    <bean ref="UB_POS_ERROR_HANDLER" method="microflowProfile" />
+                                                    <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                    <bean ref="MF_EXECUTOR" method="executeMF" />
+												</onException>
+								 </route>
+   
+           <!-- ATM Routing END -->
+ 
+           <!-- SWIFT Routing START -->
+                
+				
+				
+								<route id="UBSWIFT_Incoming_103_REQ" >
+									<from ref="UBSWIFT_Incoming_103" />
+									<bean ref="userAuthMMM" method="userProfile" />
+									<bean ref="UBSWIFT_Incoming_103_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="SWIFT_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+ 
+								<route id="UBSWIFT_Incoming_200_REQ" >
+									<from ref="UBSWIFT_Incoming_200" />
+									<bean ref="userAuthMMM" method="userProfile" />
+									<bean ref="UBSWIFT_Incoming_200_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="SWIFT_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="UBSWIFT_Incoming_201_REQ" >
+									<from ref="UBSWIFT_Incoming_201" />
+									<bean ref="userAuthMMM" method="userProfile" />
+									<bean ref="UBSWIFT_Incoming_201_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="SWIFT_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="UBSWIFT_Incoming_202_REQ" >
+									<from ref="UBSWIFT_Incoming_202" />
+									<bean ref="userAuthMMM" method="userProfile" />
+									<bean ref="UBSWIFT_Incoming_202_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="SWIFT_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="UBSWIFT_Incoming_203_REQ" >
+									<from ref="UBSWIFT_Incoming_203" />
+									<bean ref="userAuthMMM" method="userProfile" />
+									<bean ref="UBSWIFT_Incoming_203_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" /> 
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="SWIFT_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="UBSWIFT_Incoming_205_REQ" >
+									<from ref="UBSWIFT_Incoming_205" />
+									<bean ref="userAuthMMM" method="userProfile" />
+									<bean ref="UBSWIFT_Incoming_205_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="SWIFT_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+				
+             <!-- SWIFT Routing END -->
+			 
+			 <!-- OPICS Routing START -->
+                
+								<route id="OPX_INCOMING_JMS1_REQ" >
+									<from ref="OPX_INCOMING_JMS1" />
+									<bean ref="userAuthOPICS" method="userProfile" />
+									<bean ref="OPX_INCOMING_JMS1_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="OPICS_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="OPX_INCOMING_JMS2_REQ" >
+									<from ref="OPX_INCOMING_JMS2" />
+									<bean ref="userAuthOPICS" method="userProfile" />
+									<bean ref="OPX_INCOMING_JMS2_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="OPICS_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+						
+								<route id="OPX_INCOMING_JMS3_REQ" >
+									<from ref="OPX_INCOMING_JMS3" />
+									<bean ref="userAuthOPICS" method="userProfile" />
+									<bean ref="OPX_INCOMING_JMS3_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="OPICS_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="OPX_INCOMING_JMS4_REQ" >
+									<from ref="OPX_INCOMING_JMS4" />
+									<bean ref="userAuthOPICS" method="userProfile" />
+									<bean ref="OPX_INCOMING_JMS4_PROFILE" method="microflowProfile" />
+									<bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+									<bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="OPICS_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+						
+			<!-- OPICS Routing END -->
+ 
+             <!-- FIRCO Routing START -->
+                    <!--                                        
+                    from tag reference in the following two routes should contain the End Point of the 
+                    Entity where this camel is deployed
+                    for Ex - E1_ESSENCE_C_T_OUT_IN, E2_ESSENCE_C_T_OUT_IN
+                    -->                         
+					
+								<route id="ESSENCE_C_OUT_PROCESSING" >
+									<from ref="E1_ESSENCE_C_T_OUT_IN" />
+									<bean ref="userAuthFircoOut" method="userProfile" />
+									<bean ref="FIRCO_REQUEST_RESPONSE_PROFILE" method="microflowProfile" />
+									<bean ref="XMLMessageTransformer" method="transform" />
+									<bean ref="MicroflowExecutor" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="ESSENCE_C_STOP_PROCESSING" >
+									<from ref="E1_ESSENCE_C_T_STOP_IN" />
+									<bean ref="userAuthFirco" method="userProfile" />
+									<bean ref="FIRCO_REQUEST_RESPONSE_PROFILE" method="microflowProfile" />
+									<bean ref="XMLMessageTransformer" method="transform" />
+									<bean ref="MicroflowExecutor" method="executeMF" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="FIRCO_NEW_FINAL_RESPONSE" >
+									<from ref="E1_CHANNEL_C_OUT_STOP_IN" />
+									<bean ref="userAuthFirco" method="userProfile" />
+									<bean ref="kycFinalRespHandler" method="executeFiles" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="FIRCO_NEW_ACK_RESPONSE" >
+											<from ref="E1_CHANNEL_C_ACK_IN" />
+											<bean ref="userAuthFirco" method="userProfile" />
+											<bean ref="kycAckRespHandler" method="executeFiles" />
+								</route>
+							   <route id="CHANNEL_C_REQ_TRANSFORM" >
+											<from ref="E1_CHANNEL_C_REQ_OUT" />
+											<bean ref="userAuthFirco" method="userProfile" />
+											<bean ref="continuityRequestFormatter" method="executeFiles" />
+											<to ref="FIRCO_C_REQ_IN" />
+							    </route>
+														   
+										   										
+            <!-- Firco Continuity Routes STARTS -->
+                                
+								<route id="FIRCO_C_REQ_TRANSFORM" >
+									<from ref="ESSENCE_C_REQ_OUT" />
+									<bean ref="userAuthFirco" method="userProfile" />
+									<bean ref="continuityRequestFormatter" method="executeFiles" />
+									<to ref="FIRCO_C_REQ_IN" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+
+								<route id="FIRCO_C_OUT_TRANSFORM" >
+									<from ref="FIRCO_C_OUT_OUT" />
+									<bean ref="userAuthFircoOut" method="userProfile" />
+									<bean ref="continuityResponseFormatter" method="executeFiles" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+
+								<route id="FIRCO_C_ACK_TRANSFORM">
+									<from ref="INTERMEDIATE_ACK_C_T_IN"/>
+									<bean method="userProfile" ref="userAuthFirco"/>
+									<bean method="executeFiles" ref="continuityAckResponseFormatter"/>
+									<filter>
+										<method ref="essenceDelivery" method="isMessageForEssence"/>
+										<to ref="ESSENCE_C_ACK_IN"/>
+									</filter>
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+						
+								
+								<route id="FIRCO_C_STOP_TRANSFORM" >
+									<from ref="FIRCO_C_STOP_OUT" />
+									<bean ref="userAuthFircoOut" method="userProfile" />
+									<bean ref="continuityResponseFormatter" method="executeFiles" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+
+								<route id="CHANNEL_BASED_C_ACK_TRANSFORM" >
+									<from ref="FIRCO_C_ACK_OUT" />
+									<bean ref="userAuthFircoOut" method="userProfile" />
+									<bean ref="continuityChannelBAsedAckResponseFormatter" method="executeFiles" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CTY_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+                                                               
+            <!-- Firco Continuity Routes ENDS -->
+                                                
+            <!-- Firco Trust Routes STARTS -->    
+
+
+								<route id="FIRCO_T_REQ_TRANSFORM" >
+									<from ref="ESSENCE_T_REQ_OUT" />
+									<bean ref="userAuthFirco" method="userProfile" />
+									<bean ref="trustRequestFormatter" method="executeFiles" />
+									<to ref="FIRCO_T_REQ_IN" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="TRUST_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="FIRCO_T_OUT_STOP_TRANSFORM">
+									<from ref="FIRCO_T_OUT_STOP_OUT" />
+									<bean ref="userAuthFirco" method="userProfile" />
+									<bean ref="trustOutStopResponseFormatter" method="executeFiles" />
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="TRUST_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+								<route id="FIRCO_T_ACK_TRANSFORM" >
+									<from ref="FIRCO_T_ACK_OUT" />
+									<bean ref="userAuthFirco" method="userProfile" />
+									<bean ref="trustAckResponseFormatter" method="executeFiles" />
+									<to ref="ESSENCE_T_ACK_IN"/>
+									<onException>
+										<exception>java.lang.Exception</exception>
+										<redeliveryPolicy disableRedelivery="true" />
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="TRUST_DLQ" />
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+                                                                          
+            <!-- Firco Trust Routes ENDS -->                                     
+            <!-- FIRCO Routing END -->
+            <!-- CMS Routing START -->
+                               <!--
+                               <route id="CMSProcess_REQ" >
+                                               <from ref="CMSProcess" />
+                                               <bean ref="userAuth" method="userProfile" />
+                                               <bean ref="CMSProcess_PROFILE" method="microflowProfile" />
+                                               <bean ref="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer" method="transform" />
+                                               <bean ref="com.misys.bankfusion.messaging.esb.utils.MFExecution" method="executeMF" />
+								</route>
+                               -->
+            <!-- CMS Routing END -->
+ 
+            <!-- MPM CT ROUTING START -->
+                                <route id="MPM_TO_CBS_INWARD_EVENTS_ROUTE">
+									<from ref="MPM_TO_CBS_INWARD_EVENTS" />
+									<transacted/>
+									<to uri="bean:consumeCTMsg?method=consumeCTMsg" />
+									<onException>
+										<exception>java.lang.Throwable</exception>
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>            
+                                <route id="MPM_TO_CBS_OUTWARD_EVENTS_ROUTE">
+                                                <from ref="MPM_TO_CBS_OUTWARD_EVENTS" />                       
+                                                <transacted/>
+                                                <bean ref="OUTWARD_EVENTS_PROFILE" method="microflowProfile" />
+                                                <bean ref="userAuthMPM" method="userProfile" />
+                                                <bean ref="MPM_TRIGGER_EVENT_HANDLER" method="transformMPMFormatToAPI" />
+                                                <bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+                                                <bean ref="MF_EXECUTOR" method="executeMF" />
+                                                <onException>
+                                                                <exception>java.lang.Throwable</exception> 
+                                                                <exception>com.misys.bankfusion.common.exception.BankFusionException</exception> 
+                                                                <redeliveryPolicy disableRedelivery="true" />                                                                                                                                                                                                      
+                                                                <handled> 
+                                                                     <constant>true</constant> 
+                                                                </handled>  
+                                                                <to ref="MPM_TO_CBS_OUTWARD_EVENTS_SUSPENSE" /> 
+                                                                <rollback markRollbackOnly="true" /> 
+                                                </onException>
+                                </route>
+								
+								<route id="MPM_TO_CBS_OUTWARD_EVENTS_SUSPENSE_ROUTE">
+									<from ref="MPM_TO_CBS_OUTWARD_EVENTS_SUSPENSE" />
+									<transacted/>
+									<bean ref="OUTWARD_EVENTS_PROFILE" method="microflowProfile" />
+									<bean ref="userAuthMPM" method="userProfile" />
+									<bean ref="MPM_TRIGGER_EVENT_HANDLER" method="checkEarlierStatusforOutward" />
+									<bean ref="MPM_TRIGGER_EVENT_HANDLER" method="transformMPMFormatToAPI" />
+									<bean ref="XML_MESSAGE_TRANSFORMER" method="transform" />
+									<bean ref="MF_EXECUTOR" method="executeMF" />
+									<onException useOriginalMessage="true" >
+										<exception>java.lang.Exception</exception>
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<bean ref="exceptionLogger" method="process" />
+										<to ref="CT_DEAD_LETTER_Q" />
+									</onException>
+								</route>
+                  
+            <!-- MPM CT ROUTING END -->
+			
+			<!-- Deloitte FGM Routes -->						 
+					<route id="quartzRouteDLT1">
+						<from ref="QuartzFromEndPoint" />
+						<to ref="QuartzToEndPoint" />
+					</route>
+			<!-- Deloitte FGM Routes END -->
+                          
+            <!-- BULK PI ROUTING START -->
+                               
+                               <route id="MPM_BULK_CREDIT_PAYMENT_ROUTE1">
+                                               <from uri="file:///misysshare/MPM_BULK_PAYMENTS/Bulk_PI/Inbox?noop=false&amp;readLock=changed&amp;readLockCheckInterval=5000&amp;readLockTimeout=20000&amp;noop=true&amp;idempotent=true&amp;idempotentRepository=#CTfileStore" />
+                                               <to uri="bean:camelUserAuthenticator?method=userProfile" />
+                                               <to uri="file:///misysshare/MPM_BULK_PAYMENTS/Bulk_PI/Outbox" />
+                                               <to uri="bean:bulkPaymentProcessor?method=process" />
+											   <to uri="bean:explicitCommit?method=doExplicitCommit" />
+                               </route>
+ 
+                               <!--<route id="MPM_BULK_CREDIT_PAYMENT_ROUTE2">
+                                               <from uri="file:/misysshare/mpm_bulk_payments/bulk_pi/outbox?noop=true&amp;idempotent=true&amp;idempotentRepository=#CTfileStore" />
+                                               <to uri="bean:userAuthFinancialGateway?method=userProfile" />
+                                               <to uri="bean:bulkPaymentProcessor?method=process" />
+                               </route> -->
+                                                                                                                             
+                               <route id="MPM_BULK_CREDIT_PAYMENT_ROUTE3">
+                                               <from uri="file:///misysshare/FINANCIAL_GATEWAY/PaymentsResponse/?noop=true&amp;idempotent=true&amp;idempotentRepository=#CTfileStore" />
+                                               <to uri="bean:userAuthFinancialGateway?method=userProfile" />
+                                               <to uri="bean:bulkPaymentInitiation?method=process" />
+											   <to uri="bean:explicitCommit?method=doExplicitCommit" />
+                               </route>
+                               <route id="passfileonebyone">
+												<from ref="financialBatchGatewayFilesFolderInit" />     
+												<bean ref="FinancialBatchControl" method="executeFiles" />
+							   </route>
+                               <route id="financialGatewayFileUpload">
+                                               <from ref="financialBatchGatewayFilesFolder" />
+                                               <bean ref="userAuthFinancialGateway" method="userProfile" />
+                                               <bean ref="com.misys.bankfusion.postingengine.financialgateway.FinancialGatewayCamelFileHandler" method="executeFiles" />
+                                               <bean ref="AUTO_FINANCIAL_GATEWAY_PROFILE" method="microflowProfile" />
+                                               <bean ref="FinancialBatchConversion" method="transform" />
+                                               <onException useOriginalMessage="true">
+                                                               <exception>java.lang.Throwable</exception>
+                                                               <handled>
+                                                                        <constant>true</constant>
+                                                               </handled>
+                                                               <to uri="file:///misysshare/FINANCIAL_GATEWAY/Failed/"/>
+                                               </onException>
+                               </route>
+            <!-- BULK PI ROUTING END -->
+                              
+            <!-- MPM DD ROUTING START -->
+                                                
+                               <route id="MPM_BULK_DEBIT_PAYMENT_ROUTE">
+                                               <from uri="file:///misysshare/MPM_BULK_PAYMENTS/Pain008/Inbox?noop=false&amp;readLock=changed&amp;readLockCheckInterval=5000&amp;readLockTimeout=20000&amp;noop=true&amp;idempotent=true&amp;idempotentRepository=#fileStore" />
+                                               <to uri="bean:camelUserAuthenticator?method=userProfile" />
+                                               <to uri="file:///misysshare/MPM_BULK_PAYMENTS/Pain008/Outbox" />
+                                               <to uri="bean:ddBulkPaymentProcessor?method=process" />
+											   <to uri="bean:explicitCommit?method=doExplicitCommit" />
+                               </route>
+                               <route id="MPM_BULK_DEBIT_PAYMENT_CANCELLATION_ROUTE">
+                                               <from uri="file:///misysshare/MPM_BULK_PAYMENTS/Pain007/Inbox?noop=false&amp;readLock=changed&amp;readLockCheckInterval=5000&amp;readLockTimeout=20000&amp;noop=true&amp;idempotent=true&amp;idempotentRepository=#fileStore" />
+                                                               <to uri="bean:camelUserAuthenticator?method=userProfile" />
+                                               <to uri="file:///misysshare/MPM_BULK_PAYMENTS/Pain007/Outbox" />
+                                               <to uri="bean:ddBulkPaymentProcessor?method=process" />
+											   <to uri="bean:explicitCommit?method=doExplicitCommit" />
+                                </route>
+                               <route id="MPM_BULK_DEBIT_PAYMENT_SETTLEMENT_ROUTE">
+                                               <from uri="file:///misysshare/MPM_BULK_PAYMENTS/DebitSettlement/Inbox?noop=false&amp;readLock=changed&amp;readLockCheckInterval=5000&amp;readLockTimeout=20000&amp;noop=true&amp;idempotent=true&amp;idempotentRepository=#fileStore" />
+                                                               <to uri="bean:camelUserAuthenticator?method=userProfile" />
+                                               <to uri="file:///misysshare/MPM_BULK_PAYMENTS/DebitSettlement/Outbox" />
+                                               <to uri="bean:ddSettlementProcessor?method=process" />
+											   <to uri="bean:explicitCommit?method=doExplicitCommit" />
+                               </route>
+                               <route id="MPM_BULK_CREDIT_TRANSFER_SETTLEMENT_ROUTE">
+                                               <from uri="file:///misysshare/MPM_BULK_PAYMENTS/Settlement/Inbox?noop=false&amp;readLock=changed&amp;readLockCheckInterval=5000&amp;readLockTimeout=20000&amp;noop=true&amp;idempotent=true&amp;idempotentRepository=#CTfileStore" />
+                                               <to uri="bean:camelUserAuthenticator?method=userProfile" />
+											   <to uri="file:///misysshare/MPM_BULK_PAYMENTS/Settlement/Outbox" />
+											   <to uri="bean:ctSettlementProcessor?method=process" />
+											   <to uri="bean:explicitCommit?method=doExplicitCommit" />
+								</route>
+
+								<route id="INCOMING_DD_MSG_FROM_MPM_ROUTE">
+									<from ref="INCOMING_DD_MSG_FROM_MPM" />
+									<transacted/>
+									<to uri="bean:messageConsumer?method=consumeMsg" />
+									<onException>
+										<exception>java.lang.Throwable</exception>
+										<handled>
+											<constant>true</constant>
+										</handled>
+										<rollback markRollbackOnly="true" />
+									</onException>
+								</route>
+								
+			<!-- MPM DD ROUTING END -->
+                               
+			<!-- quartz routing-->
+								<route id="quartzRoute1">
+												<from ref="QaurtzFromEndPoint" />
+												<to ref="QaurtzToEndPoint" />
+								 </route>
+    </camelContext>
+	
+	<!-- quartz bean-->
+		<bean id="quartz2" class="org.apache.camel.component.quartz2.QuartzComponent">
+			<property name="propertiesFile" value="quartz.properties"/>
+		</bean>
+	<!-- Deloitte FGM beans -->
+		<bean id="fgmHandler" class="com.misys.bankfusion.scheduler.DTT_FinancialGatewayManual_ReconciliateHandler"/>
+	<!-- Deloitte FGM bens END -->
+ 
+            <!-- Teller End points bean START -->
+                <!--
+										<bean id="ctxHolder" class="com.misys.cbs.sync.SyncUtil"/>
+						 
+											<bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+											   <property name="destinationResolver" ref="jndiDestinationResolver" />
+												<property name="connectionFactory" ref="jmsConnectionFactory" />
+												<property name="transacted" value="false" />
+												<property name="cacheLevelName" value="CACHE_CONSUMER" />
+												<property name="maxConcurrentConsumers" value="1" />
+											</bean>
+						 
+										<camel:errorHandler id="offlineSyncErrHandler" type="DeadLetterChannel"
+										deadLetterUri="jms:queue:queue/DeadLetterQueue">
+								<camel:redeliveryPolicy
+									retryAttemptedLogLevel="INFO"
+									retriesExhaustedLogLevel="INFO"
+									logStackTrace="true"
+									logRetryStackTrace="true"
+									logRetryAttempted="true"
+									maximumRedeliveries="5"
+									redeliveryDelay="15000"
+									/>
+										</camel:errorHandler>
+						 
+													   <bean id="jndiDestinationResolver"
+										class="org.springframework.jms.support.destination.JndiDestinationResolver">
+										<property name="jndiTemplate" ref="jndiTemplate" />
+										<property name="cache" value="true" />
+										</bean>
+						 
+													   <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+										</bean>
+						 
+										<bean id="jmsConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+										<property name="jndiTemplate" ref="jndiTemplate" />
+										<property name="jndiName" value="ConnectionFactory" />
+													   </bean>
+						 
+													   <bean id="btUserAuth"
+										class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+										<property name="userId" value="system" />
+										<property name="passWord" value="system" />
+										</bean>
+						 
+													   <bean id="offlineSyncListner" class="com.misys.cbs.sync.SyncMessageListener"
+								scope="prototype">
+								<property name="currentBranch" value=""/>
+													  </bean>
+						 
+														<bean id="refreshMessageListner" class="com.misys.cbs.refresh.util.RefreshMessageListener"
+												scope="prototype">
+													   </bean>
+						 
+											<bean id="topicJms" class="org.apache.camel.component.jms.JmsComponent">
+												<property name="destinationResolver" ref="jndiDestinationResolver" />
+												<property name="connectionFactory" ref="jmsConnectionFactory" />
+												<property name="transacted" value="false" />
+												<property name="cacheLevelName" value="CACHE_CONSUMER" />
+												<property name="maxConcurrentConsumers" value="1" />
+											</bean>
+						 
+											<bean id="topicMfProfile"
+												class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+												<property name="mfid" value="BT_OFB_StatusConsumerMF_SRV" />
+												<property name="source" value="Microflow" />
+											</bean>
+						 
+											<bean id="dataSyncMfProfile"
+												class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+												<property name="mfid" value="DataSyncMF" />
+											   <property name="source" value="Microflow" />
+											</bean>
+                -->
+                <!-- Teller End points bean END-->
+ 
+                <!-- Account Push Bean -->
+ 
+                <!--<bean id="UBWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+                                               <property name="configuration">
+                                               <bean class="org.apache.camel.component.jms.JmsConfiguration">
+                                               <property name="connectionFactory" ref="UBConnectionFactory" />
+                                               <property name="concurrentConsumers" value="5" />
+                                               </bean>
+                                               </property>
+                               </bean> 
+                 <jee:jndi-lookup id="UBConnectionFactory" jndi-name="UBConnectionFactory">
+                                               <jee:environment> java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+                                               java.naming.provider.url=iiop://10.251.0.2:23004/ </jee:environment> 
+                </jee:jndi-lookup> -->
+ 
+			<!-- Clearing File End points beans -->
+                
+									<bean id="userAuthClearing" class="com.misys.bankfusion.clearing.filehandler.ClearingUserAuthenticator">
+												   <property name="userId" value="CBSCLEARPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_8" />
+									</bean>
+        
+			<!-- Interest rate File End points beans -->
+									
+									<bean id="userAuthInterestUpload" class="com.misys.fbe.uploadfile.InterestUploadUserAuthenticator">
+												   <property name="userId" value="CBSINTUPPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_9" />
+									</bean>
+					 
+            <!-- START JMS Connection Factory and Profile settings -->
+ 
+									<bean id="UTF_mfExecution" class="com.misys.bankfusion.messaging.esb.utils.MFExecution">
+													<property name="encoding" value="true" />
+													<property name="encodeStyle" value="UTF-8" />
+									</bean>
+		
+			<!-- Change the userId and passWord as per configured in the BUFB (essence)system-->
+                  
+									<bean id="userAuth" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+												   <property name="userId" value="CBSCMESSPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_10" />
+									</bean>
+            
+			<!--userAuthOPICS-->
+									<bean id="userAuthOPICS"
+									   class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+										<property name="userId" value="OPICBSPRDSYS01" />
+										<property name="passWord" value="ahQk4QxYzorJ0oqRV9cJ" />
+									</bean>
+	
+            <!-- Party End points beans -->
+									<bean id="userAuthParty" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+													<property name="userId" value="CBSPARTYPRODSYS" />
+													<property name="passWord" value="Bctt@sys_1" />
+									</bean>
+                
+            <!-- Digital Channels End points beans -->
+			
+									<bean id="userAuthDC" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+												   <property name="userId" value="CBSDCPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_2" />
+									</bean>
+                
+            <!-- MPM End points beans -->
+			
+									<bean id="userAuthMPM" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+												   <property name="userId" value="CBSMPMPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_3" />
+									</bean>
+									
+            <!-- MMM End points beans -->
+			
+									<bean id="userAuthMMM" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+												   <property name="userId" value="CBSMMMPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_4" />
+									</bean>
+									
+            <!-- Fircosoft End points beans -->
+			
+									<bean id="userAuthFirco" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+												   <property name="userId" value="CBSFIRCOPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_5" />
+									</bean>
+									<bean id="userAuthFircoOut" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+													<property name="userId" value="CBSFIRCOOUTPRODSYS" />
+													<property name="passWord" value="Bctt@sys_5" />
+									</bean>
+									
+			<!-- ATM End points beans -->
+			
+									<bean id="userAuthATM" class="com.misys.bankfusion.messaging.esb.validation.UserAuthenticator">
+												   <property name="userId" value="CBSATMPRODSYS" />
+												   <property name="passWord" value="Bctt@sys_6" />
+									</bean>
+ 
+			<!-- BFDC PROFILE start -->
+ 
+						<jee:jndi-lookup id="BFDCconnectionFactory" jndi-name="BFDCconnectionFactory">
+                                <jee:environment>
+										java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+										java.naming.provider.url=iiop://10.251.0.2:23004/
+                                </jee:environment>
+						</jee:jndi-lookup>
+						
+						<bean id="BFDCWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+									<property name="configuration">
+										<bean class="org.apache.camel.component.jms.JmsConfiguration">
+											<property name="connectionFactory" ref="BFDCconnectionFactory" />
+											<property name="concurrentConsumers" value="1" />
+											<property name="cacheLevelName" value="CACHE_NONE" />
+											<property name="transacted" value="false" />
+										</bean>
+									</property>
+						</bean>
+
+						
+						<bean id="BFDCWebSphereMQ1" class="org.apache.camel.component.jms.JmsComponent">
+									<property name="configuration">
+										<bean class="org.apache.camel.component.jms.JmsConfiguration">
+											<property name="connectionFactory" ref="BFDCconnectionFactory1" />
+											<property name="concurrentConsumers" value="1" />
+											<property name="transactionManager" ref="transactionManager" />
+											<property name="cacheLevelName" value="CACHE_NONE" />
+											<property name="transacted" value="false" />
+										</bean>
+									</property>
+						</bean>
+						
+						<bean id="exceptionLogger" class="com.misys.fbe.helper.CamelExceptionLogger"></bean>
+
+						
+					<bean id="QM_BFDC_UB_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+								<property name="mfid" value="UB_IND_PaymentPosting_SRV" />
+								<property name="source" value="IBI" />
+					</bean>
+					<bean id="QM_BFDC_UB_SOPROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+								<property name="mfid" value="UB_IND_StandingOrder_SRV" />
+								<property name="source" value="IBI" />
+					</bean>
+					<bean id="Message_Router" class="com.misys.ub.dc.common.MessageRouter">
+					</bean>	
+					<bean id="UB_IND_IssueChequeBook_Profile" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+								<property name="mfid" value="UB_IND_IssueChequeBook_SRV" />
+								<property name="source" value="IBI" />
+					</bean>
+					<bean id="UB_IND_AccountStatement_Profile" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+								<property name="mfid" value="UB_IND_AccStatementHandler_SRV" />
+								<property name="source" value="IBI" />
+					</bean>
+					<bean id="UB_IND_StopCheque_Profile" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+								<property name="mfid" value="UB_IND_StopChequeHandler_SRV" />
+								<property name="source" value="IBI" />
+					</bean>
+					
+					<bean id="FromEssence_To_DC" class="com.misys.ub.dc.common.DCErrorHandler">
+					</bean>
+					
+            <!-- BFDC PROFILE End -->
+			
+					<bean id="XML_MESSAGE_TRANSFORMER" class="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer"/>
+				    <bean id="MF_EXECUTOR" class="com.misys.bankfusion.messaging.esb.utils.MFExecution" />
+					
+            <!-- ATM PROFILE START -->
+                
+                <jee:jndi-lookup id="ATMconnectionFactory" jndi-name="ATMconnectionFactory">
+                               <jee:environment>
+                java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+                java.naming.provider.url=iiop://10.251.0.2:23004/
+                </jee:environment>
+                </jee:jndi-lookup>
+                <bean id="ATMWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+                        <property name="configuration">
+                            <bean class="org.apache.camel.component.jms.JmsConfiguration">
+                                <property name="connectionFactory" ref="ATMconnectionFactory" />
+                                <property name="concurrentConsumers" value="1" />
+                                <property name="cacheLevelName" value="CACHE_NONE" />
+                                <property name="transacted" value="false" />
+                            </bean>
+                        </property>
+                </bean>
+		   <!-- If JTA is Used uncomment the below bean id-->
+		   <!-- <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+				</bean>  -->
+ 
+                <bean id="UB_ATM_CASHTRANSACTION_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_CashTransactionErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>			 
+				<bean id="UB_ATM_FUNDTRANSFER_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_FundTransferErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>			 
+				<bean id="UB_ATM_BILLPAYMENT_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_BillPmtCshChqErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>			 
+				<bean id="UB_ATM_BALANCEENQUIRY_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_BalanceEnquiryErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				<bean id="UB_ATM_MINISTATEMENT_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_MiniStatementErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>			 
+				<bean id="UB_POS_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_POS_PosErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>			 
+				<bean id="UB_ATM_CHEQUEDEPOSIT_ERROR_HANDLER"  class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_ChequeDepositErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				<bean id="UB_ATM_CHEQUEBOOKREQUEST_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_ChqBookRqErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				<bean id="UB_ATM_CHEQUESTATUSENQ_ERROR_HANDLER" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_ChequeStatusEnqErrorHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				<bean id="UB_ATM_CASHTRANSACTION_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_CashTransactionHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				  <bean id="UB_ATM_FUNDTRANSFER_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_FundTransferHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				  <bean id="UB_ATM_BILLPAYMENT_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_BillPmtCshChqHandler_PRC" />
+							   <property name="source" value="ATM" />
+				</bean>
+				  <bean id="UB_ATM_BALANCEENQUIRY_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_BalanceEnquiryHandler_PRC" />
+								<property name="source" value="ATM" />
+				</bean>
+				  <bean id="UB_ATM_CHEQUEDEPOSIT_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_ChequeDepositHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				  <bean id="UB_ATM_CHEQUEBOOKREQUEST_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_ChqBookRqHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				  <bean id="UB_ATM_MINISTATEMENT_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_MiniStatementHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+					<bean id="UB_ATM_CHEQUESTATUSENQ_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_ChequeStatusEnquiryHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				<bean id="UB_POS_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_POS_PosHandler_PRC" />
+                               <property name="source" value="ATM" />
+				</bean>
+				<bean id="UB_ATM_ECHO_RQ_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_ATM_NetworkMessageHandler_PRC" />
+                               <property name="source" value="ATM" />
+                </bean>
+   
+            <!-- ATM PROFILE END -->
+ 
+            <!-- Party PROFILE START -->
+    
+              <bean id="PARTYWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+					<property name="configuration">
+						<bean class="org.apache.camel.component.jms.JmsConfiguration">
+							<property name="connectionFactory" ref="PARTYconnectionFactory" />
+							<property name="concurrentConsumers" value="5" />
+							<property name="transactionManager" ref="transactionManager" />
+							<property name="transacted" value="false" />
+						</bean>
+					</property>
+			  </bean>
+			  <jee:jndi-lookup id="PARTYconnectionFactory" jndi-name="PARTYconnectionFactory">
+                               <jee:environment>
+                               java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+                               java.naming.provider.url=iiop://10.251.0.2:23004/
+                               </jee:environment>
+              </jee:jndi-lookup>
+					<bean id="PARTY_EVENT_OUT_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                                   <property name="mfid" value="UB_PTY_UpdatePartyDetails_SRV" />
+                                   <property name="source" value="PARTY_EVENT_OUT" />
+                    </bean>
+                    <bean id="PARTY_RETRY_EVENT_OUT_PROFILE"
+                               class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_PTY_UpdatePartyDetails_SRV" />
+                               <property name="source" value="PARTY_RETRY_EVENT_OUT" />
+                    </bean>
+      
+           <!-- Party PROFILE END  -->
+ 
+    <!-- CMS PROFILE START -->
+    <!--
+    <bean id="CMSProcess_PROFILE"
+                               class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_CMS_ProcessOnlineCMSRequest_PRC" />
+                               <property name="source" value="CMS" />
+    </bean>
+    -->
+    <!-- CMS PROFILE END -->
+ 
+ 
+    <!-- SWIFT  PROFILE START -->
+   
+				<jee:jndi-lookup id="SWIFTconnectionFactory" jndi-name="SWIFTconnectionFactory">
+					<jee:environment>
+						java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+						java.naming.provider.url=iiop://10.251.0.2:23004/
+					</jee:environment>
+                </jee:jndi-lookup>
+						<bean id="SWIFTWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+                               <property name="configuration">
+                                        <bean class="org.apache.camel.component.jms.JmsConfiguration">
+                                            <property name="connectionFactory" ref="SWIFTconnectionFactory" />
+                                            <property name="concurrentConsumers" value="1" />
+                                            <property name="cacheLevelName" value="CACHE_NONE" />
+                                            <property name="transacted" value="false" />
+                                        </bean>
+                               </property>
+						</bean>
+						<bean id="UBSWIFT_Incoming_103_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										 <property name="mfid" value="UB_SWT_MT103_MessageHandler_SRV" />
+										 <property name="source" value="SWIFT" />
+						</bean>
+						 <bean id="UBSWIFT_Incoming_200_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_SWT_MT200_MessageHandler_SRV" />
+										<property name="source" value="SWIFT" />
+						</bean>
+						 <bean id="UBSWIFT_Incoming_201_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_SWT_MT201_MessageHandler_SRV" />
+										<property name="source" value="SWIFT" />
+						</bean>
+						 <bean id="UBSWIFT_Incoming_202_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_SWT_MT202_MessageHandler_SRV" />
+										<property name="source" value="SWIFT" />
+						</bean>
+						 <bean id="UBSWIFT_Incoming_203_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_SWT_MT203_MessageHandler_SRV" />
+										<property name="source" value="SWIFT" />
+						</bean>
+						 <bean id="UBSWIFT_Incoming_205_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_SWT_MT205_MessageHandler_SRV" />
+										<property name="source" value="SWIFT" />
+						</bean>
+					  
+			<!-- SWIFT  PROFILE END -->
+			
+			<!-- OPICS  PROFILE START -->
+
+			<jee:jndi-lookup id="OPICSconnectionFactory" jndi-name="OPICSconnectionFactory">
+										<jee:environment>
+						java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+						java.naming.provider.url=iiop://10.251.0.2:23004/
+						</jee:environment>
+						</jee:jndi-lookup>
+						<bean id="OPICSWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+										<property name="configuration">
+														<bean class="org.apache.camel.component.jms.JmsConfiguration">
+																		<property name="connectionFactory" ref="OPICSconnectionFactory" />
+																		<property name="concurrentConsumers" value="1" />
+																		<property name="cacheLevelName" value="CACHE_NONE" />
+																		<property name="transacted" value="false" />
+														</bean>
+										</property>
+						</bean>
+		 
+			<bean id="OPX_INCOMING_JMS1_PROFILE"
+										class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_OPX_AmendExchangeRates_PRC" />
+										<property name="source" value="OPICS" />
+			</bean>
+			<bean id="OPX_INCOMING_JMS2_PROFILE"
+										class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_OPX_AmendLimits_PRC" />
+										<property name="source" value="OPICS" />
+			</bean>
+			<bean id="OPX_INCOMING_JMS3_PROFILE"
+										class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_OPX_SettlementEntries_PRC" />
+										<property name="source" value="OPICS" />
+			</bean>
+			<bean id="OPX_INCOMING_JMS4_PROFILE"
+										class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+										<property name="mfid" value="UB_OPX_AccountingIGLEEntries_PRC" />
+										<property name="source" value="OPICS" />
+			</bean>
+		 
+			<!-- OPICS  PROFILE END -->
+
+            <!-- FIRCO Continuity profile START -->
+					<jee:jndi-lookup id="FIRCOTconnectionFactory" jndi-name="FIRCOTconnectionFactory">
+							<jee:environment>
+									java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+									java.naming.provider.url=iiop://10.251.0.2:23004/
+							</jee:environment>
+					</jee:jndi-lookup>              
+					<jee:jndi-lookup id="FIRCOCconnectionFactory" jndi-name="FIRCOCconnectionFactory">
+							<jee:environment>
+									java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+									java.naming.provider.url=iiop://10.251.0.2:23004/
+							</jee:environment>
+							</jee:jndi-lookup>
+					<bean id="FIRCOCWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+							 <property name="configuration">
+									<bean class="org.apache.camel.component.jms.JmsConfiguration">
+											<property name="connectionFactory" ref="FIRCOCconnectionFactory" />
+											<property name="concurrentConsumers" value="1" />
+											<property name="cacheLevelName" value="CACHE_NONE" />
+											<property name="transacted" value="false" />
+									 </bean>
+							 </property>
+					</bean>
+					<bean id="FIRCOTWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+							 <property name="configuration">
+								   <bean class="org.apache.camel.component.jms.JmsConfiguration">
+											<property name="connectionFactory" ref="FIRCOTconnectionFactory" />
+											<property name="concurrentConsumers" value="1" />
+											<property name="cacheLevelName" value="CACHE_NONE" />
+											<property name="transacted" value="false" />
+								   </bean>
+							 </property>
+					</bean>
+		
+					<bean id="continuityResponseFormatter" class="com.misys.wlc.financial.DecisionResponseHandler">
+					</bean>
+					<bean id="continuityAckResponseFormatter" class="com.misys.wlc.financial.SyncResponseHandler">
+					</bean>
+					<bean id="continuityRequestFormatter" class="com.misys.wlc.financial.RequestTransformer">
+					</bean>
+					<bean id="trustOutStopResponseFormatter" class="com.misys.wlc.nonFinancial.NonFinancialDecisionResponseHandler">
+					</bean>
+					<bean id="essenceDelivery" class="com.misys.wlc.financial.EssenceMessagesFilter"/>
+					<bean id="trustAckResponseFormatter" class="com.misys.wlc.nonFinancial.NonFinancialSyncResponseHandler">
+					</bean>
+					<bean id="trustRequestFormatter" class="com.misys.wlc.nonFinancial.NonFinancialRequestTransformer">
+					</bean>
+					<bean id="continuityChannelBAsedAckResponseFormatter" class="com.misys.wlc.financial.ChannelBasedSyncResHandler">
+					</bean>
+					<bean id="kycFinalRespHandler" class="com.misys.fbe.compliance.KYCNonScreenFinalResponseHandler">
+					</bean>
+					<bean id="kycAckRespHandler" class="com.misys.fbe.compliance.KYCNonScreenAckResponseHandler">
+					</bean>
+					<bean id="FIRCO_REQUEST_RESPONSE_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+							<property name="mfid" value="PT_KYC_ComplianceValidationResponse_SRV" />
+							<property name="source" value="FIRCO" />
+					</bean>
+					<bean id="XMLMessageTransformer" class="com.misys.bankfusion.messaging.esb.impl.XMLMessageTransformer"></bean>
+					<bean id="MicroflowExecutor" class="com.misys.bankfusion.messaging.esb.utils.MFExecution"></bean>
+	  
+			<!-- FIRCO Continuity profile END -->
+ 
+            <!-- MPM CT PROFILE START -->
+ 
+                <jee:jndi-lookup id="MPMCconnectionFactory" jndi-name="MPMCconnectionFactory">
+                        <jee:environment>
+							java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+							java.naming.provider.url=iiop://10.251.0.2:23004/
+						</jee:environment>
+                </jee:jndi-lookup>
+                <bean id="MPMWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+                        <property name="configuration">
+                               <bean class="org.apache.camel.component.jms.JmsConfiguration">
+                                     <property name="connectionFactory" ref="MPMCconnectionFactory" />
+                                     <property name="transactionManager" ref="transactionManager" />
+                                     <property name="concurrentConsumers" value="1" />
+                                     <property name="cacheLevelName" value="CACHE_NONE" />
+                                     <property name="transacted" value="false" />
+                               </bean>
+                        </property>
+                </bean>
+                <bean id="INWARD_EVENTS_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="MP_TXN_PaymentsPostingForInwardCreditTransfer_SRV" />
+                               <property name="source" value="MPM" />
+                </bean>
+                <bean id="OUTWARD_EVENTS_PROFILE" class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="MP_TXN_OutwardCrTxnSettleEventHandler_SRV" />
+                               <property name="source" value="MPM" />
+                </bean>
+                <bean id="ctSettlementProcessor" class="com.misys.bankfusion.paymentmessaging.batch.BatchLaunchWrapperForCTSettlements">
+							<constructor-arg name="contextFilePath" value="./META-INF/spring/batch/jobs/creditTransfersSettlementProcessorBatch-context.xml" />
+				</bean>
+            
+                <bean id="transactionManager" class="org.springframework.transaction.jta.WebSphereUowTransactionManager"/>
+			    <bean id="MPM_TRIGGER_EVENT_HANDLER" class="com.misys.bankfusion.paymentmessaging.adapter.mpm5.MPMTriggerEventHandler"/> 
+				
+            <!-- MPM CT PROFILE END -->
+ 
+            <!-- BULK PI PROFILE START -->
+			
+				<bean id="FinancialBatchControl" class="com.misys.bankfusion.postingengine.financialgateway.FinancialGatewayController">
+				</bean>         
+                <bean id="userAuthFinancialGateway"
+                               class="com.misys.bankfusion.postingengine.financialgateway.FinancialGatewayUserAuthenticator">
+                               <property name="userId" value="CBSBPAYMPRODSYS" />
+                               <property name="passWord" value="Bctt@sys_7" />
+                </bean>
+                <bean id="bulkPaymentProcessor"
+                               class="com.misys.bankfusion.paymentmessaging.batch.BatchLauncherWrapper">
+                               <constructor-arg name="jobId" value="bulkPaymentProcessorJob" />
+                               <constructor-arg name="contextFilePath" value="./META-INF/spring/batch/jobs/paymentProcessorBatch-context.xml" />
+                </bean>
+                <bean id="bulkPaymentInitiation"
+                               class="com.misys.bankfusion.paymentmessaging.batch.BatchLauncherWrapper">
+                               <constructor-arg name="jobId" value="bulkPaymentInitiationJob" />
+                               <constructor-arg name="contextFilePath" value="./META-INF/spring/batch/jobs/paymentInitiationBatch-context.xml" />
+                </bean>               
+                <bean id="CTfileStore"  class="org.apache.camel.processor.idempotent.FileIdempotentRepository">
+                                  <property name="fileStore" value="file:///misysshare/MPM_BULK_PAYMENTS/camel/outbox/.filestore.dat" />
+                                  <property name="maxFileStoreSize" value="512000" />
+                                  <property name="cacheSize" value="250" />
+                </bean>
+                <bean id="FinancialBatchConversion"
+                                class="com.misys.bankfusion.postingengine.financialgateway.FinancialGatewayMessageTransformer">
+                </bean>
+                <bean id="AUTO_FINANCIAL_GATEWAY_PROFILE"
+                               class="com.misys.bankfusion.messaging.esb.validation.MicroflowHelper">
+                               <property name="mfid" value="UB_CFN_FinancialBatchGateway_SRV" />
+                               <property name="source" value="FGA" />
+                </bean>
+ 
+                <!-- BULK PI PROFILE END -->
+                        
+                <!-- RPF PROFILE START -->
+ 
+                <!--
+                <jee:jndi-lookup id="RPFconnectionFactory" jndi-name="RPFconnectionFactory">
+                               <jee:environment>
+                java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+                java.naming.provider.url=iiop://10.251.0.2:bootstrap port/
+                </jee:environment>
+                </jee:jndi-lookup>
+                <bean id="RPFWebSphereMQ" class="org.apache.camel.component.jms.JmsComponent">
+                               <property name="configuration">
+                                               <bean class="org.apache.camel.component.jms.JmsConfiguration">
+                                                               <property name="connectionFactory" ref="RPFconnectionFactory" />
+                                                               <property name="concurrentConsumers" value="1" />
+                                                               <property name="cacheLevelName" value="CACHE_NONE" />
+                                                               <property name="transacted" value="false" />
+                                               </bean>
+                               </property>
+                </bean>
+                -->
+                <!-- RPF PROFILE END -->
+ 
+    <!-- END JMS Connection Factory and Profile settings -->
+ 
+    <!-- START File Profiles  -->
+ 
+                <bean id="fileProfiles"
+                               class="com.misys.bankfusion.subsystem.messaging.file.runtime.config.FileProfile">
+                               <property name="fileProfileMap">
+                                               <map>
+                                               </map>
+                               </property>
+                </bean>
+     <!-- END File Profiles  -->
+ 
+                <!-- END TCP Profiles -->
+ 
+                <!-- The below section should be uncommented if TCP or File profiles are being used -->
+ 
+                <bean id="transportProfiles"
+                               class="com.misys.bankfusion.subsystem.messaging.runtime.config.TransportProfile">
+                               <property name="transportProfiles">
+                                               <map>
+                                                               <!-- <entry key="tcp" value-ref="tcpProfiles" />  -->
+                                                               <entry key="file" value-ref="fileProfiles" />
+                                               </map>
+                               </property>
+                </bean>
+ 
+            <!-- MPM DD PROFILE START -->
+                
+                               <bean id="fileStore"  class="org.apache.camel.processor.idempotent.FileIdempotentRepository">
+                                                  <property name="fileStore" value="file:///misysshare/MPM_BULK_PAYMENTS/camel/outbox/.filestore.dat" />
+                                                  <property name="maxFileStoreSize" value="512000" />
+                                                  <property name="cacheSize" value="250" />
+                               </bean>
+                               <bean id="ddBulkPaymentProcessor" class="com.misys.bankfusion.paymentmessaging.batch.dd.processor.BatchLaunchWrapperForDirectDebits">
+                                          <constructor-arg name="contextFilePath" value="./META-INF/spring/batch/jobs/directDebitsPaymentProcessorBatch-context.xml" />
+                               </bean>
+                               <bean id="ddSettlementProcessor" class="com.misys.bankfusion.paymentmessaging.batch.dd.processor.BatchLaunchWrapperForDirectDebits">
+                                         <constructor-arg name="contextFilePath" value="./META-INF/spring/batch/jobs/directDebitsSettlementProcessorBatch-context.xml" />
+                               </bean>
+                               <bean id="pacsMsgConsumer" class="com.misys.bankfusion.paymentmessaging.dd.sync.MessageConsumer">
+                                          <constructor-arg name="userAuthenticator" ref="camelUserAuthenticatorJTA"/>
+                               </bean>
+                               <bean id="camelUserAuthenticator" class="com.misys.bankfusion.paymentmessaging.dd.sync.CamelUserAuthenticator">
+                                          <constructor-arg name="alias" value="payments" />
+                               </bean>
+							   <bean id="explicitCommit" class="com.misys.bankfusion.paymentmessaging.batch.helper.ExplicitCommit">
+								</bean>
+								<bean id="messageRouterBean" class="com.misys.ub.dc.common.MessageRouter">
+								<constructor-arg name="userAuthenticator" ref="camelUserAuthenticatorJTA"/>
+								</bean>
+								<bean id="camelUserAuthenticatorJTA" class="com.misys.bankfusion.paymentmessaging.dd.sync.CamelUserAuthenticatorJTA">
+										<constructor-arg name="alias" value="payments" />
+								</bean>										
+
+								<bean id="messageConsumer" class="com.misys.bankfusion.paymentmessaging.dd.sync.MessageConsumer">
+									<constructor-arg name="userAuthenticator" ref="camelUserAuthenticatorJTA"/>
+								</bean>
+
+								<bean id="consumeCTMsg" class="com.misys.bankfusion.paymentmessaging.dd.sync.CTMessageRouter">
+									<constructor-arg name="userAuthenticator" ref="camelUserAuthenticatorJTA"/>
+								</bean>
+								
+            <!-- MPM DD PROFILE END -->
+</beans>

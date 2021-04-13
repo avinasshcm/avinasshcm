@@ -1,0 +1,7 @@
+UB_STO_PaymentOrdersStatus
+MP_CFG_PaymentsDLQProcessor
+MP_INI_PaymentsDLQProcessCompletionScreen
+MP_CFG_PaymentsDLQProcessor_SCF
+MP_CFG_PaymentsDLQProcessor_PRC
+MP_CFG_PaymentsDLQProcessor_SRV
+MP_INI_PaymentsDLQProcessor

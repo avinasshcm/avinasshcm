@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.3" name="com.misys.fbp.support">
+	<properties>
+		<property name="jboss.api" value="public"/>
+	</properties>
+	<resources>
+		<!-- Please make entries as below for all third party jars with correct versions if any -->
+		<resource-root path="../../../../../../../../../../UniversalBanking/SYMBOLIC/helperjars/commons-net-3.3.jar"/>
+		<resource-root path="../../../../../../../../../../UniversalBanking/SYMBOLIC/helperjars/disruptor-3.2.1.jar"/>
+		<resource-root path="../../../../../../../../../../UniversalBanking/SYMBOLIC/helperjars/flatworm-2.0.1.jar"/>
+		<resource-root path="../../../../../../../../../../UniversalBanking/SYMBOLIC/helperjars/jsch-0.1.53.jar"/>
+		<resource-root path="../../../../../../../../../../UniversalBanking/SYMBOLIC/helperjars/jsoup-1.6.1.jar"/>
+		<resource-root path="../../../../../../../../../../UniversalBanking/SYMBOLIC/helperjars/wstx-asl-3.2.4.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/axis2-mtompolicy-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/dozer-5.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/lucene-core-3.3-SNAPSHOT.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/OpicsPlusWebAPI.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/slf4j-api-1.7.2.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/slf4j-log4j12-1.7.2.jar"/>
+		<resource-root path="../../../../../../../../../../Party/SYMBOLIC/helperjars/xmltooling-1.3.2-1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/DeviceSupportJars/DtgDeviceManager.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/akka-actor_2.11-2.3.9.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/akka-cluster_2.11-2.3.9.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/akka-file-mailbox_2.11-2.3.9.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/akka-mailboxes-common_2.11-2.3.9.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/akka-remote_2.11-2.3.9.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/avalon-framework-4.2.0.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/axiom-compat-1.2.22.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/batik-awt-util-1.8.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/batik-bridge-1.8.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/batik-css-1.8.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/batik-svggen-1.8.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/batik-transcoder-1.8.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/batik-util-1.8.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/CBS_eclipselink.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/commons-beanutils-1.8.3.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/commons-chain-1.2.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/commons-codec-1.3.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/commons-lang3-3.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/config-1.2.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/dozer-5.5.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/flatworm-2.0.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/fop-2.3.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/guava-18.0.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jersey-client-1.19.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jersey-core-1.19.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jersey-multipart-1.19.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jettison-1.3.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jsoup-1.6.1.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jxfsclient3.0.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/jxl.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/protobuf-java-2.5.0.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/scala-library-2.11.5.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/scriptella.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/sdk4j-2.6.0.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/snappy-java-1.1.1.3.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/spring-batch-core-2.2.7.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/spring-batch-infrastructure-2.2.7.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/spring-js-2.3.0.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/spring-retry-1.1.0.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/xml-apis-ext-1.3.04.jar"/>
+		<resource-root path="../../../../../../../../../../CBS/SYMBOLIC/helperjars/xmlgraphics-commons-2.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/JBoss-jars/geronimo-stax-api_1.0_spec-1.0.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/JBoss-jars/wstx-asl-3.2.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/accessors-smart-1.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/acegi-security-1.0.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/annogen-0.1.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/antlr-2.7.6.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/antlr-runtime-3.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/aopalliance.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/asm-1.5.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/asm-attrs-1.5.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/aspectjrt-1.8.9.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/aspectjtools-1.8.9.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/backport-util-concurrent-3.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/BankFusionCASHandlerSupport.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/bayeux-api-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/bcprov-jdk15on-1.61.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/BF1.1_castor-xml-1.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/BF_wsif.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/BF_xmlbeans-2.3.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-core-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-http-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-http-common-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-jms-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-mina2-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-netty-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-osgi-2.3.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-quartz2-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-smpp-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/camel-spring-2.23.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cas-client-core-3.1.8.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/castor-core-1.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/castor-xml-schema-1.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/CB_joda-time-2.1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cglib-2.1.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/classmate-1.1.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-client-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-common-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-oort-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-server-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-websocket-common-client-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-websocket-common-server-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-websocket-javax-client-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/cometd-java-websocket-javax-server-4.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-codec-1.11.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-collections4-4.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-configuration-1.6.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-discovery-0.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-email.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-httpclient-3.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-io-1.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-jxpath-1.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-lang-2.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-logging-1.1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-management.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/commons-pool-1.5.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/connector-1.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/disruptor-3.3.7.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/drools-compiler-5.1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/drools-core-5.1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/drools-ide-common-5.1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/els-4.0.2.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/fb-trace-1.0.0-RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/gnu-crypto-2.0.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/gs-collections-5.1.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/gs-collections-api-5.1.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/gson-1.7.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/guava-17.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/hsqldb-1.8.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/httpasyncclient-4.1.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/httpclient-4.5.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/httpcore-4.4.6.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/httpcore-nio-4.4.6.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jackson-annotations-2.9.6.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jackson-core-2.9.6.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jackson-core-asl-1.9.13.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jackson-databind-2.9.9.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jackson-mapper-asl-1.9.13.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jamon-2.7.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jandex-1.1.0.final.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/javassist-3.22.0-GA.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jaxen-1.1.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jboss-logging-3.1.0.GA.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jbpm-flow-5.1.0.Final.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jbpm-flow-builder-5.1.0.Final.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jettison-1.3.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-client-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-continuation-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-http-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-io-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-server-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-util-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jetty-util-ajax-9.4.14.v20181114.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jradius-core-1.1.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jradius-dictionary-1.1.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jradius-extended-1.1.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jsmpp-2.3.7.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/json-20160810.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/json-smart-2.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/junit-4.9.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/jxl-2.6.10.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/knowledge-api-5.2.0.Final.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/log4j-api-2.10.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/log4j-core-2.10.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/mina-core-2.0.17.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/mvel2-2.1.0.drools2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/netty-3.10.6.Final.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/nimbus-jose-jwt-7.9.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/org.springframework.jdbc-3.0.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/oswego-concurrent-1.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/persiancalendar.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/poi-ooxml-3.17.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/poi-ooxml-schemas-3.17.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/quartz-2.3.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactive-streams-1.0.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-alloc-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-bus-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-core-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-net-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-spring-context-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-spring-core-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-spring-messaging-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/reactor-stream-2.0.6.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/rest-6.0.0-alpha1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/serializer-2.7.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/sigar-1.6.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/sjsxp-1.0.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/slf4j-log4j12-1.7.13.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-aop-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-aspects-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-beans-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-context-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-context-support-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-core-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-data-commons-2.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-data-jpa-2.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-expression-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-hateoas-0.25.0.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-instrument-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-instrument-tomcat-4.2.1.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-jms-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-orm-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-oxm-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-plugin-core-1.2.0.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-plugin-metadata-1.2.0.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-test-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-tx-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-web-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-webmvc-5.1.5.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/spring-webmvc-portlet-4.2.1.RELEASE.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/springfox-core-2.7.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/springfox-schema-2.7.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/springfox-spi-2.7.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/springfox-spring-web-2.7.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/springfox-swagger-common-2.7.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/springfox-swagger2-2.7.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/stax2-api-3.1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/swagger-annotations-1.5.16.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/swagger-core-1.5.16.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/swagger-jaxrs-1.5.16.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/swagger-models-1.5.16.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/tools-1.6.0_11.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/velocity-engine-core-2.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/woden-api-1.0M8.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/xalan-2.7.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/xercesImpl-2.9.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/xpp3_min-1.1.4c.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/xstream-1.4.11.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/Support-jars/Zql.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axiom-api-1.2.19.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axiom-dom-1.2.19.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axiom-impl-1.2.19.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axis2-adb-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axis2-adb-codegen-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axis2-kernel-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axis2-transport-all-1.0.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axis2-transport-http-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/axis2-transport-local-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/BF_jmxremote.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/BF_jmxremote_optional.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/bf_juddi-client-3.0.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/bf_juddi-core-openjpa-3.0.4.FINAL.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/bf_xmlsec-1.4.8.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/commons-fileupload-1.3.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/icu4j-53.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/jmxtools-1.2.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/mex-1.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/neethi-3.0.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/openjpa-3.0.0.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/opensaml-1.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/poi-3.17.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/rampart-core-1.6.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/rampart-policy-1.6.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/rampart-trust-1.6.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/scout-1.2.3.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/serp-1.15.1.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/uddi-ws-3.0.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/wsdl4j-1.6.2.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/wss4j-1.6.4.jar"/>
+		<resource-root path="../../../../../../../../../../BankFusion/SYMBOLIC/BFHelper-Jars/XmlSchema-1.4.3.jar"/>	</resources>
+	<dependencies>
+		<module name="com.misys.fbp.dups"/>
+		<module name="sun.jdk" export="TRUE"/>
+		<module name="javax.activation.api" export="TRUE"/>
+		<module name="javax.api" export="TRUE"/>
+		<module name="javax.servlet.api" export="TRUE"/>
+		<module name="javax.xml.registry.api" export="TRUE"/>
+		<module name="javax.transaction.api" export="TRUE"/>
+		<module name="org.apache.commons.logging" export="TRUE"/>
+		<module name="javax.mail.api" export="TRUE"/>
+		<module name="javax.xml.bind.api" export="TRUE"/>
+		<module name="com.ibm.db2.jdbc" export="TRUE"/>
+		<module name="org.jboss.vfs" export="TRUE"/>
+		<module name="javax.ws.rs.api" export="TRUE"/>
+		<module name="javax.validation.api" export="TRUE"/>
+		<module name="javax.persistence.api" export="TRUE"/>
+		<module name="javax.xml.ws.api" export="TRUE"/>
+		<module name="org.jboss.as.web" export="TRUE"/>
+		<module name="javax.annotation.api" export="TRUE"/>
+		<module name="org.eclipse.jdt.ecj" export="TRUE"/>
+		<module name="javax.jws.api" export="TRUE"/>
+		<module name="com.misys.fbp.mq" export="TRUE"/>
+		<module name="com.misys.fbp.crystal" export="TRUE"/>
+		<module name="org.hibernate" export="TRUE"/>
+		<module name="javax.websocket.api" export="TRUE"/>
+		<module name="org.apache.xerces" export="TRUE"/>
+	</dependencies> 
+</module>
