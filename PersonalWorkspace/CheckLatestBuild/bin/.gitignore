@@ -1,8 +1,0 @@
-/CheckBuild.class
-/CreateSymbolicLinks.class
-/CurrentBuildProvider.class
-/CurrentBuildProviderBeanFactory.class
-/ReadCurrentBuild.class
-/ReadCurrentBuildFromFile.class
-/ReadLatestBuild.class
-/ReadPropertyFile.class
