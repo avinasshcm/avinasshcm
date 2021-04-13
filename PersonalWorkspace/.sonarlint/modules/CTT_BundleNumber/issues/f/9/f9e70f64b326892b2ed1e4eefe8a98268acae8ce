@@ -1,42 +1,0 @@
-
-m
-squid:S106"9Replace this use of System.out or System.err by a logger.(­¡±8­—ĞŠ‘.H“ßRMAJORZ
-CODE_SMELL
-r
-squid:S106;"9Replace this use of System.out or System.err by a logger.(Ğ ‘¾øÿÿÿÿ8Åô¾‹‘.HçàRMAJORZ
-CODE_SMELL
-bsquid:S1481H"(Remove this unused "rcb" local variable.(±ë§ÿÿÿÿÿ8¬’áŠ‘.H”ßRMINORZ
-CODE_SMELL
-qsquid:S1854H"7Remove this useless assignment to local variable "rcb".(±ë§ÿÿÿÿÿ8ÈÑÅ‹‘.HªàRMAJORZ
-CODE_SMELL
-m
-squid:S1063"9Replace this use of System.out or System.err by a logger.(³—á×8Åô¾‹‘.H¢àRMAJORZ
-CODE_SMELL
-m
-squid:S106:"9Replace this use of System.out or System.err by a logger.(Ø„âÕ8‚ğã‹‘.HÙàRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.H·ÛRMINORZ
-CODE_SMELL
-r
-squid:S1068"9Replace this use of System.out or System.err by a logger.(ìÜ­÷ùÿÿÿÿ8Åô¾‹‘.HèàRMAJORZ
-CODE_SMELL
-squid:S00116"XRename this field "UB_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤üñí8ëšıŠ‘.HáßRMINORZ
-CODE_SMELL
-m
-squid:S106<"9Replace this use of System.out or System.err by a logger.(ÁÊÚœ8Åô¾‹‘.HæàRMAJORZ
-CODE_SMELL
-|squid:CallToDeprecatedMethod"6Remove this use of "XmlBeanFactory"; it is deprecated.(‡¥¿8ÍûŞŠ‘.H‹ßRMINORZ
-CODE_SMELL
-l
-squid:S1069"9Replace this use of System.out or System.err by a logger.(¡ÿò@8Åô¾‹‘.H™àRMAJORZ
-CODE_SMELL
-rsquid:S11976"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿ8©¬·Š‘.H¸ÛRMINORZ
-CODE_SMELL
-r
-squid:S106>"9Replace this use of System.out or System.err by a logger.(ß’ú¶úÿÿÿÿ8îÚ½‘.H£âRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineE"<This block of commented-out lines of code should be removed.(Ã²ñó8Åô¾‹‘.H˜àRMAJORZ
-CODE_SMELL
-r
-squid:S106="9Replace this use of System.out or System.err by a logger.(œæ¬¼øÿÿÿÿ8Åô¾‹‘.HàRMAJORZ
-CODE_SMELL

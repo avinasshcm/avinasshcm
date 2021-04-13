@@ -1,30 +1,0 @@
-
-Ysquid:S1148N"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH¬ÔRMINORZVULNERABILITY
-Tsquid:S1148Z"#Use a logger to log this exception.(òçøìH«ÔRMINORZVULNERABILITY
-qsquid:S2259^"EA "NullPointerException" could be thrown; "session" is nullable here.(ËÇÇÓûÿÿÿÿH§ÔRMAJORZBUG
-f
-squid:S106T"9Replace this use of System.out or System.err by a logger.(ß¡ËİH¥ÔRMAJORZ
-CODE_SMELL
-]squid:S00108c")Either remove or fill this block of code.(Ô›¿¾ùÿÿÿÿH©ÔRMAJORZ
-CODE_SMELL
-`squid:S1148t"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Õ¦ÇÙÿ-HÇÔRMINORZVULNERABILITY
-Xsquid:S00108_")Either remove or fill this block of code.(™ğÊ‰HªÔRMAJORZ
-CODE_SMELL
-k
-squid:S106D"9Replace this use of System.out or System.err by a logger.(£æ°€ûÿÿÿÿH¤ÔRMAJORZ
-CODE_SMELL
-—squid:S1488z"bImmediately return this expression instead of assigning it to the temporary variable "parsedDate".(·‘ç³8Ë—ÃÙÿ-H¾ÔRMINORZ
-CODE_SMELL
-À%squid:RedundantThrowsDeclarationCheckx"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(É¶ş8Ë—ÃÙÿ-H¼ÔRMINORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine{"<This block of commented-out lines of code should be removed.(ÙÊ‰èşÿÿÿÿ8Ë—ÃÙÿ-H½ÔRMAJORZ
-CODE_SMELL
-ksquid:S1135M"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8Õ¦ÇÙÿ-HÆÔRINFOZ
-CODE_SMELL
-\squid:S2095j"3Close this "FileInputStream" in a "finally" clause.(Ïú›»H¢ÔRBLOCKERZBUG
-lsquid:S2259V"EA "NullPointerException" could be thrown; "session" is nullable here.(–ªœÁH¦ÔRMAJORZBUG
-psquid:S2259X"DA "NullPointerException" could be thrown; "sender" is nullable here.(´›­¤ÿÿÿÿÿH¨ÔRMAJORZBUG
-€squid:CommentedOutCodeLine2"<This block of commented-out lines of code should be removed.(¶£á¨8‹ÕÙÿ-HÕÔRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineQ"<This block of commented-out lines of code should be removed.(ã¦Ğ¯ÿÿÿÿÿ8‹ÕÙÿ-HÖÔRMAJORZ
-CODE_SMELL

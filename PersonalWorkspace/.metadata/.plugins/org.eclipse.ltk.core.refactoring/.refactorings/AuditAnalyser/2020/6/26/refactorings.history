@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;ReadAudit.java&apos; to &apos;ReadAudit.java&apos;&#x0D;&#x0A;- Original project: &apos;AuditAnalyser&apos;&#x0D;&#x0A;- Destination element: &apos;ReadAudit.java&apos;&#x0D;&#x0A;- Original element: &apos;ReadAudit.java&apos;" description="Copy compilation unit" destination="/src&lt;{ReadAudit.java" element1="/src&lt;{ReadAudit.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1593075378244" units="1" version="1.0"/>
-</session>

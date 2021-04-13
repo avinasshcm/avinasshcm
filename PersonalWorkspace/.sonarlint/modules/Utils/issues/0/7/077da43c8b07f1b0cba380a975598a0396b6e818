@@ -1,19 +1,0 @@
-
-rsquid:S1197"8Move the array designator from the variable to the type.(º ìıÿÿÿÿ8ù—éü¾,HÁÕRMINORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HÂÕRMINORZ
-CODE_SMELL
-$squid:AssignmentInSubExpressionCheck
-".Extract the assignment out of this expression.(ƒ˜¼²ıÿÿÿÿ8ù—éü¾,HÃÕRMAJORZ
-CODE_SMELL
-vsquid:S2583
-"CChange this condition so that it does not always evaluate to "true"(ƒ˜¼²ıÿÿÿÿ8ù—éü¾,HÄÕRMAJORZBUG
-r
-squid:S106"9Replace this use of System.out or System.err by a logger.(…‘ÉÑıÿÿÿÿ8ù—éü¾,HÅÕRMAJORZ
-CODE_SMELL
-m
-squid:S106"9Replace this use of System.out or System.err by a logger.(ñª•ó8ù—éü¾,HÆÕRMAJORZ
-CODE_SMELL
-vsquid:S1854
-"<Remove this useless assignment to local variable "isDefect".(ƒ˜¼²ıÿÿÿÿ8ù—éü¾,HÇÕRMAJORZ
-CODE_SMELL

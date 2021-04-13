@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;SplitUserWiseAudit.java&apos; to &apos;SplitUserWiseAudit.java&apos;&#x0D;&#x0A;- Original project: &apos;ThreadDumpTrim&apos;&#x0D;&#x0A;- Destination element: &apos;SplitUserWiseAudit.java&apos;&#x0D;&#x0A;- Original element: &apos;SplitUserWiseAudit.java&apos;" description="Copy compilation unit" destination="/src&lt;{SplitUserWiseAudit.java" element1="/src&lt;{SplitUserWiseAudit.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1502864431776" units="1" version="1.0"/>
-</session>

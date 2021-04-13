@@ -1,25 +1,0 @@
-
-ysquid:CommentedOutCodeLinej"<This block of commented-out lines of code should be removed.(†€éˆH“ÓRMAJORZ
-CODE_SMELL
-hsquid:S1481<".Remove this unused "hashMapOS" local variable.(¼öúùýÿÿÿÿ8øÅþÇž-H”ÓRMINORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineS"<This block of commented-out lines of code should be removed.(µæëú8øÅþÇž-H•ÓRMAJORZ
-CODE_SMELL
-tsquid:S1075"ARefactor your code to get this URI from a customizable parameter.(òø÷ÑýÿÿÿÿH–ÓRMINORZ
-CODE_SMELL
-osquid:S1068-"5Remove this unused "CELL_REFERENCE_OS" private field.(‡¾åùÿÿÿÿ8øÅþÇž-H—ÓRMAJORZ
-CODE_SMELL
-ssquid:S2147h"ECombine this catch with the one at line 101, which has the same body.(ï­£ÄH˜ÓRMINORZ
-CODE_SMELL
-tsquid:S2147¸"ECombine this catch with the one at line 182, which has the same body.(ï­£ÄH™ÓRMINORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(ÚÆ¦HšÓRMAJORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLineg"<This block of commented-out lines of code should be removed.(†€éˆH›ÓRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineG"<This block of commented-out lines of code should be removed.(Œ‰ãíùÿÿÿÿ8„ƒ¤üÃ,HœÓRMAJORZ
-CODE_SMELL
-wsquid:S1854<"=Remove this useless assignment to local variable "hashMapOS".(¼öúùýÿÿÿÿ8øÅþÇž-HÓRMAJORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLineb"<This block of commented-out lines of code should be removed.(¬–…¶HžÓRMAJORZ
-CODE_SMELL

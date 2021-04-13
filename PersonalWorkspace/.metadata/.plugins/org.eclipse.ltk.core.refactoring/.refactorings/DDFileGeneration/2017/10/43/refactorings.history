@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;DebitTrxTemplate.java&apos; to &apos;EquationTeller/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;DDFileGeneration&apos;&#x0D;&#x0A;- Destination element: &apos;EquationTeller/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;DebitTrxTemplate.java&apos;" description="Copy compilation unit" destination="=EquationTeller/src&lt;" element1="/src&lt;{DebitTrxTemplate.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1508751788794" units="1" version="1.0"/>
-</session>

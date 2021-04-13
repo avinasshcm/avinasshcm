@@ -1,134 +1,0 @@
-
-hsquid:S2093…"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¸åš÷,HÆÇRCRITICALZ
-CODE_SMELL
-asquid:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¸åš÷,HÇÇRMINORZVULNERABILITY
-Qsquid:S21534"Remove the boxing to "Double".(í™ÏÖşÿÿÿÿ8ˆÈÛË-HÈÇRMINORZBUG
-squid:CommentedOutCodeLine´"<This block of commented-out lines of code should be removed.(Å¦‘©8¸¶íÃ©-HÉÇRMAJORZ
-CODE_SMELL
-asquid:S1148¬"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¸åš÷,HÊÇRMINORZVULNERABILITY
-Usquid:S2129k" Remove this "Double" constructor(ıÔç8ˆÈÛË-HËÇRMAJORZ
-CODE_SMELL
-csquid:S1172Ê"-Remove this unused method parameter "LOGGER".(¯ÑÓ†8¸¶íÃ©-HÌÇRMAJORZ
-CODE_SMELL
-†squid:CommentedOutCodeLine“"<This block of commented-out lines of code should be removed.(ô¯ã´ùÿÿÿÿ8¸¶íÃ©-HÍÇRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLine|"<This block of commented-out lines of code should be removed.(¡‚Ô‰8ˆÈÛË-HÎÇRMAJORZ
-CODE_SMELL
-squid:S2293‹"YReplace the type specification in this constructor call with the diamond operator ("<>").(£ãĞê8ˆÈÛË-HÏÇRMINORZ
-CODE_SMELL
-fsquid:S1481;",Remove this unused "numOfCF" local variable.(ë–—şÿÿÿÿ8ˆÈÛË-HĞÇRMINORZ
-CODE_SMELL
-ˆsquid:S00117‰"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïö©¤8¸¶íÃ©-HÑÇRMINORZ
-CODE_SMELL
-\squid:S1481<"'Remove this unused "cf" local variable.(å‰Ë8ˆÈÛË-HÒÇRMINORZ
-CODE_SMELL
-“squid:S2293x"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ì¹ÎÉşÿÿÿÿ8ˆÈÛË-HÓÇRMINORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(½â€Åşÿÿÿÿ8¢œº¡-HÔÇRMAJORZ
-CODE_SMELL
-†squid:CommentedOutCodeLine¶"<This block of commented-out lines of code should be removed.(ÎÇşæüÿÿÿÿ8ˆÈÛË-HÕÇRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLinem"<This block of commented-out lines of code should be removed.(«´®Ëÿÿÿÿÿ8¸åš÷,HÖÇRMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLine«"<This block of commented-out lines of code should be removed.(â†’8¸¶íÃ©-H×ÇRMAJORZ
-CODE_SMELL
-squid:S00117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¾©ıÿÿÿÿ8³î¡Ù,HØÇRMINORZ
-CODE_SMELL
-‰squid:UnusedPrivateMethod²"@Remove this unused private "expandConditionalFormatting" method.(á¼Äïşÿÿÿÿ8ˆÈÛË-HÙÇRMAJORZ
-CODE_SMELL
-‡squid:S00117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åØÉÚ8ˆÈÛË-HÚÇRMINORZ
-CODE_SMELL
-ksquid:S1854<"6Remove this useless assignment to local variable "cf".(å‰Ë8ˆÈÛË-HÛÇRMAJORZ
-CODE_SMELL
-†squid:CommentedOutCodeLineÀ"<This block of commented-out lines of code should be removed.(Ú¤çûÿÿÿÿ8¸¶íÃ©-HÜÇRMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLine§"<This block of commented-out lines of code should be removed.(ßÊÄá8¸¶íÃ©-HİÇRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineV"<This block of commented-out lines of code should be removed.(Ôªğ½8ˆÈÛË-HŞÇRMAJORZ
-CODE_SMELL
-¢squid:S1319u"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(åØÉÚ8ˆÈÛË-HßÇRMINORZ
-CODE_SMELL
-jsquid:S1066Î"/Merge this if statement with the enclosing one.(‹µÈıúÿÿÿÿ8ˆÈÛË-HàÇRMAJORZ
-CODE_SMELL
-Zsquid:S2129Y" Remove this "Double" constructor(€ ˜ñüÿÿÿÿ8ˆÈÛË-HáÇRMAJORZ
-CODE_SMELL
-†squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Àëı›ıÿÿÿÿ8¸¶íÃ©-HâÇRMAJORZ
-CODE_SMELL
-squid:S00117ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( Ü£ûÿÿÿÿ8ğç—ß,HãÇRMINORZ
-CODE_SMELL
-n
-squid:S106õ"9Replace this use of System.out or System.err by a logger.(ÓÚçú8¸åš÷,HäÇRMAJORZ
-CODE_SMELL
-squid:S00117¥"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘‚ üÿÿÿÿ8¸åš÷,HåÇRMINORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineÆ"<This block of commented-out lines of code should be removed.(ß¾†D8¸¶íÃ©-HæÇRMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLineË"<This block of commented-out lines of code should be removed.(ãÚ€ã8¸¶íÃ©-HçÇRMAJORZ
-CODE_SMELL
-‰squid:S21594"VRemove this call to "equals"; comparisons between unrelated types always return false.(í™ÏÖşÿÿÿÿ8—íè«¡-HèÇRMAJORZBUG
-†squid:S001178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•ŞµE8³î¡Ù,HéÇRMINORZ
-CODE_SMELL
-”squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ú¼Ùíıÿÿÿÿ8ˆÈÛË-HêÇRMINORZ
-CODE_SMELL
-asquid:S1148˜"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ˆÈÛË-HëÇRMINORZVULNERABILITY
-€squid:CommentedOutCodeLine`"<This block of commented-out lines of code should be removed.(Ôªğ½8¸åš÷,HìÇRMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLineà"<This block of commented-out lines of code should be removed.(ÀÄ®Œ8¸¶íÃ©-HíÇRMAJORZ
-CODE_SMELL
-_squid:S1905î")Remove this unnecessary cast to "String".(Ãô°8¸åš÷,HîÇRMINORZ
-CODE_SMELL
-“squid:S2293y"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ò‹Ùûÿÿÿÿ8ˆÈÛË-HïÇRMINORZ
-CODE_SMELL
-squid:S00117ä"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¾©ıÿÿÿÿ8¸åš÷,HğÇRMINORZ
-CODE_SMELL
-Œsquid:S001179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì£Üâûÿÿÿÿ8ˆÈÛË-HñÇRMINORZ
-CODE_SMELL
-}squid:UnusedPrivateMethodƒ"4Remove this unused private "updateFYSummery" method.(êÂûÏûÿÿÿÿ8¸åš÷,HòÇRMAJORZ
-CODE_SMELL
-ˆsquid:S00117é"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï‘§8¸åš÷,HóÇRMINORZ
-CODE_SMELL
-usquid:S1854;";Remove this useless assignment to local variable "numOfCF".(ë–—şÿÿÿÿ8ˆÈÛË-HôÇRMAJORZ
-CODE_SMELL
-Lsquid:S2153N"Remove the boxing to "Double".(€È…à8ˆÈÛË-HõÇRMINORZBUG
-ˆsquid:S00117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Âß ê8¸åš÷,HöÇRMINORZ
-CODE_SMELL
-”squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(İæÕæşÿÿÿÿ8ˆÈÛË-H÷ÇRMINORZ
-CODE_SMELL
-†squid:CommentedOutCodeLineº"<This block of commented-out lines of code should be removed.(¯Óåşÿÿÿÿ8¸¶íÃ©-HøÇRMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLineŠ"<This block of commented-out lines of code should be removed.(¶¼º8¸¶íÃ©-HùÇRMAJORZ
-CODE_SMELL
-asquid:S1148‘"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¸åš÷,HúÇRMINORZVULNERABILITY
-osquid:S2864’"4Iterate over the "entrySet" instead of the "keySet".(¾™Ä©ÿÿÿÿÿ8ˆÈÛË-HûÇRMAJORZ
-CODE_SMELL
-squid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(ªÉÇ“8¸¶íÃ©-HüÇRMAJORZ
-CODE_SMELL
-†squid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(èÒĞªûÿÿÿÿ8¸¶íÃ©-HıÇRMAJORZ
-CODE_SMELL
-Qsquid:S2153Y"Remove the boxing to "Double".(€ ˜ñüÿÿÿÿ8ˆÈÛË-HşÇRMINORZBUG
-Usquid:S2129N" Remove this "Double" constructor(€È…à8ˆÈÛË-HÿÇRMAJORZ
-CODE_SMELL
-Lsquid:S2153k"Remove the boxing to "Double".(ıÔç8ˆÈÛË-H€ÈRMINORZBUG
-€squid:CommentedOutCodeLineb"<This block of commented-out lines of code should be removed.(½‘Ö8¢œº¡-HÈRMAJORZ
-CODE_SMELL
-lsquid:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8ˆÈÛË-H‚ÈRINFOZ
-CODE_SMELL
-asquid:S1148ô"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¸åš÷,HƒÈRMINORZVULNERABILITY
-Zsquid:S21294" Remove this "Double" constructor(í™ÏÖşÿÿÿÿ8ˆÈÛË-H„ÈRMAJORZ
-CODE_SMELL
-s
-squid:S106Œ"9Replace this use of System.out or System.err by a logger.(¿¹¡Šùÿÿÿÿ8–¨Ì«¡-H…ÈRMAJORZ
-CODE_SMELL
-n
-squid:S106­"9Replace this use of System.out or System.err by a logger.(ÓÚçú8¸åš÷,H†ÈRMAJORZ
-CODE_SMELL
-squid:S00117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÂûÏûÿÿÿÿ8¸åš÷,H‡ÈRMINORZ
-CODE_SMELL
-squid:CommentedOutCodeLineŞ"<This block of commented-out lines of code should be removed.(ÀÑ“ƒ8¸¶íÃ©-HˆÈRMAJORZ
-CODE_SMELL
-squid:S1192í"ODefine a constant instead of duplicating this literal "HISTORY_COLUMN" 3 times.(ìû…¯şÿÿÿÿ8¸åš÷,H‰ÈRCRITICALZ
-CODE_SMELL
-_squid:S00108g")Either remove or fill this block of code.(”ı¾8¸¶íÃ©-HŠÈRMAJORZ
-CODE_SMELL
-ˆsquid:S00117Ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ÑÓ†8¸¶íÃ©-H‹ÈRMINORZ
-CODE_SMELL

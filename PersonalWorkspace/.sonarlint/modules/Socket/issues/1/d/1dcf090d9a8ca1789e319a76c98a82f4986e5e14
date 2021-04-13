@@ -1,12 +1,0 @@
-
-Gsquid:S1220""Move this file to a named package.HåFRMINORZ
-CODE_SMELL
-Vsquid:S1905")Remove this unnecessary cast to "String".(Óúþ…HæFRMINORZ
-CODE_SMELL
-]squid:S2095"0Close this "ServerSocket" in a "finally" clause.(‚±€©ýÿÿÿÿHâFRBLOCKERZBUG
-e
-squid:S106"9Replace this use of System.out or System.err by a logger.(å¾êÐHãFRMAJORZ
-CODE_SMELL
-j
-squid:S106"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍþÿÿÿÿHäFRMAJORZ
-CODE_SMELL

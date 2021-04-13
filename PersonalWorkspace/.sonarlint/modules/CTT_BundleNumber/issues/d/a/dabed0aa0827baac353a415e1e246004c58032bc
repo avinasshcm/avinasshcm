@@ -1,14 +1,0 @@
-
-Hsquid:S1220""Move this file to a named package.HøâRMINORZ
-CODE_SMELL
-esquid:S1659"+Declare "passwordLabel" on a separate line.(Æ½áøÿÿÿÿ8Ù³“‘.HûâRMINORZ
-CODE_SMELL
-`squid:S1659"&Declare "password" on a separate line.(áŸœ¼şÿÿÿÿ8Ù³“‘.HüâRMINORZ
-CODE_SMELL
-r
-squid:S1062"9Replace this use of System.out or System.err by a logger.(ÄÜùÿÿÿÿ8Ù³“‘.HıâRMAJORZ
-CODE_SMELL
-‡squid:S00116"QRename this field "SUBMIT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§Á×8Ù³“‘.HşâRMINORZ
-CODE_SMELL
-ˆsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(ŞºÍÑøÿÿÿÿ8Ù³“‘.HÿâRMAJORZ
-CODE_SMELL

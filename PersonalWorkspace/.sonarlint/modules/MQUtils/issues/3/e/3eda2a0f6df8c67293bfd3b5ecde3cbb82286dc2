@@ -1,71 +1,0 @@
-
-›"squid:ClassVariableVisibilityCheck"SMake QM_PORT a static final constant or non-public and provide accessors if needed.(•¯Œ¶HÑRMINORZVULNERABILITY
-Œsquid:S3008"^Rename this field "PAYMENTS_QM_CHANNEL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰‚ÀHÒRMINORZ
-CODE_SMELL
-ª"squid:ClassVariableVisibilityCheck"]Make POSPUR_QUEUE_NAME a static final constant or non-public and provide accessors if needed.(Ş›°ûÿÿÿÿHÓRMINORZVULNERABILITY
-squid:S3008"aRename this field "PAYMENTS_QUEUE_MANAGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´ÊŒùHÔRMINORZ
-CODE_SMELL
-psquid:S1444":Make this "public static PAYMENTS_QM_HOSTNAME" field final(óä©ÏúÿÿÿÿHÕRMINORZVULNERABILITY
-£"squid:ClassVariableVisibilityCheck"VMake QM_CHANNEL a static final constant or non-public and provide accessors if needed.(ßµ‰üıÿÿÿÿHÖRMINORZVULNERABILITY
-k
-squid:S106J"9Replace this use of System.out or System.err by a logger.(Ì¡î‡ùÿÿÿÿH×RMAJORZ
-CODE_SMELL
-€squid:S3008"RRename this field "QM_PORT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•¯Œ¶HØRMINORZ
-CODE_SMELL
-ª"squid:ClassVariableVisibilityCheck"bMake PAYMENTS_QUEUE_MANAGER a static final constant or non-public and provide accessors if needed.(´ÊŒùHÙRMINORZVULNERABILITY
-§"squid:ClassVariableVisibilityCheck"_Make PAYMENTS_QM_CHANNEL a static final constant or non-public and provide accessors if needed.(‰‚ÀHÚRMINORZVULNERABILITY
-{squid:S1444'">Make this "public static INWARD_CREDIT_HOST_INPUT" field final(÷¤¼íÿÿÿÿÿ8‚¿¥³Ï,HÛRMINORZVULNERABILITY
-’squid:S3008"_Rename this field "PAYMENTS_QM_HOSTNAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óä©ÏúÿÿÿÿHÜRMINORZ
-CODE_SMELL
-^squid:S1444"-Make this "public static QM_PORT" field final(•¯Œ¶HİRMINORZVULNERABILITY
-‰squid:S3008"VRename this field "QM_PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç¨ŠíúÿÿÿÿHŞRMINORZ
-CODE_SMELL
-‘squid:S3008"^Rename this field "CASHWITH_QUEUE_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûŒ‰ÎúÿÿÿÿHßRMINORZ
-CODE_SMELL
-›"squid:ClassVariableVisibilityCheck"SMake QM_USER a static final constant or non-public and provide accessors if needed.(¡“ğHàRMINORZVULNERABILITY
-squid:S3008"\Rename this field "POSPUR_QUEUE_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş›°ûÿÿÿÿHáRMINORZ
-CODE_SMELL
-gsquid:S1444"6Make this "public static PAYMENTS_QM_PORT" field final(×­…HâRMINORZVULNERABILITY
-gsquid:S1444	"1Make this "public static QM_HOSTNAME" field final( ò‹ªÿÿÿÿÿHãRMINORZVULNERABILITY
-psquid:S1444#":Make this "public static PAYMENTS_QM_PASSWORD" field final(’ù…úÿÿÿÿHäRMINORZVULNERABILITY
-¡"squid:ClassVariableVisibilityCheck"YMake QUEUE_MANAGER a static final constant or non-public and provide accessors if needed.(¬šå±HåRMINORZVULNERABILITY
-nsquid:S1444%"=Make this "public static INWARD_DEBIT_HOST_INPUT" field final(—Û¨ÛHæRMINORZVULNERABILITY
-msquid:S1444"<Make this "public static PAYMENTS_QUEUE_MANAGER" field final(´ÊŒùHçRMINORZVULNERABILITY
-osquid:S1444"9Make this "public static CASHWITH_QUEUE_NAME" field final(ûŒ‰ÎúÿÿÿÿHèRMINORZVULNERABILITY
-²squid:S1186N"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘HéRCRITICALZ
-CODE_SMELL
-gsquid:S1444"1Make this "public static QM_PASSWORD" field final(ç¨ŠíúÿÿÿÿHêRMINORZVULNERABILITY
-dsquid:S1444"3Make this "public static QUEUE_MANAGER" field final(¬šå±HëRMINORZVULNERABILITY
-­"squid:ClassVariableVisibilityCheck"`Make PAYMENTS_QM_HOSTNAME a static final constant or non-public and provide accessors if needed.(óä©ÏúÿÿÿÿHìRMINORZVULNERABILITY
-‰squid:S3008	"VRename this field "QM_HOSTNAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ò‹ªÿÿÿÿÿHíRMINORZ
-CODE_SMELL
-­"squid:ClassVariableVisibilityCheck#"`Make PAYMENTS_QM_PASSWORD a static final constant or non-public and provide accessors if needed.(’ù…úÿÿÿÿHîRMINORZVULNERABILITY
-fsquid:S1444"0Make this "public static QM_CHANNEL" field final(ßµ‰üıÿÿÿÿHïRMINORZVULNERABILITY
-¤"squid:ClassVariableVisibilityCheck"WMake QM_PASSWORD a static final constant or non-public and provide accessors if needed.(ç¨ŠíúÿÿÿÿHğRMINORZVULNERABILITY
-¸"squid:ClassVariableVisibilityCheck'"dMake INWARD_CREDIT_HOST_INPUT a static final constant or non-public and provide accessors if needed.(÷¤¼íÿÿÿÿÿ8‚¿¥³Ï,HñRMINORZVULNERABILITY
-squid:S3008%"bRename this field "INWARD_DEBIT_HOST_INPUT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Û¨ÛHòRMINORZ
-CODE_SMELL
-msquid:S1444"7Make this "public static POSPUR_QUEUE_NAME" field final(Ş›°ûÿÿÿÿHóRMINORZVULNERABILITY
-jsquid:S1444"9Make this "public static PAYMENTS_QM_CHANNEL" field final(‰‚ÀHôRMINORZVULNERABILITY
-gsquid:S1444!"6Make this "public static PAYMENTS_QM_USER" field final(»òŒéHõRMINORZVULNERABILITY
-’squid:S3008#"_Rename this field "PAYMENTS_QM_PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ù…úÿÿÿÿHöRMINORZ
-CODE_SMELL
-¬"squid:ClassVariableVisibilityCheck"_Make CASHWITH_QUEUE_NAME a static final constant or non-public and provide accessors if needed.(ûŒ‰ÎúÿÿÿÿH÷RMINORZVULNERABILITY
-¤"squid:ClassVariableVisibilityCheck!"\Make PAYMENTS_QM_USER a static final constant or non-public and provide accessors if needed.(»òŒéHøRMINORZVULNERABILITY
-squid:S3008'"cRename this field "INWARD_CREDIT_HOST_INPUT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷¤¼íÿÿÿÿÿ8‚¿¥³Ï,HùRMINORZ
-CODE_SMELL
-«"squid:ClassVariableVisibilityCheck%"cMake INWARD_DEBIT_HOST_INPUT a static final constant or non-public and provide accessors if needed.(—Û¨ÛHúRMINORZVULNERABILITY
-†squid:S3008"XRename this field "QUEUE_MANAGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬šå±HûRMINORZ
-CODE_SMELL
-^squid:S1444"-Make this "public static QM_USER" field final(¡“ğHüRMINORZVULNERABILITY
-‰squid:S3008!"[Rename this field "PAYMENTS_QM_USER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»òŒéHıRMINORZ
-CODE_SMELL
-¤"squid:ClassVariableVisibilityCheck"\Make PAYMENTS_QM_PORT a static final constant or non-public and provide accessors if needed.(×­…HşRMINORZVULNERABILITY
-ˆsquid:S3008"URename this field "QM_CHANNEL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßµ‰üıÿÿÿÿHÿRMINORZ
-CODE_SMELL
-€squid:S3008"RRename this field "QM_USER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡“ğH€RMINORZ
-CODE_SMELL
-‰squid:S3008"[Rename this field "PAYMENTS_QM_PORT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×­…HRMINORZ
-CODE_SMELL
-¤"squid:ClassVariableVisibilityCheck	"WMake QM_HOSTNAME a static final constant or non-public and provide accessors if needed.( ò‹ªÿÿÿÿÿH‚RMINORZVULNERABILITY
-Ysquid:S1148I"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHƒRMINORZVULNERABILITY

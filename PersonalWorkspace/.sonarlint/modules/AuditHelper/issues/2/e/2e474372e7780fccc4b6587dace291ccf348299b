@@ -1,43 +1,0 @@
-
-Œsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñıÿÿÿÿ8ÀÒ‰Ö®.H‚éRMINORZ
-CODE_SMELL
-€squid:CommentedOutCodeLine6"<This block of commented-out lines of code should be removed.(Ğ„8§íÖ®.HƒéRMAJORZ
-CODE_SMELL
-\squid:S2095".Close this "FileReader" in a "finally" clause.(İ¯ˆ¾ùÿÿÿÿH„éRBLOCKERZBUG
-‘squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¬éİøûÿÿÿÿH…éRCRITICALZ
-CODE_SMELL
-~squid:CommentedOutCodeLine."<This block of commented-out lines of code should be removed.(œ‡‘ˆùÿÿÿÿH†éRMAJORZ
-CODE_SMELL
-~squid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.(–ô…ÎúÿÿÿÿH‡éRMAJORZ
-CODE_SMELL
-‡squid:S00117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ĞİÁ8Í£­Ö®.HˆéRMINORZ
-CODE_SMELL
-Œsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñıÿÿÿÿH‰éRMINORZ
-CODE_SMELL
-squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ©‹‘8ÀÒ‰Ö®.HŠéRMINORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineD"<This block of commented-out lines of code should be removed.(‹ŸÖÇ8Á–õÖ®.H‹éRMAJORZ
-CODE_SMELL
-r
-squid:S106U"9Replace this use of System.out or System.err by a logger.(òéâŠøÿÿÿÿ8—ÔÏÖ®.HŒéRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HéRMINORZ
-CODE_SMELL
-“squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ş˜ƒÔıÿÿÿÿ8ÀÒ‰Ö®.HéRMINORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine]"<This block of commented-out lines of code should be removed.(Œ îüÿÿÿÿ8¼ÊöÖ®.HéRMAJORZ
-CODE_SMELL
-”squid:S1488j"aImmediately return this expression instead of assigning it to the temporary variable "timestamp".(Şıæ±ıÿÿÿÿHéRMINORZ
-CODE_SMELL
-r
-squid:S106`"9Replace this use of System.out or System.err by a logger.(å¨”úÿÿÿÿ8í×›Ö®.H‘éRMAJORZ
-CODE_SMELL
-‡squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ©‹‘8ÀÒ‰Ö®.H’éRMINORZ
-CODE_SMELL
-Œsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş˜ƒÔıÿÿÿÿ8ÀÒ‰Ö®.H“éRMINORZ
-CODE_SMELL
-Ysquid:S11484"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH”éRMINORZVULNERABILITY
-€squid:CommentedOutCodeLine)"<This block of commented-out lines of code should be removed.(‹ŸÖÇ8à¡Ö®.H•éRMAJORZ
-CODE_SMELL
-¢squid:S1319T"oThe type of the "lineMap" object should be an interface such as "Map" rather than the implementation "HashMap".(æ¤ÜãùÿÿÿÿH–éRMINORZ
-CODE_SMELL

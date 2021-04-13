@@ -1,49 +1,0 @@
-
-Ysquid:S1148L"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÖRMINORZVULNERABILITY
-‡squid:S2293*"YReplace the type specification in this constructor call with the diamond operator ("<>").(ë„’¯HÖRMINORZ
-CODE_SMELL
-k
-squid:S106X"9Replace this use of System.out or System.err by a logger.(ƒçî™üÿÿÿÿH‘ÖRMAJORZ
-CODE_SMELL
-¶%squid:RedundantThrowsDeclarationCheckr"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(û€¡ùÿÿÿÿH’ÖRMINORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLine2"<This block of commented-out lines of code should be removed.(óÁË“H“ÖRMAJORZ
-CODE_SMELL
-k
-squid:S106I"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿH”ÖRMAJORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(»‰ŞâûÿÿÿÿH•ÖRMAJORZ
-CODE_SMELL
-e
-squid:S106K"9Replace this use of System.out or System.err by a logger.(Ê›ÿGH–ÖRMAJORZ
-CODE_SMELL
-squid:S1488b"]Immediately return this expression instead of assigning it to the temporary variable "sheet".(˜ûÚ­ùÿÿÿÿH—ÖRMINORZ
-CODE_SMELL
-f
-squid:S106†"9Replace this use of System.out or System.err by a logger.(óî’cH˜ÖRMAJORZ
-CODE_SMELL
-lsquid:S1197ƒ"8Move the array designator from the variable to the type.(¡şÏÖøÿÿÿÿH™ÖRMINORZ
-CODE_SMELL
-zsquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(‰£à±HšÖRMAJORZ
-CODE_SMELL
-´%squid:RedundantThrowsDeclarationCheckf"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(«Ü£ËH›ÖRMINORZ
-CODE_SMELL
-¹%squid:RedundantThrowsDeclarationCheckr"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(û€¡ùÿÿÿÿHœÖRMINORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(ÕÜƒHÖRMAJORZ
-CODE_SMELL
-tsquid:S1126u"AReplace this if-then-else statement by a single return statement.(¯­÷çÿÿÿÿÿHÖRMINORZ
-CODE_SMELL
-¹%squid:RedundantThrowsDeclarationCheck"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ä­¿›ùÿÿÿÿHŸÖRMINORZ
-CODE_SMELL
-hsquid:S11415"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿH ÖRMAJORZ
-CODE_SMELL
-`squid:S2093."*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿH¡ÖRCRITICALZ
-CODE_SMELL
-asquid:S14811".Remove this unused "totalRows" local variable.(„¥¶şÿÿÿÿH¢ÖRMINORZ
-CODE_SMELL
-csquid:S2209}"5Change this instance-reference to a static reference.(Ÿ™Ï£H£ÖRMAJORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLineY"<This block of commented-out lines of code should be removed.(Ã²ñóH¤ÖRMAJORZ
-CODE_SMELL
-Ysquid:S1148E"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH¥ÖRMINORZVULNERABILITY

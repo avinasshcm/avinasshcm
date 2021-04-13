@@ -1,11 +1,0 @@
-
-hsquid:S1118":Add a private constructor to hide the implicit public one.(—¼öıHÓÜRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HÒÜRMINORZ
-CODE_SMELL
-squid:CallToDeprecatedMethod"6Remove this use of "XmlBeanFactory"; it is deprecated.(ê»­ˆüÿÿÿÿ8àŠğ‹‘.HéàRMINORZ
-CODE_SMELL
-squid:CallToDeprecatedMethod"6Remove this use of "XmlBeanFactory"; it is deprecated.(ê»­ˆüÿÿÿÿ8àŠğ‹‘.HêàRMINORZ
-CODE_SMELL
-squid:CallToDeprecatedMethod"6Remove this use of "XmlBeanFactory"; it is deprecated.(Şí±ñùÿÿÿÿ8àŠğ‹‘.HëàRMINORZ
-CODE_SMELL

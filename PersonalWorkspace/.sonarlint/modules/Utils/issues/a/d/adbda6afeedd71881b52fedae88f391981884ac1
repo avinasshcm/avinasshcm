@@ -1,17 +1,0 @@
-
-dsquid:S1135"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿH™ŒRINFOZ
-CODE_SMELL
-gsquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¦ÌÉÚ,HœŒRCRITICALZ
-CODE_SMELL
-r
-squid:S106""9Replace this use of System.out or System.err by a logger.(¿¹¡Šùÿÿÿÿ8¦ÌÉÚ,H˜ŒRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HŒRMINORZ
-CODE_SMELL
-`squid:S1148("#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¦ÌÉÚ,H—ŒRMINORZVULNERABILITY
-{squid:S1075"ARefactor your code to get this URI from a customizable parameter.(®¼ì¼ûÿÿÿÿ8·Ú’ÉÚ,H›ŒRMINORZ
-CODE_SMELL
-r
-squid:S106&"9Replace this use of System.out or System.err by a logger.(åö¡½úÿÿÿÿ8ßÌÉÚ,H–ŒRMAJORZ
-CODE_SMELL
-`squid:S1148."#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¦ÌÉÚ,HšŒRMINORZVULNERABILITY

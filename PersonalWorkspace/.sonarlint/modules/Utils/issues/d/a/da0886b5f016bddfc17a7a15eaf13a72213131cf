@@ -1,16 +1,0 @@
-
-r
-squid:S106)"9Replace this use of System.out or System.err by a logger.(¶Œåôùÿÿÿÿ8…áç†.HşÕRMAJORZ
-CODE_SMELL
-r
-squid:S106'"9Replace this use of System.out or System.err by a logger.(¸ïãúÿÿÿÿ8…áç†.HüÕRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HåÕRMINORZ
-CODE_SMELL
-Œsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ÊİŞùÿÿÿÿ8ñıä†.HñÕRMINORZ
-CODE_SMELL
-Œsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ”ŠØûÿÿÿÿ8ñıä†.HòÕRMINORZ
-CODE_SMELL
-m
-squid:S106("9Replace this use of System.out or System.err by a logger.(àŠ¢Ê8…áç†.HıÕRMAJORZ
-CODE_SMELL

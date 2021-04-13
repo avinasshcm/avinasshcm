@@ -1,48 +1,0 @@
-
-nsquid:S1854"@Remove this useless assignment to local variable "pmtInfoCount".(°Ø™ïH¤µRMAJORZ
-CODE_SMELL
-k
-squid:S106"9Replace this use of System.out or System.err by a logger.(±œ”ÁÿÿÿÿÿH¥µRMAJORZ
-CODE_SMELL
-ksquid:S1197"8Move the array designator from the variable to the type.(Š ĞÀúÿÿÿÿH¦µRMINORZ
-CODE_SMELL
-f
-squid:S1060"9Replace this use of System.out or System.err by a logger.(×ÅšÃH§µRMAJORZ
-CODE_SMELL
-^squid:S2440#"+Remove this instantiation of "POSPurchase".(¿¶éşÿÿÿÿH¨µRMAJORZ
-CODE_SMELL
-`squid:S2440'"2Remove this instantiation of "InwardDirectDebits".(œäáæH©µRMAJORZ
-CODE_SMELL
-hsquid:S2209 "5Change this instance-reference to a static reference.(ßûî¹şÿÿÿÿHªµRMAJORZ
-CODE_SMELL
-bsquid:S2209$"5Change this instance-reference to a static reference.(ÏØ¥.H«µRMAJORZ
-CODE_SMELL
-f
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÂšH¬µRMAJORZ
-CODE_SMELL
-k
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÄÃùäüÿÿÿÿH­µRMAJORZ
-CODE_SMELL
-csquid:S2209("5Change this instance-reference to a static reference.(¹·‡ÏH®µRMAJORZ
-CODE_SMELL
-k
-squid:S106"9Replace this use of System.out or System.err by a logger.(®¹øÿÿÿÿH¯µRMAJORZ
-CODE_SMELL
-r
-squid:S106<"9Replace this use of System.out or System.err by a logger.(ƒçî™üÿÿÿÿ8Õå ³Ï,H°µRMAJORZ
-CODE_SMELL
-k
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ë¹ğ²ÿÿÿÿÿH±µRMAJORZ
-CODE_SMELL
-k
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÊåËıÿÿÿÿH²µRMAJORZ
-CODE_SMELL
-nsquid:S2440,"4Remove this instantiation of "InwardCreditTransfer".(·Áªôşÿÿÿÿ8Ø¹«³Ï,H³µRMAJORZ
-CODE_SMELL
-_squid:S1481"1Remove this unused "pmtInfoCount" local variable.(°Ø™ïH´µRMINORZ
-CODE_SMELL
-ksquid:S2259"DA "NullPointerException" could be thrown; "option" is nullable here.(“†ºÔHµµRMAJORZBUG
-Ysquid:S2440"+Remove this instantiation of "ATMCashWith".(À’°H¶µRMAJORZ
-CODE_SMELL
-osquid:S2209-"5Change this instance-reference to a static reference.(Ş°²éúÿÿÿÿ8Ø¹«³Ï,H·µRMAJORZ
-CODE_SMELL

@@ -1,40 +1,0 @@
-
-squid:S3776:"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Áƒğ±úÿÿÿÿ8³åèŒ‘.H•âRCRITICALZ
-CODE_SMELL
-…squid:S00117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†€«áøÿÿÿÿHÁÜRMINORZ
-CODE_SMELL
-€squid:S00117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑÖÆöHÀÜRMINORZ
-CODE_SMELL
-Ysquid:S11483"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÉÜRMINORZVULNERABILITY
-Ysquid:S1148X"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÃÜRMINORZVULNERABILITY
-…squid:S00117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢É—£øÿÿÿÿHÂÜRMINORZ
-CODE_SMELL
-†squid:S3008"XRename this field "UB_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùø¨ÏHØÛRMINORZ
-CODE_SMELL
-†squid:S1192J"IDefine a constant instead of duplicating this literal "password" 3 times.(ó•ƒòûÿÿÿÿ8³åèŒ‘.H”âRCRITICALZ
-CODE_SMELL
-gsquid:S1444"6Make this "public static UB_Symbolic_Path" field final(óÛöH†ÜRMINORZVULNERABILITY
-fsquid:S1444 "5Make this "public static UB_Install_Path" field final(‡öå³HÜRMINORZVULNERABILITY
-Wsquid:S2095"-Close this "ResultSet" in a "finally" clause.(®ÀÚ¯H”ÜRBLOCKERZBUG
-²squid:S11867"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘H¾ÜRCRITICALZ
-CODE_SMELL
-]squid:S1444"",Make this "public static schema" field final(ÉâÌ°H“ÜRMINORZVULNERABILITY
-£"squid:ClassVariableVisibilityCheck "[Make UB_Install_Path a static final constant or non-public and provide accessors if needed.(‡öå³H·ÜRMINORZVULNERABILITY
-Ysquid:S1148."#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÅÜRMINORZVULNERABILITY
-ˆsquid:S3008 "ZRename this field "UB_Install_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡öå³HêÛRMINORZ
-CODE_SMELL
-Zsquid:S1148–"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÇÜRMINORZVULNERABILITY
-squid:S1488 "_Immediately return this expression instead of assigning it to the temporary variable "version".(—î¯ŞH•ÜRMINORZ
-CODE_SMELL
-dsquid:S1444"3Make this "public static UB_Full_Build" field final(Ùø¨ÏHıÛRMINORZVULNERABILITY
-‰squid:S3008"[Rename this field "UB_Symbolic_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÛöHáÛRMINORZ
-CODE_SMELL
-š"squid:ClassVariableVisibilityCheck""RMake schema a static final constant or non-public and provide accessors if needed.(ÉâÌ°H»ÜRMINORZVULNERABILITY
-rsquid:S2147Y"DCombine this catch with the one at line 87, which has the same body.(ï­£ÄH¿ÜRMINORZ
-CODE_SMELL
-¡"squid:ClassVariableVisibilityCheck"YMake UB_Full_Build a static final constant or non-public and provide accessors if needed.(Ùø¨ÏH¥ÜRMINORZVULNERABILITY
-Hsquid:S1220""Move this file to a named package.H¼ÜRMINORZ
-CODE_SMELL
-¤"squid:ClassVariableVisibilityCheck"\Make UB_Symbolic_Path a static final constant or non-public and provide accessors if needed.(óÛöH®ÜRMINORZVULNERABILITY
-Ysquid:S1148Z"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÆÜRMINORZVULNERABILITY
-Ysquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÈÜRMINORZVULNERABILITY

@@ -1,26 +1,0 @@
-
-csquid:S2095".Close this "FileReader" in a "finally" clause.(İ¯ˆ¾ùÿÿÿÿ8´ØûÿÈ-HöèRBLOCKERZBUG
-r
-squid:S106$"9Replace this use of System.out or System.err by a logger.(ÅÔ³ùÿÿÿÿ8¶êÄ€É-H÷èRMAJORZ
-CODE_SMELL
-m
-squid:S106C"9Replace this use of System.out or System.err by a logger.(Êô¾Ÿ8„Ğó»ş-HøèRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine2"<This block of commented-out lines of code should be removed.(œ‡‘ˆùÿÿÿÿ8­ü„€É-HùèRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HúèRMINORZ
-CODE_SMELL
-`squid:S11488"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8´ØûÿÈ-HûèRMINORZVULNERABILITY
-©squid:S1319="oThe type of the "lineMap" object should be an interface such as "Map" rather than the implementation "HashMap".(æ¤Üãùÿÿÿÿ8¶êÄ€É-HüèRMINORZ
-CODE_SMELL
-l
-squid:S106!"9Replace this use of System.out or System.err by a logger.(¼÷É78²Òè»ş-HıèRMAJORZ
-CODE_SMELL
-›squid:S1488M"aImmediately return this expression instead of assigning it to the temporary variable "timestamp".(Şıæ±ıÿÿÿÿ8‘ó±€É-HşèRMINORZ
-CODE_SMELL
-“squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ğìÙÜ8´ØûÿÈ-HÿèRCRITICALZ
-CODE_SMELL
-“squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ˆ«Šøÿÿÿÿ8±¦˜€É-H€éRMINORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(–ô…Îúÿÿÿÿ8ğ¼¨€É-HéRMAJORZ
-CODE_SMELL

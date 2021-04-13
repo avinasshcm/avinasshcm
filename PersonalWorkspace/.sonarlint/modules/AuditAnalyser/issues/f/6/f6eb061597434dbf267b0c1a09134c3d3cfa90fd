@@ -1,65 +1,0 @@
-
-§squid:S1319"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ë„»Üÿÿÿÿÿ8»êÎÍá,HŽãRMINORZ
-CODE_SMELL
-jsquid:S2864‚"4Iterate over the "entrySet" instead of the "keySet".(Å‰Ÿœ8öËªÏá,H¥ãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(³î“¿ýÿÿÿÿ8±¾¦Óá,H£ãRMAJORZ
-CODE_SMELL
-r
-squid:S106-"9Replace this use of System.out or System.err by a logger.(º‘Ô‹úÿÿÿÿ8ÈºùÓá,H‘ãRMAJORZ
-CODE_SMELL
-asquid:S1481"'Remove this unused "hm" local variable.(æ½Ðÿûÿÿÿÿ8±¾¦Óá,H˜ãRMINORZ
-CODE_SMELL
-€squid:CommentedOutCodeLinev"<This block of commented-out lines of code should be removed.(ÏËÓž8ñµæÔá,H¢ãRMAJORZ
-CODE_SMELL
-†squid:S00117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”šøt8ûè¤Ôá,HšãRMINORZ
-CODE_SMELL
-™squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ì­ŠÜúÿÿÿÿ8»êÎÍá,H™ãRMAJORZ
-CODE_SMELL
-r
-squid:S106y"9Replace this use of System.out or System.err by a logger.(º¡âÖûÿÿÿÿ8öËªÏá,H¦ãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine;"<This block of commented-out lines of code should be removed.(Ï“¿šøÿÿÿÿ8Ù·ÐÎá,H¨ãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine^"<This block of commented-out lines of code should be removed.(Áˆ¶ôüÿÿÿÿ8ûè¤Ôá,HŸãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLiner"<This block of commented-out lines of code should be removed.(Áˆ¶ôüÿÿÿÿ8ñµæÔá,H›ãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineN"<This block of commented-out lines of code should be removed.(ú¥•Ðýÿÿÿÿ8†õÄÓá,HžãRMAJORZ
-CODE_SMELL
-squid:S37767"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ìŒªÑùÿÿÿÿ8ûè¤Ôá,HãRCRITICALZ
-CODE_SMELL
-^squid:S2095".Close this "FileReader" in a "finally" clause.(ý¸’Ž8»êÎÍá,H–ãRBLOCKERZBUG
-…squid:CommentedOutCodeLineT"<This block of commented-out lines of code should be removed.(Áˆ¶ôüÿÿÿÿ8†õÄÓá,H¤ãRMAJORZ
-CODE_SMELL
-psquid:S1854"6Remove this useless assignment to local variable "hm".(æ½Ðÿûÿÿÿÿ8±¾¦Óá,H•ãRMAJORZ
-CODE_SMELL
-Ÿsquid:S1319"jThe type of the "hm" object should be an interface such as "Map" rather than the implementation "HashMap".(¡òµ³8öËªÏá,H“ãRMINORZ
-CODE_SMELL
-“squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(„‘¶Øúÿÿÿÿ8»êÎÍá,H ãRMINORZ
-CODE_SMELL
-dsquid:S1135"2Complete the task associated to this TODO comment.(» æžÿÿÿÿÿH©ãRINFOZ
-CODE_SMELL
-€squid:CommentedOutCodeLineb"<This block of commented-out lines of code should be removed.(ÏËÓž8ûè¤Ôá,H—ãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineh"<This block of commented-out lines of code should be removed.(Áˆ¶ôüÿÿÿÿ8ûè¤Ôá,H¬ãRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLinel"<This block of commented-out lines of code should be removed.(ÏËÓž8ûè¤Ôá,HãRMAJORZ
-CODE_SMELL
-n
-squid:S106€"9Replace this use of System.out or System.err by a logger.(ù€•8ÌÔá,HãRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineX"<This block of commented-out lines of code should be removed.(ÏËÓž8ûè¤Ôá,H¡ãRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.H’ãRMINORZ
-CODE_SMELL
-n
-squid:S106„"9Replace this use of System.out or System.err by a logger.(¨•Ã²8€ä†Ôá,H«ãRMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineF"<This block of commented-out lines of code should be removed.(ñ°¨øÿÿÿÿ8øÍ¨Óá,H”ãRMAJORZ
-CODE_SMELL
-s
-squid:S106"9Replace this use of System.out or System.err by a logger.(ŽÉ÷Æøÿÿÿÿ8œ¢©Ôá,H§ãRMAJORZ
-CODE_SMELL
-`squid:S11480"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8»êÎÍá,HªãRMINORZVULNERABILITY
-isquid:S1313",Make this IP "5.3.1.1" address configurable.(æ½Ðÿûÿÿÿÿ8êÌÕ®.HææRMINORZVULNERABILITY

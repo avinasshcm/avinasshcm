@@ -1,226 +1,0 @@
-
-e
-squid:S106È"9Replace this use of System.out or System.err by a logger.(¡ÿò@H+RMAJORZ
-CODE_SMELL
-e
-squid:S106"9Replace this use of System.out or System.err by a logger.(¼¢ÎæH‘+RMAJORZ
-CODE_SMELL
-_squid:S1135ç"2Complete the task associated to this TODO comment.(…ïœ†H +RINFOZ
-CODE_SMELL
-†squid:S2293w"YReplace the type specification in this constructor call with the diamond operator ("<>").(…´¼ Hã*RMINORZ
-CODE_SMELL
-k
-squid:S106Î"9Replace this use of System.out or System.err by a logger.(Ã¾ŸïşÿÿÿÿHƒ+RMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine–"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8İå™™ì+HÑ/RMAJORZ
-CODE_SMELL
-„squid:S3776‚"SRefactor this method to reduce its Cognitive Complexity from 139 to the 15 allowed.(ú½‰H¦+RCRITICALZ
-CODE_SMELL
-fsquid:S1135å"2Complete the task associated to this TODO comment.(¢ßÍ’8Â«É˜ì+H‰-RINFOZ
-CODE_SMELL
-†squid:S2293x"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÎÇüáHâ*RMINORZ
-CODE_SMELL
-dsquid:S1444@"4Make this "public static AM_PM_Required" field final(ñË†ÇHì*RMINORZVULNERABILITY
-¡"squid:ClassVariableVisibilityCheck0"[Make Good_Build_File a static final constant or non-public and provide accessors if needed.(¼á¿GH”+RMINORZVULNERABILITY
-_squid:S1135®"2Complete the task associated to this TODO comment.(…ïœ†HŸ+RINFOZ
-CODE_SMELL
-ysquid:CommentedOutCodeLine‰"<This block of commented-out lines of code should be removed.(Ô©âHø*RMAJORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLineµ"<This block of commented-out lines of code should be removed.(·¦Å½Hô*RMAJORZ
-CODE_SMELL
-ysquid:CommentedOutCodeLineÚ"<This block of commented-out lines of code should be removed.(Ã²ñóHö*RMAJORZ
-CODE_SMELL
- "squid:ClassVariableVisibilityCheck2"TMake BFP_Path a static final constant or non-public and provide accessors if needed.(ƒÑæ–úÿÿÿÿH•+RMINORZVULNERABILITY
-¥"squid:ClassVariableVisibilityCheckB"YMake UBOF_Required a static final constant or non-public and provide accessors if needed.(çı‰ıÿÿÿÿH+RMINORZVULNERABILITY
-‰squid:S00116R"VRename this field "CBS_Current" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ‘¼±øÿÿÿÿH³+RMINORZ
-CODE_SMELL
-k
-squid:S106Ë"9Replace this use of System.out or System.err by a logger.(ğÃ¦ÿıÿÿÿÿHŒ+RMAJORZ
-CODE_SMELL
-ƒsquid:S3008>"VRename this field "BT_Specific" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÖ„HÙ*RMINORZ
-CODE_SMELL
-ksquid:S2259Ü"DA "NullPointerException" could be thrown; "option" is nullable here.(É€û°H©+RMAJORZBUG
-csquid:S14448".Make this "public static PTY_Path" field final(ñáôƒùÿÿÿÿHè*RMINORZVULNERABILITY
-_squid:S1135Ğ"2Complete the task associated to this TODO comment.(…ïœ†H¢+RINFOZ
-CODE_SMELL
-€
-squid:S128§"LEnd this switch case with an unconditional break, return or throw statement.(£Ş¾ËşÿÿÿÿHï*RBLOCKERZ
-CODE_SMELL
-…squid:CommentedOutCodeLine’"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8İå™™ì+HÎ/RMAJORZ
-CODE_SMELL
-tsquid:CallToDeprecatedMethodZ"6Remove this use of "XmlBeanFactory"; it is deprecated.(‡¥¿H§+RMINORZ
-CODE_SMELL
-jsquid:S1444D":Make this "public static BT_Specific_Required" field final(¦òç¢Hî*RMINORZVULNERABILITY
-ˆsquid:S00116N"URename this field "BFT_Latest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´™ˆÜüÿÿÿÿH±+RMINORZ
-CODE_SMELL
-…squid:S30088"SRename this field "PTY_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñáôƒùÿÿÿÿHÖ*RMINORZ
-CODE_SMELL
-squid:S30084"SRename this field "CBS_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ÉçXHÔ*RMINORZ
-CODE_SMELL
-‹squid:S2293v"YReplace the type specification in this constructor call with the diamond operator ("<>").(ª½üéıÿÿÿÿHŞ*RMINORZ
-CODE_SMELL
-š"squid:ClassVariableVisibilityCheck4"TMake CBS_Path a static final constant or non-public and provide accessors if needed.(¬ÉçXH–+RMINORZVULNERABILITY
-]squid:S14446"-Make this "public static UB_Path" field final(×µù½Hç*RMINORZVULNERABILITY
-Šsquid:S3008<"]Rename this field "Destination_Folder" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â±™¨HØ*RMINORZ
-CODE_SMELL
-Gsquid:S1220""Move this file to a named package.H¤+RMINORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(©³ğ¼ÿÿÿÿÿHó*RMAJORZ
-CODE_SMELL
-f
-squid:S106Ì"9Replace this use of System.out or System.err by a logger.(Ø„âÕHˆ+RMAJORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine¥"<This block of commented-out lines of code should be removed.(éØ»ÚûÿÿÿÿHü*RMAJORZ
-CODE_SMELL
-Ysquid:S2629Ã"$Invoke method(s) only conditionally.(³Äê˜8âøœ™ì+HÙ/RMAJORZ
-CODE_SMELL
-xsquid:S1192Ô"GDefine a constant instead of duplicating this literal "Teller" 5 times.(ì€¦ÁHÑ*RCRITICALZ
-CODE_SMELL
-Ysquid:S1148ò"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿH¸+RMINORZVULNERABILITY
-csquid:S1444:".Make this "public static BFT_Path" field final(ßíó€ûÿÿÿÿHé*RMINORZVULNERABILITY
-k
-squid:S106¿"9Replace this use of System.out or System.err by a logger.(‹Îó±úÿÿÿÿH+RMAJORZ
-CODE_SMELL
-squid:S30086"RRename this field "UB_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×µù½HÕ*RMINORZ
-CODE_SMELL
-„squid:S00116P"VRename this field "BFP_Current" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·½ĞõH²+RMINORZ
-CODE_SMELL
-Šsquid:S3008B"XRename this field "UBOF_Required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çı‰ıÿÿÿÿHÛ*RMINORZ
-CODE_SMELL
-asquid:S1444>"1Make this "public static BT_Specific" field final(ÛÖ„Hë*RMINORZVULNERABILITY
-…squid:CommentedOutCodeLineÎ"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8ùÅ–™ì+H¹/RMAJORZ
-CODE_SMELL
-k
-squid:S106Ê"9Replace this use of System.out or System.err by a logger.(½èãäÿÿÿÿÿH+RMAJORZ
-CODE_SMELL
-r
-squid:S106Ù"9Replace this use of System.out or System.err by a logger.(ƒçî™üÿÿÿÿ8Š¾Ú˜ì+Hº-RMAJORZ
-CODE_SMELL
-‰squid:S00116V"VRename this field "PTY_Current" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ïºï©ûÿÿÿÿHµ+RMINORZ
-CODE_SMELL
-‡squid:S00116J"TRename this field "UB_Latest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©İ–ıÿÿÿÿH¯+RMINORZ
-CODE_SMELL
-f
-squid:S106ª"9Replace this use of System.out or System.err by a logger.(ç®ÁæH“+RMAJORZ
-CODE_SMELL
-f
-squid:S106Ñ"9Replace this use of System.out or System.err by a logger.(‡²£ÓH‚+RMAJORZ
-CODE_SMELL
-ysquid:S2259¬"KA "NullPointerException" could be thrown; "sourceKeyFile" is nullable here.( µü8êÅŠ™ì+H†/RMAJORZBUG
-k
-squid:S106‘"9Replace this use of System.out or System.err by a logger.(¥ò§¼ıÿÿÿÿH†+RMAJORZ
-CODE_SMELL
-‡squid:S3923ú"[Remove this conditional structure or edit its code blocks so that they're not all the same.(ã£±·úÿÿÿÿHİ*RMAJORZBUG
-`squid:S2093ä"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿHğ*RCRITICALZ
-CODE_SMELL
- "squid:ClassVariableVisibilityCheck8"TMake PTY_Path a static final constant or non-public and provide accessors if needed.(ñáôƒùÿÿÿÿH˜+RMINORZVULNERABILITY
-‚squid:S00116L"URename this field "PTY_Latest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖçŸ+H°+RMINORZ
-CODE_SMELL
-{squid:S1192e"FDefine a constant instead of duplicating this literal "Party" 4 times.(‹ØËüÿÿÿÿHĞ*RCRITICALZ
-CODE_SMELL
-…squid:CommentedOutCodeLineş"<This block of commented-out lines of code should be removed.(„óÉõüÿÿÿÿ8ùÅ–™ì+H¶/RMAJORZ
-CODE_SMELL
-‹squid:S2293y"YReplace the type specification in this constructor call with the diamond operator ("<>").(›ì¤‘ÿÿÿÿÿHß*RMINORZ
-CODE_SMELL
-„squid:S00116X"VRename this field "BFT_Current" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä¬¬ÕH¶+RMINORZ
-CODE_SMELL
-k
-squid:S106Ğ"9Replace this use of System.out or System.err by a logger.(†ÈÊ‡şÿÿÿÿHş*RMAJORZ
-CODE_SMELL
-"squid:ClassVariableVisibilityCheck>"WMake BT_Specific a static final constant or non-public and provide accessors if needed.(ÛÖ„H›+RMINORZVULNERABILITY
-o
-squid:S899`";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿH¹+RMINORZVULNERABILITY
-ƒsquid:S00116H"URename this field "CBS_Latest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€ãÍÖH®+RMINORZ
-CODE_SMELL
-ƒsquid:S00116F"URename this field "BFP_Latest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÂËìH­+RMINORZ
-CODE_SMELL
-r
-squid:S106Ò"9Replace this use of System.out or System.err by a logger.(œæ¬¼øÿÿÿÿ8Š¾Ú˜ì+H¹-RMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineü"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8Â¤—™ì+HÆ/RMAJORZ
-CODE_SMELL
-Wsquid:S2095í".Close this "FileWriter" in a "finally" clause.(Ó€Ö‹Hñ*RBLOCKERZBUG
- "squid:ClassVariableVisibilityCheck:"TMake BFT_Path a static final constant or non-public and provide accessors if needed.(ßíó€ûÿÿÿÿH™+RMINORZVULNERABILITY
-p
-squid:S899¸";Do something with the "boolean" value returned by "delete".(Î¡ñûşÿÿÿÿHº+RMINORZVULNERABILITY
-Œsquid:S3008D"_Rename this field "BT_Specific_Required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦òç¢HÜ*RMINORZ
-CODE_SMELL
-Tsquid:S1148ø"#Use a logger to log this exception.(Ç’ÇêH·+RMINORZVULNERABILITY
-š"squid:ClassVariableVisibilityCheck6"SMake UB_Path a static final constant or non-public and provide accessors if needed.(×µù½H—+RMINORZVULNERABILITY
-l
-squid:S106Í"9Replace this use of System.out or System.err by a logger.(Èº›<8Š¾Ú˜ì+H¶-RMAJORZ
-CODE_SMELL
-†squid:S30080"ZRename this field "Good_Build_File" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼á¿GHÒ*RMINORZ
-CODE_SMELL
-f
-squid:S106Ÿ"9Replace this use of System.out or System.err by a logger.(ÃÈ‡äH‰+RMAJORZ
-CODE_SMELL
-k
-squid:S106Ó"9Replace this use of System.out or System.err by a logger.(ß’ú¶úÿÿÿÿH„+RMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineÁ"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8İå™™ì+HĞ/RMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLine¨"<This block of commented-out lines of code should be removed.(…à½¸8Â«É˜ì+Hˆ-RMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine·"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8ùÅ–™ì+H¸/RMAJORZ
-CODE_SMELL
-esquid:S2629…"7Use the built-in formatting to construct this argument.(¤ ĞïH»*RMAJORZ
-CODE_SMELL
-csquid:S14442".Make this "public static BFP_Path" field final(ƒÑæ–úÿÿÿÿHå*RMINORZVULNERABILITY
-†squid:S2293u"YReplace the type specification in this constructor call with the diamond operator ("<>").(éÏçøHá*RMINORZ
-CODE_SMELL
-\squid:S2095æ".Close this "FileReader" in a "finally" clause.(Š•´ÃıÿÿÿÿHò*RBLOCKERZBUG
-hsquid:S1444B"3Make this "public static UBOF_Required" field final(çı‰ıÿÿÿÿHí*RMINORZVULNERABILITY
-dsquid:S14440"5Make this "public static Good_Build_File" field final(¼á¿GHä*RMINORZVULNERABILITY
-¥"squid:ClassVariableVisibilityCheck<"^Make Destination_Folder a static final constant or non-public and provide accessors if needed.(â±™¨Hš+RMINORZVULNERABILITY
-…squid:S3008:"SRename this field "BFT_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßíó€ûÿÿÿÿH×*RMINORZ
-CODE_SMELL
-~squid:CommentedOutCodeLineº"<This block of commented-out lines of code should be removed.(¹˜ô­úÿÿÿÿHõ*RMAJORZ
-CODE_SMELL
-§"squid:ClassVariableVisibilityCheckD"`Make BT_Specific_Required a static final constant or non-public and provide accessors if needed.(¦òç¢H+RMINORZVULNERABILITY
-~squid:CommentedOutCodeLineü"<This block of commented-out lines of code should be removed.(µø²şÿÿÿÿHú*RMAJORZ
-CODE_SMELL
-…squid:S30082"SRename this field "BFP_Path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÑæ–úÿÿÿÿHÓ*RMINORZ
-CODE_SMELL
-ƒsquid:S00116T"URename this field "UB_Current" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ÆùÛH´+RMINORZ
-CODE_SMELL
-^squid:S1135s"2Complete the task associated to this TODO comment.(…ïœ†H£+RINFOZ
-CODE_SMELL
-hsquid:S1444<"8Make this "public static Destination_Folder" field final(â±™¨Hê*RMINORZVULNERABILITY
-~squid:CommentedOutCodeLineÖ"<This block of commented-out lines of code should be removed.(µø²şÿÿÿÿHû*RMAJORZ
-CODE_SMELL
-r
-squid:S106…"9Replace this use of System.out or System.err by a logger.(åÑÁóûÿÿÿÿ8Š¾Ú˜ì+H»-RMAJORZ
-CODE_SMELL
-k
-squid:S106Ç"9Replace this use of System.out or System.err by a logger.(™ŸŠÙÿÿÿÿÿH+RMAJORZ
-CODE_SMELL
-k
-squid:S106É"9Replace this use of System.out or System.err by a logger.(ï¤ÑàıÿÿÿÿH€+RMAJORZ
-CODE_SMELL
-…squid:CommentedOutCodeLine©"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8İå™™ì+HÏ/RMAJORZ
-CODE_SMELL
-†squid:S2293z"YReplace the type specification in this constructor call with the diamond operator ("<>").(‡­¤çHà*RMINORZ
-CODE_SMELL
-]squid:S14444".Make this "public static CBS_Path" field final(¬ÉçXHæ*RMINORZVULNERABILITY
-†squid:S3008@"YRename this field "AM_PM_Required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñË†ÇHÚ*RMINORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineå"<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8ùÅ–™ì+Hº/RMAJORZ
-CODE_SMELL
-¡"squid:ClassVariableVisibilityCheck@"ZMake AM_PM_Required a static final constant or non-public and provide accessors if needed.(ñË†ÇHœ+RMINORZVULNERABILITY
-…squid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(¶¢ÿÄúÿÿÿÿ8ùÅ–™ì+H·/RMAJORZ
-CODE_SMELL
-‚squid:S3776^"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(¢ÕÜêH¥+RCRITICALZ
-CODE_SMELL
-r
-squid:S106Ï"9Replace this use of System.out or System.err by a logger.(çš±»úÿÿÿÿ8Š¾Ú˜ì+H¸-RMAJORZ
-CODE_SMELL
-k
-squid:S106—"9Replace this use of System.out or System.err by a logger.(ÿÓìÛúÿÿÿÿHŠ+RMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineê"<This block of commented-out lines of code should be removed.(ÿÒæé8‰…©™ì+H4RMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLineí"<This block of commented-out lines of code should be removed.(‹’©´8‰…©™ì+H‘4RMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(…¤ü8‰…©™ì+H’4RMAJORZ
-CODE_SMELL

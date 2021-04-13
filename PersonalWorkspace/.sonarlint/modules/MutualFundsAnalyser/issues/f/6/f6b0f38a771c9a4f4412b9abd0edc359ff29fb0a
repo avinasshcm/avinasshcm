@@ -1,30 +1,0 @@
-
-rsquid:S2184"FCast one of the operands of this multiplication operation to a "long".(§™ØıÿÿÿÿH‚»RMINORZBUG
-isquid:S18545"6Remove this useless assignment to local variable "x1".(™ó…øÿÿÿÿH»RMAJORZ
-CODE_SMELL
-‚squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ“ÜÍşÿÿÿÿHŒ»RMINORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(÷‰œüÿÿÿÿH‡»RMAJORZ
-CODE_SMELL
-‚squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ôŒÔúÿÿÿÿH‹»RMINORZ
-CODE_SMELL
-}squid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ•¹¿HŠ»RMINORZ
-CODE_SMELL
-nsquid:S2184"BCast one of the operands of this division operation to a "double".(ÁÏ ØøÿÿÿÿH»RMINORZBUG
-rsquid:S35189"CMake sure this expression can't be zero before doing this division.(‘ãÚÙÿÿÿÿÿHƒ»RCRITICALZBUG
-‚squid:S00100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡‰ÏûÿÿÿÿH»RMINORZ
-CODE_SMELL
-Fsquid:S2885C" Make "sdf" an instance variable.(´«ıuH„»RMAJORZBUG
-ysquid:CommentedOutCodeLine%"<This block of commented-out lines of code should be removed.(¨ú¥³H†»RMAJORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine>"<This block of commented-out lines of code should be removed.(—ğËìşÿÿÿÿHˆ»RMAJORZ
-CODE_SMELL
-f
-squid:S106Q"9Replace this use of System.out or System.err by a logger.(¨¶‚ËH‰»RMAJORZ
-CODE_SMELL
-‘squid:S00115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(’…ÿåøÿÿÿÿH»RCRITICALZ
-CODE_SMELL
-~squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‰™¯ğøÿÿÿÿH…»RMAJORZ
-CODE_SMELL
-‚squid:S001003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©åÆİøÿÿÿÿH»RMINORZ
-CODE_SMELL

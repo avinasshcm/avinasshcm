@@ -1,18 +1,0 @@
-
-csquid:S2095a"3Close this "FileInputStream" in a "finally" clause.(Ïú›»8„‚ÓÚÏ,H†ÔRBLOCKERZBUG
-m
-squid:S106K"9Replace this use of System.out or System.err by a logger.(ß¡Ëİ8„‚ÓÚÏ,H‡ÔRMAJORZ
-CODE_SMELL
-[squid:S1148Q"#Use a logger to log this exception.(òçøì8„‚ÓÚÏ,HˆÔRMINORZVULNERABILITY
-ssquid:S2259M"EA "NullPointerException" could be thrown; "session" is nullable here.(–ªœÁ8„‚ÓÚÏ,H‰ÔRMAJORZBUG
-_squid:S00108V")Either remove or fill this block of code.(™ğÊ‰8„‚ÓÚÏ,HŠÔRMAJORZ
-CODE_SMELL
-xsquid:S2259U"EA "NullPointerException" could be thrown; "session" is nullable here.(ËÇÇÓûÿÿÿÿ8„‚ÓÚÏ,H‹ÔRMAJORZBUG
-msquid:S13130"0Make this IP "10.251.5.18" address configurable.( Ôáûÿÿÿÿ8„‚ÓÚÏ,HŒÔRMINORZVULNERABILITY
-dsquid:S00108Z")Either remove or fill this block of code.(Ô›¿¾ùÿÿÿÿ8„‚ÓÚÏ,HÔRMAJORZ
-CODE_SMELL
-`squid:S1148k"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8„‚ÓÚÏ,HÔRMINORZVULNERABILITY
-wsquid:S2259O"DA "NullPointerException" could be thrown; "sender" is nullable here.(´›­¤ÿÿÿÿÿ8„‚ÓÚÏ,HÔRMAJORZBUG
-r
-squid:S106@"9Replace this use of System.out or System.err by a logger.(£æ°€ûÿÿÿÿ8„‚ÓÚÏ,HÔRMAJORZ
-CODE_SMELL

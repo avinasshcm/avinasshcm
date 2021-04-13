@@ -1,12 +1,0 @@
-
-squid:S3008"XRename this field "UB_Full_Build" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùø¨Ï8Š†Œ‘.HßáRMINORZ
-CODE_SMELL
-¨"squid:ClassVariableVisibilityCheck"YMake UB_Full_Build a static final constant or non-public and provide accessors if needed.(Ùø¨Ï8Š†Œ‘.HááRMINORZVULNERABILITY
-Ysquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHÒáRMINORZVULNERABILITY
-ksquid:S1444"3Make this "public static UB_Full_Build" field final(Ùø¨Ï8Š†Œ‘.HàáRMINORZVULNERABILITY
-²squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘HÑáRCRITICALZ
-CODE_SMELL
-ksquid:S1135 "2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ8Š†Œ‘.HâáRINFOZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HĞáRMINORZ
-CODE_SMELL

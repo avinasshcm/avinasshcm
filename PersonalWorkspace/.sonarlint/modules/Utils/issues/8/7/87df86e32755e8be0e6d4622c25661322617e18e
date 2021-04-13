@@ -1,52 +1,0 @@
-
-”squid:S1488a"aImmediately return this expression instead of assigning it to the temporary variable "timestamp".(Þýæ±ýÿÿÿÿH¥ÕRMINORZ
-CODE_SMELL
-…squid:CommentedOutCodeLineh"<This block of commented-out lines of code should be removed.(ÙÊ‰èþÿÿÿÿ8Ý‰º¼þ-H¦ÕRMAJORZ
-CODE_SMELL
-rsquid:S1854"8Remove this useless assignment to local variable "mfID".(•¸ß³ùÿÿÿÿ8Ñàø»þ-H§ÕRMAJORZ
-CODE_SMELL
-m
-squid:S106N"9Replace this use of System.out or System.err by a logger.(×•œ²8šò±¼þ-H¨ÕRMAJORZ
-CODE_SMELL
-À%squid:RedundantThrowsDeclarationChecke"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(É¶þ8Ý‰º¼þ-H©ÕRMINORZ
-CODE_SMELL
-r
-squid:S106R"9Replace this use of System.out or System.err by a logger.(ðŒ³Äÿÿÿÿÿ8Éä²¼þ-HªÕRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLine)"<This block of commented-out lines of code should be removed.(¶¤ù¡8¤Üº¼þ-H«ÕRMAJORZ
-CODE_SMELL
-m
-squid:S106W"9Replace this use of System.out or System.err by a logger.(Ò¼è‹8‹ƒâ¼þ-H¬ÕRMAJORZ
-CODE_SMELL
-Œsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(“ˆ«ŠøÿÿÿÿH­ÕRMINORZ
-CODE_SMELL
-¢squid:S1319B"oThe type of the "lineMap" object should be an interface such as "Map" rather than the implementation "HashMap".(æ¤ÜãùÿÿÿÿH®ÕRMINORZ
-CODE_SMELL
-\squid:S2095".Close this "FileReader" in a "finally" clause.(Ý¯ˆ¾ùÿÿÿÿH¯ÕRBLOCKERZBUG
-Hsquid:S1220""Move this file to a named package.H°ÕRMINORZ
-CODE_SMELL
-squid:CommentedOutCodeLineG"<This block of commented-out lines of code should be removed.(ãÄ©k8„°„¼þ-H±ÕRMAJORZ
-CODE_SMELL
-‹squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÔåäH²ÕRCRITICALZ
-CODE_SMELL
-m
-squid:S106L"9Replace this use of System.out or System.err by a logger.(×Žæà8šò±¼þ-H³ÕRMAJORZ
-CODE_SMELL
-Ysquid:S1148="#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿH´ÕRMINORZVULNERABILITY
-m
-squid:S106T"9Replace this use of System.out or System.err by a logger.(×•œ²8‹ƒâ¼þ-HµÕRMAJORZ
-CODE_SMELL
-—squid:S1488g"bImmediately return this expression instead of assigning it to the temporary variable "parsedDate".(·‘ç³8Ý‰º¼þ-H¶ÕRMINORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine7"<This block of commented-out lines of code should be removed.(œ‡‘ˆùÿÿÿÿH·ÕRMAJORZ
-CODE_SMELL
-r
-squid:S106J"9Replace this use of System.out or System.err by a logger.(Åßÿ‰ÿÿÿÿÿ8šò±¼þ-H¸ÕRMAJORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(–ô…ÎúÿÿÿÿH¹ÕRMAJORZ
-CODE_SMELL
-m
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÊËïò8Ù÷¸âÿ-HºÕRMAJORZ
-CODE_SMELL
-€squid:CommentedOutCodeLine%"<This block of commented-out lines of code should be removed.(¶¤ù¡8¤Üº¼þ-H»ÕRMAJORZ
-CODE_SMELL

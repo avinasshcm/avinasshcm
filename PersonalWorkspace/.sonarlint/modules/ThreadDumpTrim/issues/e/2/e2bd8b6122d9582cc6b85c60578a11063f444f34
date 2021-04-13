@@ -1,27 +1,0 @@
-
-osquid:S1075"ARefactor your code to get this URI from a customizable parameter.(κωªΡHιθRMINORZ
-CODE_SMELL
-f
-squid:S106"9Replace this use of System.out or System.err by a logger.(ΚΛοςHκθRMAJORZ
-CODE_SMELL
-k
-squid:S106#"9Replace this use of System.out or System.err by a logger.(Ε¨©°όÿÿÿÿHλθRMAJORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HμθRMINORZ
-CODE_SMELL
-^squid:S1481"1Remove this unused "sCurrentLine" local variable.(”ΚΘWHνθRMINORZ
-CODE_SMELL
-rsquid:S2147 "DCombine this catch with the one at line 30, which has the same body.(”ύΎHξθRMINORZ
-CODE_SMELL
-€squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(κωªΡHοθRMINORZ
-CODE_SMELL
-…squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†χο€ώÿÿÿÿHπθRMINORZ
-CODE_SMELL
-…squid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΥΤΡψÿÿÿÿHρθRMINORZ
-CODE_SMELL
-jsquid:UselessImportCheck"/Remove this unused import 'java.nio.file.Path'.(Χ²κΒHςθRMINORZ
-CODE_SMELL
-ksquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(χ‰ξƒHσθRMINORZ
-CODE_SMELL
-Ysquid:S1148"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿHτθRMINORZVULNERABILITY
-Ysquid:S1148!"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿHυθRMINORZVULNERABILITY

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;combo&apos; in &apos;SampleSwing.main(...)&apos; to &apos;modules&apos;&#x0D;&#x0A;- Original project: &apos;Swing&apos;&#x0D;&#x0A;- Original element: &apos;SampleSwing.main(String[]).combo&apos;&#x0D;&#x0A;- Renamed element: &apos;combo&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;combo&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{SampleSwing.java[SampleSwing~main~\[QString;@combo!585!634!603!607!QJComboBox\&lt;QString;&gt;;!0!false" name="modules" references="true" stamp="1494673463136" version="1.0"/>
-</session>

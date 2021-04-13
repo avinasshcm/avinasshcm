@@ -1,22 +1,0 @@
-
-k
-squid:S106F"9Replace this use of System.out or System.err by a logger.(Ê›ÿG8ÐìÊÆô+H®CRMAJORZ
-CODE_SMELL
-nsquid:S1141+"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÐìÊÆô+H¯CRMAJORZ
-CODE_SMELL
-nsquid:S1141B"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÐìÊÆô+H°CRMAJORZ
-CODE_SMELL
-xsquid:S2147M"DCombine this catch with the one at line 75, which has the same body.(ï­£Ä8°‚ØÅô+H±CRMINORZ
-CODE_SMELL
-fsquid:S2093+"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ÐìÊÆô+H²CRCRITICALZ
-CODE_SMELL
-_squid:S1148@"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ÐìÊÆô+H³CRMINORZVULNERABILITY
-Gsquid:S1220""Move this file to a named package.H´CRMINORZ
-CODE_SMELL
-esquid:S1481"",Remove this unused "hashMap" local variable.(©ÉëÂøÿÿÿÿ8°‚ØÅô+HµCRMINORZ
-CODE_SMELL
-ksquid:S26292"7Use the built-in formatting to construct this argument.(½¤ì˜8§„¢Æô+H¶CRMAJORZ
-CODE_SMELL
-ssquid:S1075"ARefactor your code to get this URI from a customizable parameter.(‡»‚«ýÿÿÿÿH·CRMINORZ
-CODE_SMELL
-_squid:S1148G"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Àë¿Æô+H¸CRMINORZVULNERABILITY

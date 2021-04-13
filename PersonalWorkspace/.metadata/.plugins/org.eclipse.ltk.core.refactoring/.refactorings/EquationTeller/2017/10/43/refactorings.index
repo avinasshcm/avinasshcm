@@ -1,7 +1,0 @@
-1508751804345	Rename type 'DebitTrxTemplate'
-1508755536044	Rename local variable 'emiCorrectionSheetIterator'
-1508755544577	Rename local variable 'emiCorrectionSheet'
-1508755557556	Rename field 'EMI_CORRECTION'
-1508755567351	Rename field 'TXN_CODE_LIST'
-1508755587235	Rename local variable 'testArgs'
-1508758677473	Rename field 'insert'

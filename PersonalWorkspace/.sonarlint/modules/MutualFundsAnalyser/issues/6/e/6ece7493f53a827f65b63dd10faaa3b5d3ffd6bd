@@ -1,10 +1,0 @@
-
-`squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ÀáÜßØ,H‘ŒRMINORZVULNERABILITY
-–squid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "date".(²õ¡Íøÿÿÿÿ8±åßßØ,H’ŒRMINORZ
-CODE_SMELL
-rsquid:CallToDeprecatedMethod",Remove this use of "Date"; it is deprecated.(ü®íá8ÀáÜßØ,H“ŒRMINORZ
-CODE_SMELL
-osquid:S2209"5Change this instance-reference to a static reference.(²õ¡Íøÿÿÿÿ8±åßßØ,H”ŒRMAJORZ
-CODE_SMELL
-tsquid:S1118":Add a private constructor to hide the implicit public one.(¬Û¶áúÿÿÿÿ8ÀáÜßØ,H•ŒRMAJORZ
-CODE_SMELL

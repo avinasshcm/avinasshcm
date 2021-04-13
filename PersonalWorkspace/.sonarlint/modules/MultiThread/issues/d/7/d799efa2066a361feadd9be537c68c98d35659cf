@@ -1,18 +1,0 @@
-
-isquid:EmptyStatementUsageCheck"Remove this empty statement.(Åñ­õşÿÿÿÿ8ŞÙŒ¾Û.HÖõRMINORZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HÂõRMINORZ
-CODE_SMELL
-r
-squid:S106"9Replace this use of System.out or System.err by a logger.(³ÂåÒøÿÿÿÿ8æ§ş½Û.HĞõRMAJORZ
-CODE_SMELL
-r
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ş¬‡¡ûÿÿÿÿ8Šôù½Û.HÌõRMAJORZ
-CODE_SMELL
-l
-squid:S106"9Replace this use of System.out or System.err by a logger.(€ºÑR8êÉ¾Û.HàöRMAJORZ
-CODE_SMELL
-`squid:S1481"&Remove this unused "n" local variable.(¹´ ùÿÿÿÿ8¯¥Ä¿Û.HáöRMINORZ
-CODE_SMELL
-osquid:S1854"5Remove this useless assignment to local variable "n".(¹´ ùÿÿÿÿ8¯¥Ä¿Û.HâöRMAJORZ
-CODE_SMELL

@@ -1,16 +1,0 @@
-
-bsquid:EmptyStatementUsageCheck."Remove this empty statement.(Åñ­õşÿÿÿÿHü´RMINORZ
-CODE_SMELL
-~squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(«·Ø™şÿÿÿÿHı´RMAJORZ
-CODE_SMELL
-Å%squid:RedundantThrowsDeclarationCheck"xRemove the declaration of thrown exception 'java.io.FileNotFoundException' which is a subclass of 'java.io.IOException'.(À…ıóşÿÿÿÿHş´RMINORZ
-CODE_SMELL
-Œsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŸËÁ›ûÿÿÿÿHÿ´RMINORZ
-CODE_SMELL
-dsquid:S1135"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿH€µRINFOZ
-CODE_SMELL
-Hsquid:S1220""Move this file to a named package.HµRMINORZ
-CODE_SMELL
-f
-squid:S106,"9Replace this use of System.out or System.err by a logger.(Õ÷ÜÎH‚µRMAJORZ
-CODE_SMELL

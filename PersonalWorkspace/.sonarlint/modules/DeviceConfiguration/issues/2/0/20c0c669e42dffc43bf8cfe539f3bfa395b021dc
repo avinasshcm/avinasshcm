@@ -1,35 +1,0 @@
-
-ysquid:S1444"=Make this "public static DOCUMENT_PRINTER_PREFIX" field final(÷‹‰€şÿÿÿÿ8Í€ªî+Hø5RMINORZVULNERABILITY
-¯"squid:ClassVariableVisibilityCheck"aMake DOCUMENT_PRINTER_NAME a static final constant or non-public and provide accessors if needed.(‹ã·8ıæ›î+Hß5RMINORZVULNERABILITY
-®"squid:ClassVariableVisibilityCheck"`Make BANK_REPOSITORY_PATH a static final constant or non-public and provide accessors if needed.( Û¼8ŠşÊî+Hå4RMINORZVULNERABILITY
-qsquid:S1444":Make this "public static BANK_REPOSITORY_PATH" field final( Û¼8ŠşÊî+Hä4RMINORZVULNERABILITY
-”squid:S3008"`Rename this field "PASSBOOK_PRINTER_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èÌ¬³8éğËî+Hé4RMINORZ
-CODE_SMELL
-rsquid:S1444";Make this "public static DOCUMENT_PRINTER_NAME" field final(‹ã·8ıæ›î+HŞ5RMINORZVULNERABILITY
-±squid:S11861"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Çµí‘HŞ4RCRITICALZ
-CODE_SMELL
-”squid:S3008"`Rename this field "DOCUMENT_PRINTER_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹ã·8ıæ›î+Hİ5RMINORZ
-CODE_SMELL
-¯"squid:ClassVariableVisibilityCheck"aMake PASSBOOK_PRINTER_NAME a static final constant or non-public and provide accessors if needed.(èÌ¬³8éğËî+Hë4RMINORZVULNERABILITY
-­"squid:ClassVariableVisibilityCheck"`Make READ_REPOSITORY_PATH a static final constant or non-public and provide accessors if needed.(ÜÜ÷8—±Ëî+Hè4RMINORZVULNERABILITY
-Xsquid:S1148,"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿHß4RMINORZVULNERABILITY
-®"squid:ClassVariableVisibilityCheck
-"[Make EXCEL_FILE_NAME a static final constant or non-public and provide accessors if needed.(òŒÄ±ùÿÿÿÿ8ñ¹Êî+Hâ4RMINORZVULNERABILITY
-psquid:S1444":Make this "public static READ_REPOSITORY_PATH" field final(ÜÜ÷8—±Ëî+Hç4RMINORZVULNERABILITY
-“squid:S3008
-"ZRename this field "EXCEL_FILE_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òŒÄ±ùÿÿÿÿ8ñ¹Êî+Hà4RMINORZ
-CODE_SMELL
-’squid:S3008"_Rename this field "READ_REPOSITORY_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÜ÷8—±Ëî+Hæ4RMINORZ
-CODE_SMELL
-qsquid:S1444
-"5Make this "public static EXCEL_FILE_NAME" field final(òŒÄ±ùÿÿÿÿ8ñ¹Êî+Há4RMINORZVULNERABILITY
-rsquid:S1444";Make this "public static PASSBOOK_PRINTER_NAME" field final(èÌ¬³8éğËî+Hê4RMINORZVULNERABILITY
-¶"squid:ClassVariableVisibilityCheck"cMake PASSBOOK_PRINTER_PREFIX a static final constant or non-public and provide accessors if needed.(ğÒ‡Õÿÿÿÿÿ8Í€ªî+Hû5RMINORZVULNERABILITY
-ysquid:S1444"=Make this "public static PASSBOOK_PRINTER_PREFIX" field final(ğÒ‡Õÿÿÿÿÿ8Í€ªî+Hù5RMINORZVULNERABILITY
-›squid:S3008"bRename this field "DOCUMENT_PRINTER_PREFIX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷‹‰€şÿÿÿÿ8Í€ªî+Hö5RMINORZ
-CODE_SMELL
-›squid:S3008"bRename this field "PASSBOOK_PRINTER_PREFIX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÒ‡Õÿÿÿÿÿ8Í€ªî+H÷5RMINORZ
-CODE_SMELL
-“squid:S3008"_Rename this field "BANK_REPOSITORY_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( Û¼8ŠşÊî+Hã4RMINORZ
-CODE_SMELL
-¶"squid:ClassVariableVisibilityCheck"cMake DOCUMENT_PRINTER_PREFIX a static final constant or non-public and provide accessors if needed.(÷‹‰€şÿÿÿÿ8Í€ªî+Hú5RMINORZVULNERABILITY
