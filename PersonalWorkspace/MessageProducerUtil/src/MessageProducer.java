@@ -19,6 +19,7 @@ import transaction.dc.InternalPayment;
 import transaction.dc.IntraBankPayment;
 import transaction.dc.SEPAPayment;
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class MessageProducer {
 	private final static AtomicInteger count = new AtomicInteger(0);
 	static long start = System.currentTimeMillis();
