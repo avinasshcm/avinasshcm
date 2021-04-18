@@ -6,13 +6,9 @@ import java.util.Calendar;
 public class DateFormat {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		/*
-		 
-		 
 		System.out.println(Calendar.getInstance().getTimeInMillis());
-		System.out.println(getDate("YYYY-MM-dd'T'hh:mm:ss.sssXXX"));
+		System.out.println(getDate("YYYY-MM-dd'T'hh:mm:ss.sss XXX"));
 		System.out.println(Calendar.getInstance().getTimeInMillis());
-		*/
 		System.out.println(parseDate("YYYY-MM-dd'T'hh:mm:ss.sssXXX", "2021-04-17T11:22:30.000+01:00"));
 	}
 

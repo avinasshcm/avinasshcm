@@ -155,35 +155,35 @@ public class ProcessMessagingAudit {
 		}
 	}
 
-	private static void printResults(Map.Entry<String, AuditData> entry, AuditData ap, long timeTaken, long delay) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(entry.getKey()).append("\t");
-		sb.append(ap.getServiceName()).append("\t");
-		sb.append(ap.getTxnCode()).append("\t");
-		sb.append(ap.getMsgFunction()).append("\t");
-		sb.append(ap.getTxnRef()).append("\t");
-		sb.append(ap.getThreadID()).append("\t");
-		sb.append(ap.startTime).append("\t");
-		sb.append(ap.endTime).append("\t");
-		sb.append(ap.txnDateTime).append("\t");
-		sb.append(timeTaken).append("\t");
-		sb.append(delay).append("\t");
-		System.out.println(sb.toString());
-	}
-
 	private static void printHeader() {
 		StringBuilder sb = new StringBuilder();
+		sb.append("TransactionReference").append("\t");
 		sb.append("Correlation ID").append("\t");
 		sb.append("ServiceName").append("\t");
 		sb.append("TransactionCode").append("\t");
 		sb.append("MessageFunction").append("\t");
-		sb.append("TransactionReference").append("\t");
 		sb.append("ThreadID").append("\t");
 		sb.append("StartTime").append("\t");
 		sb.append("EndTime").append("\t");
 		sb.append("TxnDateTime").append("\t");
 		sb.append("TimeTaken(ms)").append("\t");
 		sb.append("Delay(ms)").append("\t");
+		System.out.println(sb.toString());
+	}
+
+	private static void printResults(Map.Entry<String, AuditData> entry, AuditData ap, long timeTaken, long delay) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(ap.getTxnRef()).append("\t");
+		sb.append(entry.getKey()).append("\t");
+		sb.append(ap.getServiceName()).append("\t");
+		sb.append(ap.getTxnCode()).append("\t");
+		sb.append(ap.getMsgFunction()).append("\t");
+		sb.append(ap.getThreadID()).append("\t");
+		sb.append(ap.startTime).append("\t");
+		sb.append(ap.endTime).append("\t");
+		sb.append(ap.txnDateTime).append("\t");
+		sb.append(timeTaken).append("\t");
+		sb.append(delay).append("\t");
 		System.out.println(sb.toString());
 	}
 
