@@ -10,6 +10,15 @@ public class ISOData {
 	public Timestamp isoOUTTime;
 	public long isoTimeTaken;
 	public long fbeTimeTaken;
+	public String txnType;
+
+	public String getTxnType() {
+		return txnType;
+	}
+
+	public void setTxnType(String txnType) {
+		this.txnType = txnType;
+	}
 
 	public long getIsoTimeTaken() {
 		return isoTimeTaken;

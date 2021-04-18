@@ -44,7 +44,7 @@ public class ProcessISOLogs {
 
 	private static void readTime(HashMap<String, ISOData> FBPMap, String line) {
 		Timestamp timestamp = extractTimestamp(line);
-	System.out.println(timestamp);
+		//System.out.println(timestamp);
 		String[] lineData = line.split("\\|");
 		//System.out.println(lineData[1]);
 		//System.out.println(lineData[2]);
@@ -62,6 +62,7 @@ public class ProcessISOLogs {
 				isoData.setIsoINTime(timestamp);
 			}
 			else if (lineData[2].equals("FBE")) {
+				isoData.setTxnType(getTransactionType(lineData[0]));
 				isoData.setFbeINTime(timestamp);
 			}
 			break;
@@ -79,13 +80,27 @@ public class ProcessISOLogs {
 		FBPMap.put(txnRef, isoData);
 	}
 
+	private static String getTransactionType(String line) {
+		String txnCode = "";
+		String startTag = "ISO8583_1993_to_";
+		String endTag = "  - ";
+		if (line.contains(startTag)) {
+			int start = line.indexOf(startTag) + startTag.length();
+			int end = line.indexOf(endTag);
+			//System.out.println(msg.substring(start, end));
+			txnCode = line.substring(start, end);
+			//System.out.println(txnCode);
+		}
+		return txnCode;
+	}
+
 	private static Timestamp extractTimestamp(String line) {
 		int startIndex = line.indexOf("[") + 1;
 		int endIndex = line.indexOf("]");
 		String timestamp = line.substring(startIndex, endIndex);
-		System.out.println(timestamp);
+		//System.out.println(timestamp);
 		//return parseTimestamp("dd-MM-YYYY HH:mm:ss:SSS z", timestamp);
-		return parseTimestamp("dd-MM-YYYY HH:mm:ss:SSS", timestamp.replaceAll(" WEST", ""));
+		return parseTimestamp("dd-MM-yyyy HH:mm:ss:SSS", timestamp.replaceAll(" WEST", ""));
 	}
 
 	protected static Timestamp parseTimestamp(String format, String dateStr) {
@@ -131,6 +146,7 @@ public class ProcessISOLogs {
 	private static void printHeader() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Correlation ID").append("\t");
+		sb.append("Txn Type").append("\t");
 		sb.append("ISO IN Time").append("\t");
 		sb.append("FBE IN Time").append("\t");
 		sb.append("ISO REQ TimeTaken(ms)").append("\t");
@@ -145,6 +161,7 @@ public class ProcessISOLogs {
 		StringBuilder sb = new StringBuilder();
 		if (ap.isoINTime != null) {
 			sb.append(entry.getKey()).append("\t");
+			sb.append(ap.txnType).append("\t");
 			sb.append(ap.isoINTime).append("\t");
 			sb.append(ap.fbeINTime).append("\t");
 			sb.append(isoReqTime).append("\t");
