@@ -1,13 +1,16 @@
+package pojo;
+
 import java.sql.Timestamp;
 
-public class AuditPojo {
-	String serviceName;
-	Timestamp startTime;
-	Timestamp endTime;
-	Timestamp txnDateTime;
-	String txnCode;
-	String txnRef;
-	String msgFunction;
+public class AuditData {
+	public String correlationID;
+	public String serviceName;
+	public Timestamp startTime;
+	public Timestamp endTime;
+	public Timestamp txnDateTime;
+	public String txnCode;
+	public String txnRef;
+	public String msgFunction;
 
 	public String getTxnRef() {
 		return txnRef;
@@ -73,5 +76,13 @@ public class AuditPojo {
 
 	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
+	}
+
+	public String getCorrelationID() {
+		return correlationID;
+	}
+
+	public void setCorrelationID(String correlationID) {
+		this.correlationID = correlationID;
 	}
 }

@@ -14,7 +14,7 @@ import java.util.Map;
 import pojo.AuditData;
 
 //PSD2
-public class ProcessDefaultRunning {
+public class ProcessMessagingAudit {
 	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging_CASH_REQ.txt";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 
@@ -27,9 +27,6 @@ public class ProcessDefaultRunning {
 
 	public static void main(String[] args) throws Exception {
 		// pass the path to the file as a parameter
-		HashMap<String, AuditData> SVRMap = new HashMap<String, AuditData>();
-		HashMap<String, AuditData> FBPMap = new HashMap<String, AuditData>();
-		HashMap<String, AuditData> UXPMap = new HashMap<String, AuditData>();
 		HashMap<String, AuditData> MSGMap = new HashMap<String, AuditData>();
 		BufferedReader reader;
 		try {
@@ -37,23 +34,7 @@ public class ProcessDefaultRunning {
 			String line = reader.readLine();
 			while (line != null) {
 				String[] lineItems = line.split("\\|\\|");
-				//System.out.println(lineItems[5]);
-				switch (lineItems[5]) {
-				case "'SVR'":
-					readTime(SVRMap, lineItems, 20, 23);
-					break;
-				case "'FBP'":
-					readTime(FBPMap, lineItems, 20, 23);
-					break;
-				case "'UXP'":
-					readTime(UXPMap, lineItems, 2, 3);
-					break;
-				default:
-					readTime(MSGMap, lineItems);
-					// System.out.println(lineItems[0]);
-					// System.out.println(lineItems[5]);
-					break;
-				}
+				readTime(MSGMap, lineItems);
 				// System.out.println(line);
 				// read next line
 				line = reader.readLine();
@@ -63,39 +44,7 @@ public class ProcessDefaultRunning {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		// processMap(SVRMap);
-		// processMap(FBPMap);
-		// processMap(UXPMap);
 		processMap(MSGMap);
-	}
-
-	private static void readTime(HashMap<String, AuditData> FBPMap, String[] lineItems, int correlationIDIndex, int serviceNameIndex) throws ParseException {
-		int index = getIndexOf(lineItems, "MessageGUID") + 1;
-		if (lineItems.length > 20) {
-			if (index > 1) {
-				AuditData ap = new AuditData();
-				String correlationID = "";
-				try {
-					correlationID = lineItems[index];
-				}
-				catch (Exception e) {
-					// System.out.println(lineItems[0]);
-				}
-				String time = lineItems[0];
-				String serviceName = lineItems[serviceNameIndex];
-				if (FBPMap.containsKey(correlationID)) {
-					ap = FBPMap.get(correlationID);
-					ap.setEndTime(parseTimestamp(time));
-				}
-				else {
-					ap.setStartTime(parseTimestamp(time));
-					ap.setServiceName(serviceName);
-					ap.setTxnDateTime(getTrmDateTime(lineItems));
-					ap.setThreadID(getThreadID(lineItems));
-					FBPMap.put(correlationID, ap);
-				}
-			}
-		}
 	}
 
 	private static void readTime(HashMap<String, AuditData> FBPMap, String[] lineItems) throws ParseException {
