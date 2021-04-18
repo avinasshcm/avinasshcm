@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import pojo.AuditData;
+
 //PSD2
 public class JMSInOutTime {
 	private static final String AuditDir = "D:\\20200123_ATM_Stats\\Consolidated_ATM.txt";
@@ -18,7 +20,7 @@ public class JMSInOutTime {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Start");
 		// pass the path to the file as a parameter
-		HashMap<String, AuditPojo> lineMap = new HashMap<String, AuditPojo>();
+		HashMap<String, AuditData> lineMap = new HashMap<String, AuditData>();
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(AuditDir));
@@ -28,7 +30,7 @@ public class JMSInOutTime {
 				String mfID = lineItems[23];
 				String time = lineItems[0];
 				String serviceName = lineItems[6];
-				AuditPojo ap = new AuditPojo();
+				AuditData ap = new AuditData();
 				if (lineItems[9].equals("'IN'")) {
 					mfID = lineItems[23];
 					// System.out.println(lineItems[0] + "\t" + lineItems[8] + "\t" + lineItems[9] + "\t" + lineItems[23] + "\t"
@@ -61,9 +63,9 @@ public class JMSInOutTime {
 		processMap(lineMap);
 	}
 
-	public static void processMap(HashMap<String, AuditPojo> lineMap) {
-		for (Map.Entry<String, AuditPojo> entry : lineMap.entrySet()) {
-			AuditPojo ap = entry.getValue();
+	public static void processMap(HashMap<String, AuditData> lineMap) {
+		for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
+			AuditData ap = entry.getValue();
 			// long diff = ap.endTime.getTime() - ap.startTime.getTime();
 			// System.out.println(entry.getKey() + "\t" + diff);
 			// System.out.println(entry.getKey() );

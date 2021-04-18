@@ -36,7 +36,6 @@ public class ProcessMessagingAudit {
 				String[] lineItems = line.split("\\|\\|");
 				readTime(MSGMap, lineItems);
 				// System.out.println(line);
-				// read next line
 				line = reader.readLine();
 			}
 			reader.close();
