@@ -1,0 +1,7 @@
+#FBE Audits for Messaging
+cat audit*.txt | grep "'Messaging'" | grep "UB_ATM_CASHTXN_REQ" |  sort > Messaging_CASH_REQ.txt
+cat audit*.txt | grep "'Messaging'" | grep "UB_POS_POSMSG_REQ" |  sort > Messaging_POS_REQ.txt
+
+#ISO Logs
+cat SystemOut*.log | grep "ISO8583.ISO8583.IntegrationFlowService" | grep "INFO" |  sort > ISO_IN_OUT.txt
+
