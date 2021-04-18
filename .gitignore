@@ -1,3 +1,4 @@
 bin
 .sonarlint
 /PersonalWorkspace/Utils/bin
+~$*.xlsx
