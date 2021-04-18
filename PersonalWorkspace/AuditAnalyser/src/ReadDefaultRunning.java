@@ -18,7 +18,7 @@ public class ReadDefaultRunning {
     public static void main(String[] args) throws ParseException {
         // TODO Auto-generated method stub
 
-        HashMap<String, AuditData> hm = readFileAsString("D:\\OneDrive - Finastra\\CTT\\New_ATM_Framework\\audit\\sample.txt");
+        HashMap<String, AuditData> hm = readFileAsString("D:\\Finastra\\Fonseca, Bruno - SP1.1_POSMSG\\BF_running\\Messaging_POS_REQ.txt");
         // printHashMap(hm);
     }
 
