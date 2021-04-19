@@ -5,3 +5,4 @@ cat audit*.txt | grep "'Messaging'" | grep "UB_POS_POSMSG_REQ" |  sort > Messagi
 #ISO Logs
 cat SystemOut*.log | grep "ISO8583.ISO8583.IntegrationFlowService" | grep "INFO" |  sort > ISO_IN_OUT.txt
 
+cat audit*.txt | grep "'Messaging'||'IN'" | sort > Messaging_IN.txt
