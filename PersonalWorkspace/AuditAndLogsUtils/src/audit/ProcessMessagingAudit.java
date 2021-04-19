@@ -16,7 +16,7 @@ import pojo.AuditData;
 
 //PSD2
 public class ProcessMessagingAudit {
-	private static final String AuditDir = "D:\\Finastra\\Fonseca, Bruno - SP1.1_POSMSG\\Supreeth\\audit-20210417213810\\Messaging.txt";
+	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging_CASH_REQ.txt";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 	private static final HashMap<String, String> txnCodeTag = txnCodeTagMap();
 	private static final HashMap<String, String> msgFunctionTag = msgFunctionTagMap();
@@ -24,7 +24,9 @@ public class ProcessMessagingAudit {
 	private static HashMap<String, String> referenceTagMap() {
 		HashMap<String, String> newMap = new HashMap<String, String>();
 		newMap.put("'UB_POS_POSMSG_REQ'", "typ:holdReference");
-		newMap.put("'UB_ATM_CASHTXN_REQ'", "typ:tellerTxnReferece");
+		newMap.put("'UB_ATM_CASHTXN_REQ'", "typ:tellerTxnReference");
+		newMap.put("'UB_ATM_BALENQ_REQ'", "typ:reference");
+		newMap.put("'UB_ATM_MINSTMT_REQ'", "typ:reference");
 		newMap.put("'UB_IND_PaymentRequestQ'", "typ:transactionalItem");
 		return newMap;
 	}
@@ -33,6 +35,8 @@ public class ProcessMessagingAudit {
 		HashMap<String, String> newMap = new HashMap<String, String>();
 		newMap.put("'UB_POS_POSMSG_REQ'", "head:messageType");
 		newMap.put("'UB_ATM_CASHTXN_REQ'", "head:messageType");
+		newMap.put("'UB_ATM_BALENQ_REQ'", "");
+		newMap.put("'UB_ATM_MINSTMT_REQ'", "");
 		newMap.put("'UB_IND_PaymentRequestQ'", "typ:transactionalType");
 		return newMap;
 	}
@@ -41,6 +45,8 @@ public class ProcessMessagingAudit {
 		HashMap<String, String> newMap = new HashMap<String, String>();
 		newMap.put("'UB_POS_POSMSG_REQ'", "typ:messageFunction");
 		newMap.put("'UB_ATM_CASHTXN_REQ'", "typ:messageFunction");
+		newMap.put("'UB_ATM_BALENQ_REQ'", "typ:messageFunction");
+		newMap.put("'UB_ATM_MINSTMT_REQ'", "typ:messageFunction");
 		newMap.put("'UB_IND_PaymentRequestQ'", "");
 		return newMap;
 	}
