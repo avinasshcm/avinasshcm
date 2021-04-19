@@ -16,13 +16,32 @@ import pojo.AuditData;
 
 //PSD2
 public class ProcessMessagingAudit {
-	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging_CASH_REQ.txt";
+	private static final String AuditDir = "D:\\Finastra\\Fonseca, Bruno - SP1.1_POSMSG\\Supreeth\\audit-20210417213810\\Messaging.txt";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
+	private static final HashMap<String, String> txnCodeTag = txnCodeTagMap();
+	private static final HashMap<String, String> msgFunctionTag = msgFunctionTagMap();
 
 	private static HashMap<String, String> referenceTagMap() {
 		HashMap<String, String> newMap = new HashMap<String, String>();
 		newMap.put("'UB_POS_POSMSG_REQ'", "typ:holdReference");
-		newMap.put("'UB_ATM_CASHTXN_REQ'", "typ:tellerTxnReference");
+		newMap.put("'UB_ATM_CASHTXN_REQ'", "typ:tellerTxnReferece");
+		newMap.put("'UB_IND_PaymentRequestQ'", "typ:transactionalItem");
+		return newMap;
+	}
+
+	private static HashMap<String, String> txnCodeTagMap() {
+		HashMap<String, String> newMap = new HashMap<String, String>();
+		newMap.put("'UB_POS_POSMSG_REQ'", "head:messageType");
+		newMap.put("'UB_ATM_CASHTXN_REQ'", "head:messageType");
+		newMap.put("'UB_IND_PaymentRequestQ'", "typ:transactionalType");
+		return newMap;
+	}
+
+	private static HashMap<String, String> msgFunctionTagMap() {
+		HashMap<String, String> newMap = new HashMap<String, String>();
+		newMap.put("'UB_POS_POSMSG_REQ'", "typ:messageFunction");
+		newMap.put("'UB_ATM_CASHTXN_REQ'", "typ:messageFunction");
+		newMap.put("'UB_IND_PaymentRequestQ'", "");
 		return newMap;
 	}
 
@@ -62,9 +81,9 @@ public class ProcessMessagingAudit {
 					ap.setStartTime(parseTimestamp(time));
 					ap.setServiceName(serviceName);
 					ap.setTxnDateTime(getTrmDateTime(lineItems));
-					ap.setTxnCode(getTagValue("head:messageType", lineItems));
+					ap.setTxnCode(getTagValue(txnCodeTag.get(serviceName), lineItems));
 					ap.setTxnRef(getTagValue(referenceTag.get(serviceName), lineItems));
-					ap.setMsgFunction(getTagValue("typ:messageFunction", lineItems));
+					ap.setMsgFunction(getTagValue(msgFunctionTag.get(serviceName), lineItems));
 					ap.setThreadID(getThreadID(lineItems));
 					FBPMap.put(correlationID, ap);
 				}
@@ -182,7 +201,7 @@ public class ProcessMessagingAudit {
 		sb.append(ap.getThreadID()).append("\t");
 		sb.append(ap.startTime).append("\t");
 		sb.append(ap.endTime).append("\t");
-		sb.append(ap.txnDateTime).append("\t");
+		sb.append(ap.txnDateTime != null ? ap.txnDateTime : "").append("\t");
 		sb.append(timeTaken).append("\t");
 		sb.append(delay).append("\t");
 		System.out.println(sb.toString());
