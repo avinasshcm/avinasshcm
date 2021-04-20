@@ -1,7 +1,5 @@
 package audit;
 
-// Java Program to illustrate reading from
-// FileReader using FileReader
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
