@@ -1,12 +1,10 @@
 package audit;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Arrays;
@@ -17,6 +15,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import common.CommonMethods;
 import pojo.AuditData;
 
@@ -25,6 +30,7 @@ public class MonitorMessagingAudit {
 	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
+	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMddHHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 	private static final HashMap<String, String> txnCodeTag = txnCodeTagMap();
 	private static final HashMap<String, String> msgFunctionTag = msgFunctionTagMap();
@@ -59,7 +65,7 @@ public class MonitorMessagingAudit {
 		return newMap;
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		// pass the path to the file as a parameter
 		HashMap<String, AuditData> MSGMap = new HashMap<String, AuditData>();
 		BufferedReader reader;
@@ -75,10 +81,145 @@ public class MonitorMessagingAudit {
 			}
 			reader.close();
 		}
-		catch (IOException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		processMap(MSGMap);
+	}
+
+	public static void processMap(HashMap<String, AuditData> lineMap) {
+		printHeader();
+		for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
+			printResults(entry, entry.getValue());
+		}
+		if (writeToFile) {
+			writeToExcel(lineMap);
+			System.out.println("File generated : " + excelFileName);
+		}
+	}
+
+	private static void writeToExcel(HashMap<String, AuditData> lineMap) {
+		XSSFWorkbook workbook = new XSSFWorkbook();
+		XSSFSheet sheet = workbook.createSheet("WebServices");
+		try {
+			prepareWorksheet(workbook, sheet, lineMap);
+		}
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try (FileOutputStream outputStream = new FileOutputStream(excelFileName)) {
+			workbook.write(outputStream);
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private static void prepareWorksheet(XSSFWorkbook workbook, XSSFSheet sheet, HashMap<String, AuditData> lineMap) throws IOException, FileNotFoundException {
+		int rowCount = 0;
+		CreationHelper creationHelper = workbook.getCreationHelper();
+		CellStyle style = workbook.createCellStyle();
+		CellStyle headerStyle = workbook.createCellStyle();
+		createHeaderRow(sheet, creationHelper, headerStyle);
+		for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
+			Row row = sheet.createRow(++rowCount);
+			insertRow(creationHelper, style, entry, row);
+		}
+	}
+
+	private static void insertRow(CreationHelper creationHelper, CellStyle style, Map.Entry<String, AuditData> entry, Row row) {
+		style.setAlignment(CellStyle.ALIGN_CENTER);
+		AuditData wsd = entry.getValue();
+		int columnNumber = 0;
+		createCell(creationHelper, style, row, columnNumber++, wsd.getTxnRef());
+		createCell(creationHelper, style, row, columnNumber++, entry.getKey());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getServiceName());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getTxnCode());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getMsgFunction());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getThreadID());
+		createCell(creationHelper, style, row, columnNumber++, wsd.startTime);
+		createCell(creationHelper, style, row, columnNumber++, wsd.endTime);
+		createCell(creationHelper, style, row, columnNumber++, wsd.txnDateTime);
+		createCell(creationHelper, style, row, columnNumber++, wsd.getTimeTaken());
+		createCell(creationHelper, style, row, columnNumber++, wsd.delay);
+	}
+
+	private static void createHeaderRow(XSSFSheet sheet, CreationHelper creationHelper, CellStyle style) {
+		style.setAlignment(CellStyle.ALIGN_GENERAL);
+		Row headerRow = sheet.createRow(0);
+		int columnNumber = 0;
+		createCell(creationHelper, style, headerRow, columnNumber++, "TransactionReference");
+		createCell(creationHelper, style, headerRow, columnNumber++, "Correlation ID");
+		createCell(creationHelper, style, headerRow, columnNumber++, "ServiceName");
+		createCell(creationHelper, style, headerRow, columnNumber++, "TransactionCode");
+		createCell(creationHelper, style, headerRow, columnNumber++, "MessageFunction");
+		createCell(creationHelper, style, headerRow, columnNumber++, "ThreadID");
+		createCell(creationHelper, style, headerRow, columnNumber++, "StartTime");
+		createCell(creationHelper, style, headerRow, columnNumber++, "EndTime");
+		createCell(creationHelper, style, headerRow, columnNumber++, "TxnDateTime");
+		createCell(creationHelper, style, headerRow, columnNumber++, "TimeTaken(ms)");
+		createCell(creationHelper, style, headerRow, columnNumber++, "Delay(ms)");
+	}
+
+	public static Cell createCell(CreationHelper creationHelper, CellStyle style, Row row, int colIndex, Object value) {
+		Cell cell = row.createCell(colIndex);
+		if (value instanceof String) {
+			cell.setCellValue((String) value);
+		}
+		else if (value instanceof Integer) {
+			cell.setCellValue((Integer) value);
+		}
+		else if (value instanceof Long) {
+			cell.setCellValue((Long) value);
+		}
+		else if (value instanceof Timestamp) {
+			cell.setCellValue((Date) value);
+			style.setDataFormat(creationHelper.createDataFormat().getFormat("yyyy-MM-dd HH:mm:ss"));
+			cell.setCellStyle(style);
+		}
+		return cell;
+	}
+
+	private static void printHeader() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("TransactionReference").append(tabOrComma);
+		sb.append("Correlation ID").append(tabOrComma);
+		sb.append("ServiceName").append(tabOrComma);
+		sb.append("TransactionCode").append(tabOrComma);
+		sb.append("MessageFunction").append(tabOrComma);
+		sb.append("ThreadID").append(tabOrComma);
+		sb.append("StartTime").append(tabOrComma);
+		sb.append("EndTime").append(tabOrComma);
+		sb.append("TxnDateTime").append(tabOrComma);
+		sb.append("TimeTaken(ms)").append(tabOrComma);
+		sb.append("Delay(ms)").append(tabOrComma);
+		if (!writeToFile) {
+			System.out.println(sb.toString());
+		}
+	}
+
+	private static void printResults(Map.Entry<String, AuditData> entry, AuditData ap) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(ap.getTxnRef()).append(tabOrComma);
+		sb.append(entry.getKey()).append(tabOrComma);
+		sb.append(ap.getServiceName()).append(tabOrComma);
+		sb.append(ap.getTxnCode()).append(tabOrComma);
+		sb.append(ap.getMsgFunction()).append(tabOrComma);
+		sb.append(ap.getThreadID()).append(tabOrComma);
+		sb.append(ap.startTime).append(tabOrComma);
+		sb.append(ap.endTime).append(tabOrComma);
+		sb.append(ap.txnDateTime != null ? ap.txnDateTime : "").append(tabOrComma);
+		sb.append(ap.timeTaken).append(tabOrComma);
+		sb.append(ap.delay).append(tabOrComma);
+		if (!writeToFile) {
+			System.out.println(sb.toString());
+		}
 	}
 
 	private static void readTime(HashMap<String, AuditData> FBPMap, List<String> lineItems) throws ParseException {
@@ -95,17 +236,19 @@ public class MonitorMessagingAudit {
 				if (direction.contains("IN")) {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
-					ap.setTxnDateTime(getTrmDateTime(lineItems));
+					ap.setTxnDateTime(getTrmDateTime(CommonMethods.getTagValue("typ:txnDateTime", lineItems)));
 					ap.setTxnCode(CommonMethods.getTagValue(txnCodeTag.get(serviceName), lineItems));
 					ap.setTxnRef(CommonMethods.getTagValue(referenceTag.get(serviceName), lineItems));
 					ap.setMsgFunction(CommonMethods.getTagValue(msgFunctionTag.get(serviceName), lineItems));
-					ap.setThreadID(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'"));
+					ap.setThreadID(Integer.parseInt(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'")));
 					FBPMap.put(correlationID, ap);
 				}
 				else if (direction.contains("OUT")) {
 					if (FBPMap.containsKey(correlationID)) {
 						ap = FBPMap.get(correlationID);
 						ap.setEndTime(CommonMethods.parseTimestamp(time));
+						ap.setDelay(CommonMethods.getTimeDiff(ap.startTime, ap.txnDateTime));
+						ap.setTimeTaken(CommonMethods.getTimeDiff(ap.endTime, ap.startTime));
 						// System.out.println(Calendar.getInstance().getTimeInMillis());
 					}
 					else {
@@ -116,81 +259,8 @@ public class MonitorMessagingAudit {
 		}
 	}
 
-	private static Timestamp getTrmDateTime(List<String> lineItems) {
-		String startTag = "<typ:txnDateTime>";
-		String endTag = "</typ:txnDateTime>";
-		String msg = lineItems.get(lineItems.size() - 2);
-		//System.out.println(msg);
-		int start = msg.indexOf(startTag) + startTag.length();
-		int end = msg.indexOf(endTag);
-		String txnDateTime = "";
-		Timestamp timestamp = null;
-		if (msg.contains(startTag)) {
-			//System.out.println(msg.substring(start, end));
-			txnDateTime = msg.substring(start, end - "+01:00".length()).replaceAll("T", " ");
-			timestamp = CommonMethods.parseTimestamp("yyyy-MM-dd HH:mm:ss.SSS", txnDateTime);
-		}
-		return timestamp;
-	}
-
-	public static void processMap(HashMap<String, AuditData> lineMap) {
-		String filePath = "Result_" + CommonMethods.formatDate("yyyyMMddHHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".csv";
-		Path path = Paths.get(filePath);
-		//Use try-with-resource to get auto-closeable writer instance
-		try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-			printHeader(writer);
-			for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
-				AuditData ap = entry.getValue();
-				long timeTaken = CommonMethods.getTimeDiff(ap.endTime, ap.startTime);
-				long delay = CommonMethods.getTimeDiff(ap.startTime, ap.txnDateTime);
-				printResults(writer, entry, ap, timeTaken, delay);
-			}
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private static void printHeader(BufferedWriter writer) throws IOException {
-		StringBuilder sb = new StringBuilder();
-		sb.append("TransactionReference").append(tabOrComma);
-		sb.append("Correlation ID").append(tabOrComma);
-		sb.append("ServiceName").append(tabOrComma);
-		sb.append("TransactionCode").append(tabOrComma);
-		sb.append("MessageFunction").append(tabOrComma);
-		sb.append("ThreadID").append(tabOrComma);
-		sb.append("StartTime").append(tabOrComma);
-		sb.append("EndTime").append(tabOrComma);
-		sb.append("TxnDateTime").append(tabOrComma);
-		sb.append("TimeTaken(ms)").append(tabOrComma);
-		sb.append("Delay(ms)").append(tabOrComma);
-		if (writeToFile) {
-			writer.write(sb.append("\n").toString());
-		}
-		else {
-			System.out.println(sb.toString());
-		}
-	}
-
-	private static void printResults(BufferedWriter writer, Map.Entry<String, AuditData> entry, AuditData ap, long timeTaken, long delay) throws IOException {
-		StringBuilder sb = new StringBuilder();
-		sb.append(ap.getTxnRef()).append(tabOrComma);
-		sb.append(entry.getKey()).append(tabOrComma);
-		sb.append(ap.getServiceName()).append(tabOrComma);
-		sb.append(ap.getTxnCode()).append(tabOrComma);
-		sb.append(ap.getMsgFunction()).append(tabOrComma);
-		sb.append(ap.getThreadID()).append(tabOrComma);
-		sb.append(ap.startTime).append(tabOrComma);
-		sb.append(ap.endTime).append(tabOrComma);
-		sb.append(ap.txnDateTime != null ? ap.txnDateTime : "").append(tabOrComma);
-		sb.append(timeTaken).append(tabOrComma);
-		sb.append(delay).append(tabOrComma);
-		if (writeToFile) {
-			writer.write(sb.append("\n").toString());
-		}
-		else {
-			System.out.println(sb.toString());
-		}
+	private static Timestamp getTrmDateTime(String date) {
+		String txnDateTime = date.substring(0, date.length() - "+01:00".length()).replaceAll("T", " ");
+		return CommonMethods.parseTimestamp("yyyy-MM-dd HH:mm:ss.SSS", txnDateTime);
 	}
 }

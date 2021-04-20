@@ -11,6 +11,25 @@ public class AuditData {
 	public String txnCode;
 	public String txnRef;
 	public String msgFunction;
+	public long delay;
+	public long timeTaken;
+	public int threadID;
+
+	public long getDelay() {
+		return delay;
+	}
+
+	public void setDelay(long delay) {
+		this.delay = delay;
+	}
+
+	public long getTimeTaken() {
+		return timeTaken;
+	}
+
+	public void setTimeTaken(long timeTaken) {
+		this.timeTaken = timeTaken;
+	}
 
 	public String getTxnRef() {
 		return txnRef;
@@ -28,13 +47,11 @@ public class AuditData {
 		this.txnRef = txnRef;
 	}
 
-	String threadID;
-
-	public String getThreadID() {
+	public int getThreadID() {
 		return threadID;
 	}
 
-	public void setThreadID(String threadID) {
+	public void setThreadID(int threadID) {
 		this.threadID = threadID;
 	}
 

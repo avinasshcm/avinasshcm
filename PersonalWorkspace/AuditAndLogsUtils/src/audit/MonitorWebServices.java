@@ -102,29 +102,31 @@ public class MonitorWebServices {
 	private static void insertRow(CreationHelper creationHelper, CellStyle style, Map.Entry<String, WebServiceData> entry, Row row) {
 		style.setAlignment(CellStyle.ALIGN_CENTER);
 		WebServiceData wsd = entry.getValue();
-		createCell(creationHelper, style, row, 0, entry.getKey());
-		createCell(creationHelper, style, row, 1, wsd.getServiceName());
-		createCell(creationHelper, style, row, 2, wsd.getUser());
-		createCell(creationHelper, style, row, 3, wsd.getInvocationMode());
-		//createCell(creationHelper, style, row, 4, wsd.getStatus());
-		createCell(creationHelper, style, row, 5, wsd.getThreadID());
-		createCell(creationHelper, style, row, 6, wsd.startTime);
-		createCell(creationHelper, style, row, 7, wsd.endTime);
-		createCell(creationHelper, style, row, 8, wsd.getTimeTaken());
+		int columnNumber = 0;
+		createCell(creationHelper, style, row, columnNumber++, entry.getKey());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getServiceName());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getUser());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getInvocationMode());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getStatus());
+		createCell(creationHelper, style, row, columnNumber++, wsd.getThreadID());
+		createCell(creationHelper, style, row, columnNumber++, wsd.startTime);
+		createCell(creationHelper, style, row, columnNumber++, wsd.endTime);
+		createCell(creationHelper, style, row, columnNumber++, wsd.getTimeTaken());
 	}
 
 	private static void createHeaderRow(XSSFSheet sheet, CreationHelper creationHelper, CellStyle style) {
 		style.setAlignment(CellStyle.ALIGN_GENERAL);
 		Row headerRow = sheet.createRow(0);
-		createCell(creationHelper, style, headerRow, 0, "Correlation ID");
-		createCell(creationHelper, style, headerRow, 1, "ServiceName");
-		createCell(creationHelper, style, headerRow, 2, "User ID");
-		createCell(creationHelper, style, headerRow, 3, "Invocation Mode");
-		createCell(creationHelper, style, headerRow, 4, "Status");
-		createCell(creationHelper, style, headerRow, 5, "ThreadID");
-		createCell(creationHelper, style, headerRow, 6, "StartTime");
-		createCell(creationHelper, style, headerRow, 7, "EndTime");
-		createCell(creationHelper, style, headerRow, 8, "TimeTaken(ms)");
+		int columnNumber = 0;
+		createCell(creationHelper, style, headerRow, columnNumber++, "Correlation ID");
+		createCell(creationHelper, style, headerRow, columnNumber++, "ServiceName");
+		createCell(creationHelper, style, headerRow, columnNumber++, "User ID");
+		createCell(creationHelper, style, headerRow, columnNumber++, "Invocation Mode");
+		createCell(creationHelper, style, headerRow, columnNumber++, "Status");
+		createCell(creationHelper, style, headerRow, columnNumber++, "ThreadID");
+		createCell(creationHelper, style, headerRow, columnNumber++, "StartTime");
+		createCell(creationHelper, style, headerRow, columnNumber++, "EndTime");
+		createCell(creationHelper, style, headerRow, columnNumber++, "TimeTaken(ms)");
 	}
 
 	public static Cell createCell(CreationHelper creationHelper, CellStyle style, Row row, int colIndex, Object value) {
@@ -205,8 +207,7 @@ public class MonitorWebServices {
 						ap.setEndTime(CommonMethods.parseTimestamp(time));
 						ap.setStatus(lineItems.get(CommonMethods.getIndexOf(lineItems, "STATUS") + 1).replaceAll("'", ""));
 						ap.setUser(lineItems.get(4).replaceAll("'", ""));
-						long timeTaken = CommonMethods.getTimeDiff(ap.endTime, ap.startTime);
-						ap.setTimeTaken(timeTaken);
+						ap.setTimeTaken(CommonMethods.getTimeDiff(ap.endTime, ap.startTime));
 						// System.out.println(Calendar.getInstance().getTimeInMillis());
 					}
 					else {
