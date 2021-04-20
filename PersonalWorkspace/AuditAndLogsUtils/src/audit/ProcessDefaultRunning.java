@@ -7,11 +7,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import common.CommonMethods;
 import pojo.AuditData;
 
 //PSD2
@@ -87,13 +86,13 @@ public class ProcessDefaultRunning {
 				String serviceName = lineItems[serviceNameIndex];
 				if (FBPMap.containsKey(correlationID)) {
 					ap = FBPMap.get(correlationID);
-					ap.setEndTime(parseTimestamp(time));
+					ap.setEndTime(CommonMethods.parseTimestamp(time));
 				}
 				else {
-					ap.setStartTime(parseTimestamp(time));
+					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
 					ap.setTxnDateTime(getTrmDateTime(lineItems));
-					ap.setThreadID(getThreadID(lineItems));
+					ap.setThreadID(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'"));
 					FBPMap.put(correlationID, ap);
 				}
 			}
@@ -112,19 +111,19 @@ public class ProcessDefaultRunning {
 				String time = lineItems[0];
 				String serviceName = lineItems[serviceNameIndex];
 				if (direction.contains("IN")) {
-					ap.setStartTime(parseTimestamp(time));
+					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
 					ap.setTxnDateTime(getTrmDateTime(lineItems));
 					ap.setTxnCode(getTagValue("head:messageType", lineItems));
 					ap.setTxnRef(getTagValue(referenceTag.get(serviceName), lineItems));
 					ap.setMsgFunction(getTagValue("typ:messageFunction", lineItems));
-					ap.setThreadID(getThreadID(lineItems));
+					ap.setThreadID(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'"));
 					FBPMap.put(correlationID, ap);
 				}
 				else if (direction.contains("OUT")) {
 					if (FBPMap.containsKey(correlationID)) {
 						ap = FBPMap.get(correlationID);
-						ap.setEndTime(parseTimestamp(time));
+						ap.setEndTime(CommonMethods.parseTimestamp(time));
 						// System.out.println(Calendar.getInstance().getTimeInMillis());
 					}
 					else {
@@ -133,21 +132,6 @@ public class ProcessDefaultRunning {
 				}
 			}
 		}
-	}
-
-	private static String getThreadID(String[] lineItems) {
-		int indexOfThread = getIndexOf(lineItems, "TCPWorkerThreadID") + 1;
-		String threadID = "";
-		try {
-			threadID = lineItems[indexOfThread];
-		}
-		catch (Exception e) {
-			// System.out.println(lineItems[0]);
-		}
-		threadID = threadID.replaceAll("\\'Camel \\(camel\\) thread \\#", "");
-		threadID = threadID.replaceAll(" - JmsConsumer[A-Za-z\\_\\[\\]]*\\'", "");
-		//System.out.println(threadID);
-		return threadID;
 	}
 
 	private static int getIndexOf(String[] lineItems, String tagName) {
@@ -176,7 +160,7 @@ public class ProcessDefaultRunning {
 		if (msg.contains(startTag)) {
 			//System.out.println(msg.substring(start, end));
 			txnDateTime = msg.substring(start, end - "+01:00".length()).replaceAll("T", " ");
-			timestamp = parseTimestamp("yyyy-MM-dd HH:mm:ss.SSS", txnDateTime);
+			timestamp = CommonMethods.parseTimestamp("yyyy-MM-dd HH:mm:ss.SSS", txnDateTime);
 		}
 		return timestamp;
 	}
@@ -203,8 +187,8 @@ public class ProcessDefaultRunning {
 		printHeader();
 		for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
 			AuditData ap = entry.getValue();
-			long timeTaken = getTimeDiff(ap.endTime, ap.startTime);
-			long delay = getTimeDiff(ap.startTime, ap.txnDateTime);
+			long timeTaken = CommonMethods.getTimeDiff(ap.endTime, ap.startTime);
+			long delay = CommonMethods.getTimeDiff(ap.startTime, ap.txnDateTime);
 			printResults(entry, ap, timeTaken, delay);
 		}
 	}
@@ -239,54 +223,5 @@ public class ProcessDefaultRunning {
 		sb.append("TimeTaken(ms)").append("\t");
 		sb.append("Delay(ms)").append("\t");
 		System.out.println(sb.toString());
-	}
-
-	private static long getTimeDiff(Timestamp start, Timestamp end) {
-		long delay = 0;
-		try {
-			delay = start.getTime() - end.getTime();
-		}
-		catch (Exception e) {
-			// System.out.println(ap.endTime);
-			// System.out.println(ap.startTime);
-		}
-		return delay;
-	}
-
-	// 2019.08.12/20:22:19.596
-	public static Timestamp parseTimestamp(String dateStr) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd/HH:mm:ss.SSS");
-		Date parsedDate = dateFormat.parse(dateStr);
-		Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-		return timestamp;
-	}
-
-	protected static Date parseDate(String format, String dateStr) {
-		Date date = null;
-		try {
-			date = new SimpleDateFormat(format).parse(dateStr);
-		}
-		catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return date;
-	}
-
-	protected static Timestamp parseTimestamp(String format, String dateStr) {
-		Date date = null;
-		Timestamp timestamp = null;
-		try {
-			date = new SimpleDateFormat(format).parse(dateStr);
-			timestamp = new java.sql.Timestamp(date.getTime());
-		}
-		catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return timestamp;
-	}
-
-	protected static String formatDate(String format, Date date) {
-		String dateStr = new SimpleDateFormat(format).format(new Date());
-		return dateStr;
 	}
 }

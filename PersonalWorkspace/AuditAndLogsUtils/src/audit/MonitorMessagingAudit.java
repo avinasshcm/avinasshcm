@@ -7,11 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import common.CommonMethods;
 import pojo.AuditData;
@@ -83,7 +80,7 @@ public class MonitorMessagingAudit {
 		if (lineItems.length > 20) {
 			if (index > 1) {
 				AuditData ap = new AuditData();
-				String correlationID = lineItems[index];
+				String correlationID = lineItems[index].replaceAll("'", "");
 				String time = lineItems[0];
 				String serviceName = lineItems[serviceNameIndex].replaceAll("'", "");
 				if (direction.contains("IN")) {

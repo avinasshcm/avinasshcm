@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CommonMethods {
+	public CommonMethods() {
+	}
+
 	public static int getIndexOf(String[] lineItems, String tagName) {
 		int counter = 0;
 		for (int i = 0; i < lineItems.length - 1; i++) {
