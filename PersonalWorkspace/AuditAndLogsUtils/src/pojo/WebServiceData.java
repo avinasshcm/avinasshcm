@@ -9,7 +9,7 @@ public class WebServiceData {
 	public Timestamp endTime;
 	public String invocationMode;
 	public String status;
-	public String threadID;
+	public int threadID;
 	public long timeTaken;
 	public String user;
 
@@ -77,11 +77,11 @@ public class WebServiceData {
 		this.status = status;
 	}
 
-	public String getThreadID() {
+	public int getThreadID() {
 		return threadID;
 	}
 
-	public void setThreadID(String threadID) {
+	public void setThreadID(int threadID) {
 		this.threadID = threadID;
 	}
 }

@@ -1,11 +1,17 @@
 package audit;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +23,8 @@ import pojo.AuditData;
 //PSD2
 public class ProcessDefaultRunning {
 	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging_CASH_REQ.txt";
+	private static boolean writeToFile = true;
+	private static final String tabOrComma = writeToFile ? "," : "\t";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 
 	private static HashMap<String, String> referenceTagMap() {
@@ -185,44 +193,63 @@ public class ProcessDefaultRunning {
 	}
 
 	public static void processMap(HashMap<String, AuditData> lineMap) {
-		printHeader();
-		for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
-			AuditData ap = entry.getValue();
-			long timeTaken = CommonMethods.getTimeDiff(ap.endTime, ap.startTime);
-			long delay = CommonMethods.getTimeDiff(ap.startTime, ap.txnDateTime);
-			printResults(entry, ap, timeTaken, delay);
+		String filePath = "Result_" + CommonMethods.formatDate("yyyyMMddHHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".csv";
+		Path path = Paths.get(filePath);
+		//Use try-with-resource to get auto-closeable writer instance
+		try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+			printHeader(writer);
+			for (Map.Entry<String, AuditData> entry : lineMap.entrySet()) {
+				AuditData ap = entry.getValue();
+				long timeTaken = CommonMethods.getTimeDiff(ap.endTime, ap.startTime);
+				long delay = CommonMethods.getTimeDiff(ap.startTime, ap.txnDateTime);
+				printResults(writer, entry, ap, timeTaken, delay);
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	private static void printResults(Map.Entry<String, AuditData> entry, AuditData ap, long timeTaken, long delay) {
+	private static void printResults(BufferedWriter writer, Map.Entry<String, AuditData> entry, AuditData ap, long timeTaken, long delay) throws IOException {
 		StringBuilder sb = new StringBuilder();
-		sb.append(entry.getKey()).append("\t");
-		sb.append(ap.getServiceName()).append("\t");
-		sb.append(ap.getTxnCode()).append("\t");
-		sb.append(ap.getMsgFunction()).append("\t");
-		sb.append(ap.getTxnRef()).append("\t");
-		sb.append(ap.getThreadID()).append("\t");
-		sb.append(ap.startTime).append("\t");
-		sb.append(ap.endTime).append("\t");
-		sb.append(ap.txnDateTime).append("\t");
-		sb.append(timeTaken).append("\t");
-		sb.append(delay).append("\t");
-		System.out.println(sb.toString());
+		sb.append(entry.getKey()).append(tabOrComma);
+		sb.append(ap.getServiceName()).append(tabOrComma);
+		sb.append(ap.getTxnCode()).append(tabOrComma);
+		sb.append(ap.getMsgFunction()).append(tabOrComma);
+		sb.append(ap.getTxnRef()).append(tabOrComma);
+		sb.append(ap.getThreadID()).append(tabOrComma);
+		sb.append(ap.startTime).append(tabOrComma);
+		sb.append(ap.endTime).append(tabOrComma);
+		sb.append(ap.txnDateTime).append(tabOrComma);
+		sb.append(timeTaken).append(tabOrComma);
+		sb.append(delay).append(tabOrComma);
+		if (writeToFile) {
+			writer.write(sb.append("\n").toString());
+		}
+		else {
+			System.out.println(sb.toString());
+		}
 	}
 
-	private static void printHeader() {
+	private static void printHeader(BufferedWriter writer) throws IOException {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Correlation ID").append("\t");
-		sb.append("ServiceName").append("\t");
-		sb.append("TransactionCode").append("\t");
-		sb.append("MessageFunction").append("\t");
-		sb.append("TransactionReference").append("\t");
-		sb.append("ThreadID").append("\t");
-		sb.append("StartTime").append("\t");
-		sb.append("EndTime").append("\t");
-		sb.append("TxnDateTime").append("\t");
-		sb.append("TimeTaken(ms)").append("\t");
-		sb.append("Delay(ms)").append("\t");
-		System.out.println(sb.toString());
+		sb.append("Correlation ID").append(tabOrComma);
+		sb.append("ServiceName").append(tabOrComma);
+		sb.append("TransactionCode").append(tabOrComma);
+		sb.append("MessageFunction").append(tabOrComma);
+		sb.append("TransactionReference").append(tabOrComma);
+		sb.append("ThreadID").append(tabOrComma);
+		sb.append("StartTime").append(tabOrComma);
+		sb.append("EndTime").append(tabOrComma);
+		sb.append("TxnDateTime").append(tabOrComma);
+		sb.append("TimeTaken(ms)").append(tabOrComma);
+		sb.append("Delay(ms)").append(tabOrComma);
+		if (writeToFile) {
+			writer.write(sb.append("\n").toString());
+		}
+		else {
+			System.out.println(sb.toString());
+		}
 	}
 }
