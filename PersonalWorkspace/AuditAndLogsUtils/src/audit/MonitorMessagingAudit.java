@@ -14,7 +14,7 @@ import common.CommonMethods;
 import pojo.AuditData;
 
 //PSD2
-public class ProcessMessagingAudit {
+public class MonitorMessagingAudit {
 	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging.txt";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 	private static final HashMap<String, String> txnCodeTag = txnCodeTagMap();
