@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import common.CommonMethods;
 import pojo.AuditData;
@@ -56,8 +59,8 @@ public class MonitorMessagingAudit {
 			reader = new BufferedReader(new FileReader(AuditDir));
 			String line = reader.readLine();
 			while (line != null) {
-				//List<String> list = Arrays.asList(Pattern.compile("\\|\\|").split(line));
-				String[] lineItems = line.split("\\|\\|");
+				List<String> lineItems = Arrays.asList(Pattern.compile("\\|\\|").split(line));
+				//String[] lineItems = line.split("\\|\\|");
 				readTime(MSGMap, lineItems);
 				// System.out.println(line);
 				line = reader.readLine();
@@ -70,17 +73,17 @@ public class MonitorMessagingAudit {
 		processMap(MSGMap);
 	}
 
-	private static void readTime(HashMap<String, AuditData> FBPMap, String[] lineItems) throws ParseException {
+	private static void readTime(HashMap<String, AuditData> FBPMap, List<String> lineItems) throws ParseException {
 		int index = CommonMethods.getIndexOf(lineItems, "MessageGUID") + 1;
 		int serviceNameIndex = CommonMethods.getIndexOf(lineItems, "JmsEndPointDestination") + 1;
 		int directionIndex = CommonMethods.getIndexOf(lineItems, "Messaging") + 1;
-		String direction = lineItems[directionIndex];
-		if (lineItems.length > 20) {
+		String direction = lineItems.get(directionIndex);
+		if (lineItems.size() > 20) {
 			if (index > 1) {
 				AuditData ap = new AuditData();
-				String correlationID = lineItems[index].replaceAll("'", "");
-				String time = lineItems[0];
-				String serviceName = lineItems[serviceNameIndex].replaceAll("'", "");
+				String correlationID = lineItems.get(index).replaceAll("'", "");
+				String time = lineItems.get(0);
+				String serviceName = lineItems.get(serviceNameIndex).replaceAll("'", "");
 				if (direction.contains("IN")) {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
@@ -105,10 +108,10 @@ public class MonitorMessagingAudit {
 		}
 	}
 
-	private static Timestamp getTrmDateTime(String[] lineItems) {
+	private static Timestamp getTrmDateTime(List<String> lineItems) {
 		String startTag = "<typ:txnDateTime>";
 		String endTag = "</typ:txnDateTime>";
-		String msg = lineItems[lineItems.length - 2];
+		String msg = lineItems.get(lineItems.size() - 2);
 		//System.out.println(msg);
 		int start = msg.indexOf(startTag) + startTag.length();
 		int end = msg.indexOf(endTag);

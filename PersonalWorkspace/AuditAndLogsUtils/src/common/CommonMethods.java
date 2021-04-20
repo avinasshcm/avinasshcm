@@ -4,31 +4,32 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class CommonMethods {
 	public CommonMethods() {
 	}
 
-	public static int getIndexOf(String[] lineItems, String tagName) {
+	public static int getIndexOf(List<String> lineItems, String tagName) {
 		int counter = 0;
-		for (int i = 0; i < lineItems.length - 1; i++) {
-			if (lineItems[i].contains(tagName)) {
+		for (int i = 0; i < lineItems.size() - 1; i++) {
+			if (lineItems.get(i).contains(tagName)) {
 				break;
 			}
 			counter++;
 		}
-		if (counter == lineItems.length - 1) {
+		if (counter == lineItems.size() - 1) {
 			counter = 0;
 		}
 		return counter;
 	}
 
-	public static String getTagValue(String tagName, String[] lineItems) {
+	public static String getTagValue(String tagName, List<String> lineItems) {
 		String txnCode = "";
 		String startTag = "<" + tagName + ">";
 		String endTag = "</" + tagName + ">";
 		String emptyTag = "<" + tagName + "/>";
-		String msg = lineItems[lineItems.length - 2];
+		String msg = lineItems.get(lineItems.size() - 2);
 		//System.out.println(msg);
 		if (!msg.contains(emptyTag)) {
 			int start = msg.indexOf(startTag) + startTag.length();
@@ -107,11 +108,11 @@ public class CommonMethods {
 		return timestamp;
 	}
 
-	public static String getThreadID(String[] lineItems, String tagName, String prefix, String suffix) {
+	public static String getThreadID(List<String> lineItems, String tagName, String prefix, String suffix) {
 		int indexOfThread = getIndexOf(lineItems, tagName) + 1;
 		String threadID = "";
 		try {
-			threadID = lineItems[indexOfThread];
+			threadID = lineItems.get(indexOfThread);
 		}
 		catch (Exception e) {
 			// System.out.println(lineItems[0]);

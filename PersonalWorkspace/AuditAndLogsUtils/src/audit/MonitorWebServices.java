@@ -3,8 +3,11 @@ package audit;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import common.CommonMethods;
 import pojo.WebServiceData;
@@ -20,8 +23,8 @@ public class MonitorWebServices {
 			reader = new BufferedReader(new FileReader(AuditDir));
 			String line = reader.readLine();
 			while (line != null) {
-				//List<String> list = Arrays.asList(Pattern.compile("\\|\\|").split(line));
-				String[] lineItems = line.split("\\|\\|");
+				List<String> lineItems = Arrays.asList(Pattern.compile("\\|\\|").split(line));
+				//String[] lineItems = line.split("\\|\\|");
 				readTime(MSGMap, lineItems);
 				// System.out.println(line);
 				line = reader.readLine();
@@ -72,20 +75,20 @@ public class MonitorWebServices {
 		System.out.println(sb.toString());
 	}
 
-	private static void readTime(HashMap<String, WebServiceData> FBPMap, String[] lineItems) throws ParseException {
+	private static void readTime(HashMap<String, WebServiceData> FBPMap, List<String> lineItems) throws ParseException {
 		int typeIndex = CommonMethods.getIndexOf(lineItems, "INVOCATION-MODE") + 1;
-		String invocationMode = lineItems[typeIndex].replaceAll("'", "");
+		String invocationMode = lineItems.get(typeIndex).replaceAll("'", "");
 		String correlationIDTagName = invocationMode.contains("REST") ? "correlationId" : "correlationID";
 		int index = CommonMethods.getIndexOf(lineItems, correlationIDTagName) + 1;
 		int serviceNameIndex = CommonMethods.getIndexOf(lineItems, "WebServiceName") + 1;
 		int directionIndex = 8;
-		String direction = lineItems[directionIndex];
-		if (lineItems.length > 20) {
+		String direction = lineItems.get(directionIndex);
+		if (lineItems.size() > 20) {
 			if (index > 1) {
 				WebServiceData ap = new WebServiceData();
-				String correlationID = lineItems[index].replaceAll("'", "");
-				String time = lineItems[0];
-				String serviceName = lineItems[serviceNameIndex].replaceAll("'", "");
+				String correlationID = lineItems.get(index).replaceAll("'", "");
+				String time = lineItems.get(0);
+				String serviceName = lineItems.get(serviceNameIndex).replaceAll("'", "");
 				if (direction.contains("In-Message")) {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
@@ -97,8 +100,8 @@ public class MonitorWebServices {
 					if (FBPMap.containsKey(correlationID)) {
 						ap = FBPMap.get(correlationID);
 						ap.setEndTime(CommonMethods.parseTimestamp(time));
-						ap.setStatus(lineItems[CommonMethods.getIndexOf(lineItems, "STATUS") + 1].replaceAll("'", ""));
-						ap.setUser(lineItems[4].replaceAll("'", ""));
+						ap.setStatus(lineItems.get(CommonMethods.getIndexOf(lineItems, "STATUS") + 1).replaceAll("'", ""));
+						ap.setUser(lineItems.get(4).replaceAll("'", ""));
 						// System.out.println(Calendar.getInstance().getTimeInMillis());
 					}
 					else {

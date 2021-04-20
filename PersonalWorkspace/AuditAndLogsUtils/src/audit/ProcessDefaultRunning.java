@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import common.CommonMethods;
 import pojo.AuditData;
@@ -34,10 +37,10 @@ public class ProcessDefaultRunning {
 			reader = new BufferedReader(new FileReader(AuditDir));
 			String line = reader.readLine();
 			while (line != null) {
-				//List<String> list = Arrays.asList(Pattern.compile("\\|\\|").split(line));
-				String[] lineItems = line.split("\\|\\|");
+				List<String> lineItems = Arrays.asList(Pattern.compile("\\|\\|").split(line));
+				//String[] lineItems = line.split("\\|\\|");
 				//System.out.println(lineItems[5]);
-				switch (lineItems[5]) {
+				switch (lineItems.get(5)) {
 				case "'SVR'":
 					readTime(SVRMap, lineItems, 20, 23);
 					break;
@@ -68,20 +71,20 @@ public class ProcessDefaultRunning {
 		processMap(MSGMap);
 	}
 
-	private static void readTime(HashMap<String, AuditData> FBPMap, String[] lineItems, int correlationIDIndex, int serviceNameIndex) throws ParseException {
+	private static void readTime(HashMap<String, AuditData> FBPMap, List<String> lineItems, int correlationIDIndex, int serviceNameIndex) throws ParseException {
 		int index = getIndexOf(lineItems, "MessageGUID") + 1;
-		if (lineItems.length > 20) {
+		if (lineItems.size() > 20) {
 			if (index > 1) {
 				AuditData ap = new AuditData();
 				String correlationID = "";
 				try {
-					correlationID = lineItems[index];
+					correlationID = lineItems.get(index);
 				}
 				catch (Exception e) {
 					// System.out.println(lineItems[0]);
 				}
-				String time = lineItems[0];
-				String serviceName = lineItems[serviceNameIndex];
+				String time = lineItems.get(0);
+				String serviceName = lineItems.get(serviceNameIndex);
 				if (FBPMap.containsKey(correlationID)) {
 					ap = FBPMap.get(correlationID);
 					ap.setEndTime(CommonMethods.parseTimestamp(time));
@@ -97,17 +100,17 @@ public class ProcessDefaultRunning {
 		}
 	}
 
-	private static void readTime(HashMap<String, AuditData> FBPMap, String[] lineItems) throws ParseException {
+	private static void readTime(HashMap<String, AuditData> FBPMap, List<String> lineItems) throws ParseException {
 		int index = getIndexOf(lineItems, "MessageGUID") + 1;
 		int serviceNameIndex = getIndexOf(lineItems, "JmsEndPointDestination") + 1;
 		int directionIndex = getIndexOf(lineItems, "Messaging") + 1;
-		String direction = lineItems[directionIndex];
-		if (lineItems.length > 20) {
+		String direction = lineItems.get(directionIndex);
+		if (lineItems.size() > 20) {
 			if (index > 1) {
 				AuditData ap = new AuditData();
-				String correlationID = lineItems[index];
-				String time = lineItems[0];
-				String serviceName = lineItems[serviceNameIndex];
+				String correlationID = lineItems.get(index);
+				String time = lineItems.get(0);
+				String serviceName = lineItems.get(serviceNameIndex);
 				if (direction.contains("IN")) {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
@@ -132,24 +135,24 @@ public class ProcessDefaultRunning {
 		}
 	}
 
-	private static int getIndexOf(String[] lineItems, String tagName) {
+	private static int getIndexOf(List<String> lineItems, String tagName) {
 		int counter = 0;
-		for (int i = 0; i < lineItems.length - 1; i++) {
-			if (lineItems[i].contains(tagName)) {
+		for (int i = 0; i < lineItems.size() - 1; i++) {
+			if (lineItems.get(i).contains(tagName)) {
 				break;
 			}
 			counter++;
 		}
-		if (counter == lineItems.length - 1) {
+		if (counter == lineItems.size() - 1) {
 			counter = 0;
 		}
 		return counter;
 	}
 
-	private static Timestamp getTrmDateTime(String[] lineItems) {
+	private static Timestamp getTrmDateTime(List<String> lineItems) {
 		String startTag = "<typ:txnDateTime>";
 		String endTag = "</typ:txnDateTime>";
-		String msg = lineItems[lineItems.length - 2];
+		String msg = lineItems.get(lineItems.size() - 2);
 		//System.out.println(msg);
 		int start = msg.indexOf(startTag) + startTag.length();
 		int end = msg.indexOf(endTag);
@@ -163,12 +166,12 @@ public class ProcessDefaultRunning {
 		return timestamp;
 	}
 
-	private static String getTagValue(String tagName, String[] lineItems) {
+	private static String getTagValue(String tagName, List<String> lineItems) {
 		String txnCode = "";
 		String startTag = "<" + tagName + ">";
 		String endTag = "</" + tagName + ">";
 		String emptyTag = "<" + tagName + "/>";
-		String msg = lineItems[lineItems.length - 2];
+		String msg = lineItems.get(lineItems.size() - 2);
 		//System.out.println(msg);
 		if (!msg.contains(emptyTag)) {
 			int start = msg.indexOf(startTag) + startTag.length();
