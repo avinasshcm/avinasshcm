@@ -1,4 +1,4 @@
-package audit;
+package depricated;
 // Java Program to illustrate reading from
 // FileReader using FileReader
 import java.io.BufferedReader;

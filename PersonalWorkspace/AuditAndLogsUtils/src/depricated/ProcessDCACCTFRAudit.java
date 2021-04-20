@@ -1,4 +1,4 @@
-package audit;
+package depricated;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,7 +20,7 @@ public class ProcessDCACCTFRAudit {
 
 	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
-		HashMap<String, AuditData> hm = readFileAsString("C:\\Users\\amanjuna\\Desktop\\YOMA_5.3.1.1\\20180927\\DC_ACCTFR.txt");
+		HashMap<String, AuditData> hm = readFileAsString("D:\\Finastra\\Fonseca, Bruno - SP1.1_POSMSG\\Supreeth\\audit-20210417213810\\Messaging_UB_IND_PaymentRequestQ.txt");
 		// printHashMap(hm);
 	}
 
@@ -68,7 +68,7 @@ public class ProcessDCACCTFRAudit {
 			for (int i = 0; i < list.size(); i++) {
 				// System.out.println(i + " : " + list.get(i));
 			}
-			String msg = list.get(29);
+			String msg = list.get(list.size()-2);
 			String fromMyAcct = "NA";
 			String toMyAcct = "NA";
 			String OtherAcct = "NA";
@@ -88,7 +88,7 @@ public class ProcessDCACCTFRAudit {
 			index = msg.indexOf(acctType);
 			if (index > 0) {
 				// String acctNum = msg.substring(index + 13, index + 13 + 17);
-				String acctNum = msg.substring(index + acctType.length(), index + acctType.length() + 15);
+				String acctNum = msg.substring(index + acctType.length(), index + acctType.length() + 11);
 				if (!acctNum.contains("<"))
 					fromMyAcct = acctNum;
 				// counter++;

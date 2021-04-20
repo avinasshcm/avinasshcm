@@ -7,8 +7,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import common.CommonMethods;
 import pojo.AuditData;
@@ -58,6 +61,7 @@ public class MonitorMessagingAudit {
 			reader = new BufferedReader(new FileReader(AuditDir));
 			String line = reader.readLine();
 			while (line != null) {
+				//List<String> list = Arrays.asList(Pattern.compile("\\|\\|").split(line));
 				String[] lineItems = line.split("\\|\\|");
 				readTime(MSGMap, lineItems);
 				// System.out.println(line);

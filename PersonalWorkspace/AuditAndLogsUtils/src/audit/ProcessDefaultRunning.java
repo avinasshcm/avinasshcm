@@ -37,6 +37,7 @@ public class ProcessDefaultRunning {
 			reader = new BufferedReader(new FileReader(AuditDir));
 			String line = reader.readLine();
 			while (line != null) {
+				//List<String> list = Arrays.asList(Pattern.compile("\\|\\|").split(line));
 				String[] lineItems = line.split("\\|\\|");
 				//System.out.println(lineItems[5]);
 				switch (lineItems[5]) {

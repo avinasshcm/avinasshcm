@@ -20,6 +20,7 @@ public class MonitorWebServices {
 			reader = new BufferedReader(new FileReader(AuditDir));
 			String line = reader.readLine();
 			while (line != null) {
+				//List<String> list = Arrays.asList(Pattern.compile("\\|\\|").split(line));
 				String[] lineItems = line.split("\\|\\|");
 				readTime(MSGMap, lineItems);
 				// System.out.println(line);
