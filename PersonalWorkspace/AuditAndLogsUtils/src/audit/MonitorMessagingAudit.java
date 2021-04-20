@@ -23,6 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import common.CommonMethods;
+import file.excel.ExcelUtils;
 import pojo.AuditData;
 
 //PSD2
@@ -137,53 +138,34 @@ public class MonitorMessagingAudit {
 		style.setAlignment(CellStyle.ALIGN_CENTER);
 		AuditData wsd = entry.getValue();
 		int columnNumber = 0;
-		createCell(creationHelper, style, row, columnNumber++, wsd.getTxnRef());
-		createCell(creationHelper, style, row, columnNumber++, entry.getKey());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getServiceName());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getTxnCode());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getMsgFunction());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getThreadID());
-		createCell(creationHelper, style, row, columnNumber++, wsd.startTime);
-		createCell(creationHelper, style, row, columnNumber++, wsd.endTime);
-		createCell(creationHelper, style, row, columnNumber++, wsd.txnDateTime);
-		createCell(creationHelper, style, row, columnNumber++, wsd.getTimeTaken());
-		createCell(creationHelper, style, row, columnNumber++, wsd.delay);
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getTxnRef());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, entry.getKey());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getServiceName());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getTxnCode());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getMsgFunction());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getThreadID());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.startTime);
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.endTime);
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.txnDateTime);
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getTimeTaken());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.delay);
 	}
 
 	private static void createHeaderRow(XSSFSheet sheet, CreationHelper creationHelper, CellStyle style) {
 		style.setAlignment(CellStyle.ALIGN_GENERAL);
 		Row headerRow = sheet.createRow(0);
 		int columnNumber = 0;
-		createCell(creationHelper, style, headerRow, columnNumber++, "TransactionReference");
-		createCell(creationHelper, style, headerRow, columnNumber++, "Correlation ID");
-		createCell(creationHelper, style, headerRow, columnNumber++, "ServiceName");
-		createCell(creationHelper, style, headerRow, columnNumber++, "TransactionCode");
-		createCell(creationHelper, style, headerRow, columnNumber++, "MessageFunction");
-		createCell(creationHelper, style, headerRow, columnNumber++, "ThreadID");
-		createCell(creationHelper, style, headerRow, columnNumber++, "StartTime");
-		createCell(creationHelper, style, headerRow, columnNumber++, "EndTime");
-		createCell(creationHelper, style, headerRow, columnNumber++, "TxnDateTime");
-		createCell(creationHelper, style, headerRow, columnNumber++, "TimeTaken(ms)");
-		createCell(creationHelper, style, headerRow, columnNumber++, "Delay(ms)");
-	}
-
-	public static Cell createCell(CreationHelper creationHelper, CellStyle style, Row row, int colIndex, Object value) {
-		Cell cell = row.createCell(colIndex);
-		if (value instanceof String) {
-			cell.setCellValue((String) value);
-		}
-		else if (value instanceof Integer) {
-			cell.setCellValue((Integer) value);
-		}
-		else if (value instanceof Long) {
-			cell.setCellValue((Long) value);
-		}
-		else if (value instanceof Timestamp) {
-			cell.setCellValue((Date) value);
-			style.setDataFormat(creationHelper.createDataFormat().getFormat("yyyy-MM-dd HH:mm:ss"));
-			cell.setCellStyle(style);
-		}
-		return cell;
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "TransactionReference");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "Correlation ID");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "ServiceName");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "TransactionCode");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "MessageFunction");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "ThreadID");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "StartTime");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "EndTime");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "TxnDateTime");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "TimeTaken(ms)");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "Delay(ms)");
 	}
 
 	private static void printHeader() {

@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Row;
@@ -23,6 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import common.CommonMethods;
+import file.excel.ExcelUtils;
 import pojo.WebServiceData;
 
 public class MonitorWebServices {
@@ -40,7 +39,6 @@ public class MonitorWebServices {
 			String line = reader.readLine();
 			while (line != null) {
 				List<String> lineItems = Arrays.asList(Pattern.compile("\\|\\|").split(line));
-				//String[] lineItems = line.split("\\|\\|");
 				readTime(MSGMap, lineItems);
 				// System.out.println(line);
 				line = reader.readLine();
@@ -103,49 +101,30 @@ public class MonitorWebServices {
 		style.setAlignment(CellStyle.ALIGN_CENTER);
 		WebServiceData wsd = entry.getValue();
 		int columnNumber = 0;
-		createCell(creationHelper, style, row, columnNumber++, entry.getKey());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getServiceName());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getUser());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getInvocationMode());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getStatus());
-		createCell(creationHelper, style, row, columnNumber++, wsd.getThreadID());
-		createCell(creationHelper, style, row, columnNumber++, wsd.startTime);
-		createCell(creationHelper, style, row, columnNumber++, wsd.endTime);
-		createCell(creationHelper, style, row, columnNumber++, wsd.getTimeTaken());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, entry.getKey());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getServiceName());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getUser());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getInvocationMode());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getStatus());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getThreadID());
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.startTime);
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.endTime);
+		ExcelUtils.createCell(creationHelper, style, row, columnNumber++, wsd.getTimeTaken());
 	}
 
 	private static void createHeaderRow(XSSFSheet sheet, CreationHelper creationHelper, CellStyle style) {
 		style.setAlignment(CellStyle.ALIGN_GENERAL);
 		Row headerRow = sheet.createRow(0);
 		int columnNumber = 0;
-		createCell(creationHelper, style, headerRow, columnNumber++, "Correlation ID");
-		createCell(creationHelper, style, headerRow, columnNumber++, "ServiceName");
-		createCell(creationHelper, style, headerRow, columnNumber++, "User ID");
-		createCell(creationHelper, style, headerRow, columnNumber++, "Invocation Mode");
-		createCell(creationHelper, style, headerRow, columnNumber++, "Status");
-		createCell(creationHelper, style, headerRow, columnNumber++, "ThreadID");
-		createCell(creationHelper, style, headerRow, columnNumber++, "StartTime");
-		createCell(creationHelper, style, headerRow, columnNumber++, "EndTime");
-		createCell(creationHelper, style, headerRow, columnNumber++, "TimeTaken(ms)");
-	}
-
-	public static Cell createCell(CreationHelper creationHelper, CellStyle style, Row row, int colIndex, Object value) {
-		Cell cell = row.createCell(colIndex);
-		if (value instanceof String) {
-			cell.setCellValue((String) value);
-		}
-		else if (value instanceof Integer) {
-			cell.setCellValue((Integer) value);
-		}
-		else if (value instanceof Long) {
-			cell.setCellValue((Long) value);
-		}
-		else if (value instanceof Timestamp) {
-			cell.setCellValue((Date) value);
-			style.setDataFormat(creationHelper.createDataFormat().getFormat("yyyy-MM-dd HH:mm:ss"));
-			cell.setCellStyle(style);
-		}
-		return cell;
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "Correlation ID");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "ServiceName");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "User ID");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "Invocation Mode");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "Status");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "ThreadID");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "StartTime");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "EndTime");
+		ExcelUtils.createCell(creationHelper, style, headerRow, columnNumber++, "TimeTaken(ms)");
 	}
 
 	private static void printHeader() {
@@ -205,7 +184,7 @@ public class MonitorWebServices {
 					if (FBPMap.containsKey(correlationID)) {
 						ap = FBPMap.get(correlationID);
 						ap.setEndTime(CommonMethods.parseTimestamp(time));
-						ap.setStatus(lineItems.get(CommonMethods.getIndexOf(lineItems, "STATUS") + 1).replaceAll("'", ""));
+						ap.setStatus(invocationMode.contains("REST") ? "" : lineItems.get(CommonMethods.getIndexOf(lineItems, "STATUS") + 1).replaceAll("'", ""));
 						ap.setUser(lineItems.get(4).replaceAll("'", ""));
 						ap.setTimeTaken(CommonMethods.getTimeDiff(ap.endTime, ap.startTime));
 						// System.out.println(Calendar.getInstance().getTimeInMillis());
