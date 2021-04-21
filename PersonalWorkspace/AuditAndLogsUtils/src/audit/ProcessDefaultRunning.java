@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Row;
@@ -31,7 +30,7 @@ public class ProcessDefaultRunning {
 	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging_CASH_REQ.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
-	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMddHHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
+	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMdd_HHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 
 	private static HashMap<String, String> referenceTagMap() {

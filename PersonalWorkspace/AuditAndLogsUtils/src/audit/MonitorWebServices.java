@@ -28,7 +28,7 @@ public class MonitorWebServices {
 	private static final String AuditDir = "D:\\Essence\\INSTALL-LOCATION\\CTTDEV\\AuditDir\\default_running\\audit.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
-	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMddHHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
+	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMdd_HHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
 
 	public static void main(String[] args) {
 		// pass the path to the file as a parameter
@@ -63,24 +63,17 @@ public class MonitorWebServices {
 	}
 
 	private static void writeToExcel(HashMap<String, WebServiceData> lineMap) {
-		XSSFWorkbook workbook = new XSSFWorkbook();
-		XSSFSheet sheet = workbook.createSheet("WebServices");
 		try {
+			XSSFWorkbook workbook = new XSSFWorkbook();
+			XSSFSheet sheet = workbook.createSheet("WebServices");
 			prepareWorksheet(workbook, sheet, lineMap);
-		}
-		catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try (FileOutputStream outputStream = new FileOutputStream(excelFileName)) {
+			FileOutputStream outputStream = new FileOutputStream(excelFileName);
 			workbook.write(outputStream);
 		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -31,7 +31,7 @@ public class MonitorMessagingAudit {
 	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
-	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMddHHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
+	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMdd_HHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 	private static final HashMap<String, String> txnCodeTag = txnCodeTagMap();
 	private static final HashMap<String, String> msgFunctionTag = msgFunctionTagMap();
