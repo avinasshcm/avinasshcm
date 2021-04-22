@@ -4,6 +4,7 @@ package com.trapedza.bankfusion.webservices;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import com.misys.cbs.msgs.v1r0.RetrieveAcctMvmntRq;
 
@@ -27,6 +28,7 @@ import com.misys.cbs.msgs.v1r0.RetrieveAcctMvmntRq;
  * 
  * 
  */
+@XmlRootElement(name="UB_R_CB_ACC_RetrieveAccountMovements_SRVRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UB_R_CB_ACC_RetrieveAccountMovements_SRVRequestType", propOrder = {
     "retrieveAcctMvmntRq"
