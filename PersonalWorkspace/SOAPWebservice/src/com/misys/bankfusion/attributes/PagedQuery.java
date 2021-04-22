@@ -4,6 +4,7 @@ package com.misys.bankfusion.attributes;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -27,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
+@XmlRootElement(name="pagedQuery")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PagedQuery", namespace = "http://www.misys.com/Bankfusion/Attributes", propOrder = {
     "queryData",

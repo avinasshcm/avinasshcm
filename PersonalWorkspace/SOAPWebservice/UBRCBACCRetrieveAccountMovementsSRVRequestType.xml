@@ -1,0 +1,73 @@
+<web:UB_R_CB_ACC_RetrieveAccountMovements_SRVRequest
+	xmlns:web="http://webservices.bankfusion.trapedza.com"
+	xmlns:v1r0="http://www.misys.com/cbs/msgs/v1r0"
+	xmlns:head="http://www.misys.com/cbs/types/header"
+	xmlns:typ="http://www.misys.com/cbs/types"
+	xmlns:att1="http://www.misys.com/Bankfusion/Attributes">
+	<web:retrieveAcctMvmntRq>
+		<v1r0:rqHeader>
+			<head:version></head:version>
+			<head:orig>
+				<head:channelId></head:channelId>
+				<head:appId></head:appId>
+				<head:appVer></head:appVer>
+				<head:origLocale></head:origLocale>
+				<head:origId></head:origId>
+				<head:origBranchCode></head:origBranchCode>
+				<head:origCtxtId></head:origCtxtId>
+				<head:zoneId></head:zoneId>
+				<head:offlineMode>false</head:offlineMode>
+			</head:orig>
+			<head:messageType></head:messageType>
+			<head:overrides>
+				<head:forcePost>false</head:forcePost>
+				<!--Zero or more repetitions: -->
+				<head:authCodes>
+					<typ:eventCode></typ:eventCode>
+					<!--Zero or more repetitions: -->
+					<typ:supervisorIds></typ:supervisorIds>
+				</head:authCodes>
+				<!--Zero or more repetitions: -->
+				<head:eventCodes>
+					<!--Zero or more repetitions: -->
+					<typ:eventCode></typ:eventCode>
+				</head:eventCodes>
+				<head:lastSupervisorId></head:lastSupervisorId>
+				<head:authRequired></head:authRequired>
+			</head:overrides>
+			<head:transReference>
+				<head:uIdTransReference></head:uIdTransReference>
+				<head:subTransReference></head:subTransReference>
+				<head:transRepairLoc></head:transRepairLoc>
+			</head:transReference>
+		</v1r0:rqHeader>
+		<v1r0:pagedQuery>
+			<att1:QueryData></att1:QueryData>
+			<att1:PagingRequest>
+				<att1:NumberOfRows>10</att1:NumberOfRows>
+				<att1:RequestedPage>1</att1:RequestedPage>
+				<att1:TotalPages></att1:TotalPages>
+			</att1:PagingRequest>
+		</v1r0:pagedQuery>
+		<v1r0:accountMovementInput>
+			<typ:accountFormatType></typ:accountFormatType>
+			<typ:accountId>10100038156</typ:accountId>
+			<typ:startDate>2020-08-01</typ:startDate>
+			<typ:endDate>2020-08-07</typ:endDate>
+			<typ:narrativeContent></typ:narrativeContent>
+			<typ:sinceStatementDate></typ:sinceStatementDate>
+			<typ:miniStatement></typ:miniStatement>
+			<typ:noOffMovements></typ:noOffMovements>
+			<typ:channel></typ:channel>
+			<typ:transactionRef></typ:transactionRef>
+			<typ:futureMvmntOnly></typ:futureMvmntOnly>
+			<typ:txnRefOther></typ:txnRefOther>
+			<typ:txnDataType></typ:txnDataType>
+			<typ:lastMvmntOnly>false</typ:lastMvmntOnly>
+			<typ:descendingSortOrder>false</typ:descendingSortOrder>
+			<typ:finTxnsOnly>false</typ:finTxnsOnly>
+			<typ:userExtension></typ:userExtension>
+			<typ:hostExtension></typ:hostExtension>
+		</v1r0:accountMovementInput>
+	</web:retrieveAcctMvmntRq>
+</web:UB_R_CB_ACC_RetrieveAccountMovements_SRVRequest>

@@ -1,0 +1,23 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:sec="http://security.webservices.bankfusion.trapedza.com">
+    <soapenv:Header>
+        <sec:ApplicationID>
+            <value></value>
+        </sec:ApplicationID>
+        <sec:OSUserID>
+            <value></value>
+        </sec:OSUserID>
+        <sec:passCode>
+            <value></value>
+        </sec:passCode>
+        <sec:userName>
+            <value>brad</value>
+        </sec:userName>
+        <sec:password>
+            <value>brad</value>
+        </sec:password>
+    </soapenv:Header>
+    <soapenv:Body>
+        <sec:request/>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -1,13 +1,20 @@
 package main;
 
+import java.io.StringReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.WebServiceException;
 
 import com.trapedza.bankfusion.webservices.Authentication;
 import com.trapedza.bankfusion.webservices.Bfgenericsoapheader;
@@ -24,7 +31,6 @@ import com.trapedza.bankfusion.webservices.security.Request;
 import com.trapedza.bankfusion.webservices.security.UserName;
 
 import com.misys.bankfusion.attributes.PagedQuery;
-import com.misys.bankfusion.attributes.PagingRequest;
 import com.misys.cbs.msgs.v1r0.RetrieveAcctMvmntRq;
 import com.misys.cbs.types.AcctMovement;
 import com.misys.cbs.types.AcctMovementInput;
@@ -35,9 +41,13 @@ import ub_r_cb_acc_retrieveaccountmovements_srvws.UBRCBACCRetrieveAccountMovemen
 public class TestWSCall {
 	private static final int MAX_RETRY = 1;
 	public static String tgt = "";
+	static String WSDL_LOGIN = "http://blrl10tl5y2:9083/bfweb/services/LoginService?wsdl";
+	static String WSDL_RTRV_TXN = "http://blrl10tl5y2:9083/bfweb/services/UB_R_CB_ACC_RetrieveAccountMovements_SRVWS?wsdl";
 
 	public static void main(String[] args) {
-		doLogin("brad", "brad");
+		URL loginURL = getURL(WSDL_LOGIN);
+		URL txnURL = getURL(WSDL_RTRV_TXN);
+		doLogin(loginURL, "brad", "brad");
 		boolean tgtExpired = false;
 		long startTime = Calendar.getInstance().getTimeInMillis();
 		UBRCBACCRetrieveAccountMovementsSRVResponseType resp = null;
@@ -45,7 +55,7 @@ public class TestWSCall {
 		do {
 			try {
 				String modifiedTGT = tamperTGT(counter);
-				resp = getAccountMovements(modifiedTGT);
+				resp = getAccountMovements(txnURL, modifiedTGT);
 				tgtExpired = false;
 			}
 			catch (javax.xml.ws.soap.SOAPFaultException e) {
@@ -53,7 +63,7 @@ public class TestWSCall {
 				if (faultCode.contains("11500025")) {
 					System.out.println("Invalid TGT. Logging in Again");
 					tgtExpired = true;
-					doLogin("brad", "brad");
+					doLogin(loginURL, "brad", "brad");
 				}
 			}
 			counter++;
@@ -66,6 +76,18 @@ public class TestWSCall {
 		processResult(acctMvmts);
 		System.out.println("\n\n\n");
 		System.out.println("Time taken to get Transactions with maximum " + MAX_RETRY + " login retries : " + (endTime - startTime) + "ms");
+	}
+
+	private static URL getURL(String strURL) {
+		URL url = null;
+		WebServiceException wse = null;
+		try {
+			url = new URL(strURL);
+		}
+		catch (MalformedURLException ex) {
+			wse = new WebServiceException(ex);
+		}
+		return url;
 	}
 
 	private static String tamperTGT(int counter) {
@@ -98,14 +120,15 @@ public class TestWSCall {
 		}
 	}
 
-	private static UBRCBACCRetrieveAccountMovementsSRVResponseType getAccountMovements(String tgt) throws javax.xml.ws.soap.SOAPFaultException {
-		UBRCBACCRetrieveAccountMovementsSRVWSService retreiveAccMvmt = new UBRCBACCRetrieveAccountMovementsSRVWSService();
+	private static UBRCBACCRetrieveAccountMovementsSRVResponseType getAccountMovements(URL url, String tgt) throws javax.xml.ws.soap.SOAPFaultException {
+		UBRCBACCRetrieveAccountMovementsSRVWSService retreiveAccMvmt = new UBRCBACCRetrieveAccountMovementsSRVWSService(url);
 		UBRCBACCRetrieveAccountMovementsSRVWSPortType port = retreiveAccMvmt.getUBRCBACCRetrieveAccountMovementsSRVWSPort();
 		//
 		UBRCBACCRetrieveAccountMovementsSRVRequestType request = new UBRCBACCRetrieveAccountMovementsSRVRequestType();
 		request.setRetrieveAcctMvmntRq(prepareRetrieveAcctMvmntRq());
 		Bfgenericsoapheader header = prepareGenericHeader(tgt);
 		//
+		
 		UBRCBACCRetrieveAccountMovementsSRVResponseType resp = port.ubRCBACCRetrieveAccountMovementsSRV(request, header);
 		return resp;
 	}
@@ -127,10 +150,29 @@ public class TestWSCall {
 
 	private static PagedQuery preparePagedQuery() {
 		PagedQuery pagedQuery = new PagedQuery();
-		PagingRequest pagingRequest = new PagingRequest();
-		pagingRequest.setNumberOfRows(10);
-		pagingRequest.setRequestedPage(1);
-		pagedQuery.setPagingRequest(pagingRequest);
+		
+		try {
+			 	String xmlString = 
+					//@formatter:off
+					"<att:pagedQuery xmlns:att=\"http://www.misys.com/bankfusion/attributes\" xmlns:att1=\"http://www.misys.com/Bankfusion/Attributes\">\r\n"
+					+ "	<att1:QueryData/>\r\n"
+					+ "	<att1:PagingRequest>\r\n"
+					+ "		<att1:NumberOfRows>10</att1:NumberOfRows>\r\n"
+					+ "		<att1:RequestedPage>1</att1:RequestedPage>\r\n"
+					+ "		<att1:TotalPages/>\r\n"
+					+ "	</att1:PagingRequest>\r\n"
+					+ "</att:pagedQuery>";
+					//@formatter:on
+				StringReader sr = new StringReader(xmlString);
+				JAXBContext jaxbContext = JAXBContext.newInstance(PagedQuery.class);
+				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+				pagedQuery = (PagedQuery) unmarshaller.unmarshal(sr);
+			}
+			catch (JAXBException e) {
+				e.printStackTrace();
+			}
+			pagedQuery.getPagingRequest().setNumberOfRows(5);
+			pagedQuery.getPagingRequest().setRequestedPage(1);
 		return pagedQuery;
 	}
 
@@ -156,9 +198,13 @@ public class TestWSCall {
 		return startDate;
 	}
 
-	private static void doLogin(String user, String pwd) {
+	private static void doLogin(URL url, String user, String pwd) {
+		/*JAXBContext jaxbContext = JAXBContext.newInstance(LoginSerivce.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		File loginRequest = new File("Login.xml");
+		jaxbUnmarshaller.unmarshal(loginRequest);*/
 		long startTime = Calendar.getInstance().getTimeInMillis();
-		LoginService loginService = new LoginService();
+		LoginService loginService = new LoginService(url);
 		LoginSerivce ls = loginService.getLoginPort();
 		UserName userName = new UserName();
 		userName.setValue(user);
