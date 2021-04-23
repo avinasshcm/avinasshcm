@@ -35,8 +35,8 @@ public class ProcessDefaultRunning {
 
 	private static HashMap<String, String> referenceTagMap() {
 		HashMap<String, String> newMap = new HashMap<String, String>();
-		newMap.put("UB_POS_POSMSG_REQ", "typ:holdReference");
-		newMap.put("UB_ATM_CASHTXN_REQ", "typ:tellerTxnReference");
+		newMap.put("UB_POS_POSMSG_REQ", "holdReference");
+		newMap.put("UB_ATM_CASHTXN_REQ", "tellerTxnReference");
 		return newMap;
 	}
 
@@ -215,11 +215,11 @@ public class ProcessDefaultRunning {
 				if (direction.contains("IN")) {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
-					ap.setTxnDateTime(getTrmDateTime(CommonMethods.getTagValue("typ:txnDateTime", lineItems)));
-					ap.setTxnCode(CommonMethods.getTagValue("head:messageType", lineItems));
+					ap.setTxnDateTime(getTrmDateTime(CommonMethods.getTagValue("txnDateTime", lineItems)));
+					ap.setTxnCode(CommonMethods.getTagValue("messageType", lineItems));
 					ap.setTxnRef(CommonMethods.getTagValue(referenceTag.get(serviceName), lineItems));
-					ap.setMsgFunction(CommonMethods.getTagValue("typ:messageFunction", lineItems));
-					ap.setThreadID(Integer.parseInt(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'")));
+					ap.setMsgFunction(CommonMethods.getTagValue("messageFunction", lineItems));
+					ap.setThreadID(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'"));
 					FBPMap.put(correlationID, ap);
 				}
 				else if (direction.contains("OUT")) {
@@ -265,7 +265,7 @@ public class ProcessDefaultRunning {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
 					ap.setTxnDateTime(getTrmDateTime(CommonMethods.getTagValue("typ:txnDateTime", lineItems)));
-					ap.setThreadID(Integer.parseInt(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'")));
+					ap.setThreadID(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'"));
 					FBPMap.put(correlationID, ap);
 				}
 			}

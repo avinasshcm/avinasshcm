@@ -26,17 +26,17 @@ public class CommonMethods {
 
 	public static String getTagValue(String tagName, List<String> lineItems) {
 		String txnCode = "";
-		String startTag = "<" + tagName + ">";
-		String endTag = "</" + tagName + ">";
-		String emptyTag = "<" + tagName + "/>";
-		String msg = lineItems.get(lineItems.size() - 2);
-		//System.out.println(msg);
-		if (!msg.contains(emptyTag)) {
-			int start = msg.indexOf(startTag) + startTag.length();
-			int end = msg.indexOf(endTag);
-			if (msg.contains(startTag)) {
-				//System.out.println(msg.substring(start, end));
-				txnCode = msg.substring(start, end);
+		if (tagName.length() > 0) {
+			String msg = lineItems.get(lineItems.size() - 2);
+			try {
+				msg = msg.substring(msg.indexOf(tagName) + tagName.length());
+				if (!msg.startsWith("/>")) {
+					msg = msg.substring(msg.indexOf(">") + 1);
+					txnCode = msg.substring(0, msg.indexOf("</"));
+				}
+				//System.out.println(msg);
+			}
+			catch (Exception e) {
 			}
 		}
 		return txnCode;
@@ -108,7 +108,7 @@ public class CommonMethods {
 		return timestamp;
 	}
 
-	public static String getThreadID(List<String> lineItems, String tagName, String prefix, String suffix) {
+	public static int getThreadID(List<String> lineItems, String tagName, String prefix, String suffix) {
 		int indexOfThread = getIndexOf(lineItems, tagName) + 1;
 		String threadID = "";
 		try {
@@ -120,6 +120,12 @@ public class CommonMethods {
 		threadID = threadID.replaceAll(prefix, "");
 		threadID = threadID.replaceAll(suffix, "");
 		//System.out.println(threadID);
-		return threadID;
+		int thread_ID = 0;
+		try {
+			thread_ID = Integer.parseInt(threadID);
+		}
+		catch (Exception e) {
+		}
+		return thread_ID;
 	}
 }

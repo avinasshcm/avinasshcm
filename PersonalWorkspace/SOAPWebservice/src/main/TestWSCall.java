@@ -14,7 +14,7 @@ import services.Login;
 import services.UBRCBACCRetrieveAccountMovementsSRV;
 
 public class TestWSCall {
-	private static final int MAX_RETRY = 1;
+	private static final int MAX_RETRY = 6;
 	public static String tgt = "";
 	static String WSDL_LOGIN = "http://blrl10tl5y2:9083/bfweb/services/LoginService?wsdl";
 	static String WSDL_RTRV_TXN = "http://blrl10tl5y2:9083/bfweb/services/UB_R_CB_ACC_RetrieveAccountMovements_SRVWS?wsdl";
@@ -25,7 +25,8 @@ public class TestWSCall {
 		doLogin(loginURL, "brad", "brad");
 		boolean tgtExpired = false;
 		long startTime = Calendar.getInstance().getTimeInMillis();
-		UBRCBACCRetrieveAccountMovementsSRVResponseType resp = null;
+		UBRCBACCRetrieveAccountMovementsSRVResponseType resp = new UBRCBACCRetrieveAccountMovementsSRVResponseType();
+		int maxCounter = 5;
 		int counter = 0;
 		do {
 			try {
@@ -44,7 +45,7 @@ public class TestWSCall {
 			}
 			counter++;
 		}
-		while (tgtExpired);
+		while (tgtExpired && counter<maxCounter);
 		//String respStatus = resp.getRetrieveAcctMvmntRs().getRsHeader().getStatus().getOverallStatus().toString();
 		//System.out.println(respStatus);
 		List<AcctMovement> acctMvmts = resp.getRetrieveAcctMvmntRs().getAccountMovements();

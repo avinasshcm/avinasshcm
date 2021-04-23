@@ -170,7 +170,7 @@ public class MonitorWebServices {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
 					ap.setInvocationMode(invocationMode);
-					ap.setThreadID(Integer.parseInt(CommonMethods.getThreadID(lineItems, "CurrentThread", "'WebContainer : ", "'")));
+					ap.setThreadID(CommonMethods.getThreadID(lineItems, "CurrentThread", "'WebContainer : ", "'"));
 					FBPMap.put(correlationID, ap);
 				}
 				else if (direction.contains("Out-Message")) {

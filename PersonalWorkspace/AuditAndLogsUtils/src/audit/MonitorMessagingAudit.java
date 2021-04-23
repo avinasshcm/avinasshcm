@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Row;
@@ -28,40 +27,51 @@ import pojo.AuditData;
 
 //PSD2
 public class MonitorMessagingAudit {
-	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging.txt";
+	private static final String AuditDir = "D:\\OneDrive - Finastra\\CTT\\Issues\\Messaging_2021.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
 	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMdd_HHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
 	private static final HashMap<String, String> referenceTag = referenceTagMap();
 	private static final HashMap<String, String> txnCodeTag = txnCodeTagMap();
 	private static final HashMap<String, String> msgFunctionTag = msgFunctionTagMap();
+	private static final HashMap<String, String> trmDateTimeTag = trmDateTimeMap();
 
 	private static HashMap<String, String> referenceTagMap() {
 		HashMap<String, String> newMap = new HashMap<String, String>();
-		newMap.put("UB_POS_POSMSG_REQ", "typ:holdReference");
-		newMap.put("UB_ATM_CASHTXN_REQ", "typ:tellerTxnReference");
-		newMap.put("UB_ATM_BALENQ_REQ", "typ:reference");
-		newMap.put("UB_ATM_MINSTMT_REQ", "typ:reference");
-		newMap.put("UB_IND_PaymentRequestQ", "typ:transactionalItem");
+		newMap.put("UB_POS_POSMSG_REQ", ":holdReference");
+		newMap.put("UB_ATM_CASHTXN_REQ", ":tellerTxnReference");
+		newMap.put("UB_ATM_BALENQ_REQ", ":reference");
+		newMap.put("UB_ATM_MINSTMT_REQ", ":reference");
+		newMap.put("UB_IND_PaymentRequestQ", ":transactionalItem");
 		return newMap;
 	}
 
 	private static HashMap<String, String> txnCodeTagMap() {
 		HashMap<String, String> newMap = new HashMap<String, String>();
-		newMap.put("UB_POS_POSMSG_REQ", "head:messageType");
-		newMap.put("UB_ATM_CASHTXN_REQ", "head:messageType");
-		newMap.put("UB_ATM_BALENQ_REQ", "");
-		newMap.put("UB_ATM_MINSTMT_REQ", "");
-		newMap.put("UB_IND_PaymentRequestQ", "typ:transactionalType");
+		newMap.put("UB_POS_POSMSG_REQ", ":messageType");
+		newMap.put("UB_ATM_CASHTXN_REQ", ":messageType");
+		newMap.put("UB_ATM_BALENQ_REQ", ":messageType");
+		newMap.put("UB_ATM_MINSTMT_REQ", ":messageType");
+		newMap.put("UB_IND_PaymentRequestQ", ":transactionalType");
 		return newMap;
 	}
 
 	private static HashMap<String, String> msgFunctionTagMap() {
 		HashMap<String, String> newMap = new HashMap<String, String>();
-		newMap.put("UB_POS_POSMSG_REQ", "typ:messageFunction");
-		newMap.put("UB_ATM_CASHTXN_REQ", "typ:messageFunction");
-		newMap.put("UB_ATM_BALENQ_REQ", "typ:messageFunction");
-		newMap.put("UB_ATM_MINSTMT_REQ", "typ:messageFunction");
+		newMap.put("UB_POS_POSMSG_REQ", ":messageFunction");
+		newMap.put("UB_ATM_CASHTXN_REQ", ":messageFunction");
+		newMap.put("UB_ATM_BALENQ_REQ", ":messageFunction");
+		newMap.put("UB_ATM_MINSTMT_REQ", ":messageFunction");
+		newMap.put("UB_IND_PaymentRequestQ", "");
+		return newMap;
+	}
+
+	private static HashMap<String, String> trmDateTimeMap() {
+		HashMap<String, String> newMap = new HashMap<String, String>();
+		newMap.put("UB_POS_POSMSG_REQ", ":txnDateTime");
+		newMap.put("UB_ATM_CASHTXN_REQ", ":txnDateTime");
+		newMap.put("UB_ATM_BALENQ_REQ", ":txnDateTime");
+		newMap.put("UB_ATM_MINSTMT_REQ", ":txnDateTime");
 		newMap.put("UB_IND_PaymentRequestQ", "");
 		return newMap;
 	}
@@ -218,11 +228,12 @@ public class MonitorMessagingAudit {
 				if (direction.contains("IN")) {
 					ap.setStartTime(CommonMethods.parseTimestamp(time));
 					ap.setServiceName(serviceName);
-					ap.setTxnDateTime(getTrmDateTime(CommonMethods.getTagValue("typ:txnDateTime", lineItems)));
+					//System.out.println(correlationID);
+					ap.setTxnDateTime(getTrmDateTime(CommonMethods.getTagValue(trmDateTimeTag.get(serviceName), lineItems)));
 					ap.setTxnCode(CommonMethods.getTagValue(txnCodeTag.get(serviceName), lineItems));
 					ap.setTxnRef(CommonMethods.getTagValue(referenceTag.get(serviceName), lineItems));
 					ap.setMsgFunction(CommonMethods.getTagValue(msgFunctionTag.get(serviceName), lineItems));
-					ap.setThreadID(Integer.parseInt(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'")));
+					ap.setThreadID(CommonMethods.getThreadID(lineItems, "TCPWorkerThreadID", "'Camel \\(camel\\) thread #", " - JmsConsumer[A-Za-z\\_\\[\\]]*'"));
 					FBPMap.put(correlationID, ap);
 				}
 				else if (direction.contains("OUT")) {
@@ -242,7 +253,15 @@ public class MonitorMessagingAudit {
 	}
 
 	private static Timestamp getTrmDateTime(String date) {
-		String txnDateTime = date.substring(0, date.length() - "+01:00".length()).replaceAll("T", " ");
-		return CommonMethods.parseTimestamp("yyyy-MM-dd HH:mm:ss.SSS", txnDateTime);
+		int timeZoneLength = 6;
+		if (date.contains("Z")) {
+			timeZoneLength = 1;
+		}
+		int endIndex = date.length() - timeZoneLength;
+		if (endIndex > 1) {
+			String txnDateTime = date.substring(0, date.length() - timeZoneLength).replaceAll("T", " ");
+			return CommonMethods.parseTimestamp("yyyy-MM-dd HH:mm:ss.SSS", txnDateTime);
+		}
+		return null;
 	}
 }
