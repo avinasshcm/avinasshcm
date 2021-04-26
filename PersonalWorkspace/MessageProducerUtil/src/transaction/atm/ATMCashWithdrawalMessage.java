@@ -66,7 +66,7 @@ public class ATMCashWithdrawalMessage implements Runnable {
 			int counter = message % this.data.size();
 			System.out.println("counter " + counter);
 			ATMTxnData txnData = this.data.get(counter);
-			String reference = commonMethods.getReference(txnData.getTxnRef());
+			String reference = commonMethods.getReference();
 			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", reference);
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getAccount());
 			modifiedMessage = modifiedMessage.replaceAll("CARD_NUMBER", txnData.getCardNumber());
@@ -124,6 +124,7 @@ public class ATMCashWithdrawalMessage implements Runnable {
 		LOGGER.info("ATMCashDepositMessage Completed " + Thread.currentThread().getId());
 	}
 
+	@SuppressWarnings("resource")
 	private void populateValues() {
 		try {
 			File currentDirectory = new File(".");

@@ -12,21 +12,19 @@
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
                 <attribute name="Rsrc-Main-Class" value="MessageProducer"/>
                 <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ jms.jar jta.jar com.ibm.mq.jmqi.jar dhbcore.jar rmm.jar jndi.jar ldap.jar fscontext.jar providerutil.jar CL3Nonexport.jar com.ibm.mqjms.jar"/>
+                <attribute name="Rsrc-Class-Path" value="./ jms.jar com.ibm.mq.jmqi.jar dhbcore.jar com.ibm.mqjms.jar com.ibm.mq.headers.jar com.ibm.mq.pcf.jar com.ibm.mq.commonservices.jar com.ibm.mq.jar connector-1.0.jar"/>
             </manifest>
             <zipfileset src="jar-in-jar-loader.zip"/>
             <fileset dir="${dir.buildfile}/bin"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="jms.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="jta.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="com.ibm.mq.jmqi.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="dhbcore.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="rmm.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="jndi.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="ldap.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="fscontext.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="providerutil.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="CL3Nonexport.jar"/>
-            <zipfileset dir="D:/Softwares/MQJExplorer-0.16/lib/IBM_WebSphere_MQ-7.0.1.3" includes="com.ibm.mqjms.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="jms.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="com.ibm.mq.jmqi.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="dhbcore.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="com.ibm.mqjms.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="com.ibm.mq.headers.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="com.ibm.mq.pcf.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="com.ibm.mq.commonservices.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="com.ibm.mq.jar"/>
+            <zipfileset dir="${dir.workspace}/_HelperJars" includes="connector-1.0.jar"/>
         </jar>
     </target>
 </project>

@@ -43,6 +43,8 @@ public class MessageProducer {
 		validOptions.add("1");
 		validOptions.add("2");
 		validOptions.add("3");
+		validOptions.add("6");
+		validOptions.add("7");
 		validOptions.add("8");
 		// String option = c.readLine();
 		if (!validOptions.contains(option)) {
@@ -61,7 +63,7 @@ public class MessageProducer {
 			System.out.println("Invalid number of txns.");
 			return;
 		}
-		System.out.println("Started publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
+		System.out.println("Started publishing Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
 		ExecutorService executor = Executors.newFixedThreadPool(100);
 		QueueConnectionFactory DCFactory = getDCFactory();
 		QueueConnectionFactory ATMFactory = getATMFactory();
@@ -100,7 +102,7 @@ public class MessageProducer {
 		// Wait until all threads are finish
 		while (!executor.isTerminated()) {
 		}
-		System.out.println("Completed publishing DC Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
+		System.out.println("Completed publishing Messages with Run Name : " + ReadQueueManagerDetails.RUN_NAME);
 	}
 
 	private static QueueConnectionFactory getDCFactory() {

@@ -65,7 +65,7 @@ public class SEPAPayment implements Runnable {
 			int counter = message % this.data.size();
 			// System.out.println("counter " + counter);
 			SEPATxnData txnData = this.data.get(counter);
-			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", commonMethods.getReference(txnData.getTxnRef()));
+			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", commonMethods.getReference());
 			modifiedMessage = modifiedMessage.replaceAll("DR_CUST_ID", txnData.getDebitCustomer());
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getFromAccount());
 			modifiedMessage = modifiedMessage.replaceAll("TO_ACCOUNT", txnData.getToAccount());

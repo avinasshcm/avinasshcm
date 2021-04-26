@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 
 public class CommonMethods {
-	public String getReference(String reference) {
+	public String getReference() {
 		String ref = getDate(System.currentTimeMillis(), "yyyyMMddHHmmssSSS") + Thread.currentThread().getId();
 		ref = ref + getRandom(99);
 		return ref;

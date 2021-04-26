@@ -9,15 +9,21 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.Queue;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
 import javax.jms.QueueSender;
 import javax.jms.QueueSession;
+import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import com.ibm.mq.jms.MQQueueConnectionFactory;
@@ -47,6 +53,7 @@ public class ATMPOSPurchaseMessage implements Runnable {
 		QueueConnection connection = null;
 		QueueSession session = null;
 		Queue queue = null;
+		//Queue responseQueue = null;
 		QueueSender sender = null;
 		populateValues();
 		int noOfTxns = Integer.parseInt(this.numberOfTxns);
@@ -55,6 +62,7 @@ public class ATMPOSPurchaseMessage implements Runnable {
 			connection.start();
 			session = connection.createQueueSession(false, 1);
 			queue = session.createQueue(ReadQueueManagerDetails.ATM_POS_QUEUE_NAME);
+			//responseQueue = session.createQueue("UB_ATM_RES");
 			sender = session.createSender(queue);
 		}
 		catch (Exception exception) {
@@ -64,9 +72,9 @@ public class ATMPOSPurchaseMessage implements Runnable {
 			// System.out.println("data " + this.data.size());
 			// System.out.println("Msg " + message);
 			int counter = message % this.data.size();
-			System.out.println("counter " + counter);
+			//System.out.println("counter " + counter);
 			ATMTxnData txnData = this.data.get(counter);
-			String reference = commonMethods.getReference(txnData.getTxnRef());
+			String reference = commonMethods.getReference();
 			String modifiedMessage = originalMessage.replaceAll("TRANSACTION_REF", reference);
 			modifiedMessage = modifiedMessage.replaceAll("FROM_ACCOUNT", txnData.getAccount());
 			modifiedMessage = modifiedMessage.replaceAll("CARD_NUMBER", txnData.getCardNumber());
@@ -80,26 +88,14 @@ public class ATMPOSPurchaseMessage implements Runnable {
 			*/
 			try {
 				TextMessage outMessage = session.createTextMessage();
-				//outMessage.setJMSCorrelationID(java.util.UUID.randomUUID().toString());
-				outMessage.setJMSCorrelationID(reference);
+				outMessage.setJMSCorrelationID(java.util.UUID.randomUUID().toString());
+				//System.out.println(outMessage.getJMSCorrelationID());
+				//outMessage.setJMSCorrelationID(reference);
+				//outMessage.setJMSReplyTo(responseQueue);
 				outMessage.setText(modifiedMessage);
 				sender.send(outMessage);
-				/*				
-				Destination replyQueue = new ;
-				
-				MessageConsumer  replyConsumer = session.createConsumer("UB_ATM_RES");
-				Message msg = replyConsumer.receive();
-				
-				if (msg instanceof TextMessage) {
-					TextMessage replyMessage = (TextMessage) msg;
-					System.out.println("Received reply ");
-					System.out.println("\tTime:       " + System.currentTimeMillis() + " ms");
-					System.out.println("\tMessage ID: " + replyMessage.getJMSMessageID());
-					System.out.println("\tCorrel. ID: " + replyMessage.getJMSCorrelationID());
-					System.out.println("\tReply to:   " + replyMessage.getJMSReplyTo());
-					System.out.println("\tContents:   " + replyMessage.getText());
-				}
-				*/
+				//Thread.sleep(200);
+				//consumeResponse(connection, session, reference, outMessage.getJMSCorrelationID());
 			}
 			catch (Exception exception) {
 				exception.printStackTrace();
@@ -124,6 +120,55 @@ public class ATMPOSPurchaseMessage implements Runnable {
 		LOGGER.info("ATMCashDepositMessage Completed " + Thread.currentThread().getId());
 	}
 
+	public static String getTagValue(String tagName, String msg) {
+		String txnCode = "";
+		try {
+			msg = msg.substring(msg.indexOf(tagName) + tagName.length());
+			if (!msg.startsWith("/>")) {
+				msg = msg.substring(msg.indexOf(">") + 1);
+				txnCode = msg.substring(0, msg.indexOf("</"));
+			}
+			//System.out.println(msg);
+		}
+		catch (Exception e) {
+		}
+		return txnCode;
+	}
+
+	private void consumeResponse(QueueConnection connection, Session session, String reference, String rqCorrelationID) throws JMSException {
+		long startTime = Calendar.getInstance().getTimeInMillis();
+		//Session replySession = connection.createQueueSession(false, 1);
+		Destination destination = session.createQueue("UB_ATM_RES");
+		MessageConsumer consumer = session.createConsumer(destination);
+		Message msg = consumer.receive();
+		String correlationID = "";
+		String rsReference = "";
+		if (msg instanceof TextMessage) {
+			TextMessage replyMessage = (TextMessage) msg;
+			//System.out.println("Received reply ");
+			/*
+			System.out.println("Received reply ");
+			System.out.println("\tTime:       " + System.currentTimeMillis() + " ms");
+			System.out.println("\tMessage ID: " + replyMessage.getJMSMessageID());
+			System.out.println("\tCorrel. ID: " + replyMessage.getJMSCorrelationID());
+			System.out.println("\tReply to:   " + replyMessage.getJMSReplyTo());
+			System.out.println("\tContents:   " + replyMessage.getText());
+			*/
+			replyMessage.getJMSMessageID();
+			replyMessage.getJMSCorrelationID();
+			replyMessage.getJMSReplyTo();
+			replyMessage.getText();
+			rsReference = getTagValue("holdReference", replyMessage.getText());
+			correlationID = replyMessage.getJMSCorrelationID();
+			//long endTime = Calendar.getInstance().getTimeInMillis();
+			//System.out.println(correlationID + " : " + (endTime - startTime) + " ms");
+		}
+		//System.out.println(getDate("YYYY-MM-dd'T'HH:mm:ss.sssXXX"));
+		long endTime = Calendar.getInstance().getTimeInMillis();
+		System.out.println(rqCorrelationID + "\t" + reference + "\t" + correlationID + "\t" + rsReference + " : " + (endTime - startTime) + " ms");
+	}
+
+	@SuppressWarnings("resource")
 	private void populateValues() {
 		try {
 			File currentDirectory = new File(".");
@@ -160,7 +205,7 @@ public class ATMPOSPurchaseMessage implements Runnable {
 	}
 
 	public static String getDate(String format) {
-		String date = new SimpleDateFormat(format).format(new Date());
+		String date = new SimpleDateFormat(format).format(new Date(Calendar.getInstance().getTimeInMillis()));
 		return date;
 	}
 }

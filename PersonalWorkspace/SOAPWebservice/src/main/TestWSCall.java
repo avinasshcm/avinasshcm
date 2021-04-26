@@ -30,6 +30,7 @@ public class TestWSCall {
 		int counter = 0;
 		do {
 			try {
+				//Intentionally passing Invalid TGT first time as it is difficult to clear the TGT in Essence.
 				String modifiedTGT = tamperTGT(counter);
 				UBRCBACCRetrieveAccountMovementsSRV retrieveAccountMovements = new UBRCBACCRetrieveAccountMovementsSRV(txnURL);
 				resp = retrieveAccountMovements.invoke(modifiedTGT);
