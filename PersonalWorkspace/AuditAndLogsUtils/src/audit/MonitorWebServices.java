@@ -25,7 +25,7 @@ import file.excel.ExcelUtils;
 import pojo.WebServiceData;
 
 public class MonitorWebServices {
-	private static final String AuditDir = "D:\\Essence\\INSTALL-LOCATION\\CTTDEV\\AuditDir\\default_running\\audit.txt";
+	private static final String AuditDir = "D:\\File_Descriptors\\default_Running\\Consolidated.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
 	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMdd_HHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";

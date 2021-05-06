@@ -27,7 +27,7 @@ import pojo.AuditData;
 
 //PSD2
 public class ProcessDefaultRunning {
-	private static final String AuditDir = "D:\\POS_Timeout\\BF_running\\Messaging_CASH_REQ.txt";
+	private static final String AuditDir = "D:\\Finastra\\Fonseca, Bruno - FBECrash_0420\\default_running\\consolidated.txt";
 	private static boolean writeToFile = true;
 	private static final String tabOrComma = writeToFile ? "," : "\t";
 	private static String excelFileName = "Result_" + CommonMethods.formatDate("yyyyMMdd_HHssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".xlsx";
