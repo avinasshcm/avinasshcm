@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<script src="https://www.google.com/jsapi"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+
+  function drawChart () {
+      $.ajax({
+          url: 'OpenFileDescriptors_PS_Core.txt',
+          type: 'get',
+          success: function (txt) {
+              var dataArray = [['Name', 'Date']];
+              var txtArray = txt.split('\n');
+              for (var i = 0; i < txtArray.length; i++) {
+                  var tmpData = txtArray[i].split(/\s+/);
+                  dataArray.push([tmpData[0], parseInt(tmpData[1])]);
+              }
+              var data = google.visualization.arrayToDataTable(dataArray);
+              var chart = new google.visualization.LineChart(document.querySelector('#chart_div'));
+              var options = {'title':'What is this','width':400,'height':300};
+              chart.draw(data,options);
+          }
+      });
+  }
+
+  google.load('visualization', '1', {packages:['corechart'], callback: drawChart});
+</script>
+
+</head>
+<body>
+<div id="chart_div"></div>
+
+</body>
+</html>
