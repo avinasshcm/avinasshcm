@@ -1,8 +1,15 @@
 package file.utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +26,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import common.CommonMethods;
 import pojo.SVNPojo;
 
 public class SVNLogParser {
-	private static final String FolderPath = "D:/SVNLog/Release";
+	private static final String FolderPath = "D:/SVNLog/Log";
+	private static final String OutputFolderPath = "D:/SVNLog/";
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 		HashMap<String, SVNPojo> svnMap = new HashMap<>();
@@ -80,24 +89,60 @@ public class SVNLogParser {
 		return svnMap;
 	}
 
-	private static void processMap(HashMap<String, SVNPojo> svnMap) {
+	private static void processMap(HashMap<String, SVNPojo> svnMap) throws IOException {
+		Path JIRACommitsList = Paths.get(OutputFolderPath + "JIRA_Commits_List_" + CommonMethods.formatDate("yyyyMMdd_HHmmssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".txt");
+		BufferedWriter JIRACommitsListWriter = Files.newBufferedWriter(JIRACommitsList);
 		for (Map.Entry<String, SVNPojo> entry : svnMap.entrySet()) {
-			printResults(entry, entry.getValue());
+			printJIRACommitsList(JIRACommitsListWriter, entry, entry.getValue());
+			JIRACommitsListWriter.write("\n\n");
+		}
+		JIRACommitsListWriter.close();
+		Path JIRAList = Paths.get(OutputFolderPath + "JIRA_List_" + CommonMethods.formatDate("yyyyMMdd_HHmmssSSS", new Date(Calendar.getInstance().getTimeInMillis())) + ".txt");
+		BufferedWriter JIRAListWriter = Files.newBufferedWriter(JIRAList);
+		for (Map.Entry<String, SVNPojo> entry : svnMap.entrySet()) {
+			printJIRAList(JIRAListWriter, entry, entry.getValue());
+		}
+		JIRAListWriter.close();
+	}
+
+	private static void printJIRACommitsList(BufferedWriter writer, Map.Entry<String, SVNPojo> entry, SVNPojo ap) {
+		//writer.write("\n");
+		//JIRA ID
+		try {
+			writer.write(ap.getJiraID() + "\t");
+			//Authors
+			List<String> distinctAuthor = ap.getAuthors().stream().distinct().sorted().collect(Collectors.toList());
+			Stream<String> stream = Stream.of(distinctAuthor.toString());
+			writer.write(stream.collect(Collectors.toList()).toString());
+			//Paths
+			List<String> distinctPathList = ap.getPaths().stream().distinct().sorted().collect(Collectors.toList());
+			for (String path : distinctPathList) {
+				writer.write("\n" + "\t\t" + path.trim());
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	private static void printResults(Map.Entry<String, SVNPojo> entry, SVNPojo ap) {
-		System.out.println("");
+	private static void printJIRAList(BufferedWriter writer, Map.Entry<String, SVNPojo> entry, SVNPojo ap) {
+		//writer.write("\n");
 		//JIRA ID
-		System.out.print(ap.getJiraID() + "\t");
-		//Authors
-		List<String> distinctAuthor = ap.getAuthors().stream().distinct().sorted().collect(Collectors.toList());
-		Stream<String> stream = Stream.of(distinctAuthor.toString());
-		System.out.println(stream.collect(Collectors.toList()));
-		//Paths
-		List<String> distinctPathList = ap.getPaths().stream().distinct().sorted().collect(Collectors.toList());
-		for (String path : distinctPathList) {
-			System.out.println("\t\t" + path.trim());
+		try {
+			List<String> jiraList = Arrays.asList(ap.getJiraID().split(","));
+			for (String jira : jiraList) {
+				writer.write(jira + "\t");
+				List<String> distinctAuthor = ap.getAuthors().stream().distinct().sorted().collect(Collectors.toList());
+				Stream<String> stream = Stream.of(distinctAuthor.toString());
+				writer.write(stream.collect(Collectors.toList()).toString());
+				writer.write("\n");
+			}
+			//Authors
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
