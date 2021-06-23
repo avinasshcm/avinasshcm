@@ -12,13 +12,15 @@ public class ReadPropertyFile {
 	public static String Good_Build_File;
 	public static String Destination_Folder;
 	public static String BT_Specific;
-	public static String AM_PM_Required;
-	public static String AO_Required;
-	public static String WIF_Required;
-	public static String UBOF_Required;
+	//
+	public static boolean AM_PM_Required;
+	public static boolean AO_Required;
+	public static boolean WIF_Required;
+	public static boolean UBOF_Required;
+	public static boolean BT_Specific_Required;
+	//
 	public static String ServicePack;
 	public static String Patch;
-	public static String BT_Specific_Required;
 	public static String Version;
 	public static String CodeLine;
 	private static final Logger LOGGER = Logger.getLogger(ReadPropertyFile.class.getName());
@@ -37,11 +39,11 @@ public class ReadPropertyFile {
 			Good_Build_File = "LastGoodBuildNumber.txt";
 			Destination_Folder = props.getProperty("Destination_Folder");
 			BT_Specific = props.getProperty("BT_Specific");
-			BT_Specific_Required = props.getProperty("BT_Specific_Required");
-			AM_PM_Required = (props.getProperty("AM_PM_Required") != null) ? props.getProperty("AM_PM_Required") : "false";
-			WIF_Required = (props.getProperty("WIF_Required") != null) ? props.getProperty("WIF_Required") : "false";
-			AO_Required = (props.getProperty("AO_Required") != null) ? props.getProperty("AO_Required") : "false";
-			UBOF_Required = props.getProperty("UBOF_Required");
+			BT_Specific_Required = Boolean.parseBoolean(props.getProperty("BT_Specific_Required"));
+			AM_PM_Required = (props.getProperty("AM_PM_Required") != null) ? Boolean.parseBoolean(props.getProperty("AM_PM_Required")) : Boolean.FALSE;
+			WIF_Required = (props.getProperty("WIF_Required") != null) ? Boolean.parseBoolean(props.getProperty("WIF_Required")) : Boolean.FALSE;
+			AO_Required = (props.getProperty("AO_Required") != null) ? Boolean.parseBoolean(props.getProperty("AO_Required")) : Boolean.FALSE;
+			UBOF_Required = Boolean.parseBoolean(props.getProperty("UBOF_Required"));
 			ServicePack = props.getProperty("ServicePack");
 			Patch = props.getProperty("Patch");
 			Version = props.getProperty("Version");

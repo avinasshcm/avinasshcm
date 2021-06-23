@@ -12,7 +12,7 @@
 	<entry key="userName">bfdbusr</entry>
 	<entry key="password">misys123$</entry>
 	<entry key="schema">BANKFUSION</entry>
-	<entry key="connectionString">jdbc:db2://localhost:50000/FBE429</entry>
+	<entry key="connectionString">jdbc:db2://localhost:50001/FBE2020D</entry>
 	<entry key="driverClass">com.ibm.db2.jcc.DB2Driver</entry>
 	
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project CheckLatestBuild with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="D:/Essence/INSTALL-LOCATION/FBE2020D/CheckLatestBuild"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/CheckLatestBuild.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="CheckBuild"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ commons-io-1.4.jar commons-logging-1.1.1.jar ojdbc7.jar spring-beans-4.2.1.RELEASE.jar spring-core-4.2.1.RELEASE.jar db2jcc_javax.jar jt400.jar db2jcc_license_cu.jar db2jcc.jar db2jcc4.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <zipfileset dir="${dir.buildfile}" includes="commons-io-1.4.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="commons-logging-1.1.1.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="ojdbc7.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="spring-beans-4.2.1.RELEASE.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="spring-core-4.2.1.RELEASE.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="db2jcc_javax.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="jt400.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="db2jcc_license_cu.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="db2jcc.jar"/>
+            <zipfileset dir="${dir.buildfile}" includes="db2jcc4.jar"/>
+        </jar>
+    </target>
+</project>

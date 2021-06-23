@@ -1,6 +1,7 @@
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 
+@SuppressWarnings("deprecation")
 public class CurrentBuildProviderBeanFactory {
 	static XmlBeanFactory factory = new XmlBeanFactory(new FileSystemResource("current-build-provider.xml"));
 

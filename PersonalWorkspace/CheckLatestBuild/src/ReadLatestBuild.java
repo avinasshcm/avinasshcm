@@ -23,9 +23,9 @@ public class ReadLatestBuild {
 			props.load(new FileInputStream("LatestBuild.properties"));
 			BFP_Latest_Build = Integer.parseInt(props.getProperty("BFP"));
 			CBS_Latest_Build = Integer.parseInt(props.getProperty("CBS"));
-			BFAM_Latest_Build = Integer.parseInt(props.getProperty("BFAM"));
-			BFPM_Latest_Build = Integer.parseInt(props.getProperty("BFPM"));
-			BFAO_Latest_Build = Integer.parseInt(props.getProperty("BFAO"));
+			BFAM_Latest_Build = Integer.parseInt(props.getProperty("FBAM"));
+			BFPM_Latest_Build = Integer.parseInt(props.getProperty("FBPM"));
+			BFAO_Latest_Build = Integer.parseInt(props.getProperty("FBAO"));
 			WIF_Latest_Build = Integer.parseInt(props.getProperty("WIF"));
 			UB_Latest_Build = Integer.parseInt(props.getProperty("UB"));
 			PTY_Latest_Build = Integer.parseInt(props.getProperty("Party"));
